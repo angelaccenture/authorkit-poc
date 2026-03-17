@@ -175,6 +175,22 @@ a {
   padding: 35px 0 5px;
 }
 
+/* View More button */
+.section:has(.cards-blog) > .default-content:last-child a {
+  display: inline-block;
+  background: var(--color-link);
+  color: var(--color-light);
+  font-size: var(--body-font-size-m);
+  text-decoration: none;
+  padding: 10px 22px;
+  border: 2px solid transparent;
+  transition: background-color 0.2s ease;
+}
+
+.section:has(.cards-blog) > .default-content:last-child a:hover {
+  background: var(--color-link-hover);
+}
+
 @media (width >= 900px) {
   .section:has(.cards-blog) {
     display: grid;
