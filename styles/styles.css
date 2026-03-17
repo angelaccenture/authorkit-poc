@@ -294,11 +294,13 @@ svg {
 
 /* Blog article page styles */
 main > .section:not(:has(.cards-blog)) {
+  padding: 0 5%;
+
   > .default-content {
     background: var(--color-surface);
     max-width: 776px;
     margin: 36px 0 0;
-    padding: 0;
+    padding: 0 0 40px;
   }
 
   h1 {
