@@ -50,6 +50,54 @@ var CustomImportScript = (() => {
         if (h1) {
           fragment.appendChild(h1.cloneNode(true));
         }
+        const metaText = entryHeader ? entryHeader.querySelector("p.c-meta-text, p:has(time)") : null;
+        if (metaText) {
+          const datePara = document.createElement("p");
+          datePara.className = "article-date";
+          const time = metaText.querySelector("time");
+          const authorLink = metaText.querySelector("a");
+          const parts = [];
+          if (time) parts.push(time.textContent.trim());
+          if (authorLink) parts.push(authorLink.textContent.trim());
+          datePara.textContent = parts.join(" | ");
+          fragment.appendChild(datePara);
+        }
+        const shareList = entryHeader ? entryHeader.querySelector("ul") : null;
+        if (shareList) {
+          const ul = document.createElement("ul");
+          ul.className = "article-share";
+          const links = shareList.querySelectorAll("a");
+          const iconMap = { facebook: "Facebook", twitter: "X", linkedin: "LinkedIn", threads: "Threads" };
+          links.forEach((link) => {
+            const href = link.getAttribute("href") || "";
+            let label = "";
+            for (const [key, val] of Object.entries(iconMap)) {
+              if (href.includes(key)) {
+                label = val;
+                break;
+              }
+            }
+            if (label) {
+              const li = document.createElement("li");
+              const a = document.createElement("a");
+              a.href = href;
+              a.textContent = label;
+              a.setAttribute("target", "_blank");
+              li.appendChild(a);
+              ul.appendChild(li);
+            }
+          });
+          if (ul.children.length > 0) {
+            fragment.appendChild(ul);
+          }
+        }
+        const heroImg = article.querySelector(":scope > img, .entry-content-hero img");
+        if (heroImg) {
+          const p = document.createElement("p");
+          p.className = "article-hero";
+          p.appendChild(heroImg.cloneNode(true));
+          fragment.appendChild(p);
+        }
         if (entryContent) {
           Array.from(entryContent.children).forEach((child) => {
             fragment.appendChild(child.cloneNode(true));

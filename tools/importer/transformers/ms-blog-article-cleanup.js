@@ -4,7 +4,7 @@
 /**
  * Transformer: Microsoft Blog article cleanup.
  * Removes non-authorable content and extracts article body.
- * Keeps only the article header (h1, date, author) and body content.
+ * Keeps h1, date/author, social share links, hero image, and body content.
  */
 const H = { before: 'beforeTransform', after: 'afterTransform' };
 
@@ -35,16 +35,66 @@ export default function transform(hookName, element, payload) {
       const entryContent = article.querySelector('.entry-content');
       const entryHeader = article.querySelector('.entry-header');
 
-      // Build clean structure: just the h1 and article body
       const fragment = document.createDocumentFragment();
 
-      // Keep the h1 title
+      // 1. Keep the h1 title
       const h1 = entryHeader ? entryHeader.querySelector('h1') : null;
       if (h1) {
         fragment.appendChild(h1.cloneNode(true));
       }
 
-      // Keep the article body content
+      // 2. Keep date/author line
+      const metaText = entryHeader ? entryHeader.querySelector('p.c-meta-text, p:has(time)') : null;
+      if (metaText) {
+        const datePara = document.createElement('p');
+        datePara.className = 'article-date';
+        const time = metaText.querySelector('time');
+        const authorLink = metaText.querySelector('a');
+        const parts = [];
+        if (time) parts.push(time.textContent.trim());
+        if (authorLink) parts.push(authorLink.textContent.trim());
+        datePara.textContent = parts.join(' | ');
+        fragment.appendChild(datePara);
+      }
+
+      // 3. Keep social share links
+      const shareList = entryHeader ? entryHeader.querySelector('ul') : null;
+      if (shareList) {
+        const ul = document.createElement('ul');
+        ul.className = 'article-share';
+        const links = shareList.querySelectorAll('a');
+        const iconMap = { facebook: 'Facebook', twitter: 'X', linkedin: 'LinkedIn', threads: 'Threads' };
+        links.forEach((link) => {
+          const href = link.getAttribute('href') || '';
+          let label = '';
+          for (const [key, val] of Object.entries(iconMap)) {
+            if (href.includes(key)) { label = val; break; }
+          }
+          if (label) {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = href;
+            a.textContent = label;
+            a.setAttribute('target', '_blank');
+            li.appendChild(a);
+            ul.appendChild(li);
+          }
+        });
+        if (ul.children.length > 0) {
+          fragment.appendChild(ul);
+        }
+      }
+
+      // 4. Keep hero image
+      const heroImg = article.querySelector(':scope > img, .entry-content-hero img');
+      if (heroImg) {
+        const p = document.createElement('p');
+        p.className = 'article-hero';
+        p.appendChild(heroImg.cloneNode(true));
+        fragment.appendChild(p);
+      }
+
+      // 5. Keep the article body content
       if (entryContent) {
         Array.from(entryContent.children).forEach((child) => {
           fragment.appendChild(child.cloneNode(true));

@@ -295,16 +295,39 @@ svg {
 /* Blog article page styles */
 main > .section:not(:has(.cards-blog)) {
   > .default-content {
-    max-width: 800px;
-    margin: 0;
-    padding: 0 24px;
+    background: var(--color-surface);
+    max-width: 776px;
+    margin: 36px 0 0;
+    padding: 0;
   }
 
   h1 {
     font-size: 34px;
     font-weight: 100;
     line-height: 40px;
-    margin: 24px 0 8px;
+    margin: 0;
+    padding: 38px 24px 2px;
+  }
+
+  /* Date/author line - first p right after h1 */
+  h1 + p {
+    font-size: var(--body-font-size-m);
+    color: var(--color-meta);
+    line-height: 20px;
+    margin: 0;
+    padding: 12px 24px 24px;
+  }
+
+  /* Hero image - p with img right after date line */
+  h1 + p + p:has(> img:only-child) {
+    margin: 0;
+    padding: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
   }
 
   h3 {
@@ -312,12 +335,14 @@ main > .section:not(:has(.cards-blog)) {
     font-weight: 600;
     line-height: 24px;
     margin: 28px 0 8px;
+    padding: 0 24px;
   }
 
   p {
     font-size: var(--body-font-size-m);
     line-height: 20px;
     margin: 0 0 16px;
+    padding: 0 24px;
   }
 
   img {
@@ -329,6 +354,8 @@ main > .section:not(:has(.cards-blog)) {
   ul,
   ol {
     margin: 0 0 16px;
+    padding-left: 48px;
+    padding-right: 24px;
   }
 
   li {
