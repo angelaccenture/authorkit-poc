@@ -18,6 +18,12 @@
   line-height: 0;
 }
 
+/* Cards without images get a white card background */
+.cards-blog > ul > li:not(:has(img)) {
+  background: var(--color-surface);
+  padding: 0 12px 32px;
+}
+
 .cards-blog > ul > li img {
   width: 100%;
   aspect-ratio: 16 / 9;
