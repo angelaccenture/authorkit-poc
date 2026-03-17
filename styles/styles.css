@@ -292,6 +292,52 @@ svg {
   height: 20px;
 }
 
+/* Blog article page styles */
+main > .section:not(:has(.cards-blog)) {
+  > .default-content {
+    max-width: 800px;
+    margin: 0;
+    padding: 0 24px;
+  }
+
+  h1 {
+    font-size: 34px;
+    font-weight: 100;
+    line-height: 40px;
+    margin: 24px 0 8px;
+  }
+
+  h3 {
+    font-size: var(--heading-font-size-l);
+    font-weight: 600;
+    line-height: 24px;
+    margin: 28px 0 8px;
+  }
+
+  p {
+    font-size: var(--body-font-size-m);
+    line-height: 20px;
+    margin: 0 0 16px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 16px;
+  }
+
+  li {
+    margin-block: 4px;
+    font-size: var(--body-font-size-m);
+    line-height: 20px;
+  }
+}
+
 /* @media (width >= 600px) {} */
 
 /* @media (width >= 900px) {} */
