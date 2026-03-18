@@ -192,6 +192,6 @@ export default async function init(el) {
     await decorateHeader(fragment);
     el.append(fragment);
   } catch (e) {
-    throw Error(e);
+    //throw Error(e);
   }
 }
