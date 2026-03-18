@@ -154,19 +154,82 @@
   background-color: rgb(255 255 255 / 85%);
 }
 
-/* Slide indicators — line/bar style */
+/* Carousel controls — matches Microsoft carousel__controls */
+.carousel .carousel-navigation-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 32px;
+  padding: 16px 0;
+  position: static;
+  transform: none;
+  z-index: 2;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel .carousel-navigation-buttons button {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  color: #0e1726;
+  box-shadow: none;
+  flex-shrink: 0;
+}
+
+.carousel .carousel-navigation-buttons button:hover,
+.carousel .carousel-navigation-buttons button:focus-visible {
+  background-color: transparent;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+.carousel .carousel-navigation-buttons button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.carousel .carousel-navigation-buttons button::after {
+  display: block;
+  content: '';
+  border: 2px solid #0e1726;
+  border-bottom: 0;
+  border-left: 0;
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 1px);
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.carousel .carousel-navigation-buttons button.slide-next::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: calc(50% - 1px);
+}
+
+/* Slide indicators — line/bar style centered between nav buttons */
 .carousel .carousel-slide-indicators {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 8px;
-  padding: 16px 12px;
+  justify-content: center;
+  gap: 4px;
+  flex-grow: 1;
+  padding: 0;
+  margin: 0;
+  list-style: none;
   line-height: 0;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
 .carousel .carousel-slide-indicator button {
-  width: 32px;
+  width: 24px;
   height: 4px;
   margin: 0;
   padding: 0;
@@ -181,68 +244,9 @@
   background-color: #0e1726;
 }
 
-/* Navigation buttons — clean circular style */
-.carousel .carousel-navigation-buttons {
-  position: absolute;
-  inset: auto 12px 12px;
-  transform: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-.carousel .carousel-navigation-buttons button {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  margin: 0;
-  border-radius: 50%;
-  padding: 0;
-  background-color: rgb(255 255 255 / 90%);
-  border: 1px solid #e3e3e3;
-  transition: background-color 0.15s, box-shadow 0.15s;
-  pointer-events: auto;
-  color: #0e1726;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
-}
-
-.carousel .carousel-navigation-buttons button:hover,
-.carousel .carousel-navigation-buttons button:focus-visible {
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgb(0 0 0 / 15%);
-}
-
-.carousel .carousel-navigation-buttons button:disabled {
-  opacity: 0.4;
-  cursor: default;
-}
-
-.carousel .carousel-navigation-buttons button::after {
-  display: block;
-  content: '';
-  border: 2px solid #0e1726;
-  border-bottom: 0;
-  border-left: 0;
-  height: 10px;
-  width: 10px;
-  position: absolute;
-  top: 50%;
-  left: calc(50% + 2px);
-  transform: translate(-50%, -50%) rotate(-135deg);
-}
-
-.carousel .carousel-navigation-buttons button.slide-next::after {
-  transform: translate(-50%, -50%) rotate(45deg);
-  left: calc(50% - 2px);
-}
-
 @media (width >= 600px) {
   .carousel .carousel-navigation-buttons {
-    inset: 50% 24px auto;
-    transform: translateY(-50%);
+    padding: 16px 64px;
   }
 
   .carousel .carousel-slide .carousel-slide-content {
