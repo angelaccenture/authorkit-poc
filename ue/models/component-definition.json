@@ -32,6 +32,9 @@
           "...": "./blocks/card.json#/definitions"
         },
         {
+          "...": "./blocks/cards-blog.json#/definitions"
+        },
+        {
           "...": "./blocks/fragment.json#/definitions"
         },
         {
