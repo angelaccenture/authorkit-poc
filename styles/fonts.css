@@ -1,0 +1,9 @@
+/* Microsoft Blog - System Font Stack */
+
+/* Segoe UI is a Microsoft system font, no web font loading required */
+
+@font-face {
+  font-family: segoe-ui-fallback;
+  size-adjust: 100%;
+  src: local("Segoe UI"), local("Helvetica Neue"), local("Helvetica"), local("Arial");
+}

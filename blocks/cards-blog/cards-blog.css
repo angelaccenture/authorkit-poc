@@ -1,27 +1,82 @@
+/* Cards Blog - Microsoft Blog article card layout */
+
 .cards-blog > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0;
 }
 
 .cards-blog > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  border-bottom: 1px solid var(--color-border, #e3e3e3);
+  padding: var(--spacing-m, 12px) 0;
 }
 
-.cards-blog .cards-blog-card-body {
-  margin: 16px;
-}
-
+/* image column */
 .cards-blog .cards-blog-card-image {
   line-height: 0;
 }
 
 .cards-blog > ul > li img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+}
+
+/* text column */
+.cards-blog .cards-blog-card-body {
+  padding: 0 0 0 var(--spacing-m, 12px);
+}
+
+/* meta text (date | author) */
+.cards-blog .cards-blog-card-body p {
+  font-size: var(--body-font-size-xs, 12px);
+  color: var(--color-text-muted, #666);
+  margin: 0 0 4px;
+  line-height: 1.4;
+}
+
+.cards-blog .cards-blog-card-body p a {
+  color: var(--color-link, #0067b8);
+  font-size: var(--body-font-size-xs, 12px);
+}
+
+/* article title */
+.cards-blog .cards-blog-card-body h3 {
+  font-size: var(--heading-font-size-s, 18px);
+  font-weight: 500;
+  line-height: 1.33;
+  margin: 4px 0 0;
+  padding: 0;
+}
+
+.cards-blog .cards-blog-card-body h3 a {
+  color: var(--color-text, #2f2f2f);
+  text-decoration: none;
+}
+
+.cards-blog .cards-blog-card-body h3 a:hover {
+  text-decoration: underline;
+}
+
+/* featured section: larger titles */
+.section:first-child .cards-blog .cards-blog-card-body h3 {
+  font-size: var(--heading-font-size-l, 24px);
+  line-height: 1.17;
+}
+
+/* single column on mobile */
+@media (width < 600px) {
+  .cards-blog > ul > li {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-blog .cards-blog-card-body {
+    padding: var(--spacing-s, 8px) 0 0;
+  }
 }
