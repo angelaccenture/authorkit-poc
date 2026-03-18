@@ -1,4 +1,4 @@
-.advanced-tabs {
+.advanced-carousels {
   .section {
     display: none;
 
@@ -12,7 +12,7 @@
   }
 }
 
-.tab-list {
+.carousel-list {
   display: flex;
   justify-content: center;
   list-style: none;

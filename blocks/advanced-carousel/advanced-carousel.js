@@ -2,81 +2,81 @@ import { getConfig } from '../../scripts/ak.js';
 
 const { log } = getConfig();
 
-function getTabList(tabs, tabPanels) {
-  const tabItems = tabs.querySelectorAll('li');
-  const tabList = document.createElement('div');
-  tabList.className = 'tab-list';
-  tabList.role = 'tablist';
+function getcarouselList(carousels, carouselPanels) {
+  const carouselItems = carousels.querySelectorAll('li');
+  const carouselList = document.createElement('div');
+  carouselList.className = 'carousel-list';
+  carouselList.role = 'carousellist';
 
-  for (const [idx, tab] of tabItems.entries()) {
+  for (const [idx, carousel] of carouselItems.entries()) {
     const btn = document.createElement('button');
-    btn.role = 'tab';
-    btn.id = `tab-${idx + 1}`;
-    btn.textContent = tab.textContent;
+    btn.role = 'carousel';
+    btn.id = `carousel-${idx + 1}`;
+    btn.textContent = carousel.textContent;
     if (idx === 0) {
       btn.classList.add('is-active');
-      tabPanels[0].classList.add('is-visible');
+      carouselPanels[0].classList.add('is-visible');
     }
-    tabList.append(btn);
+    carouselList.append(btn);
 
     btn.addEventListener('click', () => {
       // Remove all active styles
-      tabList.querySelectorAll('button')
+      carouselList.querySelectorAll('button')
         .forEach((button) => { button.classList.remove('is-active'); });
 
-      tabPanels.forEach((sec) => { sec.classList.remove('is-visible'); });
-      tabPanels[idx].classList.add('is-visible');
+      carouselPanels.forEach((sec) => { sec.classList.remove('is-visible'); });
+      carouselPanels[idx].classList.add('is-visible');
       btn.classList.add('is-active');
     });
   }
-  return tabList;
+  return carouselList;
 }
  
 export default function init(el) {
-  // Find the top most parent where all tab sections live
+  // Find the top most parent where all carousel sections live
   const parent = el.closest('.fragment-content, main');
 
   // Forefully hide parent because sections may not be loaded yet
   parent.style = 'display: none;';
 
-  // Find the tab items
-  const tabs = el.querySelector('.advanced-tabs ul');
-  if (!tabs) {
-    log('Please add an unordered list to the advanced tabs block.');
+  // Find the carousel items
+  const carousels = el.querySelector('.advanced-carousels ul');
+  if (!carousels) {
+    log('Please add an unordered list to the advanced carousels block.');
     return;
   }
-  // Find the section 
+  // Find the section
   const currSection = el.closest('.section');
+  
+  // Find the section that contains the actual block and only add class to carousel sections
+  const currSectionat = el.closest('.section .advanced-carousels');
+  const carouselSectionItem = currSectionat.closest('.section').classList.add("carouselSection");
+  const carouselSection = document.querySelectorAll('.carouselSection ~ .section');
+  const carouselItems = document.querySelector(".advanced-carousels ul");
+  const carouselCount = carouselItems.childElementCount;
 
-   // Find the section that contains the actual block and only add class to tab sections
-  const currSectionat = el.closest('.section .advanced-tabs');
-  const tabSectionItem = currSectionat.closest('.section').classList.add("tabSection");
-  const tabSection = document.querySelectorAll('.tabSection ~ .section');
-  const tabItems = document.querySelector(".advanced-tabs ul");
-  const tabCount = tabItems.childElementCount;
-
-  tabSection.forEach((element, index) => {
-    if (index < tabCount) {
-     element.classList.add("tabSection");
+  carouselSection.forEach((element, index) => {
+    if (index < carouselCount) {
+     element.classList.add("carouselSection");
     }
    
   });
 
-  // Filter and format all sections that do not hold the tabs block
-  const tabPanels = [...parent.querySelectorAll(':scope > .tabSection')]
+  // Filter and format all sections that do not hold the carousels block
+  const carouselPanels = [...parent.querySelectorAll(':scope > .carouselSection')]
     .reduce((acc, section, idx) => {
       if (section !== currSection) {
-        section.id = `tabpanel-${idx + 1}`;
-        section.role = 'tabpanel';
-        section.setAttribute('aria-labelledby', `tab-${idx + 1}`);
+        section.id = `carouselpanel-${idx + 1}`;
+        section.role = 'carouselpanel';
+        section.setAttribute('aria-labelledby', `carousel-${idx + 1}`);
         acc.push(section);
       }
       return acc;
     }, []);
 
-  const tabList = getTabList(tabs, tabPanels);
+  const carouselList = getcarouselList(carousels, carouselPanels);
 
-  tabs.remove();
-  el.append(tabList, ...tabPanels);
+  carousels.remove();
+  el.append(carouselList, ...carouselPanels);
   parent.removeAttribute('style');
 }
