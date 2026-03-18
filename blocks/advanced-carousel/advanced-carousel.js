@@ -6,11 +6,11 @@ function getCarouselList(carousel, carouselPanels) {
   const carouselItems = carousel.querySelectorAll('li');
   const carouselList = document.createElement('div');
   carouselList.className = 'carousel-list';
-  carouselList.role = 'tablist';
+  carouselList.role = 'carousellist';
 
   for (const [idx, item] of carouselItems.entries()) {
     const btn = document.createElement('button');
-    btn.role = 'tab';
+    btn.role = 'carousel';
     btn.id = `carousel-${idx + 1}`;
     btn.textContent = item.textContent;
     if (idx === 0) {
@@ -66,7 +66,7 @@ export default function init(el) {
     .reduce((acc, section, idx) => {
       if (section !== currSection) {
         section.id = `carouselpanel-${idx + 1}`;
-        section.role = 'tabpanel';
+        section.role = 'carouselpanel';
         section.setAttribute('aria-labelledby', `carousel-${idx + 1}`);
         acc.push(section);
       }
