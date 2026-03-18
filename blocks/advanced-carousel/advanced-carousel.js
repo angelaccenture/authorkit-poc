@@ -8,7 +8,7 @@ function updateNavButtons(prevBtn, nextBtn, activeIndex, total) {
 }
 
 function goToSlide(index, carouselList, carouselPanels, prevBtn, nextBtn) {
-  const buttons = carouselList.querySelectorAll('button');
+  const buttons = carouselList.querySelectorAll('.carousel-slide-indicator button');
   buttons.forEach((button) => { button.classList.remove('is-active'); });
   carouselPanels.forEach((sec) => { sec.classList.remove('is-visible'); });
 
@@ -18,17 +18,20 @@ function goToSlide(index, carouselList, carouselPanels, prevBtn, nextBtn) {
 }
 
 function getActiveIndex(carouselList) {
-  const buttons = [...carouselList.querySelectorAll('button')];
+  const buttons = [...carouselList.querySelectorAll('.carousel-slide-indicator button')];
   return buttons.findIndex((btn) => btn.classList.contains('is-active'));
 }
 
 function getCarouselList(carousel, carouselPanels) {
   const carouselItems = carousel.querySelectorAll('li');
   const carouselList = document.createElement('div');
-  carouselList.className = 'carousel-list';
+  carouselList.className = 'carousel-list carousel-slide-indicators';
   carouselList.role = 'carousellist';
 
   for (const [idx, item] of carouselItems.entries()) {
+    const indicator = document.createElement('div');
+    indicator.className = 'carousel-slide-indicator';
+
     const btn = document.createElement('button');
     btn.role = 'carousel';
     btn.id = `carousel-${idx + 1}`;
@@ -37,7 +40,8 @@ function getCarouselList(carousel, carouselPanels) {
       btn.classList.add('is-active');
       carouselPanels[0].classList.add('is-visible');
     }
-    carouselList.append(btn);
+    indicator.append(btn);
+    carouselList.append(indicator);
   }
   return carouselList;
 }
@@ -104,7 +108,7 @@ export default function init(el) {
   const { nav, prevBtn, nextBtn } = createNavButtons();
 
   // Wire up indicator button clicks
-  carouselList.querySelectorAll('button').forEach((btn, idx) => {
+  carouselList.querySelectorAll('.carousel-slide-indicator button').forEach((btn, idx) => {
     btn.addEventListener('click', () => {
       goToSlide(idx, carouselList, carouselPanels, prevBtn, nextBtn);
     });
