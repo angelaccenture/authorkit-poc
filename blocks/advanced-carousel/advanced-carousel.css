@@ -175,34 +175,35 @@
   margin: 0;
   padding: 0;
   background-color: transparent;
-  border: none;
-  border-radius: 0;
+  border: 2px solid #2a446f;
+  border-radius: 200px;
   cursor: pointer;
-  color: #0e1726;
-  box-shadow: none;
+  color: #2a446f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  transition: background-color 0.15s, opacity 0.15s;
 }
 
 .carousel .carousel-navigation-buttons button:hover,
 .carousel .carousel-navigation-buttons button:focus-visible {
-  background-color: transparent;
-  box-shadow: none;
-  opacity: 0.7;
+  background-color: rgb(42 68 111 / 10%);
 }
 
 .carousel .carousel-navigation-buttons button:disabled {
-  opacity: 0.3;
+  opacity: 0.2;
   cursor: default;
 }
 
 .carousel .carousel-navigation-buttons button::after {
   display: block;
   content: '';
-  border: 2px solid #0e1726;
+  border: 2px solid #2a446f;
   border-bottom: 0;
   border-left: 0;
-  height: 8px;
-  width: 8px;
+  height: 6px;
+  width: 6px;
   position: absolute;
   top: 50%;
   left: calc(50% + 1px);
