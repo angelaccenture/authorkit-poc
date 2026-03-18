@@ -93,6 +93,8 @@ function decoratePictures(el) {
   const pics = el.querySelectorAll('picture');
   for (const pic of pics) {
     const source = pic.querySelector('source');
+    console.log("ak.js");
+    console.log(source);
     const clone = source.cloneNode();
     const [pathname, params] = clone.getAttribute('srcset').split('?');
     const search = new URLSearchParams(params);
@@ -191,7 +193,7 @@ export function decorateLink(config, a) {
       const localized = localizeUrl({ config, url });
       if (localized) a.href = localized.href;
     }
-    decorateButton(a);
+   // decorateButton(a);
     if (!dnb) {
       const { href } = a;
       const found = config.linkBlocks.some((pattern) => {
