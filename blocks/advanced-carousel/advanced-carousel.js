@@ -2,17 +2,17 @@ import { getConfig } from '../../scripts/ak.js';
 
 const { log } = getConfig();
 
-function getcarouselList(carouselslide, carouselPanels) {
-  const carouselItems = carouselslide.querySelectorAll('li');
+function getCarouselList(slides, carouselPanels) {
+  const carouselItems = tabs.querySelectorAll('li');
   const carouselList = document.createElement('div');
   carouselList.className = 'carousel-list';
-  carouselList.role = 'carousellist';
+  carouselList.role = 'carouselList';
 
-  for (const [idx, carousel] of carouselItems.entries()) {
+  for (const [idx, tab] of carouselItems.entries()) {
     const btn = document.createElement('button');
-    btn.role = 'carousel';
-    btn.id = `carousel-${idx + 1}`;
-    btn.textContent = carousel.textContent;
+    btn.role = 'tab';
+    btn.id = `tab-${idx + 1}`;
+    btn.textContent = tab.textContent;
     if (idx === 0) {
       btn.classList.add('is-active');
       carouselPanels[0].classList.add('is-visible');
@@ -33,50 +33,50 @@ function getcarouselList(carouselslide, carouselPanels) {
 }
  
 export default function init(el) {
-  // Find the top most parent where all carousel sections live
+  // Find the top most parent where all tab sections live
   const parent = el.closest('.fragment-content, main');
 
   // Forefully hide parent because sections may not be loaded yet
   parent.style = 'display: none;';
 
-  // Find the carousel items
+  // Find the tab items
   const carousel = el.querySelector('.advanced-carousel ul');
   if (!carousel) {
-    log('Please add an unordered list to the advanced carousel block.');
+    log('Please add an unordered list to the advanced tabs block.');
     return;
   }
   // Find the section
   const currSection = el.closest('.section');
   
-  // Find the section that contains the actual block and only add class to carousel sections
+  // Find the section that contains the actual block and only add class to tab sections
   const currSectionat = el.closest('.section .advanced-carousel');
-  const carouselSectionItem = currSectionat.closest('.section').classList.add("carouselSection");
-  const carouselSection = document.querySelectorAll('.carouselSection ~ .section');
+  const tabSectionItem = currSectionat.closest('.section').classList.add("carouselSection");
+  const tabSection = document.querySelectorAll('.carouselSection ~ .section');
   const carouselItems = document.querySelector(".advanced-carousel ul");
   const carouselCount = carouselItems.childElementCount;
 
-  carouselSection.forEach((element, index) => {
+  tabSection.forEach((element, index) => {
     if (index < carouselCount) {
      element.classList.add("carouselSection");
     }
    
   });
 
-  // Filter and format all sections that do not hold the carousel block
+  // Filter and format all sections that do not hold the tabs block
   const carouselPanels = [...parent.querySelectorAll(':scope > .carouselSection')]
     .reduce((acc, section, idx) => {
       if (section !== currSection) {
         section.id = `carouselpanel-${idx + 1}`;
         section.role = 'carouselpanel';
-        section.setAttribute('aria-labelledby', `carousel-${idx + 1}`);
+        section.setAttribute('aria-labelledby', `tab-${idx + 1}`);
         acc.push(section);
       }
       return acc;
     }, []);
 
-  const carouselList = getcarouselList(carousel, carouselPanels);
+  const carouselList = getCarouselList(slides, carouselPanels);
 
-  carousel.remove();
+  tabs.remove();
   el.append(carouselList, ...carouselPanels);
   parent.removeAttribute('style');
 }
