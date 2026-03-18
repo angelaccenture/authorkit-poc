@@ -29,10 +29,9 @@ function getTabList(tabs, tabPanels) {
       btn.classList.add('is-active');
     });
   }
-
   return tabList;
 }
-
+ 
 export default function init(el) {
   // Find the top most parent where all tab sections live
   const parent = el.closest('.fragment-content, main');
@@ -40,18 +39,31 @@ export default function init(el) {
   // Forefully hide parent because sections may not be loaded yet
   parent.style = 'display: none;';
 
-  // Find the section that contains the actual block
-  const currSection = el.closest('.section');
-
   // Find the tab items
-  const tabs = el.querySelector('ul');
+  const tabs = el.querySelector('.advanced-tabs ul');
   if (!tabs) {
     log('Please add an unordered list to the advanced tabs block.');
     return;
   }
+  // Find the section
+  const currSection = el.closest('.section');
+  
+  // Find the section that contains the actual block and only add class to tab sections
+  const currSectionat = el.closest('.section .advanced-tabs');
+  const tabSectionItem = currSectionat.closest('.section').classList.add("tabSection");
+  const tabSection = document.querySelectorAll('.tabSection ~ .section');
+  const tabItems = document.querySelector(".advanced-tabs ul");
+  const tabCount = tabItems.childElementCount;
+
+  tabSection.forEach((element, index) => {
+    if (index < tabCount) {
+     element.classList.add("tabSection");
+    }
+   
+  });
 
   // Filter and format all sections that do not hold the tabs block
-  const tabPanels = [...parent.querySelectorAll(':scope > .section')]
+  const tabPanels = [...parent.querySelectorAll(':scope > .tabSection')]
     .reduce((acc, section, idx) => {
       if (section !== currSection) {
         section.id = `tabpanel-${idx + 1}`;
