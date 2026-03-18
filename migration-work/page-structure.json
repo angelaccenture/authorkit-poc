@@ -1,0 +1,89 @@
+{
+  "url": "https://blogs.microsoft.com/",
+  "template": "ms-blog-homepage",
+  "sections": [
+    {
+      "id": "section-1",
+      "name": "Featured Posts",
+      "selector": "section.featured-posts",
+      "style": null,
+      "background": "#f2f2f2",
+      "contentSequences": [
+        {
+          "id": "seq-1-1",
+          "type": "heading",
+          "selector": "section.featured-posts > h2.c-heading-5",
+          "description": "Section heading 'Featured'"
+        },
+        {
+          "id": "seq-1-2",
+          "type": "repeated-items",
+          "selector": "section.featured-posts article.m-preview",
+          "count": 7,
+          "description": "7 featured article cards. Each card has: date, author name/link, title link with heading, optional thumbnail image. Mix of large and smaller grid cards.",
+          "itemStructure": {
+            "image": "a.m-preview-image > img (optional)",
+            "date": "p.c-meta-text > time > abbr[title]",
+            "author": "p.c-meta-text > a.c-hyperlink or plain text",
+            "title": "h3.c-heading-4 > a.f-post-link or h3 > a.f-post-link",
+            "link": "a.f-post-link[href]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "name": "More News",
+      "selector": "section.recent-posts",
+      "style": null,
+      "background": "#f2f2f2",
+      "contentSequences": [
+        {
+          "id": "seq-2-1",
+          "type": "heading",
+          "selector": "section.recent-posts > h2.c-heading-5",
+          "description": "Section heading 'More News'"
+        },
+        {
+          "id": "seq-2-2",
+          "type": "repeated-items",
+          "selector": "section.recent-posts article.m-preview",
+          "count": 8,
+          "description": "8 recent article cards. Each card has: thumbnail image, date, author, title. Smaller uniform card layout.",
+          "itemStructure": {
+            "image": "a.m-preview-image > img (optional)",
+            "date": "p.c-meta-text > time > abbr[title]",
+            "author": "p.c-meta-text > a.c-hyperlink or plain text",
+            "title": "h3.c-heading-6 > a.f-post-link",
+            "link": "a.f-post-link[href]"
+          }
+        },
+        {
+          "id": "seq-2-3",
+          "type": "cta",
+          "selector": "a.f-view-more",
+          "description": "'View More' link to page 2"
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "name": "Social Footer",
+      "selector": ".social-footer-wrap",
+      "style": null,
+      "background": "#f2f2f2",
+      "contentSequences": [
+        {
+          "id": "seq-3-1",
+          "type": "social-links",
+          "selector": ".social-footer .m-social",
+          "description": "'Follow us:' text with RSS subscription link"
+        }
+      ]
+    }
+  ],
+  "blockInventory": {
+    "local": ["hero", "card", "columns", "advanced-tabs", "fragment", "header", "footer", "section-metadata", "table", "youtube", "schedule"],
+    "blockCollection": ["cards", "hero"]
+  }
+}

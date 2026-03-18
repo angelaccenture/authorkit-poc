@@ -1,0 +1,57 @@
+{
+  "templates": [
+    {
+      "name": "ms-blog-homepage",
+      "urls": [
+        "https://blogs.microsoft.com/"
+      ],
+      "description": "Microsoft Blog homepage with featured articles listing and category navigation",
+      "blocks": [
+        {
+          "name": "cards-blog",
+          "instances": [
+            "section.featured-posts article.m-preview",
+            "section.recent-posts article.m-preview"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Featured Posts",
+          "selector": "section.featured-posts",
+          "style": null,
+          "blocks": [
+            "cards-blog"
+          ],
+          "defaultContent": [
+            "section.featured-posts > h2.c-heading-5"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "More News",
+          "selector": "section.recent-posts",
+          "style": null,
+          "blocks": [
+            "cards-blog"
+          ],
+          "defaultContent": [
+            "section.recent-posts > h2.c-heading-5",
+            "a.f-view-more"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Social Footer",
+          "selector": ".social-footer-wrap",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".social-footer .m-social"
+          ]
+        }
+      ]
+    }
+  ]
+}

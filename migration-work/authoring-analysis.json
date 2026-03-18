@@ -1,0 +1,121 @@
+{
+  "url": "https://blogs.microsoft.com/",
+  "template": "ms-blog-homepage",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "name": "Featured Posts",
+      "styling": {
+        "backgroundColor": "#f2f2f2",
+        "style": null
+      },
+      "contentSequences": [
+        {
+          "id": "seq-1-1",
+          "description": "Section heading 'Featured'",
+          "decision": "default-content",
+          "selector": "section.featured-posts > h2.c-heading-5",
+          "reason": "Simple heading is best as default content - an author would type this as an H2 in a document."
+        },
+        {
+          "id": "seq-1-2",
+          "description": "7 featured article cards. Each card has: optional thumbnail image, date (e.g. 'Mar 17, 2026'), author name/link, and linked article title. Cards appear in a mixed layout with larger featured cards and smaller grid cards.",
+          "decision": "block",
+          "blockName": "cards-blog",
+          "blockVariant": "cards-blog",
+          "selector": "section.featured-posts article.m-preview",
+          "reason": "Repeated card items with image + text content (date, author, title) map perfectly to the Cards block pattern. Each article preview becomes one row in the cards table: image in col1, text content (date, author, linked title) in col2.",
+          "contentModel": {
+            "columns": 2,
+            "col1": "Image (thumbnail of article, optional - some cards have no image)",
+            "col2": "Date line (e.g. 'Mar 17, 2026 | Microsoft Corporate Blogs'), then linked title as heading"
+          }
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "name": "More News",
+      "styling": {
+        "backgroundColor": "#f2f2f2",
+        "style": null
+      },
+      "contentSequences": [
+        {
+          "id": "seq-2-1",
+          "description": "Section heading 'More News'",
+          "decision": "default-content",
+          "selector": "section.recent-posts > h2.c-heading-5",
+          "reason": "Simple heading is best as default content."
+        },
+        {
+          "id": "seq-2-2",
+          "description": "8 recent article cards with thumbnail, date, author, and title. Smaller uniform card layout compared to featured section.",
+          "decision": "block",
+          "blockName": "cards-blog",
+          "blockVariant": "cards-blog",
+          "selector": "section.recent-posts article.m-preview",
+          "reason": "Same card pattern as featured section. Repeated article previews with image + text content map to Cards block. Visual differences (smaller size) will be handled by CSS variant styling.",
+          "contentModel": {
+            "columns": 2,
+            "col1": "Image (article thumbnail, optional)",
+            "col2": "Date line (e.g. 'Feb 20, 2026 | Microsoft Corporate Blogs'), then linked title as heading"
+          }
+        },
+        {
+          "id": "seq-2-3",
+          "description": "'View More' call-to-action button linking to page 2",
+          "decision": "default-content",
+          "selector": "a.f-view-more",
+          "reason": "Single CTA link is best as default content - an author would write this as a linked paragraph with button styling."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "name": "Social Footer",
+      "styling": {
+        "backgroundColor": "#f2f2f2",
+        "style": null
+      },
+      "contentSequences": [
+        {
+          "id": "seq-3-1",
+          "description": "'Follow us:' text with RSS subscription link",
+          "decision": "default-content",
+          "selector": ".social-footer .m-social",
+          "reason": "Simple text with a link. Default content is sufficient."
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "blockName": "cards-blog",
+      "usageCount": 2,
+      "instances": [
+        "section.featured-posts article.m-preview",
+        "section.recent-posts article.m-preview"
+      ],
+      "source": "block-collection",
+      "contentModel": {
+        "columns": 2,
+        "col1": "Image (article thumbnail)",
+        "col2": "Text content: date | author line, then linked article title as heading"
+      }
+    }
+  ],
+  "metadata": {
+    "title": "From og:title or <title>",
+    "description": "From og:description or meta description",
+    "image": "From og:image",
+    "canonical": "From link[rel=canonical]"
+  },
+  "summary": {
+    "totalSections": 3,
+    "totalBlocks": 1,
+    "totalDefaultContent": 4,
+    "blocks": ["cards-blog"],
+    "notes": "The Microsoft Blog homepage has two main content sections (Featured Posts and More News), both using the Cards block pattern for article listings. The Featured section has 7 cards and the More News section has 8 cards plus a View More CTA. A small social footer section has RSS link as default content. Non-content to remove: UHF header/footer (handled by EDS header/footer blocks), cookie banner, search form, All Microsoft mega menu."
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "url": "https://blogs.microsoft.com/",
+  "timestamp": "2026-03-18T15:34:18.136Z",
+  "paths": {
+    "documentPath": "content/index",
+    "htmlFilePath": "content/index.plain.html",
+    "mdFilePath": "content/index.md",
+    "dirPath": "content",
+    "filename": "index",
+    "previewPath": "/content/index"
+  },
+  "screenshot": "migration-work/screenshot.png",
+  "html": {
+    "filePath": "migration-work/cleaned.html",
+    "size": 86592
+  },
+  "metadata": {
+    "title": "The Official Microsoft Blog",
+    "viewport": "width=device-width, initial-scale=1",
+    "ms.sitever": "1.0",
+    "ms.env": "prod",
+    "ms.lang": "en",
+    "ms.loc": "us",
+    "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "og:locale": "en_US",
+    "og:type": "website",
+    "og:title": "The Official Microsoft Blog",
+    "og:url": "https://blogs.microsoft.com/",
+    "og:site_name": "The Official Microsoft Blog",
+    "og:image": "https://blogs.microsoft.com/wp-content/uploads/2026/03/MicrosoftLogo_social-1024x576.png",
+    "og:image:width": "1024",
+    "og:image:height": "576",
+    "og:image:type": "image/png",
+    "twitter:card": "summary_large_image",
+    "twitter:site": "@microsoft",
+    "baidu-site-verification": "864ebb9748239fe72756c9abf9f09cce907cd60cbb1a1b89776c05313c0d6ba1",
+    "google-site-verification": "WXIQfBPxmfxv54kCoM_CuCw5W5yDWGGqC_aRBlTrWe0",
+    "msapplication-TileImage": "https://blogs.microsoft.com/wp-content/uploads/2017/08/favicon.jpg",
+    "canonical": "https://blogs.microsoft.com/",
+    "jsonLd": {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": "https://blogs.microsoft.com/",
+          "url": "https://blogs.microsoft.com/",
+          "name": "The Official Microsoft Blog",
+          "isPartOf": {
+            "@id": "https://blogs.microsoft.com/#website"
+          },
+          "breadcrumb": {
+            "@id": "https://blogs.microsoft.com/#breadcrumb"
+          },
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://blogs.microsoft.com/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home"
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://blogs.microsoft.com/#website",
+          "url": "https://blogs.microsoft.com/",
+          "name": "The Official Microsoft Blog",
+          "description": "",
+          "potentialAction": [
+            {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://blogs.microsoft.com/?s={search_term_string}"
+              },
+              "query-input": {
+                "@type": "PropertyValueSpecification",
+                "valueRequired": true,
+                "valueName": "search_term_string"
+              }
+            }
+          ],
+          "inLanguage": "en-US"
+        }
+      ]
+    }
+  },
+  "images": {
+    "count": 13,
+    "mapping": {
+      "https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png": "./images/d04eaa7ef475a55b399e1f5a5cdabddf.png",
+      "https://blogs.microsoft.com/wp-content/uploads/2025/12/OMB-FY26Q2-Hero-e1773250045900-480x270.jpg": "./images/31dbb27aad8b8bcfd45954a52176bf08.jpg",
+      "https://msblogs.thesourcemediaassets.com/2026/01/Maia200_header-480x270.jpg": "./images/c979e85fe219174698ddd78aedf1fcbb.jpg",
+      "https://msblogs.thesourcemediaassets.com/2026/03/OMB-Hero-3_16_26-960x540.png": "./images/36d0c68d381611023f9046e00546965b.png",
+      "https://msblogs.thesourcemediaassets.com/2026/01/OMB-Art-CN-1_5_26-480x270.png": "./images/803434e9ada2553d697d9dd842cc53c5.png",
+      "https://blogs.microsoft.com/wp-content/uploads/2023/01/PNG-openai-microsoft_960x540.png": "./images/ebfdb2f303f43d348ed867a83b34c628.png",
+      "https://msblogs.thesourcemediaassets.com/2026/02/asha-sharma-480x270.jpg": "./images/9f3645826072ad14d58c66a0002e62c0.jpg",
+      "https://msblogs.thesourcemediaassets.com/2025/11/OMB-Ignite_2025-Hero-480x270.jpg": "./images/911a2184e09567d8d79fdf25574fb79c.jpg",
+      "https://msblogs.thesourcemediaassets.com/2026/01/OMB-Open-to-Work-Book-Hero-Final-480x270.jpg": "./images/fd8ba2782c28154f7b9849d225502c1e.jpg",
+      "https://msblogs.thesourcemediaassets.com/2026/02/omb-hero-image-480x270.jpg": "./images/1cb98e864facad32a4e2eb53eb83f53e.jpg",
+      "https://msblogs.thesourcemediaassets.com/2026/03/Blog-header-image-2_OMB_Copilot_1920x1080-960x540.png": "./images/99147ef0212cbb269b9d8a017bb9a1af.png",
+      "https://msblogs.thesourcemediaassets.com/2026/02/Blog_Header-Image-768x432.jpg": "./images/1579f99f494a48fb69093f3e9b563727.jpg",
+      "https://c.clarity.ms/c.gif?ctsa=mr&CtsSyncId=3FCA05565AEF48A792D076A34F436304&MUID=088B28F8311C69592D643FD8351C6746": "./images/36709d920dc4f240f862cad1d8a17eae.png"
+    },
+    "stats": {
+      "total": 24,
+      "converted": 2,
+      "skipped": 11,
+      "failed": 11,
+      "tooLarge": 0,
+      "limitReached": 0
+    }
+  }
+}
