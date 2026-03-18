@@ -205,11 +205,27 @@ svg {
   height: 20px;
 }
 
-/* responsive */
-@media (width >= 900px) {
+/* =============================================
+   Page layout: two-column (Featured | More News)
+   Matches original Microsoft Blog col-8 / col-4
+   ============================================= */
+@media (width >= 768px) {
   :root {
     --heading-font-size-xxl: 40px;
     --heading-font-size-xl: 32px;
+  }
+
+  body {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Social footer and metadata span full width */
+  body > div:nth-child(n+3) {
+    grid-column: 1 / -1;
   }
 }
 
@@ -217,6 +233,67 @@ svg {
   :root {
     --content-max-width: 1600px;
   }
+}
+
+/* =============================================
+   View More button
+   ============================================= */
+body > div:nth-child(2) > p:last-child {
+  text-align: center;
+  padding: var(--spacing-xl, 32px) 0;
+}
+
+body > div:nth-child(2) > p:last-child a {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 32px;
+  border-radius: 2px;
+  transition: background-color var(--transition-base);
+}
+
+body > div:nth-child(2) > p:last-child a:hover {
+  background-color: var(--color-accent-hover);
+  color: #fff;
+}
+
+/* =============================================
+   Social footer section
+   ============================================= */
+body > div:nth-child(3) {
+  background-color: var(--color-social-bg, #e3e3e3);
+  padding: var(--spacing-l, 24px);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m, 12px);
+}
+
+body > div:nth-child(3) p {
+  margin: 0;
+  font-size: var(--body-font-size-s, 14px);
+  font-weight: 600;
+}
+
+body > div:nth-child(3) ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--spacing-m, 12px);
+}
+
+body > div:nth-child(3) li {
+  margin: 0;
+}
+
+/* =============================================
+   Hide metadata block
+   ============================================= */
+body > div:nth-child(4) {
+  display: none;
 }
 
 /* hide sections until loaded */

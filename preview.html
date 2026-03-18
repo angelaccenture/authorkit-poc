@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="/styles/styles.css"/>
+  <link rel="stylesheet" href="/blocks/cards-blog/cards-blog.css"/>
+  <link rel="icon" href="data:,">
+  <title>The Official Microsoft Blog</title>
+</head>
+<body>
+<script>
+  (async () => {
+    const resp = await fetch('/content/index.plain.html');
+    const html = await resp.text();
+    document.body.innerHTML = html;
+  })();
+</script>
+</body>
+</html>
