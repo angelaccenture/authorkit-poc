@@ -206,8 +206,8 @@ svg {
 }
 
 /* =============================================
-   Page layout: two-column (Featured | More News)
-   Matches original Microsoft Blog col-8 / col-4
+   Page layout: two-column (More News | Featured)
+   Matches original Microsoft Blog col-4 / col-8
    ============================================= */
 @media (width >= 768px) {
   :root {
@@ -217,15 +217,26 @@ svg {
 
   body {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 2fr;
     max-width: var(--content-max-width);
     margin: 0 auto;
     padding: 0 24px;
   }
 
+  /* Featured section moves to the right column */
+  body > div:first-child {
+    order: 2;
+  }
+
+  /* More News section moves to the left column */
+  body > div:nth-child(2) {
+    order: 1;
+  }
+
   /* Social footer and metadata span full width */
   body > div:nth-child(n+3) {
     grid-column: 1 / -1;
+    order: 3;
   }
 }
 
