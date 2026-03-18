@@ -40,8 +40,11 @@
 
 
 
+/* Carousel — Microsoft-style */
 .carousel .carousel-slides-container {
   position: relative;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .carousel .carousel-slides,
@@ -68,7 +71,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-end;
   position: relative;
   width: 100%;
   min-height: min(50vw, calc(100dvh - var(--header-height)));
@@ -93,79 +96,127 @@
   object-fit: cover;
 }
 
+/* Content overlay — gradient instead of opaque box */
 .carousel .carousel-slide .carousel-slide-content {
   z-index: 1;
-  margin: 68px;
-  padding: 16px;
+  margin: 0;
+  padding: 32px 40px 40px;
   color: white;
-  background-color: rgba(19 19 19 / 75%);
+  background: linear-gradient(to top, rgb(14 23 38 / 95%) 0%, rgb(14 23 38 / 80%) 60%, transparent 100%);
   position: relative;
-  width: var(--slide-content-width, auto);
+  width: 100%;
+  box-sizing: border-box;
 }
 
+.carousel .carousel-slide .carousel-slide-content h1,
+.carousel .carousel-slide .carousel-slide-content h2 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  margin: 0 0 8px;
+  color: white;
+}
+
+.carousel .carousel-slide .carousel-slide-content p {
+  font-size: 15px;
+  line-height: 22px;
+  margin: 0 0 16px;
+  color: rgb(255 255 255 / 85%);
+}
+
+/* CTA button — Microsoft style: white pill on dark slides */
+.carousel .carousel-slide .carousel-slide-content a {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  text-decoration: none;
+  background-color: #fff;
+  color: #0e1726;
+  border: 1px solid transparent;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.carousel .carousel-slide .carousel-slide-content a:hover {
+  background-color: rgb(255 255 255 / 85%);
+}
+
+/* Slide indicators — line/bar style */
 .carousel .carousel-slide-indicators {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 6px 12px;
-  padding: 12px;
-  background-color: var(--light-color);
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
   line-height: 0;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .carousel .carousel-slide-indicator button {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 4px;
   margin: 0;
   padding: 0;
-  border-radius: 50%;
-  background-color: #dadada;
+  border-radius: 2px;
+  background-color: #c4c4c4;
   transition: background-color 0.2s;
 }
 
 .carousel .carousel-slide-indicator button:disabled,
 .carousel .carousel-slide-indicator button:hover,
 .carousel .carousel-slide-indicator button:focus-visible {
-  background-color: var(--text-color);
+  background-color: #0e1726;
 }
 
+/* Navigation buttons — clean circular style */
 .carousel .carousel-navigation-buttons {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 12px;
-  right: 12px;
+  inset: auto 12px 12px;
+  transform: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 1;
+  z-index: 2;
+  pointer-events: none;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
 .carousel .carousel-navigation-buttons button {
   position: relative;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   margin: 0;
   border-radius: 50%;
   padding: 0;
-  background-color: rgba(19 19 19 / 25%);
-  transition: background-color 0.2s;
+  background-color: rgb(255 255 255 / 90%);
+  border: 1px solid #e3e3e3;
+  transition: background-color 0.15s, box-shadow 0.15s;
+  pointer-events: auto;
+  color: #0e1726;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .carousel .carousel-navigation-buttons button:hover,
 .carousel .carousel-navigation-buttons button:focus-visible {
-  background-color: rgba(19 19 19 / 75%);
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 15%);
+}
+
+.carousel .carousel-navigation-buttons button:disabled {
+  opacity: 0.4;
+  cursor: default;
 }
 
 .carousel .carousel-navigation-buttons button::after {
   display: block;
   content: '';
-  border: 2px solid;
+  border: 2px solid #0e1726;
   border-bottom: 0;
   border-left: 0;
-  height: 12px;
-  width: 12px;
+  height: 10px;
+  width: 10px;
   position: absolute;
   top: 50%;
   left: calc(50% + 2px);
@@ -179,17 +230,22 @@
 
 @media (width >= 600px) {
   .carousel .carousel-navigation-buttons {
-    left: 24px;
-    right: 24px;
+    inset: 50% 24px auto;
+    transform: translateY(-50%);
   }
 
   .carousel .carousel-slide .carousel-slide-content {
-    --slide-content-width: calc((100% - 184px) / 2);
+    width: 50%;
+    padding: 48px 60px 56px;
+  }
 
-    margin: 92px;
+  .carousel .carousel-slide .carousel-slide-content h1,
+  .carousel .carousel-slide .carousel-slide-content h2 {
+    font-size: 40px;
+    line-height: 48px;
   }
 
   .carousel .carousel-slide .carousel-slide-content[data-align='justify'] {
-    --slide-content-width: auto;
+    width: 100%;
   }
 }
