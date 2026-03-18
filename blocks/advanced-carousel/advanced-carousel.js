@@ -130,6 +130,6 @@ export default function init(el) {
   });
 
   carousel.remove();
-  el.append(nav, carouselList, ...carouselPanels);
+  el.append(nav, ...carouselPanels, carouselList);
   parent.removeAttribute('style');
 }
