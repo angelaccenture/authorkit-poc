@@ -1,27 +1,26 @@
 Any code modifications to this original source are not intended for production use yet - this is pure DEMO (beta) to prove out requirments can be done in EDS.
 
-## Added Features
+# Author Kit
+For projects that want a few more batteries. Built by the team who brought you da.live and adobe.com.
 
-### UE / QE Support
-* UE Support / QE Support for multiple authoring persona's
-* Enhanced Section Grid support with layoutmode for grids
-* Can connect to DAM to show preview of image
+## Getting started
 
-### Templates
-* Within DA, controls styles (Adode working on block control for DA)
-* Within UE, controls styles and blocks shown
-* Using DA, author can pre-populate the template with blocks
+### 1. Github
+1. Use this template to make a new repo.
+1. Install [AEM Code Sync](https://da.live/bot).
 
-### Advanced Tabs, Accordion and Carousel
-* Allows author to add sections and then blocks within
+### 2. DA content
+1. Browse to https://da.live/start.
+2. Follow the steps.
 
-### Advanced Text
-* Allows author to add classname in front of each text items using []
+### 3. Local development
+1. Clone your new repo to your computer.
+1. Install the AEM CLI using your terminal: `sudo npm install -g @adobe/aem-cli`
+1. Start the AEM CLI: `aem up`.
+1. Open the `{repo}` folder in your favorite code editor and buil something.
+1. **Recommended:** Install common npm packages like linting and testing: `npm i`.
 
-### Tag Manager
-* Added tagging support page to help manage tags
-
-## Original Features
+## Features
 
 ### Localization & globalization
 * Language only support - Ex: en, de, hi, ja
@@ -95,7 +94,7 @@ An auto block is a block generated from a pre-defined piece of content. Often ti
 ### Default content
 Default content is content that lives outside a block.
 
-## Section Design System
+## Design System
 
 ### Spacing & Gap
 XS, S, M, L, XL, XXL
