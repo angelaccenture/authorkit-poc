@@ -2,8 +2,8 @@ import { getConfig } from '../../scripts/ak.js';
 
 const { log } = getConfig();
 
-function getcarouselList(carousels, carouselPanels) {
-  const carouselItems = carousels.querySelectorAll('li');
+function getcarouselList(carouselslide, carouselPanels) {
+  const carouselItems = carouselslide.querySelectorAll('li');
   const carouselList = document.createElement('div');
   carouselList.className = 'carousel-list';
   carouselList.role = 'carousellist';
@@ -40,19 +40,19 @@ export default function init(el) {
   parent.style = 'display: none;';
 
   // Find the carousel items
-  const carousels = el.querySelector('.advanced-carousels ul');
-  if (!carousels) {
-    log('Please add an unordered list to the advanced carousels block.');
+  const carousel = el.querySelector('.advanced-carousel ul');
+  if (!carousel) {
+    log('Please add an unordered list to the advanced carousel block.');
     return;
   }
   // Find the section
   const currSection = el.closest('.section');
   
   // Find the section that contains the actual block and only add class to carousel sections
-  const currSectionat = el.closest('.section .advanced-carousels');
+  const currSectionat = el.closest('.section .advanced-carousel');
   const carouselSectionItem = currSectionat.closest('.section').classList.add("carouselSection");
   const carouselSection = document.querySelectorAll('.carouselSection ~ .section');
-  const carouselItems = document.querySelector(".advanced-carousels ul");
+  const carouselItems = document.querySelector(".advanced-carousel ul");
   const carouselCount = carouselItems.childElementCount;
 
   carouselSection.forEach((element, index) => {
@@ -62,7 +62,7 @@ export default function init(el) {
    
   });
 
-  // Filter and format all sections that do not hold the carousels block
+  // Filter and format all sections that do not hold the carousel block
   const carouselPanels = [...parent.querySelectorAll(':scope > .carouselSection')]
     .reduce((acc, section, idx) => {
       if (section !== currSection) {
@@ -74,9 +74,9 @@ export default function init(el) {
       return acc;
     }, []);
 
-  const carouselList = getcarouselList(carousels, carouselPanels);
+  const carouselList = getcarouselList(carousel, carouselPanels);
 
-  carousels.remove();
+  carousel.remove();
   el.append(carouselList, ...carouselPanels);
   parent.removeAttribute('style');
 }
