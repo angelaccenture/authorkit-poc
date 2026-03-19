@@ -2,19 +2,25 @@ export default function init(el) {
   const inner = el.querySelector(':scope > div');
   inner.classList.add('card-inner');
 
-  const pic = el.querySelector('picture');
+  const pic = el.querySelector('picture') || el.querySelector('img');
   if (pic) {
-    const picPara = pic.closest('div');
+    const picPara = pic.closest('.card-inner > div');
     if (picPara) {
-        picPara.classList.add('card-picture-container');
-        const con = el.querySelector(':scope > div:not([class]) > div');
-        if (!con) return;
+      picPara.classList.add('card-picture-container');
+      // Content div is the sibling of the picture container
+      const con = [...inner.children].find(
+        (child) => child !== picPara && !child.classList.length,
+      );
+      if (con) {
         con.classList.add('card-content-container');
         picPara.after(con);
+      }
     }
   }
   // Decorate CTA
-  const ctaPara = inner.querySelector(':scope > div:last-of-type > p:last-of-type');
+  const contentContainer = inner.querySelector('.card-content-container');
+  if (!contentContainer) return;
+  const ctaPara = contentContainer.querySelector('p:last-of-type');
   if (!ctaPara) return;
   const cta = ctaPara.querySelector('a');
   if (!cta) return;
