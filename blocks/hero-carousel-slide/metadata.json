@@ -1,0 +1,11 @@
+{
+  "name": "hero-carousel-slide",
+  "description": "Custom block for hero carousel slide content. Two-column layout with a large featured image on one side and text content (heading, description, CTA) on the other. Designed to be used as slide content inside an advanced-carousel section.",
+  "source": "custom",
+  "basedOn": "hero",
+  "contentModel": {
+    "columns": 2,
+    "column1": "Image",
+    "column2": "H1/H2 heading, paragraph, CTA link"
+  }
+}

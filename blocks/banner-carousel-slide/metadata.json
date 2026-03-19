@@ -1,0 +1,11 @@
+{
+  "name": "banner-carousel-slide",
+  "description": "Custom block for full-width banner-style carousel slides. Features a large background image with overlaid text content (heading, description, CTA). Designed to be used as slide content inside an advanced-carousel section.",
+  "source": "custom",
+  "basedOn": "hero",
+  "contentModel": {
+    "columns": 1,
+    "row1": "Background image",
+    "row2": "H2 heading, paragraph, CTA link"
+  }
+}

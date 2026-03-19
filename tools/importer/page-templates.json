@@ -52,6 +52,175 @@
           ]
         }
       ]
+    },
+    {
+      "name": "msft-homepage",
+      "urls": [
+        "https://www.microsoft.com/en-us"
+      ],
+      "description": "Microsoft corporate homepage with hero banners, product highlights, and promotional content",
+      "blocks": [
+        {
+          "name": "advanced-carousel",
+          "instances": [
+            "div.hero-featured-slider reimagine-carousel",
+            "div.ui-shell reimagine-carousel"
+          ]
+        },
+        {
+          "name": "hero-carousel-slide",
+          "instances": [
+            "div.hero-featured-slider reimagine-carousel-item reimagine-hero-featured-slider-item"
+          ]
+        },
+        {
+          "name": "ai-chat",
+          "instances": [
+            "div.msstore-chatonpage.contained"
+          ]
+        },
+        {
+          "name": "quick-links",
+          "instances": [
+            "div.quicklinks reimagine-secondary-nav[configuration='quicklinks']"
+          ]
+        },
+        {
+          "name": "cards",
+          "instances": [
+            "div.featured[data-component-id='71510296gldd3806gafb03daf4f77h07'] reimagine-card-feature",
+            "div.featured[data-component-id='29710086fcdd3366caca03daf4f66b57'] reimagine-card-feature",
+            "div.featured[data-component-id='29710086fcdd3366caca03daf4f66b57'] reimagine-card-feature"
+          ]
+        },
+        {
+          "name": "hero",
+          "instances": [
+            "reimagine-banner-featured[background='base-neutral'] reimagine-card-banner"
+          ]
+        },
+        {
+          "name": "banner-carousel-slide",
+          "instances": [
+            "div.ui-shell reimagine-carousel-item reimagine-card-banner"
+          ]
+        },
+        {
+          "name": "social-follow",
+          "instances": [
+            "div.logo-footer reimagine-logo-footer"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Announcement Bar",
+          "selector": "div[ocr-component-name='cascade-announcement-wc']",
+          "style": "announcement-bar",
+          "blocks": [],
+          "defaultContent": [
+            "reimagine-announcement p[slot='announcement__label']",
+            "reimagine-announcement reimagine-link[slot='announcement__link']"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "Hero Carousel",
+          "selector": "div.hero-featured-slider",
+          "style": null,
+          "blocks": [
+            "advanced-carousel",
+            "hero-carousel-slide"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "AI Assistant / Chat",
+          "selector": "div.banner-featured.tabs.panelcontainer:has(div.msstore-chatonpage)",
+          "style": null,
+          "blocks": [
+            "ai-chat"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Product Category Navigation",
+          "selector": "div.quicklinks",
+          "style": null,
+          "blocks": [
+            "quick-links"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-5",
+          "name": "Content Promotion Cards",
+          "selector": "div.featured[data-component-id='71510296gldd3806gafb03daf4f77h07']",
+          "style": null,
+          "blocks": [
+            "cards"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-6",
+          "name": "Full-Width Promotional Banner",
+          "selector": "div.banner-featured.tabs.panelcontainer:has(reimagine-banner-featured[background='base-neutral'])",
+          "style": "dark",
+          "blocks": [
+            "hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-7",
+          "name": "For Business Section",
+          "selector": "div.featured[data-component-id='29710086fcdd3366caca03daf4f66b57']:has(reimagine-featured[configuration='4-col-even-2'])",
+          "style": "light-grey",
+          "blocks": [
+            "cards"
+          ],
+          "defaultContent": [
+            "reimagine-featured[background='base-fade'] reimagine-heading-block[data-en-title='For business'] h2"
+          ]
+        },
+        {
+          "id": "section-8",
+          "name": "Get to Know AI and Copilot Section",
+          "selector": "div.featured[data-component-id='29710086fcdd3366caca03daf4f66b57']:has(reimagine-featured[configuration='3-col-even'])",
+          "style": "light-grey",
+          "blocks": [
+            "cards"
+          ],
+          "defaultContent": [
+            "reimagine-featured[configuration='3-col-even'] reimagine-heading-block h2"
+          ]
+        },
+        {
+          "id": "section-9",
+          "name": "Bottom Carousel",
+          "selector": "div.ui-shell[data-component-id='78886cafd6af66b1105378432d26acef']",
+          "style": null,
+          "blocks": [
+            "advanced-carousel",
+            "banner-carousel-slide"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-10",
+          "name": "Follow Microsoft",
+          "selector": "div.logo-footer[data-component-id='6fd6abbfb7d19a0d568b967c721295ee']",
+          "style": null,
+          "blocks": [
+            "social-follow"
+          ],
+          "defaultContent": []
+        }
+      ]
     }
   ]
 }

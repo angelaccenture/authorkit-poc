@@ -1,0 +1,10 @@
+{
+  "name": "quick-links",
+  "description": "Horizontal navigation bar of icon+text links for product categories. Each row contains an icon image and a navigation link.",
+  "source": "custom",
+  "contentModel": {
+    "columns": 2,
+    "column1": "Icon image",
+    "column2": "Link text with URL"
+  }
+}

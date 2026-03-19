@@ -1,0 +1,10 @@
+{
+  "name": "social-follow",
+  "description": "Social media follow links with icons displayed horizontally. Features a heading and a row of social media icon links.",
+  "source": "custom",
+  "contentModel": {
+    "columns": 2,
+    "column1": "Social media icon image",
+    "column2": "Link with platform name and URL"
+  }
+}

@@ -1,0 +1,131 @@
+.hero-carousel-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 400px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e8f0fe 0%, #f5f0ff 50%, #fff 100%);
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.hero-carousel-slide-image {
+  position: relative;
+  width: 100%;
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  picture {
+    display: block;
+    width: 100%;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+  }
+}
+
+.hero-carousel-slide-content {
+  padding: 24px 20px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero-carousel-slide-heading {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.hero-carousel-slide-content p:not(.hero-carousel-slide-cta) {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+  color: #505050;
+}
+
+.hero-carousel-slide-cta {
+  margin: 8px 0 0;
+}
+
+.hero-carousel-slide-cta a {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  text-decoration: none;
+  background-color: #0078d4;
+  color: #fff;
+  border: 1px solid transparent;
+  transition: background-color 0.15s;
+}
+
+.hero-carousel-slide-cta a:hover {
+  background-color: #106ebe;
+}
+
+@media (width >= 600px) {
+  .hero-carousel-slide {
+    flex-direction: row;
+    min-height: 480px;
+
+    > div {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .hero-carousel-slide-image {
+    width: 55%;
+    flex-shrink: 0;
+    min-height: 400px;
+
+    img {
+      max-height: 500px;
+    }
+  }
+
+  .hero-carousel-slide-content {
+    width: 45%;
+    padding: 40px 48px;
+  }
+
+  .hero-carousel-slide-heading {
+    font-size: 36px;
+  }
+}
+
+@media (width >= 900px) {
+  .hero-carousel-slide {
+    min-height: 540px;
+  }
+
+  .hero-carousel-slide-content {
+    padding: 48px 64px;
+  }
+
+  .hero-carousel-slide-heading {
+    font-size: 44px;
+    line-height: 1.15;
+  }
+
+  .hero-carousel-slide-content p:not(.hero-carousel-slide-cta) {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "ai-chat",
+  "description": "Interactive AI assistant/chat block with a heading, text input field, and suggested question pill buttons. Provides a search-like conversational entry point for users.",
+  "source": "custom",
+  "contentModel": {
+    "columns": 1,
+    "row1": "H2 heading",
+    "row2": "Text input placeholder text",
+    "row3": "Suggestion button texts (one per paragraph)"
+  }
+}
