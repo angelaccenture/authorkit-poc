@@ -75,14 +75,6 @@
     padding: 12px 24px;
     text-align: center;
 
-    .default-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
     p {
       margin: 0;
       font-size: var(--body-font-size-xs);
