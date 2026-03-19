@@ -245,7 +245,7 @@
   overflow: hidden;
 }
 
-.advanced-carousel .carousel-slide-indicator button:disabled,
+.advanced-carousel .carousel-slide-indicator button.is-active,
 .advanced-carousel .carousel-slide-indicator button:hover,
 .advanced-carousel .carousel-slide-indicator button:focus-visible {
   background-color: #0e1726;
