@@ -2,6 +2,8 @@ import { getConfig } from '../../scripts/ak.js';
 
 const { log } = getConfig();
 
+let carouselInstanceId = 0;
+
 function updateNavButtons(prevBtn, nextBtn, activeIndex, total) {
   prevBtn.disabled = activeIndex === 0;
   nextBtn.disabled = activeIndex === total - 1;
@@ -22,7 +24,7 @@ function getActiveIndex(carouselList) {
   return buttons.findIndex((btn) => btn.classList.contains('is-active'));
 }
 
-function getCarouselList(carousel, carouselPanels) {
+function getCarouselList(carousel, carouselPanels, instanceId) {
   const carouselItems = carousel.querySelectorAll('li');
   const carouselList = document.createElement('div');
   carouselList.className = 'carousel-list carousel-slide-indicators';
@@ -34,11 +36,11 @@ function getCarouselList(carousel, carouselPanels) {
 
     const btn = document.createElement('button');
     btn.role = 'carousel';
-    btn.id = `carousel-${idx + 1}`;
+    btn.id = `carousel-${instanceId}-${idx + 1}`;
     btn.textContent = item.textContent;
     if (idx === 0) {
       btn.classList.add('is-active');
-      carouselPanels[0].classList.add('is-visible');
+      carouselPanels[0]?.classList.add('is-visible');
     }
     indicator.append(btn);
     carouselList.append(indicator);
@@ -64,47 +66,35 @@ function createNavButtons() {
 }
 
 export default function init(el) {
-  // Find the top most parent where all carousel sections live
-  const parent = el.closest('.fragment-content, main');
+  const instanceId = carouselInstanceId;
+  carouselInstanceId += 1;
 
-  // Forcefully hide parent because sections may not be loaded yet
-  parent.style = 'display: none;';
-
-  // Find the carousel items
   const carousel = el.querySelector('.advanced-carousel ul');
   if (!carousel) {
     log('Please add an unordered list to the advanced carousel block.');
     return;
   }
-  // Find the section
+
   const currSection = el.closest('.section');
+  currSection.classList.add('carouselSection');
 
-  // Find the section that contains the actual block and only add class to carousel sections
-  const currSectionAt = el.closest('.section .advanced-carousel');
-  currSectionAt.closest('.section').classList.add('carouselSection');
-  const carouselSection = document.querySelectorAll('.carouselSection ~ .section');
-  const carouselItems = document.querySelector('.advanced-carousel ul');
-  const carouselCount = carouselItems.childElementCount;
+  // Count expected slides from the list items
+  const carouselCount = carousel.querySelectorAll('li').length;
 
-  carouselSection.forEach((element, index) => {
-    if (index < carouselCount) {
-      element.classList.add('carouselSection');
-    }
-  });
+  // Walk only immediately following sibling sections to collect slides
+  // This ensures each carousel only claims its own adjacent slides
+  const carouselPanels = [];
+  let sibling = currSection.nextElementSibling;
+  while (sibling && carouselPanels.length < carouselCount) {
+    sibling.classList.add('carouselSection');
+    sibling.id = `carouselpanel-${instanceId}-${carouselPanels.length + 1}`;
+    sibling.role = 'carouselpanel';
+    sibling.setAttribute('aria-labelledby', `carousel-${instanceId}-${carouselPanels.length + 1}`);
+    carouselPanels.push(sibling);
+    sibling = sibling.nextElementSibling;
+  }
 
-  // Filter and format all sections that do not hold the carousel block
-  const carouselPanels = [...parent.querySelectorAll(':scope > .carouselSection')]
-    .reduce((acc, section, idx) => {
-      if (section !== currSection) {
-        section.id = `carouselpanel-${idx + 1}`;
-        section.role = 'carouselpanel';
-        section.setAttribute('aria-labelledby', `carousel-${idx + 1}`);
-        acc.push(section);
-      }
-      return acc;
-    }, []);
-
-  const carouselList = getCarouselList(carousel, carouselPanels);
+  const carouselList = getCarouselList(carousel, carouselPanels, instanceId);
   const { nav, prevBtn, nextBtn } = createNavButtons();
 
   // Wire up indicator button clicks
@@ -131,5 +121,4 @@ export default function init(el) {
 
   carousel.remove();
   el.append(...carouselPanels, nav, carouselList);
-  parent.removeAttribute('style');
 }
