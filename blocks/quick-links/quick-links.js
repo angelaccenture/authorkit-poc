@@ -10,23 +10,23 @@ export default function init(el) {
 
   rows.forEach((row) => {
     const cols = [...row.querySelectorAll(':scope > div')];
-    if (cols.length < 2) return;
-
-    const iconCol = cols[0];
-    const linkCol = cols[1];
+    if (cols.length === 0) return;
 
     const li = document.createElement('li');
     li.className = 'quick-links-item';
 
-    // Icon
-    const iconWrap = document.createElement('div');
-    iconWrap.className = 'quick-links-icon';
-    const pic = iconCol.querySelector('picture');
-    if (pic) {
-      iconWrap.append(pic);
+    // Two columns: icon + link; one column: link only
+    const linkCol = cols.length >= 2 ? cols[1] : cols[0];
+    const iconCol = cols.length >= 2 ? cols[0] : null;
+
+    if (iconCol) {
+      const iconWrap = document.createElement('div');
+      iconWrap.className = 'quick-links-icon';
+      const pic = iconCol.querySelector('picture');
+      if (pic) iconWrap.append(pic);
+      li.append(iconWrap);
     }
 
-    // Link
     const linkWrap = document.createElement('div');
     linkWrap.className = 'quick-links-label';
     const link = linkCol.querySelector('a');
@@ -36,7 +36,7 @@ export default function init(el) {
       linkWrap.textContent = linkCol.textContent.trim();
     }
 
-    li.append(iconWrap, linkWrap);
+    li.append(linkWrap);
     list.append(li);
   });
 
