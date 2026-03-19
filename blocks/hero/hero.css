@@ -157,31 +157,19 @@
     color: #0e1726;
 
     .hero-background {
-      position: relative;
-
-      picture {
-        position: relative;
-        inset: unset;
-      }
-
-      > div {
-        position: relative;
-        aspect-ratio: 16 / 9;
-      }
-
       img {
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
         object-position: 50% 50%;
       }
     }
 
     .hero-foreground {
-      min-height: unset;
-      background: linear-gradient(131deg, #cbe6f4 0%, #8dc8e8 50%, #c5b4e3 100%);
+      --gradient-start: unset;
+      --gradient-end: unset;
+
+      min-height: 500px;
+      align-items: end;
+      background: linear-gradient(to top, rgb(203 230 244 / 95%) 0%, rgb(141 200 232 / 80%) 40%, transparent 70%);
       padding: 32px 24px;
-      display: flex;
-      flex-direction: column;
 
       .hero-heading {
         font-size: 28px;
@@ -234,10 +222,7 @@
 
     &.hometop {
       .hero-foreground {
-        display: flex;
-        flex-direction: column;
-        max-width: unset;
-        background: linear-gradient(131deg, #cbe6f4 0%, #8dc8e8 50%, #c5b4e3 100%);
+        grid-template-columns: 50%;
         padding: 40px 48px;
 
         .hero-heading {
