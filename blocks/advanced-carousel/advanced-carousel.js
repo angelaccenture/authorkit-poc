@@ -70,7 +70,7 @@ function createNavButtons() {
 
   const playPauseBtn = createPlayPauseButton();
 
-  nav.append(prevBtn, playPauseBtn, nextBtn);
+  nav.append(prevBtn, nextBtn);
   return { nav, prevBtn, nextBtn, playPauseBtn };
 }
 
@@ -167,7 +167,11 @@ export default function init(el) {
   });
 
   carousel.remove();
-  el.append(...carouselPanels, nav, carouselList);
+  // Place indicators and play/pause between prev and next: [prev] [indicators] [play/pause] [next]
+  const nextBtn2 = nav.querySelector('.slide-next');
+  nav.insertBefore(carouselList, nextBtn2);
+  nav.insertBefore(playPauseBtn, nextBtn2);
+  el.append(...carouselPanels, nav);
 
   // Start autoplay
   startAutoplay();

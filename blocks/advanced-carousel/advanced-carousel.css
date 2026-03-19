@@ -161,7 +161,7 @@
 .advanced-carousel .carousel-navigation-buttons {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 8px;
   height: 32px;
   padding: 16px 0;
