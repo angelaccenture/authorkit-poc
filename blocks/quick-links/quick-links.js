@@ -22,7 +22,7 @@ export default function init(el) {
     if (iconCol) {
       const iconWrap = document.createElement('div');
       iconWrap.className = 'quick-links-icon';
-      const pic = iconCol.querySelector('picture');
+      const pic = iconCol.querySelector('picture') || iconCol.querySelector('img');
       if (pic) iconWrap.append(pic);
       li.append(iconWrap);
     }
