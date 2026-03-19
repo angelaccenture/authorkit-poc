@@ -48,6 +48,13 @@ function getCarouselList(carousel, carouselPanels, instanceId) {
   return carouselList;
 }
 
+function createPlayPauseButton() {
+  const btn = document.createElement('button');
+  btn.className = 'carousel-play-pause is-playing';
+  btn.setAttribute('aria-label', 'Pause autoplay');
+  return btn;
+}
+
 function createNavButtons() {
   const nav = document.createElement('div');
   nav.className = 'carousel-navigation-buttons';
@@ -61,8 +68,10 @@ function createNavButtons() {
   nextBtn.className = 'slide-next';
   nextBtn.setAttribute('aria-label', 'Next slide');
 
-  nav.append(prevBtn, nextBtn);
-  return { nav, prevBtn, nextBtn };
+  const playPauseBtn = createPlayPauseButton();
+
+  nav.append(prevBtn, playPauseBtn, nextBtn);
+  return { nav, prevBtn, nextBtn, playPauseBtn };
 }
 
 export default function init(el) {
@@ -95,17 +104,54 @@ export default function init(el) {
   }
 
   const carouselList = getCarouselList(carousel, carouselPanels, instanceId);
-  const { nav, prevBtn, nextBtn } = createNavButtons();
+  const { nav, prevBtn, nextBtn, playPauseBtn } = createNavButtons();
+
+  // Autoplay
+  const AUTOPLAY_INTERVAL = 6000;
+  let autoplayTimer = null;
+
+  function advanceSlide() {
+    const activeIndex = getActiveIndex(carouselList);
+    const nextIndex = (activeIndex + 1) % carouselPanels.length;
+    goToSlide(nextIndex, carouselList, carouselPanels, prevBtn, nextBtn);
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+    playPauseBtn.classList.remove('is-playing');
+    playPauseBtn.setAttribute('aria-label', 'Play autoplay');
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayTimer = setInterval(advanceSlide, AUTOPLAY_INTERVAL);
+    playPauseBtn.classList.add('is-playing');
+    playPauseBtn.setAttribute('aria-label', 'Pause autoplay');
+  }
+
+  // Wire up play/pause button
+  playPauseBtn.addEventListener('click', () => {
+    if (autoplayTimer) {
+      stopAutoplay();
+    } else {
+      startAutoplay();
+    }
+  });
 
   // Wire up indicator button clicks
   carouselList.querySelectorAll('.carousel-slide-indicator button').forEach((btn, idx) => {
     btn.addEventListener('click', () => {
+      stopAutoplay();
       goToSlide(idx, carouselList, carouselPanels, prevBtn, nextBtn);
     });
   });
 
   // Wire up prev/next buttons
   prevBtn.addEventListener('click', () => {
+    stopAutoplay();
     const activeIndex = getActiveIndex(carouselList);
     if (activeIndex > 0) {
       goToSlide(activeIndex - 1, carouselList, carouselPanels, prevBtn, nextBtn);
@@ -113,6 +159,7 @@ export default function init(el) {
   });
 
   nextBtn.addEventListener('click', () => {
+    stopAutoplay();
     const activeIndex = getActiveIndex(carouselList);
     if (activeIndex < carouselPanels.length - 1) {
       goToSlide(activeIndex + 1, carouselList, carouselPanels, prevBtn, nextBtn);
@@ -121,4 +168,7 @@ export default function init(el) {
 
   carousel.remove();
   el.append(...carouselPanels, nav, carouselList);
+
+  // Start autoplay
+  startAutoplay();
 }
