@@ -1,11 +1,12 @@
 .card {
-  --spacing-default: var(--spacing-l);
+  --spacing-default: var(--spacing-m);
 
   overflow-wrap: break-word;
-  box-shadow: 0 1px 6px 0 rgb(0 0 0 / 12%);
+  border-radius: var(--card-border-radius, 16px);
+  box-shadow: var(--card-shadow, 0 0 2px 0 rgb(0 0 0 / 12%), 0 2px 4px 0 rgb(0 0 0 / 14%));
   overflow: hidden;
-  background-color: light-dark(var(--color-gray-100), var(--color-gray-900));
-  color: light-dark(var(--color-dark), var(--color-light));
+  background-color: #fff;
+  color: var(--color-text-dark);
   transition: all 0.25s ease-in-out;
 
   .card-inner {
@@ -14,72 +15,98 @@
     height: 100%;
   }
 
-  &:not(.quiet) {
-    .card-picture-container {
-      position: relative;
-      padding-bottom: 60%;
+  .card-picture-container {
+    position: relative;
+    padding-bottom: 56.25%;
 
-      picture {
-        position: absolute;
-        inset: 0;
-        opacity: 0.85;
-        transition: opacity 0.25s ease-in-out;
-      }
+    picture {
+      position: absolute;
+      inset: 0;
+    }
 
-      img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-      }
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
     }
   }
 
   .card-content-container {
-    padding: var(--spacing-default);
+    padding: var(--spacing-l) var(--spacing-l) var(--spacing-s);
 
     :first-child {
       margin-top: 0;
-      font-size: 16px;
     }
 
     :last-child {
       margin-bottom: 0;
     }
 
-    &:has(+ .card-cta-container) {
-      padding: var(--spacing-default) var(--spacing-default) var(--spacing-m) var(--spacing-default);
+    h2,
+    h3 {
+      font-size: var(--heading-font-size-s);
+      font-weight: 600;
+      letter-spacing: -0.27px;
+      line-height: 1.33;
+      margin-bottom: var(--spacing-s);
+    }
+
+    p {
+      font-size: var(--body-font-size-m);
+      line-height: 1.5;
+      color: var(--color-text);
+      margin-bottom: var(--spacing-s);
+    }
+
+    em {
+      font-style: normal;
+      font-size: var(--body-font-size-xs);
+      font-weight: 600;
+      color: var(--color-accent);
+      background-color: var(--color-badge-blue);
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: var(--spacing-s);
     }
   }
 
   .card-cta-container {
-    padding: 0 var(--spacing-default) var(--spacing-default) var(--spacing-default);
+    padding: 0 var(--spacing-l) var(--spacing-l);
     margin: 0;
-    display: flex;
-    justify-content: end;
-  }
 
-  &:not(.quiet):hover {
-    transform: scale(1.005);
-    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 16%);
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-accent);
+      color: #fff;
+      font-size: var(--button-font-size);
+      font-weight: 600;
+      line-height: 1.47;
+      letter-spacing: var(--button-letter-spacing);
+      text-decoration: none;
+      padding: var(--button-padding);
+      border-radius: var(--button-border-radius);
+      min-height: var(--button-min-height);
+      transition: background-color var(--transition-base);
+    }
 
-    picture {
-      opacity: 1;
+    a:hover {
+      background-color: var(--color-accent-hover);
+      color: #fff;
     }
   }
 
-  /* Variations */
-  &.center {
-    text-align: center;
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 2px 0 rgb(0 0 0 / 14%), 0 4px 8px 0 rgb(0 0 0 / 18%);
   }
 
+  /* Quiet variation */
   &.quiet {
-    --spacing-default: 0;
-
     box-shadow: initial;
     background-color: initial;
-
-    .card-content-container * {
-      margin: 6px;
-    }
+    border-radius: 0;
   }
 }

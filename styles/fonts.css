@@ -1,9 +1,13 @@
-/* Microsoft Blog - System Font Stack */
+/* Microsoft Design System - System Font Stack */
 
-/* Segoe UI is a Microsoft system font, no web font loading required */
+/*
+ * Segoe UI Variable is Microsoft's variable font.
+ * It is a system font on Windows 11+ and does not require web font loading.
+ * On non-Windows systems, the fallback chain provides similar appearance.
+ */
 
 @font-face {
   font-family: segoe-ui-fallback;
   size-adjust: 100%;
-  src: local("Segoe UI"), local("Helvetica Neue"), local("Helvetica"), local("Arial");
+  src: local("Segoe UI Variable Text"), local("Segoe UI"), local("Helvetica Neue"), local("Helvetica"), local("Arial");
 }

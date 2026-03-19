@@ -1,21 +1,27 @@
-/* Microsoft Blog - Design System */
+/* Microsoft Design System */
 
 :root {
   /* colors */
-  --color-text: #2f2f2f;
-  --color-text-muted: #666;
-  --color-link: #0067b8;
-  --color-link-hover: #005da6;
-  --color-background: #f5f5f5;
+  --color-text: #000;
+  --color-text-dark: #0e1726;
+  --color-text-muted: #616161;
+  --color-text-light: #f4fafd;
+  --color-link: #0078d4;
+  --color-link-hover: #0067b8;
+  --color-background: #fff;
   --color-background-card: #fff;
-  --color-accent: #0067b8;
-  --color-accent-hover: #005da6;
+  --color-accent: #0078d4;
+  --color-accent-hover: #0067b8;
+  --color-accent-dark: #0072c6;
   --color-border: #e3e3e3;
-  --color-social-bg: #e3e3e3;
+  --color-badge-blue: #dceef8;
+  --color-badge-yellow: #ffb900;
+  --color-section-light-grey: #dceef8;
+  --color-footer-bg: #f2f2f2;
 
   /* fonts - Segoe UI is a system font */
-  --font-family: "Segoe UI", segoeui, "Helvetica Neue", helvetica, arial, sans-serif;
-  --heading-font-family: var(--font-family);
+  --font-family: "Segoe UI Variable Text", "Segoe UI", segoeui, "Helvetica Neue", helvetica, arial, sans-serif;
+  --heading-font-family: "Segoe UI Variable Display", "Segoe UI", segoeui, "Helvetica Neue", helvetica, arial, sans-serif;
 
   /* heading sizes */
   --heading-font-size-xxl: 32px;
@@ -24,21 +30,21 @@
   --heading-font-size-m: 20px;
   --heading-font-size-s: 18px;
   --heading-font-size-xs: 16px;
-  --heading-line-height: 1.2;
+  --heading-line-height: 1.25;
 
   /* body sizes */
   --body-font-size-xl: 20px;
   --body-font-size-l: 18px;
-  --body-font-size-m: 15px;
-  --body-font-size-s: 14px;
-  --body-font-size-xs: 12px;
-  --body-line-height: 1.6;
+  --body-font-size-m: 16px;
+  --body-font-size-s: 15px;
+  --body-font-size-xs: 14px;
+  --body-line-height: 1.5;
 
   /* spacing */
   --spacing-xxl: 48px;
   --spacing-xl: 32px;
   --spacing-l: 24px;
-  --spacing-m: 12px;
+  --spacing-m: 16px;
   --spacing-s: 8px;
   --spacing-xs: 4px;
 
@@ -46,8 +52,25 @@
   --content-max-width: 1600px;
   --section-padding: 0 24px;
 
+  /* buttons */
+  --button-border-radius: 8px;
+  --button-padding: 8px 12px;
+  --button-padding-large: 12px 13px;
+  --button-font-size: 15px;
+  --button-letter-spacing: -0.3px;
+  --button-min-height: 40px;
+  --button-min-width: 40px;
+
+  /* card */
+  --card-border-radius: 16px;
+  --card-shadow: 0 0 2px 0 rgb(0 0 0 / 12%), 0 2px 4px 0 rgb(0 0 0 / 14%);
+
   /* transitions */
   --transition-base: 0.2s ease;
+
+  /* typography spacing */
+  --heading-letter-spacing: -0.8px;
+  --body-letter-spacing: -0.48px;
 
   /* misc */
   --header-height: 0px;
@@ -65,6 +88,7 @@ body {
   font-family: var(--font-family);
   font-size: var(--body-font-size-m);
   line-height: var(--body-line-height);
+  letter-spacing: var(--body-letter-spacing);
 }
 
 /* headings */
@@ -76,25 +100,29 @@ h5,
 h6 {
   font-family: var(--heading-font-family);
   line-height: var(--heading-line-height);
+  letter-spacing: var(--heading-letter-spacing);
   margin-top: 0;
-  margin-bottom: var(--spacing-m);
-  color: var(--color-text);
+  margin-bottom: var(--spacing-s);
+  color: var(--color-text-dark);
 }
 
 h1 {
   font-size: var(--heading-font-size-xxl);
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 1.25;
 }
 
 h2 {
-  font-size: var(--heading-font-size-m);
-  font-weight: 400;
-  padding: 35px 0 5px;
+  font-size: var(--heading-font-size-xxl);
+  font-weight: 500;
+  line-height: 1.25;
 }
 
 h3 {
-  font-size: var(--heading-font-size-l);
-  font-weight: 500;
+  font-size: var(--heading-font-size-s);
+  font-weight: 600;
+  letter-spacing: -0.27px;
+  line-height: 1.33;
 }
 
 h4 {
@@ -123,19 +151,24 @@ a:hover {
   color: var(--color-link-hover);
 }
 
-/* buttons (matching Microsoft Blog "View More" style) */
+/* buttons */
 a.button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--color-accent);
   color: #fff;
   font-family: var(--font-family);
-  font-size: var(--body-font-size-m);
+  font-size: var(--button-font-size);
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.47;
+  letter-spacing: var(--button-letter-spacing);
   text-decoration: none;
-  padding: 10px 22px;
-  border: 2px solid transparent;
-  border-radius: 0;
+  padding: var(--button-padding);
+  border: 0 solid transparent;
+  border-radius: var(--button-border-radius);
+  min-height: var(--button-min-height);
+  min-width: var(--button-min-width);
   cursor: pointer;
   transition: background-color var(--transition-base);
 }
@@ -150,21 +183,155 @@ a.button:focus {
   outline-offset: 2px;
 }
 
+/* secondary button (white) */
+a.button.secondary {
+  background-color: #fff;
+  color: var(--color-text-dark);
+}
+
+a.button.secondary:hover {
+  background-color: #f0f0f0;
+  color: var(--color-text-dark);
+}
+
 button {
   cursor: pointer;
   font: inherit;
 }
 
 /* sections */
-.section {
+main .section {
   display: block;
   max-width: var(--content-max-width);
   margin: 0 auto;
   padding: var(--section-padding);
 }
 
-.section > .default-content {
+main .section > .default-content {
   max-width: 100%;
+}
+
+/* section: announcement-bar */
+main .section.announcement-bar {
+  background-color: var(--color-accent-dark);
+  color: var(--color-text-light);
+  max-width: 100%;
+  padding: 12px 24px;
+  text-align: center;
+}
+
+main .section.announcement-bar p {
+  margin: 0;
+  font-size: var(--body-font-size-xs);
+}
+
+main .section.announcement-bar a {
+  color: #fff;
+  font-weight: 600;
+  font-size: var(--body-font-size-xs);
+}
+
+/* section: dark */
+main .section.dark {
+  background-color: #1b1b1b;
+  color: var(--color-text-light);
+  max-width: 100%;
+  padding: 40px 24px;
+}
+
+main .section.dark > .block-content {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+main .section.dark h1,
+main .section.dark h2,
+main .section.dark h3 {
+  color: var(--color-text-light);
+}
+
+main .section.dark p {
+  color: var(--color-text-light);
+}
+
+main .section.dark a {
+  color: #fff;
+}
+
+/* section: light-grey (light blue tint) */
+main .section.light-grey {
+  background-color: var(--color-section-light-grey);
+  max-width: 100%;
+  padding: 40px 24px;
+}
+
+main .section.light-grey > .block-content {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+main .section.light-grey h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-l);
+}
+
+/* section: columns grid layout */
+main .section.columns-2 > .block-content,
+main .section.columns-3 > .block-content,
+main .section.columns-4 > .block-content {
+  display: grid;
+  gap: var(--spacing-l);
+}
+
+main .section.columns-2 > .block-content {
+  grid-template-columns: 1fr;
+}
+
+main .section.columns-3 > .block-content {
+  grid-template-columns: 1fr;
+}
+
+main .section.columns-4 > .block-content {
+  grid-template-columns: 1fr;
+}
+
+/* columns heading spans full width */
+main .section.columns-2 > .block-content > .default-content,
+main .section.columns-3 > .block-content > .default-content,
+main .section.columns-4 > .block-content > .default-content {
+  grid-column: 1 / -1;
+}
+
+/* columns section-metadata spans full width */
+main .section.columns-2 > .block-content > .section-metadata,
+main .section.columns-3 > .block-content > .section-metadata,
+main .section.columns-4 > .block-content > .section-metadata {
+  grid-column: 1 / -1;
+  display: none;
+}
+
+@media (width >= 600px) {
+  main .section.columns-2 > .block-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  main .section.columns-3 > .block-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  main .section.columns-4 > .block-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  main .section.columns-3 > .block-content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  main .section.columns-4 > .block-content {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /* images */
@@ -185,7 +352,7 @@ main li {
 
 /* paragraphs */
 p {
-  margin: 0 0 var(--spacing-m);
+  margin: 0 0 var(--spacing-s);
 }
 
 /* strong */
@@ -206,37 +373,12 @@ svg {
 }
 
 /* =============================================
-   Page layout: two-column (More News | Featured)
-   Matches original Microsoft Blog col-4 / col-8
+   Responsive breakpoints
    ============================================= */
 @media (width >= 768px) {
   :root {
     --heading-font-size-xxl: 40px;
     --heading-font-size-xl: 32px;
-  }
-
-  body {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    max-width: var(--content-max-width);
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  /* Featured section moves to the right column */
-  body > div:first-child {
-    order: 2;
-  }
-
-  /* More News section moves to the left column */
-  body > div:nth-child(2) {
-    order: 1;
-  }
-
-  /* Social footer and metadata span full width */
-  body > div:nth-child(n+3) {
-    grid-column: 1 / -1;
-    order: 3;
   }
 }
 
@@ -244,67 +386,6 @@ svg {
   :root {
     --content-max-width: 1600px;
   }
-}
-
-/* =============================================
-   View More button
-   ============================================= */
-body > div:nth-child(2) > p:last-child {
-  text-align: center;
-  padding: var(--spacing-xl, 32px) 0;
-}
-
-body > div:nth-child(2) > p:last-child a {
-  display: inline-block;
-  background-color: var(--color-accent);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 10px 32px;
-  border-radius: 2px;
-  transition: background-color var(--transition-base);
-}
-
-body > div:nth-child(2) > p:last-child a:hover {
-  background-color: var(--color-accent-hover);
-  color: #fff;
-}
-
-/* =============================================
-   Social footer section
-   ============================================= */
-body > div:nth-child(3) {
-  background-color: var(--color-social-bg, #e3e3e3);
-  padding: var(--spacing-l, 24px);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-m, 12px);
-}
-
-body > div:nth-child(3) p {
-  margin: 0;
-  font-size: var(--body-font-size-s, 14px);
-  font-weight: 600;
-}
-
-body > div:nth-child(3) ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: var(--spacing-m, 12px);
-}
-
-body > div:nth-child(3) li {
-  margin: 0;
-}
-
-/* =============================================
-   Hide metadata block
-   ============================================= */
-body > div:nth-child(4) {
-  display: none;
 }
 
 /* hide sections until loaded */
