@@ -1,121 +1,259 @@
 {
-  "url": "https://blogs.microsoft.com/",
-  "template": "ms-blog-homepage",
+  "url": "https://www.microsoft.com/en-us/microsoft-365",
+  "title": "Microsoft 365 for Individuals: Subscription for Productivity Apps",
+  "analysisDate": "2026-03-20",
+  "approach": "static-simplification",
   "sections": [
     {
-      "sectionNumber": 1,
-      "name": "Featured Posts",
-      "styling": {
-        "backgroundColor": "#f2f2f2",
-        "style": null
-      },
-      "contentSequences": [
+      "id": "section-1",
+      "name": "Announcement Bar",
+      "style": "announcement-bar",
+      "items": [
         {
-          "id": "seq-1-1",
-          "description": "Section heading 'Featured'",
-          "decision": "default-content",
-          "selector": "section.featured-posts > h2.c-heading-5",
-          "reason": "Simple heading is best as default content - an author would type this as an H2 in a document."
-        },
+          "type": "default-content",
+          "elements": ["p", "a"],
+          "description": "Announcement text with CTA link"
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "name": "Hero",
+      "style": null,
+      "items": [
         {
-          "id": "seq-1-2",
-          "description": "7 featured article cards. Each card has: optional thumbnail image, date (e.g. 'Mar 17, 2026'), author name/link, and linked article title. Cards appear in a mixed layout with larger featured cards and smaller grid cards.",
-          "decision": "block",
-          "blockName": "cards-blog",
-          "blockVariant": "cards-blog",
-          "selector": "section.featured-posts article.m-preview",
-          "reason": "Repeated card items with image + text content (date, author, title) map perfectly to the Cards block pattern. Each article preview becomes one row in the cards table: image in col1, text content (date, author, linked title) in col2.",
-          "contentModel": {
-            "columns": 2,
-            "col1": "Image (thumbnail of article, optional - some cards have no image)",
-            "col2": "Date line (e.g. 'Mar 17, 2026 | Microsoft Corporate Blogs'), then linked title as heading"
+          "type": "block",
+          "blockName": "hero",
+          "variant": "m365",
+          "description": "Centered hero with bg image, eyebrow, heading, subtitle, 2 CTAs",
+          "sourceSelector": "div.section-master--bg-image:has(h1)",
+          "structure": {
+            "row1": "background-image | eyebrow, h1, subtitle, primary-cta, secondary-cta"
           }
         }
       ]
     },
     {
-      "sectionNumber": 2,
-      "name": "More News",
-      "styling": {
-        "backgroundColor": "#f2f2f2",
-        "style": null
-      },
-      "contentSequences": [
+      "id": "section-3",
+      "name": "Copilot Features",
+      "style": null,
+      "items": [
         {
-          "id": "seq-2-1",
-          "description": "Section heading 'More News'",
-          "decision": "default-content",
-          "selector": "section.recent-posts > h2.c-heading-5",
-          "reason": "Simple heading is best as default content."
+          "type": "default-content",
+          "elements": ["p.eyebrow"],
+          "description": "HOW IT WORKS eyebrow"
         },
         {
-          "id": "seq-2-2",
-          "description": "8 recent article cards with thumbnail, date, author, and title. Smaller uniform card layout compared to featured section.",
-          "decision": "block",
-          "blockName": "cards-blog",
-          "blockVariant": "cards-blog",
-          "selector": "section.recent-posts article.m-preview",
-          "reason": "Same card pattern as featured section. Repeated article previews with image + text content map to Cards block. Visual differences (smaller size) will be handled by CSS variant styling.",
-          "contentModel": {
-            "columns": 2,
-            "col1": "Image (article thumbnail, optional)",
-            "col2": "Date line (e.g. 'Feb 20, 2026 | Microsoft Corporate Blogs'), then linked title as heading"
+          "type": "default-content",
+          "elements": ["h2"],
+          "description": "Boost your productivity with Copilot"
+        },
+        {
+          "type": "block",
+          "blockName": "columns",
+          "variant": null,
+          "description": "Two-column layout: feature text descriptions left, feature image right",
+          "sourceSelector": "div.section-master:has(h2:text('Boost your productivity'))",
+          "structure": {
+            "row1": "feature descriptions (h3 + p for each feature) | feature image"
           }
         },
         {
-          "id": "seq-2-3",
-          "description": "'View More' call-to-action button linking to page 2",
-          "decision": "default-content",
-          "selector": "a.f-view-more",
-          "reason": "Single CTA link is best as default content - an author would write this as a linked paragraph with button styling."
+          "type": "default-content",
+          "elements": ["p > a"],
+          "description": "Learn more CTA link"
         }
       ]
     },
     {
-      "sectionNumber": 3,
-      "name": "Social Footer",
-      "styling": {
-        "backgroundColor": "#f2f2f2",
-        "style": null
-      },
-      "contentSequences": [
+      "id": "section-4",
+      "name": "News / Discover",
+      "style": null,
+      "items": [
         {
-          "id": "seq-3-1",
-          "description": "'Follow us:' text with RSS subscription link",
-          "decision": "default-content",
-          "selector": ".social-footer .m-social",
-          "reason": "Simple text with a link. Default content is sufficient."
+          "type": "default-content",
+          "elements": ["h2"],
+          "description": "Discover what's happening with Microsoft 365"
+        },
+        {
+          "type": "block",
+          "blockName": "teaser",
+          "variant": null,
+          "description": "Large featured teaser: Free for students offer",
+          "sourceSelector": "div:has(> h2:text('Free for students'))",
+          "structure": {
+            "row1": "image",
+            "row2": "badge, h2, description, cta-link"
+          }
+        },
+        {
+          "type": "block",
+          "blockName": "card",
+          "variant": null,
+          "description": "2 smaller content cards in a grid",
+          "sourceSelector": "div.card-grid-container",
+          "structure": {
+            "row1": "image | h3, description, cta-link"
+          },
+          "instances": 2,
+          "sectionStyle": "grid-2"
+        }
+      ]
+    },
+    {
+      "id": "section-5",
+      "name": "What's Included",
+      "style": "light-grey",
+      "items": [
+        {
+          "type": "default-content",
+          "elements": ["p.eyebrow"],
+          "description": "WHAT'S INCLUDED eyebrow"
+        },
+        {
+          "type": "default-content",
+          "elements": ["h2"],
+          "description": "Get Microsoft 365 all in one plan"
+        },
+        {
+          "type": "default-content",
+          "elements": ["p > a"],
+          "description": "Explore all apps link"
+        },
+        {
+          "type": "block",
+          "blockName": "card",
+          "variant": "app",
+          "description": "App cards with icon, name, and description. Grid of 4 across.",
+          "sourceSelector": "div.app-card-grid",
+          "structure": {
+            "row1": "icon-image | h3 app-name, description"
+          },
+          "instances": 11,
+          "sectionStyle": "grid-4"
+        }
+      ]
+    },
+    {
+      "id": "section-6",
+      "name": "Plans / Pricing",
+      "style": null,
+      "items": [
+        {
+          "type": "default-content",
+          "elements": ["p.eyebrow"],
+          "description": "PLANS eyebrow"
+        },
+        {
+          "type": "default-content",
+          "elements": ["h2"],
+          "description": "Find the plan that's right for you"
+        },
+        {
+          "type": "block",
+          "blockName": "pricing-cards",
+          "variant": null,
+          "description": "3 pricing plan comparison cards. Each has: plan name, price, billing note, CTA buttons, feature list with checkmarks, app icons row at bottom.",
+          "sourceSelector": "div.plans-comparison-container",
+          "structure": {
+            "row-per-plan": "plan-name, price, billing-description, cta-buttons, feature-list, app-icons"
+          },
+          "instances": 3,
+          "note": "NEW BLOCK - no existing block handles pricing comparison"
+        }
+      ]
+    },
+    {
+      "id": "section-7",
+      "name": "Get Started",
+      "style": null,
+      "items": [
+        {
+          "type": "default-content",
+          "elements": ["p.eyebrow"],
+          "description": "GET STARTED eyebrow"
+        },
+        {
+          "type": "default-content",
+          "elements": ["h2"],
+          "description": "Take the next step with Microsoft 365"
+        },
+        {
+          "type": "block",
+          "blockName": "card",
+          "variant": null,
+          "description": "2 teaser-style cards: Choose your plan + Frontier AI",
+          "sourceSelector": "div.get-started-cards",
+          "structure": {
+            "row1": "image | h3, description, cta-link"
+          },
+          "instances": 2,
+          "sectionStyle": "grid-2"
+        }
+      ]
+    },
+    {
+      "id": "section-8",
+      "name": "FAQ",
+      "style": null,
+      "items": [
+        {
+          "type": "default-content",
+          "elements": ["h2"],
+          "description": "Frequently asked questions"
+        },
+        {
+          "type": "block",
+          "blockName": "advanced-accordion",
+          "variant": null,
+          "description": "Numbered FAQ items with expand/collapse. Questions about Copilot, M365 apps, subscriptions.",
+          "sourceSelector": "div.faq-section",
+          "structure": {
+            "list-items": "question titles in ul > li"
+          },
+          "note": "Each FAQ answer is a section consumed by accordion"
+        }
+      ]
+    },
+    {
+      "id": "section-9",
+      "name": "Legal Disclaimers",
+      "style": null,
+      "items": [
+        {
+          "type": "default-content",
+          "elements": ["p"],
+          "description": "Footnotes and legal disclaimer paragraphs"
+        }
+      ]
+    },
+    {
+      "id": "section-10",
+      "name": "Follow Microsoft 365",
+      "style": null,
+      "items": [
+        {
+          "type": "block",
+          "blockName": "social-follow",
+          "variant": null,
+          "description": "Social media follow links for Microsoft 365",
+          "sourceSelector": "div.section-master:has(h2:text('Follow Microsoft 365'))"
         }
       ]
     }
   ],
-  "blocks": [
-    {
-      "blockName": "cards-blog",
-      "usageCount": 2,
-      "instances": [
-        "section.featured-posts article.m-preview",
-        "section.recent-posts article.m-preview"
-      ],
-      "source": "block-collection",
-      "contentModel": {
-        "columns": 2,
-        "col1": "Image (article thumbnail)",
-        "col2": "Text content: date | author line, then linked article title as heading"
-      }
-    }
-  ],
-  "metadata": {
-    "title": "From og:title or <title>",
-    "description": "From og:description or meta description",
-    "image": "From og:image",
-    "canonical": "From link[rel=canonical]"
-  },
-  "summary": {
-    "totalSections": 3,
-    "totalBlocks": 1,
-    "totalDefaultContent": 4,
-    "blocks": ["cards-blog"],
-    "notes": "The Microsoft Blog homepage has two main content sections (Featured Posts and More News), both using the Cards block pattern for article listings. The Featured section has 7 cards and the More News section has 8 cards plus a View More CTA. A small social footer section has RSS link as default content. Non-content to remove: UHF header/footer (handled by EDS header/footer blocks), cookie banner, search form, All Microsoft mega menu."
+  "blockSummary": {
+    "reused": [
+      { "name": "hero", "variant": "m365", "reason": "Centered layout differs from homepage left-aligned hero" },
+      { "name": "columns", "variant": null, "reason": "Standard two-column layout for features section" },
+      { "name": "teaser", "variant": null, "reason": "Same card-banner pattern as homepage" },
+      { "name": "card", "variant": null, "reason": "Standard card for news and get-started sections" },
+      { "name": "card", "variant": "app", "reason": "New variant for app icon cards in What's Included section" },
+      { "name": "advanced-accordion", "variant": null, "reason": "Existing accordion block for FAQ" },
+      { "name": "social-follow", "variant": null, "reason": "Same social links pattern as homepage" }
+    ],
+    "new": [
+      { "name": "pricing-cards", "reason": "Complex pricing comparison with feature lists, no existing block handles this" }
+    ]
   }
 }

@@ -221,6 +221,186 @@
           "defaultContent": []
         }
       ]
+    },
+    {
+      "name": "microsoft-365",
+      "urls": [
+        "https://www.microsoft.com/en-us/microsoft-365"
+      ],
+      "description": "Microsoft 365 product landing page showcasing subscription plans, features, and pricing",
+      "blocks": [
+        {
+          "name": "hero-m365",
+          "instances": [
+            "div.section-master--bg-image.section-master--blade-hero-slim"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            "div.ocr-accordion.accordion--vertical-product"
+          ]
+        },
+        {
+          "name": "teaser",
+          "instances": [
+            "div.card-horizontal-container"
+          ]
+        },
+        {
+          "name": "card",
+          "instances": [
+            "div.cta-stacked--vertical-cards .card",
+            "div.section-master:has(#Get-started) .three-up-cards .card"
+          ]
+        },
+        {
+          "name": "card-app",
+          "instances": [
+            "div.card-grid__cards .card"
+          ]
+        },
+        {
+          "name": "pricing-cards",
+          "instances": [
+            "div.carousel.carousel--card-grid"
+          ]
+        },
+        {
+          "name": "advanced-accordion",
+          "instances": [
+            "div.ocr-faq"
+          ]
+        },
+        {
+          "name": "social-follow",
+          "instances": [
+            "div.socialfollow"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Announcement Bar",
+          "selector": "div.ocr-announcement-banner",
+          "style": "announcement-bar",
+          "blocks": [],
+          "defaultContent": [
+            "section.announcement-banner .announcement-banner__content",
+            "section.announcement-banner .announcement-banner__action a"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "Hero",
+          "selector": "div.section-master--bg-image.section-master--blade-hero-slim",
+          "style": null,
+          "blocks": [
+            "hero-m365"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "Copilot Features",
+          "selector": "div.section-master:has(#How-it-works)",
+          "style": null,
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": [
+            "#How-it-works .block-heading__eyebrow",
+            "#How-it-works h2",
+            "a#action-ocd6d02"
+          ]
+        },
+        {
+          "id": "section-4",
+          "name": "News / Discover",
+          "selector": "div.section-master:has(#news)",
+          "style": null,
+          "blocks": [
+            "teaser",
+            "card"
+          ],
+          "defaultContent": [
+            "#news h2"
+          ]
+        },
+        {
+          "id": "section-5",
+          "name": "What's Included",
+          "selector": "div.section-master:has(#Whats-included)",
+          "style": "light-grey",
+          "blocks": [
+            "card-app"
+          ],
+          "defaultContent": [
+            "#Whats-included .block-heading__eyebrow",
+            "#Whats-included h2",
+            "a#action-ocd6d0"
+          ]
+        },
+        {
+          "id": "section-6",
+          "name": "Plans / Pricing",
+          "selector": "div.product-plan-cards",
+          "style": null,
+          "blocks": [
+            "pricing-cards"
+          ],
+          "defaultContent": [
+            "#Plans .block-heading__eyebrow",
+            "#Plans h2"
+          ]
+        },
+        {
+          "id": "section-7",
+          "name": "Get Started",
+          "selector": "div.section-master:has(#Get-started)",
+          "style": null,
+          "blocks": [
+            "card"
+          ],
+          "defaultContent": [
+            "#Get-started .block-heading__eyebrow",
+            "#Get-started h2"
+          ]
+        },
+        {
+          "id": "section-8",
+          "name": "FAQ",
+          "selector": "div.section-master:has(#FAQ)",
+          "style": null,
+          "blocks": [
+            "advanced-accordion"
+          ],
+          "defaultContent": [
+            "#FAQ h2"
+          ]
+        },
+        {
+          "id": "section-9",
+          "name": "Legal Disclaimers",
+          "selector": "div.section-master:has(.footnote)",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.footnote"
+          ]
+        },
+        {
+          "id": "section-10",
+          "name": "Follow Microsoft 365",
+          "selector": "div.section-master.bg--base-neutral:has(.socialfollow)",
+          "style": null,
+          "blocks": [
+            "social-follow"
+          ],
+          "defaultContent": []
+        }
+      ]
     }
   ]
 }

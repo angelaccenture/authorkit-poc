@@ -20,6 +20,15 @@ export default function transform(hookName, element, payload) {
 
     // Remove noscript tags (from captured DOM)
     WebImporter.DOMUtils.remove(element, ['noscript']);
+
+    // M365 page: Remove <template> elements (duplicate pricing data inside card-plan-detail)
+    WebImporter.DOMUtils.remove(element, ['template']);
+
+    // M365 page: Remove video modal overlays (from captured DOM: div.reimagine-modal)
+    WebImporter.DOMUtils.remove(element, ['div.reimagine-modal']);
+
+    // M365 page: Remove empty carousel slides (from captured DOM: div.empty-slide)
+    WebImporter.DOMUtils.remove(element, ['div.empty-slide']);
   }
 
   if (hookName === H.after) {

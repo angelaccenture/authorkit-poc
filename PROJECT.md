@@ -578,19 +578,45 @@ Defined in `page-templates.json`. Source: Microsoft Blog homepage (https://blogs
 | 2 | More News | cards-blog | h2 heading, view more link | — |
 | 3 | Social Footer | — | social links | — |
 
-### Parsers (8)
+### Template: microsoft-365
+
+Defined in `page-templates.json`. Source: Microsoft 365 product page (https://www.microsoft.com/en-us/microsoft-365).
+
+**10 Sections**:
+
+| # | Section | Block(s) | Default Content | Style |
+|---|---------|----------|-----------------|-------|
+| 1 | Announcement Bar | — | announcement text + link | `announcement-bar` |
+| 2 | Hero | hero-m365 | — | — |
+| 3 | Copilot Features | columns | eyebrow, h2, learn more link | — |
+| 4 | News / Discover | teaser, card | h2 heading | — |
+| 5 | What's Included | card-app | eyebrow, h2, explore apps link | `light-grey` |
+| 6 | Plans / Pricing | pricing-cards | eyebrow, h2 | — |
+| 7 | Get Started | card | eyebrow, h2 | — |
+| 8 | FAQ | advanced-accordion | h2 heading | — |
+| 9 | Legal Disclaimers | — | footnotes | — |
+| 10 | Follow Microsoft 365 | social-follow | — | — |
+
+### Parsers (16)
 
 | Parser | File | Source Selectors |
 |--------|------|------------------|
+| advanced-accordion | `parsers/advanced-accordion.js` | `div.ocr-faq` (M365 FAQ) |
 | advanced-carousel | `parsers/advanced-carousel.js` | `reimagine-carousel` |
 | ai-chat | `parsers/ai-chat.js` | `div.msstore-chatonpage.contained` |
 | banner-carousel-slide | `parsers/banner-carousel-slide.js` | `reimagine-carousel-item reimagine-card-banner` |
+| card | `parsers/card.js` | `div.cta-stacked--vertical-cards .card`, `div.three-up-cards .card` (M365) |
+| card-app | `parsers/card-app.js` | `div.card-grid__cards .card` (M365 What's Included) |
 | cards | `parsers/cards.js` | `reimagine-card-feature` |
 | cards-blog | `parsers/cards-blog.js` | `article.m-preview` |
+| columns | `parsers/columns.js` | `div.ocr-accordion.accordion--vertical-product` (M365 static simplification) |
 | hero | `parsers/hero.js` | `reimagine-banner-featured reimagine-card-banner` |
 | hero-carousel-slide | `parsers/hero-carousel-slide.js` | `reimagine-carousel-item reimagine-hero-featured-slider-item` |
+| hero-m365 | `parsers/hero-m365.js` | `div.section-master--bg-image.section-master--blade-hero-slim` (M365 hero) |
+| pricing-cards | `parsers/pricing-cards.js` | `div.carousel.carousel--card-grid` (M365 yearly plans) |
 | quick-links | `parsers/quick-links.js` | `reimagine-secondary-nav[configuration='quicklinks']` |
-| social-follow | `parsers/social-follow.js` | `reimagine-logo-footer` |
+| social-follow | `parsers/social-follow.js` | `reimagine-logo-footer` (homepage), `div.socialfollow` (M365) |
+| teaser | `parsers/teaser.js` | `div.card-horizontal-container` (M365 featured card) |
 
 ### Transformers (4)
 
@@ -613,6 +639,11 @@ npx esbuild tools/importer/import-msft-homepage.js --bundle --format=iife --glob
 npx esbuild tools/importer/import-ms-blog-homepage.js --bundle --format=iife --global-name=CustomImportScript --outfile=tools/importer/import-ms-blog-homepage.bundle.js
 ```
 
+**Microsoft 365**:
+```bash
+npx esbuild tools/importer/import-microsoft-365.js --bundle --format=iife --global-name=CustomImportScript --outfile=tools/importer/import-microsoft-365.bundle.js
+```
+
 ---
 
 ## Image CDN Sources
@@ -632,6 +663,7 @@ npx esbuild tools/importer/import-ms-blog-homepage.js --bundle --format=iife --g
 |------|-------------|------------|
 | Microsoft Homepage | `content/msft-homepage.plain.html` | https://www.microsoft.com/en-us |
 | Microsoft Blog Homepage | `content/index.plain.html` | https://blogs.microsoft.com/ |
+| Microsoft 365 | `content/en-us/microsoft-365.plain.html` | https://www.microsoft.com/en-us/microsoft-365 |
 
 ---
 

@@ -1,89 +1,119 @@
 {
-  "url": "https://blogs.microsoft.com/",
-  "template": "ms-blog-homepage",
+  "url": "https://www.microsoft.com/en-us/microsoft-365",
+  "title": "Microsoft 365 for Individuals: Subscription for Productivity Apps",
   "sections": [
     {
       "id": "section-1",
-      "name": "Featured Posts",
-      "selector": "section.featured-posts",
-      "style": null,
-      "background": "#f2f2f2",
+      "name": "Announcement Bar",
+      "top": 56,
+      "height": 44,
+      "style": "announcement-bar",
       "contentSequences": [
-        {
-          "id": "seq-1-1",
-          "type": "heading",
-          "selector": "section.featured-posts > h2.c-heading-5",
-          "description": "Section heading 'Featured'"
-        },
-        {
-          "id": "seq-1-2",
-          "type": "repeated-items",
-          "selector": "section.featured-posts article.m-preview",
-          "count": 7,
-          "description": "7 featured article cards. Each card has: date, author name/link, title link with heading, optional thumbnail image. Mix of large and smaller grid cards.",
-          "itemStructure": {
-            "image": "a.m-preview-image > img (optional)",
-            "date": "p.c-meta-text > time > abbr[title]",
-            "author": "p.c-meta-text > a.c-hyperlink or plain text",
-            "title": "h3.c-heading-4 > a.f-post-link or h3 > a.f-post-link",
-            "link": "a.f-post-link[href]"
-          }
-        }
+        { "type": "default-content", "description": "Announcement text + CTA link about Copilot webinar" }
       ]
     },
     {
       "id": "section-2",
-      "name": "More News",
-      "selector": "section.recent-posts",
+      "name": "Hero",
+      "top": 100,
+      "height": 708,
       "style": null,
-      "background": "#f2f2f2",
       "contentSequences": [
-        {
-          "id": "seq-2-1",
-          "type": "heading",
-          "selector": "section.recent-posts > h2.c-heading-5",
-          "description": "Section heading 'More News'"
-        },
-        {
-          "id": "seq-2-2",
-          "type": "repeated-items",
-          "selector": "section.recent-posts article.m-preview",
-          "count": 8,
-          "description": "8 recent article cards. Each card has: thumbnail image, date, author, title. Smaller uniform card layout.",
-          "itemStructure": {
-            "image": "a.m-preview-image > img (optional)",
-            "date": "p.c-meta-text > time > abbr[title]",
-            "author": "p.c-meta-text > a.c-hyperlink or plain text",
-            "title": "h3.c-heading-6 > a.f-post-link",
-            "link": "a.f-post-link[href]"
-          }
-        },
-        {
-          "id": "seq-2-3",
-          "type": "cta",
-          "selector": "a.f-view-more",
-          "description": "'View More' link to page 2"
-        }
+        { "type": "block", "description": "Full-width hero with bg image, centered heading, subtitle, 2 CTA buttons. Eyebrow text: Microsoft 365 for individuals" }
       ]
     },
     {
       "id": "section-3",
-      "name": "Social Footer",
-      "selector": ".social-footer-wrap",
+      "name": "Copilot Features",
+      "top": 900,
+      "height": 800,
       "style": null,
-      "background": "#f2f2f2",
       "contentSequences": [
-        {
-          "id": "seq-3-1",
-          "type": "social-links",
-          "selector": ".social-footer .m-social",
-          "description": "'Follow us:' text with RSS subscription link"
-        }
+        { "type": "default-content", "description": "Section eyebrow: HOW IT WORKS" },
+        { "type": "default-content", "description": "H2: Boost your productivity with Copilot" },
+        { "type": "block", "description": "Two-column layout: feature descriptions on left, feature image on right. Static simplification of original accordion." },
+        { "type": "default-content", "description": "CTA link: Learn more about Microsoft 365 for individuals" }
+      ]
+    },
+    {
+      "id": "section-4",
+      "name": "News / Discover",
+      "top": 1900,
+      "height": 900,
+      "style": null,
+      "contentSequences": [
+        { "type": "default-content", "description": "H2: Discover what's happening with Microsoft 365" },
+        { "type": "block", "description": "Large teaser card: Free for students offer (image right, text left, CTA)" },
+        { "type": "block", "description": "2 smaller cards in a grid: blog post card + Copilot card (image top, text below, CTA)" }
+      ]
+    },
+    {
+      "id": "section-5",
+      "name": "What's Included",
+      "top": 3000,
+      "height": 1200,
+      "style": "light-grey",
+      "contentSequences": [
+        { "type": "default-content", "description": "Section eyebrow: WHAT'S INCLUDED" },
+        { "type": "default-content", "description": "H2: Get Microsoft 365 all in one plan" },
+        { "type": "default-content", "description": "Link: Explore all apps" },
+        { "type": "block", "description": "Grid of app cards with icon, name, and description. Top picks view only." }
+      ]
+    },
+    {
+      "id": "section-6",
+      "name": "Plans / Pricing",
+      "top": 4500,
+      "height": 1500,
+      "style": null,
+      "contentSequences": [
+        { "type": "default-content", "description": "Section eyebrow: PLANS" },
+        { "type": "default-content", "description": "H2: Find the plan that's right for you" },
+        { "type": "block", "description": "3 pricing plan cards: Free, Basic, Personal. Each with plan name, price, CTA, feature list, app icons. Static yearly pricing." }
+      ]
+    },
+    {
+      "id": "section-7",
+      "name": "Get Started",
+      "top": 6100,
+      "height": 500,
+      "style": null,
+      "contentSequences": [
+        { "type": "default-content", "description": "Section eyebrow: GET STARTED" },
+        { "type": "default-content", "description": "H2: Take the next step with Microsoft 365" },
+        { "type": "block", "description": "2 teaser cards side by side: Choose your plan + Frontier AI" }
+      ]
+    },
+    {
+      "id": "section-8",
+      "name": "FAQ",
+      "top": 6700,
+      "height": 500,
+      "style": null,
+      "contentSequences": [
+        { "type": "default-content", "description": "H2: Frequently asked questions" },
+        { "type": "block", "description": "Accordion with numbered FAQ items about Copilot and Microsoft 365" }
+      ]
+    },
+    {
+      "id": "section-9",
+      "name": "Legal Disclaimers",
+      "top": 7400,
+      "height": 200,
+      "style": null,
+      "contentSequences": [
+        { "type": "default-content", "description": "Footnotes and legal disclaimer text" }
+      ]
+    },
+    {
+      "id": "section-10",
+      "name": "Follow Microsoft 365",
+      "top": 7700,
+      "height": 48,
+      "style": null,
+      "contentSequences": [
+        { "type": "block", "description": "Social media follow links" }
       ]
     }
-  ],
-  "blockInventory": {
-    "local": ["hero", "card", "columns", "advanced-tabs", "fragment", "header", "footer", "section-metadata", "table", "youtube", "schedule"],
-    "blockCollection": ["cards", "hero"]
-  }
+  ]
 }
