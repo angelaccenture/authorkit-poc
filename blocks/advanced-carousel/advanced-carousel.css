@@ -337,6 +337,7 @@
 }
 
 /* Stories variation — arrows left, play/pause right, no indicators */
+
 /* Attribute selector handles both local preview class="(stories)" and DA production class="stories" */
 .advanced-carousel[class*="stories"] .carousel-navigation-buttons {
   justify-content: flex-start;
