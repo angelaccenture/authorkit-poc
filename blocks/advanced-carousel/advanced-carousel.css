@@ -335,3 +335,27 @@
     width: 100%;
   }
 }
+
+/* Stories variation — arrows left, play/pause right, no indicators */
+/* Attribute selector handles both local preview class="(stories)" and DA production class="stories" */
+.advanced-carousel[class*="stories"] .carousel-navigation-buttons {
+  justify-content: flex-start;
+  padding: 16px 0;
+}
+
+.advanced-carousel[class*="stories"] .carousel-slide-indicators {
+  display: none;
+}
+
+.advanced-carousel[class*="stories"] .carousel-navigation-buttons .slide-prev {
+  order: 1;
+}
+
+.advanced-carousel[class*="stories"] .carousel-navigation-buttons .slide-next {
+  order: 2;
+}
+
+.advanced-carousel[class*="stories"] .carousel-play-pause {
+  order: 3;
+  margin-left: auto;
+}
