@@ -323,6 +323,63 @@ When default content (headings, paragraphs) needs element-specific styling that 
 
 ---
 
+### section-metadata (Section-Level Styling)
+
+The `section-metadata` block applies styles to the **section container** — NOT to individual blocks. Use it for styles that affect the section as a whole or apply to all blocks within it.
+
+**What section-metadata is for (container-level styles):**
+- Background color / background image
+- Section padding and margins
+- Grid layout for child blocks
+- Spacing between blocks
+- Text alignment for the entire section
+- Color scheme (light/dark text)
+
+**What section-metadata is NOT for:**
+- Styling specific to one block — use the block's own CSS instead
+- Individual element styles — use `advanced-text` `[classname]` pattern instead
+
+**Supported metadata keys:**
+
+| Key | Purpose | Example Values |
+|-----|---------|----------------|
+| `Style` | CSS class(es) added to section | `dark`, `light-grey`, `announcement-bar`, `center` |
+| `Grid` | Grid column count for child blocks | `2`, `3`, `4`, `5`, `6` |
+| `Gap` | Gap size class | `gap-s`, `gap-m`, `gap-l` |
+| `Spacing` | Top/bottom padding | `spacing-xs`, `spacing-s`, `spacing-m`, `spacing-l`, `spacing-xl`, `spacing-xxl` |
+| `Container` | Container width class | container value |
+| `Layout` | Layout mode class | layout value |
+| `Background` | Background color or image | Color value, `color-token-*`, or `<picture>` |
+
+**Existing section styles** (defined in `section-metadata.css`):
+
+| Style | Effect |
+|-------|--------|
+| `dark` | Dark background (#1b1b1b), white text, 40px padding |
+| `light-grey` | Light blue tint background, 40px padding, centered h2 |
+| `announcement-bar` | Accent dark bg, white text, compact 12px padding, centered |
+| `center` | Centers all default content text |
+| `spacing-xs` through `spacing-xxl` | Adds top/bottom padding to section |
+| `grid` + `grid-2` through `grid-6` | CSS grid layout for child blocks (1col mobile → 2col tablet → N-col desktop) |
+| `has-background` | Enables absolute-positioned background image |
+
+**When to add new section styles:**
+1. Check if an existing style already handles the need
+2. If not, add a new style class to `section-metadata.css`
+3. Only add styles that affect the **section container** (background, padding, layout)
+4. Update `PROJECT.md` Section Styles table
+
+**Content format:**
+```
+<div class="section-metadata">
+  <div><div>Style</div><div>dark</div></div>
+  <div><div>Grid</div><div>3</div></div>
+  <div><div>Spacing</div><div>spacing-l</div></div>
+</div>
+```
+
+---
+
 ### General Rules for Container Blocks
 
 - **Container blocks consume sibling sections** — The number of items in the `<ul>` list determines how many subsequent sections are consumed as children.
