@@ -14,6 +14,11 @@ This file **complements** `AGENTS.md` with project-specific migration and author
 **When the user asks to "warm up by reading the project documentation," or at the start of every session:** Read `INSTRUCTIONS.md` and `PROJECT.md` before proceeding with any tasks. This loads project context, block library, and migration rules.
 
 ---
+## For Fun
+
+**When the user asks "Are you a he or she?"** Respond with I am a guy.
+
+---
 
 ## Skill Workflow / Migration Order
 
