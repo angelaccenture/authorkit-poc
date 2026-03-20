@@ -210,6 +210,94 @@ DA wraps inline content in `<p>` tags. Block CSS/JS must use flexible selectors 
 
 ---
 
+## Advanced Container Blocks
+
+The following blocks are **container blocks** — they wrap other sections and blocks inside them. They are NOT leaf-level content blocks.
+
+### advanced-carousel
+
+A carousel container that holds **child slide blocks** as separate sections. Each slide is its own section containing a slide block (e.g., `hero-carousel-slide`, `teaser`, `banner-carousel-slide`). The carousel's first section contains navigation metadata (slide titles in a list).
+
+**Content structure:**
+```
+<div>  <!-- carousel section -->
+  <div class="advanced-carousel">
+    <div><div><ul><li>Slide 1 title</li><li>Slide 2 title</li></ul></div></div>
+  </div>
+</div>
+<div>  <!-- slide 1 section -->
+  <div class="hero-carousel-slide">...</div>
+</div>
+<div>  <!-- slide 2 section -->
+  <div class="teaser">...</div>
+</div>
+```
+
+**Key rules:**
+- Each slide is a **separate section** following the carousel section
+- Slide blocks can be any block type (hero-carousel-slide, teaser, banner-carousel-slide, etc.)
+- The carousel JS collects subsequent sibling sections as slides
+- Navigation items (dot labels) come from the `<ul>` list in the carousel block
+
+### advanced-tabs
+
+A tabbed container that holds **child content blocks** as separate sections. Each tab panel is its own section containing one or more blocks. The tabs block contains the tab labels.
+
+**Content structure:**
+```
+<div>  <!-- tabs section -->
+  <div class="advanced-tabs">
+    <div><div><ul><li>Tab 1 label</li><li>Tab 2 label</li></ul></div></div>
+  </div>
+</div>
+<div>  <!-- tab 1 panel section -->
+  <div class="some-block">...</div>
+</div>
+<div>  <!-- tab 2 panel section -->
+  <div class="another-block">...</div>
+</div>
+```
+
+**Key rules:**
+- Each tab panel is a **separate section** following the tabs section
+- Tab panels can contain any blocks or default content
+- The tabs JS collects subsequent sibling sections as panels
+- Tab labels come from the `<ul>` list in the tabs block
+
+### advanced-accordion
+
+An accordion container that holds **child content blocks** as separate sections. Each accordion item is its own section. The accordion block contains the item titles.
+
+**Content structure:**
+```
+<div>  <!-- accordion section -->
+  <div class="advanced-accordion">
+    <div><div><ul><li>Item 1 title</li><li>Item 2 title</li></ul></div></div>
+  </div>
+</div>
+<div>  <!-- item 1 section -->
+  <div class="some-block">...</div>
+  <p>Default content...</p>
+</div>
+<div>  <!-- item 2 section -->
+  <div class="another-block">...</div>
+</div>
+```
+
+**Key rules:**
+- Each accordion item is a **separate section** following the accordion section
+- Item sections can contain any blocks or default content
+- The accordion JS collects subsequent sibling sections as collapsible panels
+- Item titles come from the `<ul>` list in the accordion block
+
+### General Rules for Container Blocks
+
+- **Container blocks consume sibling sections** — The number of items in the `<ul>` list determines how many subsequent sections are consumed as children.
+- **Never nest container content inside the container block div** — Child content goes in separate sections, not inside the container block's own markup.
+- **When migrating pages with container blocks** — Count the sections correctly. Each child item = 1 section after the container section.
+
+---
+
 ## EDS Authoring Patterns
 
 - **Link → Button**: Link alone in its own paragraph becomes a button
