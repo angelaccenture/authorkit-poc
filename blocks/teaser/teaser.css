@@ -12,7 +12,6 @@
   .teaser-inner {
     display: flex;
     flex-direction: column;
-    height: 100%;
   }
 
   .teaser-picture-container {
@@ -32,7 +31,7 @@
   }
 
   .teaser-content-container {
-    padding: 24px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -65,8 +64,7 @@
   }
 
   .teaser-cta-container {
-    padding: 0 24px 24px;
-    margin: 0;
+    margin-top: auto;
 
     a {
       display: inline-flex;
@@ -106,21 +104,19 @@
     .teaser-picture-container {
       flex: 1 1 0%;
       padding: 8px 8px 8px 0;
+      min-width: 0;
 
       img {
         border-radius: 16px;
-        height: 100%;
-        aspect-ratio: auto;
+        aspect-ratio: 4 / 3;
       }
     }
 
     .teaser-content-container {
       flex: 1 1 0%;
-      gap: 24px;
-    }
-
-    .teaser-cta-container {
-      padding: 0;
+      padding: 24px;
+      gap: 16px;
+      justify-content: space-between;
     }
   }
 }

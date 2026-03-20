@@ -27,7 +27,8 @@ export default function init(el) {
     }
   }
 
-  // Decorate CTA
+  // Decorate CTA — keep it inside content container so it doesn't
+  // become a third flex column at desktop row-reverse layout
   const contentContainer = inner.querySelector('.teaser-content-container');
   if (!contentContainer) return;
   const ctaPara = contentContainer.querySelector('p:last-of-type');
@@ -35,5 +36,4 @@ export default function init(el) {
   const cta = ctaPara.querySelector('a');
   if (!cta) return;
   ctaPara.classList.add('teaser-cta-container');
-  inner.append(ctaPara);
 }

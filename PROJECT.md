@@ -1,9 +1,8 @@
-# Jet2 Holidays — EDS Project Reference -- Angel to update this for MSFT
+# Microsoft — EDS Project Reference
 
-**Source site**: https://www.jet2holidays.com/
-**Content path prefix**: `/destinations/`
+**Source site**: https://www.microsoft.com/en-us
+**Content path prefix**: `/en-us/`
 **Content directory**: `/content/`
-**Page inventory**: `/PAGES.txt`
 
 ---
 
@@ -11,17 +10,16 @@
 
 | Property | Value |
 |----------|-------|
-| Primary color | `#126bea` (Jet2 blue) |
-| Accent color | `#fdb900` (Jet2 yellow) |
-| Promo color | `#d6291e` (Jet2 red) |
-| Brand holidays | `#2378cd` |
-| Body font | Open Sans (Google Fonts, weights 400/600/700) |
-| Display font | Oswald (declared but not loaded — fallback only) |
-| Base body size | 14px (`--body-font-size-s`) |
-| Breakpoint — tablet | 768px (cards 2-col) |
-| Breakpoint — desktop | 992px (nav, multi-column, heading sizes) |
-| Content max-width | 1200px |
-| Container max-width | 1400px |
+| Primary color | `#0078d4` (Microsoft blue) |
+| Accent hover | `#0067b8` (darker blue) |
+| Text color | `#000` (body), `#0e1726` (headings) |
+| Muted text | `#616161` |
+| Body font | Segoe UI Variable Text / Segoe UI (system font, no web font loading) |
+| Display font | Segoe UI Variable Display (system font) |
+| Base body size | 16px (`--body-font-size-m`) |
+| Breakpoint — tablet | 768px |
+| Breakpoint — large desktop | 1440px |
+| Content max-width | 1600px |
 
 ---
 
@@ -33,118 +31,90 @@ All defined in `/styles/styles.css` as CSS custom properties on `:root`.
 
 | Token | Value |
 |-------|-------|
-| `--color-blue-light` | `#f0f7ff` |
-| `--color-blue-light-hover` | `#d9ecff` |
-| `--color-blue-light-active` | `#bbdfff` |
-| `--color-blue-base` | `#126bea` |
-| `--color-blue-hover` | `#185bd2` |
-| `--color-blue-active` | `#1948a8` |
-| `--color-blue-dark` | `#1a4084` |
-| `--color-blue-darker` | `#0e1f47` |
-| `--color-red-light` | `#fef2f1` |
-| `--color-red-base` | `#d6291e` |
-| `--color-red-hover` | `#b42219` |
-| `--color-red-active` | `#911f19` |
-| `--color-green-light` | `#f1fef6` |
-| `--color-green-base` | `#008542` |
-| `--color-orange-light` | `#fffbf0` |
-| `--color-orange-base` | `#c45000` |
-| `--color-yellow-base` | `#fdb900` |
-| `--color-slate-dark` | `#252a31` |
-| `--color-slate-base` | `#4f5e71` |
-| `--color-slate-light` | `#697d95` |
-| `--color-stone-light` | `#f8f9fc` |
-| `--color-stone-base` | `#e9ebf1` |
-| `--color-stone-dark` | `#cfd4de` |
-| `--color-stone-hover` | `#f3f4f8` |
-| `--color-stone-active` | `#e8eaf1` |
-| `--color-white` | `#fff` |
-| `--color-brand-holidays` | `#2378cd` |
+| `--color-text` | `#000` |
+| `--color-text-dark` | `#0e1726` |
+| `--color-text-muted` | `#616161` |
+| `--color-text-light` | `#f4fafd` |
+| `--color-link` | `#0078d4` |
+| `--color-link-hover` | `#0067b8` |
+| `--color-background` | `#fff` |
+| `--color-background-card` | `#fff` |
+| `--color-accent` | `#0078d4` |
+| `--color-accent-hover` | `#0067b8` |
+| `--color-accent-dark` | `#0072c6` |
+| `--color-border` | `#e3e3e3` |
+| `--color-badge-blue` | `#dceef8` |
+| `--color-badge-yellow` | `#ffb900` |
+| `--color-section-light-grey` | `#dceef8` |
+| `--color-footer-bg` | `#f2f2f2` |
 
 ### Semantic Aliases
 
 | Token | Maps to |
 |-------|---------|
-| `--background-color` | `--color-white` |
-| `--light-color` | `--color-stone-light` |
-| `--dark-color` | `--color-slate-dark` |
-| `--text-color` | `--color-slate-dark` |
-| `--text-secondary-color` | `--color-slate-base` |
-| `--text-inverse-color` | `--color-white` |
-| `--link-color` | `--color-blue-base` |
-| `--link-hover-color` | `--color-blue-hover` |
-| `--link-active-color` | `--color-blue-active` |
-| `--border-color` | `--color-stone-base` |
-| `--border-color-strong` | `--color-slate-light` |
-| `--overlay-color` | `rgb(37 42 49 / 70%)` |
-| `--promo-color` | `--color-red-base` |
-| `--accent-color` | `--color-yellow-base` |
+| `--color-background` | `#fff` |
+| `--color-text` | `#000` (body text) |
+| `--color-text-dark` | `#0e1726` (headings) |
+| `--color-link` | `#0078d4` (Microsoft blue) |
+| `--color-link-hover` | `#0067b8` |
+| `--color-border` | `#e3e3e3` |
 
 ### Spacing
 
 | Token | Value |
 |-------|-------|
-| `--spacing-xxs` | `0.125rem` (2px) |
-| `--spacing-xs` | `0.25rem` (4px) |
-| `--spacing-sm` | `0.5rem` (8px) |
-| `--spacing-md` | `0.75rem` (12px) |
-| `--spacing-lg` | `1rem` (16px) |
-| `--spacing-xl` | `1.5rem` (24px) |
-| `--spacing-2xl` | `2rem` (32px) |
-| `--spacing-3xl` | `2.5rem` (40px) |
-| `--spacing-4xl` | `3rem` (48px) |
+| `--spacing-xxl` | `48px` |
+| `--spacing-xl` | `32px` |
+| `--spacing-l` | `24px` |
+| `--spacing-m` | `16px` |
+| `--spacing-s` | `8px` |
+| `--spacing-xs` | `4px` |
 
-> **Note**: This project uses `sm/md/lg` suffix convention (not `s/m/l`).
+> **Note**: This project uses `xs/s/m/l/xl/xxl` suffix convention.
 
 ### Typography
 
-| Token | Mobile | Desktop (≥992px) |
+| Token | Mobile | Desktop (≥768px) |
 |-------|--------|-------------------|
-| `--heading-font-size-xxl` | 30px | 36px |
-| `--heading-font-size-xl` | 24px | 30px |
-| `--heading-font-size-l` | 18px | 24px |
-| `--heading-font-size-m` | 16px | 18px |
-| `--heading-font-size-s` | 14px | 16px |
-| `--heading-font-size-xs` | 12px | 14px |
+| `--heading-font-size-xxl` | 32px | 40px |
+| `--heading-font-size-xl` | 28px | 32px |
+| `--heading-font-size-l` | 24px | — |
+| `--heading-font-size-m` | 20px | — |
+| `--heading-font-size-s` | 18px | — |
+| `--heading-font-size-xs` | 16px | — |
+| `--body-font-size-xl` | 20px | — |
 | `--body-font-size-l` | 18px | — |
 | `--body-font-size-m` | 16px | — |
-| `--body-font-size-s` | 14px | — |
-| `--body-font-size-xs` | 12px | — |
+| `--body-font-size-s` | 15px | — |
+| `--body-font-size-xs` | 14px | — |
 
 ### Radius, Shadows, Transitions
 
 | Token | Value |
 |-------|-------|
-| `--radius-sm` | `0.25rem` |
-| `--radius-md` | `0.375rem` |
-| `--radius-lg` | `0.75rem` |
-| `--radius-full` | `999rem` |
-| `--shadow-sm` | level1 (4px blur) |
-| `--shadow-md` | level2 (16px blur) |
-| `--shadow-lg` | level3 (24px blur) |
-| `--transition-fast` | 100ms ease |
-| `--transition-base` | 200ms ease |
-| `--transition-slow` | 300ms ease |
+| `--card-border-radius` | `16px` |
+| `--card-shadow` | `0 0 2px 0 rgb(0 0 0 / 12%), 0 2px 4px 0 rgb(0 0 0 / 14%)` |
+| `--button-border-radius` | `8px` |
+| `--transition-base` | `0.2s ease` |
+| `--heading-letter-spacing` | `-0.8px` |
+| `--body-letter-spacing` | `-0.48px` |
+| `--button-letter-spacing` | `-0.3px` |
 
 ### Component Tokens
 
 | Token | Value |
 |-------|-------|
-| `--button-border-radius` | `--radius-md` |
-| `--button-font-weight` | 600 |
-| `--button-padding-sm` | `0.5rem 0.75rem` |
-| `--button-padding-md` | `0.75rem 1rem` |
-| `--button-padding-lg` | `0.875rem 1.125rem` |
-| `--card-border` | `1px solid --color-stone-dark` |
-| `--card-border-radius` | `--radius-lg` |
-| `--card-background` | `--color-white` |
-| `--card-padding` | `1rem` |
-| `--input-border` | `1px solid --border-color-strong` |
-| `--input-border-radius` | `--radius-md` |
-| `--content-max-width` | `1200px` |
-| `--container-max-width` | `1400px` |
-| `--content-padding` | 24px mobile / 32px desktop |
-| `--nav-height` | `64px` |
+| `--button-border-radius` | `8px` |
+| `--button-padding` | `8px 12px` |
+| `--button-padding-large` | `12px 13px` |
+| `--button-font-size` | `15px` |
+| `--button-min-height` | `40px` |
+| `--button-min-width` | `40px` |
+| `--card-border-radius` | `16px` |
+| `--card-shadow` | level1 card shadow |
+| `--content-max-width` | `1600px` |
+| `--section-padding` | `0 24px` |
+| `--header-height` | `0px` |
 
 ---
 
@@ -154,11 +124,10 @@ Defined in `/styles/styles.css`. Authoring pattern in `/scripts/scripts.js`:
 
 | Variant | Authoring | Appearance |
 |---------|-----------|------------|
-| **Primary** | `**[link text](url)**` (`<strong>` wraps link) | Blue bg, white text |
-| **Secondary** | `*[link text](url)*` (`<em>` wraps link) | White bg, grey border |
-| **Accent** | `***[link text](url)***` (`<strong>` + `<em>`) | Yellow bg, dark text |
+| **Primary** | `**[link text](url)**` (`<strong>` wraps link) | Blue bg (#0078d4), white text |
+| **Secondary** | `*[link text](url)*` (`<em>` wraps link) | White bg, dark text, hover #f0f0f0 |
 
-All buttons: 14px font, 600 weight, `--radius-md` corners, `--transition-base` hover.
+All buttons: 15px font, 600 weight, 8px border-radius, -0.3px letter-spacing, 40px min-height.
 
 ---
 
@@ -166,73 +135,87 @@ All buttons: 14px font, 600 weight, `--radius-md` corners, `--transition-base` h
 
 Applied via `section-metadata` block with `Style: <name>`. Defined in `/styles/styles.css`.
 
-| Style | Class | Background | Text color | Padding |
-|-------|-------|------------|------------|---------|
-| `light` | `.section.light` | `--color-stone-light` | default | 40px 0 |
-| `highlight` | `.section.highlight` | `--color-stone-light` | default | 40px 0 |
-| `grey` | `.section.grey` | `--color-stone-light` | default | 40px 0 |
-| `dark` | `.section.dark` | `--color-slate-dark` | inverse white | 40px 0 |
-| `brand` | `.section.brand` | `--color-brand-holidays` | inverse white | 40px 0 |
-| `promo` | `.section.promo` | `--promo-color` (red) | inverse white | 16px 0 |
-| `yellow` | `.section.yellow` | `--accent-color` | default | 40px 0 |
+| Style | Class | Background | Text color |
+|-------|-------|------------|------------|
+| `dark` | `.section.dark` | Dark | Inverse white |
+| `light-grey` | `.section.light-grey` | `--color-section-light-grey` (#dceef8) | Default |
+| `announcement-bar` | `.section.announcement-bar` | Announcement styling | Default |
 
 ---
 
 ## Block Reference
 
-### hero
+### advanced-carousel
 
-**Location**: `/blocks/hero/`
+**Location**: `/blocks/advanced-carousel/`
 
 | Variant | Class | Purpose |
 |---------|-------|---------|
-| Default | `.hero` | Full-width background image with h1 overlay |
+| Default | `.advanced-carousel` | Carousel container with navigation dots and auto-play |
 
-**Authoring**: Auto-built by `scripts.js` when a `<picture>` precedes an `<h1>` in the first section. No explicit block table needed.
+**Authoring**: Wraps child slide blocks (hero-carousel-slide, teaser, etc.) in a scrollable carousel with dot indicators.
 
-**Features**: CSS-only (no JS decoration). Background image via absolute positioning. h1 centered with `--content-max-width`.
+**Features**: Scroll-snap carousel, dot navigation, auto-play with pause on hover, keyboard navigation.
 
-**Responsive**: Padding 40px 24px (mobile) → 40px 32px (desktop ≥992px). Min-height 300px.
+**Responsive**: Full-width at all breakpoints.
 
 ---
 
-### breadcrumbs
+### hero-carousel-slide
 
-**Location**: `/blocks/breadcrumbs/`
-
-| Variant | Class | Purpose |
-|---------|-------|---------|
-| Default | `.breadcrumbs` | Breadcrumb trail + h1 page title, auto-generated from URL path |
-
-**Authoring**: Auto-built by `scripts.js` on every page. No authored content needed — the trail and h1 are derived from the URL path segments.
-
-**Features**: Schema.org BreadcrumbList structured data. Chevron SVG separators. Links for all ancestors, plain text for current page. h1 matches last breadcrumb label. Segment-to-label conversion: `"algarve"` → `"Algarve holidays"`, `"destinations"` → `"Destinations"`.
-
-**Styles**: Breadcrumb links 14px/600/underline in secondary text color. Chevron separators 16px with 12px horizontal margin. h1 is 30px/600/38px line-height. Block padding 20px top, 32px bottom.
-
-**Responsive**: Single layout at all widths.
-
----
-
-### accordion-faq
-
-**Location**: `/blocks/accordion-faq/`
+**Location**: `/blocks/hero-carousel-slide/`
 
 | Variant | Class | Purpose |
 |---------|-------|---------|
-| Default | `.accordion-faq` | FAQ accordion with native `<details>`/`<summary>` |
+| Default | `.hero-carousel-slide` | Full-width hero slide with background image, heading, description, CTA |
 
 **Authoring**:
-| Accordion Faq |
+| Hero Carousel Slide |
 |---|
-| Question \| Answer |
-| Question \| Answer |
+| Image \| h2 heading, description, CTA link |
 
-**Features**: Native `<details>`/`<summary>` elements. Chevron arrow via CSS `::after` pseudo-element. Bottom border separators. Focus-visible outline. Hover color change.
+**Features**: Full-bleed background image with gradient overlay. Text overlay at bottom-left. CTA button styled as primary blue.
 
-**Responsive**: Single-column at all widths. Min-height 48px per item.
+**Responsive**: Min-height 400px (mobile) → 480px (tablet) → 540px (desktop). Heading 28px → 36px → 40px.
 
-**Parser**: `parsers/accordion-faq.js` — Targets `.accordion` selector on source.
+---
+
+### teaser
+
+**Location**: `/blocks/teaser/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.teaser` | Horizontal card with image + content + CTA (Microsoft card-banner style) |
+
+**Authoring**:
+| Teaser |
+|---|
+| Image |
+| h2/h3 heading, description, CTA link |
+
+**Features**: Card with border-radius, box-shadow, hover lift effect. Image with 4:3 aspect ratio. CTA button inside content container. Row-reverse layout at desktop (image right, content left).
+
+**Responsive**: Column layout (mobile) → row-reverse (≥768px). Border-radius 16px → 24px. Image border-radius 8px → 16px. Content padding 16px → 24px.
+
+---
+
+### card
+
+**Location**: `/blocks/card/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.card` | Individual feature card (Microsoft reimagine-card-feature style) |
+
+**Authoring**:
+| Card |
+|---|
+| Image \| h3 heading, description, CTA link |
+
+**Features**: Vertical card with image, heading, description, and link. Card shadow and border. Hover lift effect.
+
+**Responsive**: Stacks vertically at all widths, used inside grid layouts.
 
 ---
 
@@ -242,37 +225,178 @@ Applied via `section-metadata` block with `Style: <name>`. Defined in `/styles/s
 
 | Variant | Class | Purpose |
 |---------|-------|---------|
-| Default | `.cards` | Generic auto-fill card grid (boilerplate) |
+| Default | `.cards` | Auto-fill card grid (boilerplate) |
 
 **Authoring**:
 | Cards |
 |---|
 | Image \| Body content |
 
-**Features**: `auto-fill` grid with `minmax(257px, 1fr)`. Image optimization via `createOptimizedPicture`. Separates image column (`.cards-card-image`) from body (`.cards-card-body`).
+**Features**: `auto-fill` grid with `minmax(257px, 1fr)`. Image optimization via `createOptimizedPicture`.
 
 **Responsive**: Auto-fills based on available width.
 
 ---
 
-### cards-destination
+### cards-blog
 
-**Location**: `/blocks/cards-destination/`
+**Location**: `/blocks/cards-blog/`
 
 | Variant | Class | Purpose |
 |---------|-------|---------|
-| Default | `.cards-destination` | Destination cards with pin icon, location line, features |
+| Default | `.cards-blog` | Blog article card grid (Microsoft Blog style) |
 
 **Authoring**:
-| Cards Destination |
+| Cards Blog |
 |---|
-| Image \| h3 title, location, description, feature list |
+| Image \| Category tag, h3 linked title, description, date |
 
-**Features**: SVG pin icon injected before location paragraph. Image optimization. Location line styled with icon + secondary color. Feature list with `·` bullet via `::before`. 16:9 aspect ratio images.
+**Features**: Blog-specific card layout with category badges, date metadata.
 
-**Responsive**: 1 col (mobile) → 2 col (≥768px) → 3 col (≥992px). Gap 24px → 32px.
+**Responsive**: Auto-fill grid layout.
 
-**Parser**: `parsers/cards-destination.js` — Targets `.accommodation-teaser`, `.resorts-teaser`, `.blog-teaser`, `.poi-teaser` selectors.
+**Parser**: `parsers/cards-blog.js` — Targets `article.m-preview` selectors.
+
+---
+
+### ai-chat
+
+**Location**: `/blocks/ai-chat/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.ai-chat` | AI assistant / Copilot chat prompt placeholder |
+
+**Authoring**:
+| AI Chat |
+|---|
+| Heading, description, prompt input placeholder |
+
+**Features**: Chat interface placeholder with prompt styling.
+
+**Responsive**: Full-width, responsive padding.
+
+**Parser**: `parsers/ai-chat.js` — Targets `div.msstore-chatonpage.contained`.
+
+---
+
+### quick-links
+
+**Location**: `/blocks/quick-links/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.quick-links` | Horizontal pill-style navigation for product categories |
+
+**Authoring**:
+| Quick Links |
+|---|
+| Link 1 \| Link 2 \| Link 3 ... |
+
+**Features**: Horizontal scrollable pill links. Icon support. Active state styling.
+
+**Responsive**: Horizontal scroll at all widths.
+
+**Parser**: `parsers/quick-links.js` — Targets `reimagine-secondary-nav[configuration='quicklinks']`.
+
+---
+
+### hero
+
+**Location**: `/blocks/hero/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.hero` | Full-width promotional banner (Microsoft banner-featured style) |
+
+**Authoring**:
+| Hero |
+|---|
+| Image \| h2 heading, description, CTA link |
+
+**Features**: Full-bleed background image with text overlay.
+
+**Responsive**: Adjusts padding and heading size at breakpoints.
+
+**Parser**: `parsers/hero.js` — Targets `reimagine-banner-featured reimagine-card-banner`.
+
+---
+
+### banner-carousel-slide
+
+**Location**: `/blocks/banner-carousel-slide/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.banner-carousel-slide` | Full-bleed background image slide with dark gradient overlay |
+
+**Authoring**:
+| Banner Carousel Slide |
+|---|
+| Image \| h2 heading, description, CTA link |
+
+**Features**: Absolute-positioned background image. Dark gradient overlay from bottom. White text. CTA button with white background.
+
+**Responsive**: Min-height 400px → 480px → 540px. Heading 28px → 36px → 40px.
+
+**Parser**: `parsers/banner-carousel-slide.js` — Targets `reimagine-carousel-item reimagine-card-banner`.
+
+> **Note**: In the homepage content, the bottom carousel slides have been converted to use the `teaser` block instead for the card-style layout.
+
+---
+
+### social-follow
+
+**Location**: `/blocks/social-follow/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.social-follow` | Social media follow links (Follow Microsoft section) |
+
+**Authoring**:
+| Social Follow |
+|---|
+| h2 heading, social media links |
+
+**Features**: Social media icon links in a horizontal layout.
+
+**Responsive**: Centered, wraps at smaller widths.
+
+**Parser**: `parsers/social-follow.js` — Targets `reimagine-logo-footer`.
+
+---
+
+### advanced-accordion
+
+**Location**: `/blocks/advanced-accordion/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.advanced-accordion` | Collapsible accordion sections |
+
+**Features**: Native `<details>`/`<summary>` elements. Animated expand/collapse.
+
+---
+
+### advanced-tabs
+
+**Location**: `/blocks/advanced-tabs/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.advanced-tabs` | Tabbed content panels |
+
+**Features**: Tab navigation with panel switching. Keyboard accessible.
+
+---
+
+### advanced-text
+
+**Location**: `/blocks/advanced-text/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.advanced-text` | Rich text content with enhanced styling |
 
 ---
 
@@ -289,127 +413,57 @@ Applied via `section-metadata` block with `Style: <name>`. Defined in `/styles/s
 |---|
 | Col 1 \| Col 2 \| ... |
 
-**Features**: Image column detection (`.columns-img-col`). Column count class (`.columns-N-cols`). Image-first on mobile via `order`.
-
-**Responsive**: Stacked (mobile) → side-by-side with 24px gap (≥992px).
-
----
-
-### columns-destination
-
-**Location**: `/blocks/columns-destination/`
-
-| Variant | Class | Purpose |
-|---------|-------|---------|
-| 2-column | `.columns-destination.columns-destination-2-cols` | About text + image with Read More toggle |
-| 1-column (info grid) | `.columns-destination.columns-destination-1-cols` | Icon grid with title + description per item |
-
-**Authoring (2-col)**:
-| Columns Destination |
-|---|
-| Image \| h2 title, paragraphs |
-
-**Authoring (1-col)**:
-| Columns Destination |
-|---|
-| Icon \| h3 title, description |
-| Icon \| h3 title, description |
-
-**Features**:
-- *2-col*: Read More/Read Less toggle with `-webkit-line-clamp: 8`. Uses `waitForBlockCSS()` to avoid race condition. Image column with 8px border-radius.
-- *1-col*: CSS Grid with icon circles (60px, `--radius-full`, `rgb(248 249 252)` bg). Icons 24x24. `display: contents` for grid layout.
-
-**Responsive**:
-- *2-col*: Stacked with 16px text padding-top (mobile) → side-by-side with 32px gap, 40px text padding-top (≥992px).
-- *1-col*: 2-col grid with 24px gap (mobile) → 3-col with 40px gap (≥992px).
-
-**Parser**: `parsers/columns-destination.js` — Targets `.destination-description`, `.icon-grid-v2`, `.email-sign-up-v2` selectors.
-
----
-
-### destination-map
-
-**Location**: `/blocks/destination-map/`
-
-| Variant | Class | Purpose |
-|---------|-------|---------|
-| Default | `.destination-map` | Resort links in rounded bordered card |
-
-**Authoring**:
-| Destination Map |
-|---|
-| h2 heading, list of resort links |
-
-**Features**: Pulls preceding section heading into the block via JS. Rounded card with 12px radius, 1px border. Flex-wrap link list with 16px gap. Links styled as underlined secondary text.
-
-**Responsive**: Single layout at all widths, links wrap naturally.
-
-**Parser**: `parsers/destination-map.js` — Targets `.title-links` selector.
-
----
-
-### table-weather
-
-**Location**: `/blocks/table-weather/`
-
-| Variant | Class | Purpose |
-|---------|-------|---------|
-| Default | `.table-weather` | Horizontal scroll bar chart for monthly weather |
-
-**Authoring**:
-| Table Weather |
-|---|
-| Jan \| Feb \| Mar \| ... |
-| 15°C \| 16°C \| 18°C \| ... |
-
-**Features**: Bar height proportional to temperature (97–200px range). Inline SVG sun icon. Horizontal scroll with snap. Custom scrollbar styling. Two rows: months header, temperatures.
-
-**Responsive**: Fixed 100px-wide cards, horizontal scroll at all widths. Scroll snap alignment.
-
-**Parser**: `parsers/table-weather.js` — Targets `.climate-bar-chart` selector.
-
----
-
-### cards-promo
-
-**Location**: `/blocks/cards-promo/`
-
-| Variant | Class | Purpose |
-|---------|-------|---------|
-| Default | `.cards-promo` | Destination promo card grid (image + linked heading) |
-
-**Authoring**:
-| Cards Promo |
-|---|
-| Image \| h3 linked destination name |
-
-**Features**: Image optimization via `createOptimizedPicture`. Separates image column (`.cards-promo-card-image`) from body (`.cards-promo-card-body`). `<ul>` list layout.
-
-**Responsive**: Auto-fills based on available width.
-
-**Parser**: `parsers/cards-promo.js` — Targets `.content-scrollable` selector.
-
----
-
-### columns-promo
-
-**Location**: `/blocks/columns-promo/`
-
-| Variant | Class | Purpose |
-|---------|-------|---------|
-| Default | `.columns-promo` | Two-column promo: image + heading + text + CTA |
-| Brand | `.columns-promo.brand` | Same layout, uses `brand` section style (blue bg, white text) |
-
-**Authoring**:
-| Columns Promo |
-|---|
-| Image \| h2 heading, description, CTA link |
-
-**Features**: Column count class (`.columns-promo-N-cols`). Image column detection (`.columns-promo-img-col`).
+**Features**: Image column detection (`.columns-img-col`). Column count class (`.columns-N-cols`).
 
 **Responsive**: Stacked (mobile) → side-by-side (desktop).
 
-**Parser**: `parsers/columns-promo.js` — Targets `.media-block` selector. Detects `.brand--beach` class for brand variant.
+---
+
+### table
+
+**Location**: `/blocks/table/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.table` | Data table with header row |
+
+**Features**: Responsive table with horizontal scroll. Header row styling.
+
+---
+
+### modal
+
+**Location**: `/blocks/modal/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.modal` | Modal dialog overlay |
+
+**Features**: Overlay with backdrop. Close button. Focus trapping. Escape key close.
+
+---
+
+### youtube
+
+**Location**: `/blocks/youtube/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.youtube` | YouTube video embed |
+
+**Features**: Responsive iframe embed. Lazy-loaded. Privacy-enhanced mode.
+
+---
+
+### form
+
+**Location**: `/blocks/form/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.form` | AEM Forms integration |
+
+**Features**: JSON-driven form rendering. Multiple field types.
 
 ---
 
@@ -419,11 +473,9 @@ Applied via `section-metadata` block with `Style: <name>`. Defined in `/styles/s
 
 | Variant | Class | Purpose |
 |---------|-------|---------|
-| Default | `.header` | Site navigation with hamburger menu |
+| Default | `.header` | Site navigation |
 
-**Features**: Fragment-loaded from `/nav`. Three nav zones: brand, sections, tools. Hamburger toggle on mobile. Dropdown support via `aria-expanded`. Escape key and focus-out closing. Keyboard accessibility for dropdowns.
-
-**Responsive**: Hamburger (mobile) → horizontal nav (≥992px).
+**Features**: Fragment-loaded from `/nav`. Three nav zones: brand, sections, tools. Hamburger toggle on mobile.
 
 ---
 
@@ -435,7 +487,7 @@ Applied via `section-metadata` block with `Style: <name>`. Defined in `/styles/s
 |---------|-------|---------|
 | Default | `.footer` | Site footer |
 
-**Features**: Fragment-loaded from `/footer`. Minimal JS — loads fragment and appends children.
+**Features**: Fragment-loaded from `/footer`.
 
 ---
 
@@ -447,23 +499,47 @@ Applied via `section-metadata` block with `Style: <name>`. Defined in `/styles/s
 |---------|-------|---------|
 | Default | `.fragment` | Generic fragment loader utility |
 
-**Features**: Fetches `.plain.html`, decorates content (sections, blocks, buttons, icons), loads sections. Resets media paths to fragment base. Used by header and footer blocks, and auto-detected for `*/fragments/*` links.
+**Features**: Fetches `.plain.html`, decorates content (sections, blocks, buttons, icons), loads sections.
 
 ---
 
-## Icons
+### section-metadata
 
-Located in `/icons/`. Used via `:icon-name:` syntax in authored content.
+**Location**: `/blocks/section-metadata/`
 
-| File | Icon | Usage |
-|------|------|-------|
-| `airplane-tilt.svg` | Airplane | Travel/flights |
-| `beer.svg` | Beer | Nightlife/entertainment |
-| `clock.svg` | Clock | Time/duration |
-| `currency-gbp.svg` | GBP symbol | Pricing |
-| `language.svg` | Language | Language info |
-| `meal.svg` | Meal | Dining/food |
-| `search.svg` | Search | Search functionality |
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.section-metadata` | Section configuration (style, layout metadata) |
+
+---
+
+### button
+
+**Location**: `/blocks/button/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.button` | Standalone button component |
+
+---
+
+### tags
+
+**Location**: `/blocks/tags/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.tags` | Tag/category badges |
+
+---
+
+### schedule
+
+**Location**: `/blocks/schedule/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.schedule` | Event schedule display |
 
 ---
 
@@ -471,96 +547,80 @@ Located in `/icons/`. Used via `:icon-name:` syntax in authored content.
 
 Located in `/tools/importer/`.
 
-### Template: destination-region
+### Template: msft-homepage
 
-Defined in `page-templates.json`. Source: Jet2 Holidays destination area pages (e.g., Algarve).
+Defined in `page-templates.json`. Source: Microsoft corporate homepage (https://www.microsoft.com/en-us).
 
-**11 Sections**:
+**10 Sections**:
 
 | # | Section | Block(s) | Default Content | Style |
 |---|---------|----------|-----------------|-------|
-| 1 | Destination Description | columns-destination | — | — |
-| 2 | Popular Resorts Links | destination-map | — | — |
-| 3 | Hotels | cards-destination | — | — |
-| 4 | Destination Information | columns-destination | h2 | — |
-| 5 | Content Highlights | — | h2, p | `grey` |
-| 6 | Resorts | cards-destination | — | — |
-| 7 | Blog Teaser | cards-destination | h2, p, a | — |
-| 8 | Things to Do | cards-destination | — | — |
-| 9 | Local Weather | table-weather | — | — |
-| 10 | FAQs | accordion-faq | h2 | — |
-| 11 | Email Sign Up | columns-destination | — | — |
+| 1 | Announcement Bar | — | announcement text + link | `announcement-bar` |
+| 2 | Hero Carousel | advanced-carousel, hero-carousel-slide | — | — |
+| 3 | AI Assistant / Chat | ai-chat | — | — |
+| 4 | Product Category Navigation | quick-links | — | — |
+| 5 | Content Promotion Cards | cards | — | — |
+| 6 | Full-Width Promotional Banner | hero | — | `dark` |
+| 7 | For Business Section | cards | h2 heading | `light-grey` |
+| 8 | Get to Know AI and Copilot | cards | h2 heading | `light-grey` |
+| 9 | Bottom Carousel | advanced-carousel, banner-carousel-slide (teaser) | — | — |
+| 10 | Follow Microsoft | social-follow | — | — |
 
-### Parsers (5)
+### Template: ms-blog-homepage
+
+Defined in `page-templates.json`. Source: Microsoft Blog homepage (https://blogs.microsoft.com/).
+
+**3 Sections**:
+
+| # | Section | Block(s) | Default Content | Style |
+|---|---------|----------|-----------------|-------|
+| 1 | Featured Posts | cards-blog | h2 heading | — |
+| 2 | More News | cards-blog | h2 heading, view more link | — |
+| 3 | Social Footer | — | social links | — |
+
+### Parsers (8)
 
 | Parser | File | Source Selectors |
 |--------|------|------------------|
-| accordion-faq | `parsers/accordion-faq.js` | `.accordion` |
-| cards-destination | `parsers/cards-destination.js` | `.accommodation-teaser`, `.resorts-teaser`, `.blog-teaser`, `.poi-teaser` |
-| columns-destination | `parsers/columns-destination.js` | `.destination-description`, `.icon-grid-v2`, `.email-sign-up-v2` |
-| destination-map | `parsers/destination-map.js` | `.title-links` |
-| table-weather | `parsers/table-weather.js` | `.climate-bar-chart` |
+| advanced-carousel | `parsers/advanced-carousel.js` | `reimagine-carousel` |
+| ai-chat | `parsers/ai-chat.js` | `div.msstore-chatonpage.contained` |
+| banner-carousel-slide | `parsers/banner-carousel-slide.js` | `reimagine-carousel-item reimagine-card-banner` |
+| cards | `parsers/cards.js` | `reimagine-card-feature` |
+| cards-blog | `parsers/cards-blog.js` | `article.m-preview` |
+| hero | `parsers/hero.js` | `reimagine-banner-featured reimagine-card-banner` |
+| hero-carousel-slide | `parsers/hero-carousel-slide.js` | `reimagine-carousel-item reimagine-hero-featured-slider-item` |
+| quick-links | `parsers/quick-links.js` | `reimagine-secondary-nav[configuration='quicklinks']` |
+| social-follow | `parsers/social-follow.js` | `reimagine-logo-footer` |
 
-### Transformers (2)
+### Transformers (4)
 
 | Transformer | File | Purpose |
 |-------------|------|---------|
-| jet2-cleanup | `transformers/jet2-cleanup.js` | Site-wide DOM cleanup: cookie/consent removal, lazy-load activation (`data-src` → `src` with `data-src` removal), Dynamic Media `$Web$` token sanitization, tab panel removal (Overview only), tracking pixel removal, `/-/media/` image proxy via wsrv.nl (max 2000px), Scene7 `?fmt=jpg` addition |
-| jet2-sections | `transformers/jet2-sections.js` | Section boundary detection |
-
-### Template: destinations-landing
-
-Defined in `import-destinations-landing.js`. Source: Jet2 Holidays destinations hub page.
-
-**URL**: `https://www.jet2holidays.com/destinations`
-
-**Sections**:
-
-| # | Section | Block(s) | Default Content | Style |
-|---|---------|----------|-----------------|-------|
-| 1 | Hero + Intro | hero (auto-built) | h2, p | — |
-| 2 | Popular Destinations | cards-promo | h2 | — |
-| 3 | Egypt Promo | columns-promo | — | — |
-| 4 | Hidden Gems | cards-promo | h2 | — |
-| 5 | Idyllic Islands | cards-promo | h2 | — |
-| 6 | City Breaks | cards-promo | h2 | — |
-| 7 | Sicily Promo | columns-promo | — | `brand` |
-
-**Parsers**: `cards-promo`, `columns-promo`
-
-**Runner**: `run-import-landing.js` (single-page runner with Playwright)
-
-### Parsers — Landing Page (2)
-
-| Parser | File | Source Selectors |
-|--------|------|------------------|
-| cards-promo | `parsers/cards-promo.js` | `.content-scrollable` |
-| columns-promo | `parsers/columns-promo.js` | `.media-block` |
+| msft-cleanup | `transformers/msft-cleanup.js` | Microsoft homepage DOM cleanup: web component shadow DOM extraction, lazy-load activation, tracking removal |
+| msft-sections | `transformers/msft-sections.js` | Section boundary detection for Microsoft homepage |
+| ms-blog-cleanup | `transformers/ms-blog-cleanup.js` | Microsoft Blog DOM cleanup |
+| ms-blog-sections | `transformers/ms-blog-sections.js` | Section boundary detection for Microsoft Blog |
 
 ### Bundling
 
-**Region pages** (bulk import):
+**Microsoft homepage**:
 ```bash
-npx esbuild tools/importer/import-universal.js --bundle --format=iife --global-name=CustomImportScript --outfile=tools/importer/import-universal.bundle.js
+npx esbuild tools/importer/import-msft-homepage.js --bundle --format=iife --global-name=CustomImportScript --outfile=tools/importer/import-msft-homepage.bundle.js
 ```
 
-**Destinations landing page**:
+**Microsoft Blog homepage**:
 ```bash
-npx esbuild tools/importer/import-destinations-landing.js --bundle --format=iife --global-name=CustomImportScript --outfile=tools/importer/import-destinations-landing.bundle.js
+npx esbuild tools/importer/import-ms-blog-homepage.js --bundle --format=iife --global-name=CustomImportScript --outfile=tools/importer/import-ms-blog-homepage.bundle.js
 ```
 
 ---
 
 ## Image CDN Sources
 
-This project uses two separate image CDNs. They are NOT interchangeable.
-
-| CDN | URL Pattern | System | Notes |
-|-----|-------------|--------|-------|
-| Sitecore Media | `www.jet2holidays.com/-/media/...` | Sitecore Media Library | Standard file extensions (`.jpg`, `.png`). **Ignores all resize query params** — always returns full original (up to 22MB+). Proxied via `wsrv.nl` in import. |
-| Scene7 / Dynamic Media | `media.jet2.com/is/image/jet2/...` | Adobe Dynamic Media | **No file extensions in path** — adding `.jpg` to path returns a default placeholder. Use `?fmt=jpg` query param instead (image is byte-identical). May have `:PresetName` suffix to strip. Auto-added by `jet2-cleanup.js`. |
-
-**Critical**: Never add file extensions to `media.jet2.com` URL **paths** — use `?fmt=jpg` query param instead. Never rewrite `media.jet2.com` origins to `www.jet2holidays.com` — those paths don't exist on the main domain. Sitecore `/-/media/` images are auto-proxied through `wsrv.nl` (max 2000px wide) in `jet2-cleanup.js` to stay under DA's 20MB limit.
+| CDN | URL Pattern | Notes |
+|-----|-------------|-------|
+| Microsoft Dynamic Media | `cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/...` | Primary image CDN for Microsoft.com. Dynamic Media with resize/format params. |
+| Microsoft Content Delivery | `img-prod-cms-rt-microsoft-com.akamaized.net/...` | Secondary CDN for some content images. |
 
 ---
 
@@ -568,7 +628,10 @@ This project uses two separate image CDNs. They are NOT interchangeable.
 
 ### Imported Pages
 
-All imported pages are listed in `/PAGES.txt` (942 content files). Each line is a path relative to the project root, e.g. `content/destinations/portugal/algarve.plain.html`.
+| Page | Content File | Source URL |
+|------|-------------|------------|
+| Microsoft Homepage | `content/msft-homepage.plain.html` | https://www.microsoft.com/en-us |
+| Microsoft Blog Homepage | `content/index.plain.html` | https://blogs.microsoft.com/ |
 
 ---
 
@@ -576,8 +639,9 @@ All imported pages are listed in `/PAGES.txt` (942 content files). Each line is 
 
 | Font | Source | Usage |
 |------|--------|-------|
-| **Open Sans** (400/600/700) | Google Fonts (`/styles/fonts.css`) | Body + headings (`--body-font-family`, `--heading-font-family`) |
-| **open-sans-fallback** | Local Arial with size-adjust | Fallback for Open Sans |
-| **Oswald** | Declared in `--display-font-family` but **NOT loaded** | Not actively used. Fallback defined. |
-| **Oswald Fallback** | Local Arial Narrow / Arial | Fallback for Oswald |
-| Roboto | Boilerplate leftover in `head.html` | Should be removed — not used |
+| **Segoe UI Variable Text** | System font (Windows 11+) | Body text (`--font-family`) |
+| **Segoe UI Variable Display** | System font (Windows 11+) | Headings (`--heading-font-family`) |
+| **Segoe UI** | System font (Windows) | Fallback for older Windows |
+| **segoe-ui-fallback** | Local fallback (`/styles/fonts.css`) | Cross-platform fallback (Helvetica Neue → Helvetica → Arial) |
+
+> **Note**: No web fonts need to be loaded. Segoe UI is a system font on Windows. Non-Windows users get Helvetica Neue / Arial fallback.
