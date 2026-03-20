@@ -144,7 +144,7 @@ Does it match an existing block's purpose?
 
 1. Identify the closest existing block
 2. Create a variant class in that block's `.css` file, scoped under the block class (e.g., `.card.dark { ... }`)
-3. In the content `.plain.html`, add the variant name in parentheses after the block name: `<div class="card (dark)">`
+3. In the content `.plain.html`, add the variant as a space-separated class after the block name: `<div class="card dark">`
 4. Update JS only if the variant requires different DOM decoration
 5. Update `PROJECT.md` block variant table
 
@@ -154,13 +154,13 @@ Does it match an existing block's purpose?
 <div class="card">...</div>
 
 <!-- Block with style variant -->
-<div class="card (dark)">...</div>
+<div class="card dark">...</div>
 
 <!-- Block with multiple variants -->
-<div class="card (dark, compact)">...</div>
+<div class="card dark compact">...</div>
 ```
 
-The EDS decoration engine converts `card (dark)` into CSS classes `card dark` on the block element, so your CSS can target `.card.dark { ... }`.
+In `.plain.html`, use space-separated class names. The parentheses notation (e.g., `Card (dark)`) is for the DA editor block table headers — DA converts those to space-separated classes in the output HTML. Your CSS targets `.card.dark { ... }`.
 
 **How to add variant styles in the block's CSS file:**
 ```css
@@ -185,8 +185,8 @@ The EDS decoration engine converts `card (dark)` into CSS classes `card dark` on
 
 **Key rules:**
 - All variant styles live in the **same block's CSS file** — never in a separate file
-- Variant classnames go in **parentheses after the block name** in content
-- Multiple variants can be combined: `block (variant1, variant2)`
+- Variant classnames are **space-separated** in `.plain.html`: `class="block variant1 variant2"`
+- In the DA editor, variants appear in parentheses in block table headers: `Block (variant1, variant2)`
 - Variants are for **visual style differences** of the same block structure
 - If the DOM structure needs to be fundamentally different, create a new block instead
 
