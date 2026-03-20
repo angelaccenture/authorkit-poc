@@ -1,6 +1,6 @@
 # Edge Delivery Services Migration — Agent Instructions
 
-This file **complements** `AGENTS.md` with project-specific migration and authoring rules for the Jet2 Holidays EDS migration. It is written entirely for agents (Experience Modernization Agent, Cursor, Composer) executing user prompts on this project.
+This file **complements** `AGENTS.md` with project-specific migration and authoring rules for the Microsoft EDS migration. It is written entirely for agents (Experience Modernization Agent, Cursor, Composer) executing user prompts on this project.
 
 **Relationship to other docs:**
 - **AGENTS.md** — Product-provided (AEM author-kit). General EDS conventions, setup, block patterns. Do not modify.
@@ -61,22 +61,15 @@ Respect Experience Modernization Agent skill dependencies:
 
 ## Image URL Rules
 
-### Scene7 / Dynamic Media URLs (`media.jet2.com`)
+### Microsoft Dynamic Media URLs (`cdn-dynmedia-1.microsoft.com`)
 
-19. **NEVER add file extensions to Scene7 URL paths** — Scene7 (Adobe Dynamic Media) treats extensions as part of the asset name. Adding `.jpg` to the PATH of `media.jet2.com/is/image/jet2/MyImage` makes it resolve to a completely different (default placeholder) asset.
-20. **Always add `?fmt=jpg` to Scene7 URLs** — DA requires a recognizable format indicator on image URLs. Use the `fmt` query parameter (NOT a path extension). The `jet2-cleanup` transformer adds `?fmt=jpg` (or `&fmt=jpg`) automatically. The image is byte-identical with or without `fmt=jpg`.
-21. **NEVER rewrite image CDN origins** — This project has two image CDN sources: `www.jet2holidays.com/-/media/` (Sitecore) and `media.jet2.com/is/image/jet2/` (Scene7). Keep images at their original CDN origin. Scene7 images do NOT exist on `www.jet2holidays.com` and vice versa.
-22. **Strip Dynamic Media presets only** — Scene7 URLs may have a `:PresetName` suffix (e.g., `/image:DestCard`). Strip the colon and preset name, but do not modify anything else in the URL path.
-
-### Sitecore Media Library URLs (`www.jet2holidays.com/-/media/`)
-
-23. **Sitecore CDN ignores resize query params** — The `/-/media/` CDN ignores `?height=`, `?format=`, `?optimize=`, `?mw=`, `?w=`, and all other resize parameters. Large stock photos (e.g., Getty Images) can be 20MB+ at their original size. The query params in the source page HTML are purely decorative; the server always returns the full original.
-24. **Proxy oversized Sitecore images via wsrv.nl** — DA has a 20MB per-image limit. The `jet2-cleanup` transformer automatically routes all `/-/media/` images through `wsrv.nl/?url=...&w=2000&fit=inside&output=jpg&q=85` to enforce max 2000px width. This keeps images under 1MB while maintaining quality. AEM's own CDN handles further optimization at delivery time.
-25. **NEVER remove the wsrv.nl proxy step** — Without it, any page containing large Sitecore stock photos will fail DA preview with "Image exceeds allowed limit of 20MB".
+19. **Keep Dynamic Media query params intact** — Microsoft Dynamic Media URLs use query params like `resMode`, `op_usm`, `wid`, `hei`, `qlt`, and `fit` for server-side image optimization. Always preserve these params as they control image quality and dimensions.
+20. **Two CDN sources in this project** — `cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/` (Dynamic Media images) and `cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/` (static content assets like icons). Keep images at their original CDN path.
+21. **Wrap images in `<picture>` with `<source>`** — All content images should use `<picture><source type="image/webp" srcset="URL"><img loading="lazy" alt="..." src="URL"></picture>` format. This enables the `decoratePictures` function in `ak.js` to add responsive breakpoints and prevents runtime errors.
 
 ### Local Preview Path
 
-26. **Use `/content/` prefix for local preview** — The dev server runs with `--html-folder content`. Local `.plain.html` files are served at `http://localhost:3000/content/<page-path>` (e.g., `/content/destinations`). The path without `/content/` prefix proxies to the AEM backend, which may have different (or broken) content.
+22. **Use `/content/` prefix for local preview** — The dev server runs with `--html-folder content`. Local `.plain.html` files are served at `http://localhost:3000/content/<page-path>` (e.g., `/content/msft-homepage`). The path without `/content/` prefix proxies to the AEM backend, which may have different (or broken) content.
 
 ---
 
@@ -227,13 +220,11 @@ The EDS decoration engine converts `card (dark)` into CSS classes `card dark` on
 
 ### DA Constraints
 
-- **20MB per-image limit** — DA rejects images over 20MB during preview/publish with "Image exceeds allowed limit of 20MB". Use 19MB as the safety threshold. The `jet2-cleanup` transformer enforces this by proxying `/-/media/` images through wsrv.nl.
-- **DA requires format indicators on image URLs** — Image URLs without a file extension or format query param (like `?fmt=jpg`) cause upload failures in DA. All images must have either a path extension (`.jpg`, `.png`) or a format query param (`fmt=jpg`, `output=jpg`). The `jet2-cleanup` transformer handles both cases automatically.
-- **DA downloads images from URLs in `.plain.html`** — When content is previewed in DA, it fetches each `<img src="...">` URL and stores the result. If the URL returns a 22MB original, DA stores 22MB. Query params in the URL must actually produce a smaller response from the server — decorative params that the server ignores will NOT help.
-- **Three image URL types in this project**:
-  - `media_xxx` hashes (AEM backend) — Already optimized, have extensions, no issues
-  - `media.jet2.com` (Scene7) — Small by default but **no file extensions**. `jet2-cleanup.js` adds `?fmt=jpg` automatically.
-  - `www.jet2holidays.com/-/media/` (Sitecore) — Dangerous: ignores resize params, can be 22MB+. Auto-proxied by `jet2-cleanup.js`.
+- **20MB per-image limit** — DA rejects images over 20MB during preview/publish with "Image exceeds allowed limit of 20MB". Use 19MB as the safety threshold.
+- **DA downloads images from URLs in `.plain.html`** — When content is previewed in DA, it fetches each `<img src="...">` URL and stores the result. Query params in the URL must actually produce a smaller response from the server — decorative params that the server ignores will NOT help.
+- **Two image CDN sources in this project**:
+  - `cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/` (Dynamic Media) — Server-side optimized via query params (`wid`, `hei`, `qlt`, `resMode`). Always preserve these params.
+  - `cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/` (Static content) — Icons and small assets, already optimized.
 
 ### DA Markup Compatibility
 
