@@ -150,9 +150,52 @@ Does it match an existing block's purpose?
 ### Variant-First Approach
 
 1. Identify the closest existing block
-2. Create a variant by adding a class modifier
-3. Add variant CSS in the same block's CSS file
-4. Update JS if needed for variant-specific decoration
+2. Create a variant class in that block's `.css` file, scoped under the block class (e.g., `.card.dark { ... }`)
+3. In the content `.plain.html`, add the variant name in parentheses after the block name: `<div class="card (dark)">`
+4. Update JS only if the variant requires different DOM decoration
+5. Update `PROJECT.md` block variant table
+
+**How block variants work in content:**
+```
+<!-- Default block -->
+<div class="card">...</div>
+
+<!-- Block with style variant -->
+<div class="card (dark)">...</div>
+
+<!-- Block with multiple variants -->
+<div class="card (dark, compact)">...</div>
+```
+
+The EDS decoration engine converts `card (dark)` into CSS classes `card dark` on the block element, so your CSS can target `.card.dark { ... }`.
+
+**How to add variant styles in the block's CSS file:**
+```css
+/* Default card styles */
+.card {
+  background: #fff;
+  color: #000;
+}
+
+/* Dark variant */
+.card.dark {
+  background: #1b1b1b;
+  color: #fff;
+}
+
+/* Compact variant */
+.card.compact {
+  padding: 8px;
+  gap: 4px;
+}
+```
+
+**Key rules:**
+- All variant styles live in the **same block's CSS file** — never in a separate file
+- Variant classnames go in **parentheses after the block name** in content
+- Multiple variants can be combined: `block (variant1, variant2)`
+- Variants are for **visual style differences** of the same block structure
+- If the DOM structure needs to be fundamentally different, create a new block instead
 
 ### Import Script Alignment
 
