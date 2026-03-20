@@ -225,7 +225,7 @@ Applied via `section-metadata` block with `Style: <name>`. Defined in `/styles/s
 
 | Variant | Class | Purpose |
 |---------|-------|---------|
-| Default | `.cards` | Auto-fill card grid (boilerplate) |
+| Default | `.cards` | Auto-fill card grid (author-kit) |
 
 **Authoring**:
 | Cards |
@@ -406,7 +406,7 @@ Applied via `section-metadata` block with `Style: <name>`. Defined in `/styles/s
 
 | Variant | Class | Purpose |
 |---------|-------|---------|
-| Default | `.columns` | Generic multi-column layout (boilerplate) |
+| Default | `.columns` | Generic multi-column layout (author-kit) |
 
 **Authoring**:
 | Columns |

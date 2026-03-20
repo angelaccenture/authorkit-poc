@@ -3,7 +3,7 @@
 This file **complements** `AGENTS.md` with project-specific migration and authoring rules for the Jet2 Holidays EDS migration. It is written entirely for agents (Experience Modernization Agent, Cursor, Composer) executing user prompts on this project.
 
 **Relationship to other docs:**
-- **AGENTS.md** — Product-provided (AEM boilerplate). General EDS conventions, setup, block patterns. Do not modify.
+- **AGENTS.md** — Product-provided (AEM author-kit). General EDS conventions, setup, block patterns. Do not modify.
 - **PROJECT.md** — Single source of truth for blocks, tokens, templates, parsers, transformers, and import infrastructure. Keep it up-to-date when creating or modifying blocks, variants, section styles, tokens, or import infrastructure.
 - **INSTRUCTIONS.md** — This file. Project-specific rules, constraints, and workflows.
 
