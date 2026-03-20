@@ -360,3 +360,31 @@
   order: 3;
   margin-left: auto;
 }
+
+/* Stories variant — vertical card layout (image top, text below) matching Microsoft.com */
+@media (width >= 768px) {
+  .advanced-carousel[class*="stories"] .teaser {
+    border-radius: 16px;
+  }
+
+  .advanced-carousel[class*="stories"] .teaser .teaser-inner {
+    flex-direction: column;
+  }
+
+  .advanced-carousel[class*="stories"] .teaser .teaser-picture-container {
+    flex: none;
+    padding: 8px 8px 0;
+
+    img {
+      border-radius: 12px;
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  .advanced-carousel[class*="stories"] .teaser .teaser-content-container {
+    flex: none;
+    padding: 24px 24px 32px;
+    gap: 12px;
+    justify-content: flex-start;
+  }
+}
