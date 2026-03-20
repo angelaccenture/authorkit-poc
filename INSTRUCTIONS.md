@@ -111,6 +111,38 @@ Does it match an existing block's purpose?
 
 ## Migration Rules
 
+### Pre-Migration Block Audit (MANDATORY)
+
+**Before migrating ANY page, you MUST complete this checklist and get user confirmation:**
+
+1. **Inventory existing blocks** — Read the Block Reference in `PROJECT.md` and list all blocks currently available in the repo (name + purpose).
+2. **Analyze the target page** — Visit the source URL, identify all content sections and the blocks/components they map to.
+3. **Present a comparison table to the user** with:
+   - **Existing blocks that will be reused** — blocks already in the repo that match content on the target page
+   - **New blocks needed** — content patterns that don't match any existing block and require a new block to be created
+   - **New variants needed** — content patterns similar to an existing block but requiring a variant
+4. **Wait for user confirmation** — Do NOT proceed with migration until the user approves the block plan.
+
+**Example output format:**
+
+```
+## Pre-Migration Block Audit: [Page Name]
+
+### Blocks we have (will reuse):
+- hero — Full-width promotional banner ✅
+- cards — Feature card grid ✅
+
+### New blocks needed:
+- pricing-table — No existing block handles comparison pricing
+
+### New variants needed:
+- cards (dark) — Same as cards but with dark background styling
+```
+
+**Only proceed with migration after user says "go ahead" or similar confirmation.**
+
+---
+
 ### Wide Viewport for Content Extraction
 
 **Always set the browser viewport to wide desktop (≥1400px width) before extracting content from source pages.** Responsive images, background images, and some content (mega menus, "Show More") are only correct at desktop widths.
