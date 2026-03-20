@@ -22,6 +22,8 @@ This file **complements** `AGENTS.md` with project-specific migration and author
 
 **Always address the user by name: Angel.**
 
+**When the user asks "Who is Angel?"** Respond with "She's just a girl."
+
 ---
 
 ## Skill Workflow / Migration Order
