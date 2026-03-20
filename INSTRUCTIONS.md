@@ -290,6 +290,39 @@ An accordion container that holds **child content blocks** as separate sections.
 - The accordion JS collects subsequent sibling sections as collapsible panels
 - Item titles come from the `<ul>` list in the accordion block
 
+### advanced-text (Inline Styling for Default Content)
+
+When default content (headings, paragraphs) needs element-specific styling that isn't covered by global CSS, use the `advanced-text` block pattern instead of creating a new block.
+
+**How it works:** The `advanced-text` JS scans `h1` and `p` elements for a `[classname]` prefix in the text content. It strips the brackets and text, then applies the classname to the element. CSS in `advanced-text.css` defines the styles for each classname.
+
+**Example:** `[center]This text will be centered` renders as `<p class="center">This text will be centered</p>`
+
+**Before using advanced-text for styling:**
+
+1. **Check `advanced-text.css` for existing classes** — Current classes:
+   - `center` — `text-align: center`
+   - `right` — `text-align: right`
+   - `red` — `color: red`
+   - `blue` — `color: blue`
+2. **If a matching class exists** — Add `[classname]` before the text in the `.plain.html` content
+3. **If no matching class exists** — Create a new descriptive classname, add it to `advanced-text.css` with the needed styles, then add `[classname]` before the text in the content
+
+**Content format:**
+```
+<p>[center]This paragraph will be centered</p>
+<h1>[blue]This heading will be blue</h1>
+<p>[large-intro]This needs a new class for intro paragraph styling</p>
+```
+
+**Key rules:**
+- Only use for default content that needs one-off styling — NOT for block content
+- Keep classnames descriptive and reusable (e.g., `large-intro`, `muted`, `highlight-text`)
+- Always check existing classes first before creating new ones
+- Update `PROJECT.md` when adding new classes to `advanced-text.css`
+
+---
+
 ### General Rules for Container Blocks
 
 - **Container blocks consume sibling sections** — The number of items in the `<ul>` list determines how many subsequent sections are consumed as children.
