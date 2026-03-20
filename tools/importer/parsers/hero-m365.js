@@ -94,6 +94,6 @@ export default function parse(element, { document }) {
     cells.push([textCell]);
   }
 
-  const block = WebImporter.Blocks.createBlock(document, { name: 'hero-m365', cells });
+  const block = WebImporter.Blocks.createBlock(document, { name: 'hero (center)', cells });
   element.replaceWith(block);
 }

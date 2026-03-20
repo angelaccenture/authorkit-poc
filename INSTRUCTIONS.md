@@ -56,6 +56,7 @@ Respect Experience Modernization Agent skill dependencies:
 16. **Test in preview** — Verify changes at `http://localhost:3000`.
 17. **Fragment files (nav, footer)** — Must NOT have `<header>` or `<footer>` tags.
 18. **Merge similar blocks** — Prefer single multi-row blocks over separate blocks per row.
+19. **Never use the columns block for multi-column layouts** — Use section-metadata `Grid` key instead (e.g., `Grid: 2`, `Grid: 3`). Place each column's content as a separate block or default content within the section, and let the grid handle the layout. The `columns` block should not be used; section grid is the standard approach for side-by-side content.
 
 ---
 

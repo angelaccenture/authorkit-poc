@@ -308,6 +308,7 @@ Applied via `section-metadata` block with `Style: <name>`. Defined in `/styles/s
 | Variant | Class | Purpose |
 |---------|-------|---------|
 | Default | `.hero` | Full-width promotional banner (Microsoft banner-featured style) |
+| Center | `.hero.center` | Centered text hero (M365 product landing page style) |
 
 **Authoring**:
 | Hero |
@@ -318,7 +319,9 @@ Applied via `section-metadata` block with `Style: <name>`. Defined in `/styles/s
 
 **Responsive**: Adjusts padding and heading size at breakpoints.
 
-**Parser**: `parsers/hero.js` — Targets `reimagine-banner-featured reimagine-card-banner`.
+**Parsers**:
+- `parsers/hero.js` — Targets `reimagine-banner-featured reimagine-card-banner` (homepage).
+- `parsers/hero-m365.js` — Targets `div.section-master--bg-image` (M365). Emits `hero (center)` variant.
 
 ---
 
@@ -587,7 +590,7 @@ Defined in `page-templates.json`. Source: Microsoft 365 product page (https://ww
 | # | Section | Block(s) | Default Content | Style |
 |---|---------|----------|-----------------|-------|
 | 1 | Announcement Bar | — | announcement text + link | `announcement-bar` |
-| 2 | Hero | hero-m365 | — | — |
+| 2 | Hero | hero (center) | — | — |
 | 3 | Copilot Features | columns | eyebrow, h2, learn more link | — |
 | 4 | News / Discover | teaser, card | h2 heading | — |
 | 5 | What's Included | card-app | eyebrow, h2, explore apps link | `light-grey` |
@@ -612,7 +615,7 @@ Defined in `page-templates.json`. Source: Microsoft 365 product page (https://ww
 | columns | `parsers/columns.js` | `div.ocr-accordion.accordion--vertical-product` (M365 static simplification) |
 | hero | `parsers/hero.js` | `reimagine-banner-featured reimagine-card-banner` |
 | hero-carousel-slide | `parsers/hero-carousel-slide.js` | `reimagine-carousel-item reimagine-hero-featured-slider-item` |
-| hero-m365 | `parsers/hero-m365.js` | `div.section-master--bg-image.section-master--blade-hero-slim` (M365 hero) |
+| hero-m365 | `parsers/hero-m365.js` | `div.section-master--bg-image.section-master--blade-hero-slim` (M365 hero) → emits `hero (center)` |
 | pricing-cards | `parsers/pricing-cards.js` | `div.carousel.carousel--card-grid` (M365 yearly plans) |
 | quick-links | `parsers/quick-links.js` | `reimagine-secondary-nav[configuration='quicklinks']` |
 | social-follow | `parsers/social-follow.js` | `reimagine-logo-footer` (homepage), `div.socialfollow` (M365) |
