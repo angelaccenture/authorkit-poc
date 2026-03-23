@@ -55,8 +55,9 @@ Respect Experience Modernization Agent skill dependencies:
 15. **Check `PAGES.txt` before modifying ANY parser** — Review `/PAGES.txt` to understand which pages may be affected. Flag concerns to the user before proceeding.
 16. **Test in preview** — Verify changes at `http://localhost:3000`.
 17. **Fragment files (nav, footer)** — Must NOT have `<header>` or `<footer>` tags.
-18. **Merge similar blocks** — Prefer single multi-row blocks over separate blocks per row.
-19. **Never use the columns block for multi-column layouts** — Use section-metadata `Grid` key instead (e.g., `Grid: 2`, `Grid: 3`). Place each column's content as a separate block or default content within the section, and let the grid handle the layout. The `columns` block should not be used; section grid is the standard approach for side-by-side content.
+18. **Merge similar items into collection blocks** — Collection blocks designed for multiple items (e.g., `cards`) should use multi-row tables where each row is one item. This only applies to blocks whose JS iterates over all rows.
+19. **Use section grid for multi-column layouts** — Never use the `columns` block or multi-row block tables to achieve side-by-side layouts. Use section-metadata `Grid` key instead (e.g., `Grid: 2`, `Grid: 3`). Single-item blocks (`card`, `teaser`, `hero`, etc.) must each be their own block instance, arranged by the section grid. Never stuff multiple items into one block table unless the block is explicitly a collection block (see rule 18).
+20. **One row = one block instance for single-item blocks** — If a block's JS processes only `:scope > div` (one inner div), each item must be a separate block. Parsers must emit one block per item, not batch items into rows.
 
 ---
 

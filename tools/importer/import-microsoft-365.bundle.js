@@ -188,51 +188,28 @@ var CustomImportScript = (() => {
       element.remove();
       return;
     }
-    const container = element.closest(".three-up-cards") || element.closest(".cta-stacked--vertical-cards");
-    if (container) {
-      const allCards = Array.from(container.querySelectorAll(".three-up-cards__card .card, .card"));
-      const uniqueCards = [...new Set(allCards)];
-      const myIndex = uniqueCards.indexOf(cardEl);
-      if (myIndex > 0) {
-        element.remove();
-        return;
-      }
-      const cells2 = [];
-      const wrappers = Array.from(container.querySelectorAll(".three-up-cards__card"));
-      wrappers.forEach((wrapper) => {
-        const card = wrapper.querySelector(".card") || wrapper;
-        cells2.push(buildCardRow(card, document));
-      });
-      const block2 = WebImporter.Blocks.createBlock(document, { name: "card", cells: cells2 });
-      element.replaceWith(block2);
-      wrappers.slice(1).forEach((w) => w.remove());
-      return;
-    }
-    const cells = [buildCardRow(cardEl, document)];
-    const block = WebImporter.Blocks.createBlock(document, { name: "card", cells });
-    element.replaceWith(block);
-  }
-  function buildCardRow(card, document) {
-    const img = card.querySelector(".card__media img");
+    const img = cardEl.querySelector(".card__media img");
     const imageCell = [];
     if (img) imageCell.push(img);
     const textCell = [];
-    const badgeEl = card.querySelector(".block-feature__label");
+    const badgeEl = cardEl.querySelector(".block-feature__label");
     if (badgeEl) {
       const badgeText = badgeEl.textContent.trim();
       if (badgeText) {
+        const p = document.createElement("p");
         const em = document.createElement("em");
         em.textContent = badgeText;
-        textCell.push(em);
+        p.appendChild(em);
+        textCell.push(p);
       }
     }
-    const heading = card.querySelector(".block-feature__title h3, .block-feature__title h4");
+    const heading = cardEl.querySelector(".block-feature__title h3, .block-feature__title h4");
     if (heading) {
       const h3 = document.createElement("h3");
       h3.textContent = heading.textContent.trim();
       textCell.push(h3);
     }
-    const descEl = card.querySelector(".block-feature__paragraph");
+    const descEl = cardEl.querySelector(".block-feature__paragraph");
     if (descEl) {
       const clone = descEl.cloneNode(true);
       clone.querySelectorAll("sup").forEach((s) => s.remove());
@@ -243,7 +220,7 @@ var CustomImportScript = (() => {
         textCell.push(p);
       }
     }
-    const cta = card.querySelector(".action a.btn, .block-slim a.btn");
+    const cta = cardEl.querySelector(".action a.btn, .block-slim a.btn");
     if (cta) {
       const p = document.createElement("p");
       const a = document.createElement("a");
@@ -253,7 +230,9 @@ var CustomImportScript = (() => {
       p.appendChild(a);
       textCell.push(p);
     }
-    return [imageCell, textCell];
+    const cells = [[imageCell, textCell]];
+    const block = WebImporter.Blocks.createBlock(document, { name: "card", cells });
+    element.replaceWith(block);
   }
 
   // tools/importer/parsers/card-app.js
