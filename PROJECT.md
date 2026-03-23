@@ -591,7 +591,7 @@ Defined in `page-templates.json`. Source: Microsoft 365 product page (https://ww
 |---|---------|----------|-----------------|-------|
 | 1 | Announcement Bar | — | announcement text + link | `announcement-bar` |
 | 2 | Hero | hero (center) | — | — |
-| 3 | Copilot Features | columns | eyebrow, h2, learn more link | — |
+| 3 | Copilot Features | — | eyebrow, h2, features (h3+p ×4), image, learn more link | — |
 | 4 | News / Discover | teaser, card | h2 heading | — |
 | 5 | What's Included | card-app | eyebrow, h2, explore apps link | `light-grey` |
 | 6 | Plans / Pricing | pricing-cards | eyebrow, h2 | — |
@@ -612,7 +612,7 @@ Defined in `page-templates.json`. Source: Microsoft 365 product page (https://ww
 | card-app | `parsers/card-app.js` | `div.card-grid__cards .card` (M365 What's Included) |
 | cards | `parsers/cards.js` | `reimagine-card-feature` |
 | cards-blog | `parsers/cards-blog.js` | `article.m-preview` |
-| columns | `parsers/columns.js` | `div.ocr-accordion.accordion--vertical-product` (M365 static simplification) |
+| columns | `parsers/columns.js` | `div.ocr-accordion.accordion--vertical-product` (M365) → emits default content (no block) |
 | hero | `parsers/hero.js` | `reimagine-banner-featured reimagine-card-banner` |
 | hero-carousel-slide | `parsers/hero-carousel-slide.js` | `reimagine-carousel-item reimagine-hero-featured-slider-item` |
 | hero-m365 | `parsers/hero-m365.js` | `div.section-master--bg-image.section-master--blade-hero-slim` (M365 hero) → emits `hero (center)` |

@@ -99,13 +99,13 @@ var CustomImportScript = (() => {
   // tools/importer/parsers/columns.js
   function parse2(element, { document }) {
     const items = Array.from(element.querySelectorAll("li.ocr-accordion-item"));
-    const leftCell = [];
+    const wrapper = document.createElement("div");
     items.forEach((item) => {
       const titleEl = item.querySelector("h3");
       if (titleEl) {
         const h3 = document.createElement("h3");
         h3.textContent = titleEl.textContent.trim();
-        leftCell.push(h3);
+        wrapper.appendChild(h3);
       }
       const bodyEl = item.querySelector(".ocr-accordion-item__body");
       if (bodyEl) {
@@ -117,20 +117,16 @@ var CustomImportScript = (() => {
           if (text) {
             const p = document.createElement("p");
             p.textContent = text;
-            leftCell.push(p);
+            wrapper.appendChild(p);
           }
         }
       }
     });
-    const rightCell = [];
     const firstImg = element.querySelector(".ocr-accordion-item__body img");
     if (firstImg) {
-      rightCell.push(firstImg);
+      wrapper.appendChild(firstImg);
     }
-    const cells = [];
-    cells.push([leftCell, rightCell]);
-    const block = WebImporter.Blocks.createBlock(document, { name: "columns", cells });
-    element.replaceWith(block);
+    element.replaceWith(wrapper);
   }
 
   // tools/importer/parsers/teaser.js

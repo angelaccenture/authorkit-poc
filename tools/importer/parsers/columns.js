@@ -2,14 +2,16 @@
 /* global WebImporter */
 
 /**
- * Parser for columns. Base: columns (Block Collection).
+ * Parser for columns (Copilot Features section).
  * Source: https://www.microsoft.com/en-us/microsoft-365
- * Generated: 2026-03-20
+ * Generated: 2026-03-20, Updated: 2026-03-21
  *
- * Extracts the "How it works" / Copilot Features section.
- * Original is an interactive accordion; simplified to a static two-column layout:
- * - Left column: Feature descriptions (h3 + p for each feature)
- * - Right column: First feature image
+ * Extracts the "How it works" / Copilot Features section as default content.
+ * Original is an interactive accordion; simplified to flowing default content:
+ * - Feature descriptions (h3 + p for each feature)
+ * - Feature image
+ *
+ * No block is created — content becomes section default content.
  *
  * Source DOM (from cleaned.html):
  * - Container: div.ocr-accordion.accordion--vertical-product
@@ -17,26 +19,21 @@
  *     - Title: button.ocr-accordion-item__header h3
  *     - Body: div.ocr-accordion-item__body > div > div (text)
  *     - Image: div.ocr-accordion-item__body img
- *
- * Block structure: 2-column table (matches Block Collection Columns)
- *   Row 1: [feature descriptions (h3 + p per feature) | feature image]
  */
 export default function parse(element, { document }) {
   const items = Array.from(element.querySelectorAll('li.ocr-accordion-item'));
 
-  // Left column: feature descriptions
-  const leftCell = [];
+  const wrapper = document.createElement('div');
 
+  // Feature descriptions as default content
   items.forEach((item) => {
-    // Title
     const titleEl = item.querySelector('h3');
     if (titleEl) {
       const h3 = document.createElement('h3');
       h3.textContent = titleEl.textContent.trim();
-      leftCell.push(h3);
+      wrapper.appendChild(h3);
     }
 
-    // Description text
     const bodyEl = item.querySelector('.ocr-accordion-item__body');
     if (bodyEl) {
       const textDiv = bodyEl.querySelector('div > div');
@@ -47,22 +44,17 @@ export default function parse(element, { document }) {
         if (text) {
           const p = document.createElement('p');
           p.textContent = text;
-          leftCell.push(p);
+          wrapper.appendChild(p);
         }
       }
     }
   });
 
-  // Right column: first feature image
-  const rightCell = [];
+  // Feature image
   const firstImg = element.querySelector('.ocr-accordion-item__body img');
   if (firstImg) {
-    rightCell.push(firstImg);
+    wrapper.appendChild(firstImg);
   }
 
-  const cells = [];
-  cells.push([leftCell, rightCell]);
-
-  const block = WebImporter.Blocks.createBlock(document, { name: 'columns', cells });
-  element.replaceWith(block);
+  element.replaceWith(wrapper);
 }
