@@ -375,9 +375,13 @@ Applied via `section-metadata` block with `Style: <name>`. Defined in `/styles/s
 
 | Variant | Class | Purpose |
 |---------|-------|---------|
-| Default | `.advanced-accordion` | Collapsible accordion sections |
+| Default | `.advanced-accordion` | Collapsible accordion sections (container block) |
 
-**Features**: Native `<details>`/`<summary>` elements. Animated expand/collapse.
+**Authoring**: Container block — collects sibling sections as collapsible panels. `<ul>` list provides item titles.
+
+**Features**: Native `<details>`/`<summary>` elements. Chevron arrows. Animated expand/collapse. Hover and open state backgrounds. Border-radius cards.
+
+**Responsive**: Full-width at all breakpoints. 16px padding on summary and body.
 
 ---
 
@@ -543,6 +547,48 @@ Applied via `section-metadata` block with `Style: <name>`. Defined in `/styles/s
 | Variant | Class | Purpose |
 |---------|-------|---------|
 | Default | `.schedule` | Event schedule display |
+
+---
+
+### card-app
+
+**Location**: `/blocks/card-app/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.card-app` | App/product card grid (Microsoft "What's Included" style) |
+
+**Authoring**:
+| Card App |
+|---|
+| Icon image \| h3 app name, description, Learn more link |
+
+**Features**: Responsive grid layout. White cards with border-radius and subtle shadow. Hover lift effect. 48x48 icon with light grey rounded background. "Learn more" link with underline.
+
+**Responsive**: 1-column (mobile) → 2-column (≥600px) → 3-column (≥900px).
+
+**Parser**: `parsers/card-app.js` — Targets `div.card-grid__cards .card` (M365 What's Included section).
+
+---
+
+### pricing-cards
+
+**Location**: `/blocks/pricing-cards/`
+
+| Variant | Class | Purpose |
+|---------|-------|---------|
+| Default | `.pricing-cards` | Pricing plan comparison cards (Microsoft M365 plans style) |
+
+**Authoring**:
+| Pricing Cards |
+|---|
+| h3 plan name, **price** (bold), CTA links, h4 feature heading, feature list (ul), badge text |
+
+**Features**: Horizontal scrollable card layout. Plan name, bold price, primary + secondary CTA buttons, checkmark feature list with blue SVG icons. App badge text at bottom.
+
+**Responsive**: Horizontal scroll with snap (85% card width mobile, 45% tablet), 5-column equal-width at ≥900px.
+
+**Parser**: `parsers/pricing-cards.js` — Targets `div.carousel.carousel--card-grid` (M365 yearly plans).
 
 ---
 
