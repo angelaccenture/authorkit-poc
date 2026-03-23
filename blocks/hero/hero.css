@@ -147,9 +147,95 @@
   }
 
   &.center {
+    color: var(--color-text-dark);
+
+    .hero-background {
+      position: relative;
+
+      picture,
+      > div {
+        position: relative;
+        inset: unset;
+        background-color: transparent;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: cover;
+      }
+    }
+
     .hero-foreground {
       justify-content: center;
       text-align: center;
+      background: var(--color-background);
+      min-height: unset;
+      padding: 48px 24px 32px;
+
+      .hero-detail {
+        font-size: var(--body-font-size-xs);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--color-text-dark);
+        margin-bottom: 8px;
+      }
+
+      .hero-heading {
+        font-size: var(--heading-font-size-xxl);
+        font-weight: 600;
+        letter-spacing: var(--heading-letter-spacing);
+        line-height: 1.2;
+        color: var(--color-text-dark);
+      }
+
+      p {
+        color: var(--color-text);
+        font-size: var(--body-font-size-m);
+        line-height: 1.5;
+      }
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--button-padding-large);
+        border-radius: var(--button-border-radius);
+        font-size: var(--button-font-size);
+        font-weight: 600;
+        letter-spacing: var(--button-letter-spacing);
+        min-height: var(--button-min-height);
+        text-decoration: none;
+        transition: background-color 0.15s;
+        background-color: var(--color-accent);
+        color: #fff;
+      }
+
+      a:hover {
+        background-color: var(--color-accent-hover);
+        color: #fff;
+      }
+
+      /* CTA paragraphs inline */
+      p:has(> a:only-child) {
+        display: inline-block;
+        margin: 4px;
+      }
+
+      /* Secondary button — second link paragraph */
+      p:has(> a:only-child) + p:has(> a:only-child) a {
+        background-color: transparent;
+        color: var(--color-text-dark);
+        border: 1px solid var(--color-text-dark);
+      }
+
+      p:has(> a:only-child) + p:has(> a:only-child) a:hover {
+        background-color: #f0f0f0;
+        color: var(--color-text-dark);
+      }
     }
   }
 
@@ -233,8 +319,21 @@
     }
 
     &.center {
+      .hero-background {
+        img {
+          max-height: 480px;
+        }
+      }
+
       .hero-foreground {
         display: flex;
+        max-width: unset;
+        background: var(--color-background);
+        padding: 64px 48px 40px;
+
+        .hero-heading {
+          font-size: 40px;
+        }
       }
     }
 

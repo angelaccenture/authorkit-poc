@@ -32,7 +32,7 @@ export default function init(el) {
       linkItem.target = '_blank';
       linkItem.rel = 'noopener noreferrer';
 
-      const pic = iconCol.querySelector('picture');
+      const pic = iconCol.querySelector('picture') || iconCol.querySelector('img');
       if (pic) {
         linkItem.append(pic);
       }
