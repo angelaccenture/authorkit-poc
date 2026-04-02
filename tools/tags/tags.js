@@ -75,6 +75,7 @@ function displayTaggingData(taggingData, actions) {
   searchInput.type = 'text';
   searchInput.placeholder = 'Search tags...';
   searchInput.className = 'search-input';
+  searchInput.setAttribute('aria-label', 'Search tags');
 
   searchContainer.appendChild(searchInput);
   container.appendChild(searchContainer);
@@ -100,7 +101,8 @@ function displayTaggingData(taggingData, actions) {
   // Create send selected button
   const sendSelectedBtn = document.createElement('button');
   sendSelectedBtn.textContent = 'Send Selected (0)';
-  sendSelectedBtn.className = 'btn btn-primary';
+  sendSelectedBtn.className = 'btn btn-secondary';
+  sendSelectedBtn.disabled = true;
 
   // Function to update send button text and state
   function updateSendButton() {
@@ -160,15 +162,15 @@ function displayTaggingData(taggingData, actions) {
         tagKey.textContent = `Key: ${item.key}`;
         tagKey.className = 'tag-key';
 
+        tagInfo.appendChild(tagValue);
+        tagInfo.appendChild(tagKey);
+
         if (item.comments) {
           const tagComments = document.createElement('div');
           tagComments.textContent = item.comments;
           tagComments.className = 'tag-comments';
           tagInfo.appendChild(tagComments);
         }
-
-        tagInfo.appendChild(tagValue);
-        tagInfo.appendChild(tagKey);
 
         // Make entire tag info clickable to toggle checkbox
         tagInfo.addEventListener('click', () => {
@@ -201,9 +203,15 @@ function displayTaggingData(taggingData, actions) {
   container.appendChild(actionContainer);
 
   selectAllBtn.addEventListener('click', () => {
-    const visibleItems = taggingData.data.filter((item) => item.value);
+    const searchTerm = searchInput.value.toLowerCase();
+    const visibleItems = taggingData.data.filter((item) => item.value && (
+      !searchTerm
+        || item.value.toLowerCase().includes(searchTerm)
+        || item.key.toLowerCase().includes(searchTerm)
+        || (item.comments && item.comments.toLowerCase().includes(searchTerm))
+    ));
     visibleItems.forEach((item) => selectedTags.add(item.key));
-    renderTagList(taggingData.data.filter((item) => item.value));
+    renderTagList(visibleItems);
     updateSendButton();
   });
 
@@ -223,9 +231,6 @@ function displayTaggingData(taggingData, actions) {
 
       await actions.sendText(tagsText);
       await actions.closeLibrary();
-
-      // eslint-disable-next-line no-console
-      console.log('Selected tags sent to document:', selectedTagsArray);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Error sending selected tags to document:', error);

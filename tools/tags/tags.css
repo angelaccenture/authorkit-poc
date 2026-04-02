@@ -58,9 +58,6 @@
   border-color: #007bff;
 }
 
-.search-input:blur {
-  border-color: #dee2e6;
-}
 
 /* Results container */
 .results-container {
