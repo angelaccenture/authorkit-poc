@@ -1,27 +1,21 @@
-# Migration Plan: Microsoft 365 Page
+# Migration Plan: Microsoft Blog Article
 
 **Mode:** Single Page
-**Source:** https://www.microsoft.com/en-us/microsoft-365
-**Target:** content/en-us/microsoft-365.plain.html
-**Generated:** 2026-03-20
+**Source:** https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/
+**Generated:** 2026-04-02
 
 ## Steps
 - [x] 0. Initialize Migration Plan
-- [x] 1. Project Setup
-- [x] 2. Site Analysis
-- [x] 3. Page Analysis
-- [x] 4. Block Mapping
-- [x] 5. Import Infrastructure
-- [x] 6. Content Import
+- [ ] 1. Project Setup
+- [ ] 2. Site Analysis
+- [ ] 3. Page Analysis
+- [ ] 4. Block Mapping
+- [ ] 5. Import Infrastructure
+- [ ] 6. Content Import
 
 ## Artifacts
-- `migration-work/page-structure.json` — 10 section layout
-- `migration-work/authoring-analysis.json` — Block mapping decisions
-- `migration-work/cleaned.html` — Scraped source HTML
-- `tools/importer/page-templates.json` — Updated with microsoft-365 template (8 blocks, 10 sections)
-- `tools/importer/import-microsoft-365.js` — Import script
-- `tools/importer/import-microsoft-365.bundle.js` — Bundled import script
-- `content/en-us/microsoft-365.plain.html` — Imported content (25KB)
+[To be populated as steps complete]
 
 ## Previous Migrations
 - Microsoft Homepage: microsoft.com/en-us → content/msft-homepage.plain.html (completed)
+- Microsoft 365: microsoft.com/en-us/microsoft-365 → content/en-us/microsoft-365.plain.html (completed)

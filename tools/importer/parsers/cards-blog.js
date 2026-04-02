@@ -18,8 +18,9 @@
  */
 export default function parse(element, { document }) {
   // element is an individual article.m-preview
-  // Find the parent section to collect all sibling articles
-  const section = element.closest('section.featured-posts, section.recent-posts');
+  // Find the parent section/container to collect all sibling articles
+  // Handles: blog homepage sections, blog article sidebar (aside#secondary)
+  const section = element.closest('section.featured-posts, section.recent-posts, aside#secondary');
   if (!section) {
     element.remove();
     return;

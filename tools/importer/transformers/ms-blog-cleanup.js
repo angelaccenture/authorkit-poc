@@ -33,6 +33,9 @@ export default function transform(hookName, element, payload) {
     // Hidden Press Tools pivot panel (from captured DOM: <section id="pivot-target-3">)
     WebImporter.DOMUtils.remove(element, ['#pivot-target-3']);
 
+    // Social footer wrap (from captured DOM: <div class="social-footer-wrap">)
+    WebImporter.DOMUtils.remove(element, ['.social-footer-wrap']);
+
     // Generic non-authorable elements
     WebImporter.DOMUtils.remove(element, ['iframe', 'link', 'noscript']);
   }

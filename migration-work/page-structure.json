@@ -1,119 +1,64 @@
 {
-  "url": "https://www.microsoft.com/en-us/microsoft-365",
-  "title": "Microsoft 365 for Individuals: Subscription for Productivity Apps",
+  "url": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/",
+  "template": "ms-blog-article",
   "sections": [
     {
       "id": "section-1",
-      "name": "Announcement Bar",
-      "top": 56,
-      "height": 44,
-      "style": "announcement-bar",
+      "name": "Article Header",
+      "selector": "header.entry-header.m-blog-content",
+      "style": null,
+      "description": "Article title, date, author, and social share links",
       "contentSequences": [
-        { "type": "default-content", "description": "Announcement text + CTA link about Copilot webinar" }
+        { "type": "default-content", "description": "H1: Open to Work: How to Get Ahead in the Age of AI" },
+        { "type": "default-content", "description": "Date: Mar 31, 2026 | Author: Ryan Roslansky" },
+        { "type": "default-content", "description": "Social share buttons: Facebook, X, LinkedIn, Threads" }
       ]
     },
     {
       "id": "section-2",
-      "name": "Hero",
-      "top": 100,
-      "height": 708,
+      "name": "Hero Image",
+      "selector": "img.wp-post-image",
       "style": null,
+      "description": "Featured post image",
       "contentSequences": [
-        { "type": "block", "description": "Full-width hero with bg image, centered heading, subtitle, 2 CTA buttons. Eyebrow text: Microsoft 365 for individuals" }
+        { "type": "default-content", "description": "Full-width featured image: authors holding book" }
       ]
     },
     {
       "id": "section-3",
-      "name": "Copilot Features",
-      "top": 900,
-      "height": 800,
+      "name": "Article Body",
+      "selector": "div.entry-content.m-blog-content",
       "style": null,
+      "description": "Main article text with paragraphs and inline links",
       "contentSequences": [
-        { "type": "default-content", "description": "Section eyebrow: HOW IT WORKS" },
-        { "type": "default-content", "description": "H2: Boost your productivity with Copilot" },
-        { "type": "block", "description": "Two-column layout: feature descriptions on left, feature image on right. Static simplification of original accordion." },
-        { "type": "default-content", "description": "CTA link: Learn more about Microsoft 365 for individuals" }
+        { "type": "default-content", "description": "9 paragraphs of article body text with inline links and emphasis" },
+        { "type": "default-content", "description": "Tags line: AI, LinkedIn, Work Trend Index" }
       ]
     },
     {
       "id": "section-4",
-      "name": "News / Discover",
-      "top": 1900,
-      "height": 900,
+      "name": "Related Blogs",
+      "selector": "aside#secondary",
       "style": null,
+      "description": "Sidebar with 2 related blog article previews",
       "contentSequences": [
-        { "type": "default-content", "description": "H2: Discover what's happening with Microsoft 365" },
-        { "type": "block", "description": "Large teaser card: Free for students offer (image right, text left, CTA)" },
-        { "type": "block", "description": "2 smaller cards in a grid: blog post card + Copilot card (image top, text below, CTA)" }
+        { "type": "default-content", "description": "H3: Related Blogs" },
+        { "type": "block", "description": "2 related article preview cards with date, author, and title link" }
       ]
     },
     {
       "id": "section-5",
-      "name": "What's Included",
-      "top": 3000,
-      "height": 1200,
-      "style": "light-grey",
-      "contentSequences": [
-        { "type": "default-content", "description": "Section eyebrow: WHAT'S INCLUDED" },
-        { "type": "default-content", "description": "H2: Get Microsoft 365 all in one plan" },
-        { "type": "default-content", "description": "Link: Explore all apps" },
-        { "type": "block", "description": "Grid of app cards with icon, name, and description. Top picks view only." }
-      ]
-    },
-    {
-      "id": "section-6",
-      "name": "Plans / Pricing",
-      "top": 4500,
-      "height": 1500,
+      "name": "Social Footer",
+      "selector": "div.social-footer-wrap",
       "style": null,
+      "description": "Follow us RSS link",
       "contentSequences": [
-        { "type": "default-content", "description": "Section eyebrow: PLANS" },
-        { "type": "default-content", "description": "H2: Find the plan that's right for you" },
-        { "type": "block", "description": "3 pricing plan cards: Free, Basic, Personal. Each with plan name, price, CTA, feature list, app icons. Static yearly pricing." }
-      ]
-    },
-    {
-      "id": "section-7",
-      "name": "Get Started",
-      "top": 6100,
-      "height": 500,
-      "style": null,
-      "contentSequences": [
-        { "type": "default-content", "description": "Section eyebrow: GET STARTED" },
-        { "type": "default-content", "description": "H2: Take the next step with Microsoft 365" },
-        { "type": "block", "description": "2 teaser cards side by side: Choose your plan + Frontier AI" }
-      ]
-    },
-    {
-      "id": "section-8",
-      "name": "FAQ",
-      "top": 6700,
-      "height": 500,
-      "style": null,
-      "contentSequences": [
-        { "type": "default-content", "description": "H2: Frequently asked questions" },
-        { "type": "block", "description": "Accordion with numbered FAQ items about Copilot and Microsoft 365" }
-      ]
-    },
-    {
-      "id": "section-9",
-      "name": "Legal Disclaimers",
-      "top": 7400,
-      "height": 200,
-      "style": null,
-      "contentSequences": [
-        { "type": "default-content", "description": "Footnotes and legal disclaimer text" }
-      ]
-    },
-    {
-      "id": "section-10",
-      "name": "Follow Microsoft 365",
-      "top": 7700,
-      "height": 48,
-      "style": null,
-      "contentSequences": [
-        { "type": "block", "description": "Social media follow links" }
+        { "type": "default-content", "description": "Follow us: RSS link" }
       ]
     }
-  ]
+  ],
+  "blockInventory": {
+    "existingLocalBlocks": ["card", "cards-blog", "hero", "teaser", "social-follow", "advanced-carousel", "advanced-accordion", "hero-m365", "card-app", "pricing-cards", "ai-chat", "quick-links"],
+    "notes": "Blog article is primarily default content. Related blogs sidebar could reuse cards-blog block. Most content is paragraphs, headings, and an image — ideal for default content authoring."
+  }
 }

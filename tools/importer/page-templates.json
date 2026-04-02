@@ -401,6 +401,77 @@
           "defaultContent": []
         }
       ]
+    },
+    {
+      "name": "ms-blog-article",
+      "urls": [
+        "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/"
+      ],
+      "description": "Microsoft blog article page with author info, article content, and related posts",
+      "blocks": [
+        {
+          "name": "cards-blog",
+          "instances": [
+            "aside#secondary article.m-preview"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Article Header",
+          "selector": "header.entry-header.m-blog-content",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "h1.entry-title",
+            "p.c-meta-text"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "Hero Image",
+          "selector": "img.wp-post-image",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "img.wp-post-image"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Article Body",
+          "selector": "div.entry-content.m-blog-content",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.entry-content p",
+            "p.tag-list"
+          ]
+        },
+        {
+          "id": "section-4",
+          "name": "Related Blogs",
+          "selector": "aside#secondary",
+          "style": null,
+          "blocks": [
+            "cards-blog"
+          ],
+          "defaultContent": [
+            "h3.ms-related-blogs"
+          ]
+        },
+        {
+          "id": "section-5",
+          "name": "Social Footer",
+          "selector": "div.social-footer-wrap",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.m-social"
+          ]
+        }
+      ]
     }
   ]
 }

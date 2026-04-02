@@ -1,259 +1,114 @@
 {
-  "url": "https://www.microsoft.com/en-us/microsoft-365",
-  "title": "Microsoft 365 for Individuals: Subscription for Productivity Apps",
-  "analysisDate": "2026-03-20",
-  "approach": "static-simplification",
+  "url": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/",
+  "template": "ms-blog-article",
   "sections": [
     {
       "id": "section-1",
-      "name": "Announcement Bar",
-      "style": "announcement-bar",
-      "items": [
+      "name": "Article Header",
+      "style": null,
+      "decisions": [
         {
           "type": "default-content",
-          "elements": ["p", "a"],
-          "description": "Announcement text with CTA link"
+          "element": "heading",
+          "selector": "h1.entry-title",
+          "description": "Article title as H1",
+          "authoringNotes": "Author types the article title as a heading"
+        },
+        {
+          "type": "default-content",
+          "element": "paragraph",
+          "selector": "p.c-meta-text",
+          "description": "Date and author byline",
+          "authoringNotes": "Rendered from metadata (date, author name with link)"
         }
       ]
     },
     {
       "id": "section-2",
-      "name": "Hero",
+      "name": "Hero Image",
       "style": null,
-      "items": [
+      "decisions": [
         {
-          "type": "block",
-          "blockName": "hero",
-          "variant": "m365",
-          "description": "Centered hero with bg image, eyebrow, heading, subtitle, 2 CTAs",
-          "sourceSelector": "div.section-master--bg-image:has(h1)",
-          "structure": {
-            "row1": "background-image | eyebrow, h1, subtitle, primary-cta, secondary-cta"
-          }
+          "type": "default-content",
+          "element": "image",
+          "selector": "img.wp-post-image",
+          "description": "Featured article image",
+          "authoringNotes": "Author inserts the hero image directly as default content"
         }
       ]
     },
     {
       "id": "section-3",
-      "name": "Copilot Features",
+      "name": "Article Body",
       "style": null,
-      "items": [
+      "decisions": [
         {
           "type": "default-content",
-          "elements": ["p.eyebrow"],
-          "description": "HOW IT WORKS eyebrow"
+          "element": "paragraphs",
+          "selector": "div.entry-content p",
+          "description": "Article body text — 9 paragraphs with inline links, bold, and italic formatting",
+          "authoringNotes": "Author writes article text naturally with links and formatting. This is standard default content."
         },
         {
           "type": "default-content",
-          "elements": ["h2"],
-          "description": "Boost your productivity with Copilot"
-        },
-        {
-          "type": "block",
-          "blockName": "columns",
-          "variant": null,
-          "description": "Two-column layout: feature text descriptions left, feature image right",
-          "sourceSelector": "div.section-master:has(h2:text('Boost your productivity'))",
-          "structure": {
-            "row1": "feature descriptions (h3 + p for each feature) | feature image"
-          }
-        },
-        {
-          "type": "default-content",
-          "elements": ["p > a"],
-          "description": "Learn more CTA link"
+          "element": "paragraph",
+          "selector": "p.tag-list",
+          "description": "Tags: AI, LinkedIn, Work Trend Index",
+          "authoringNotes": "Tags rendered as links at the end of article body"
         }
       ]
     },
     {
       "id": "section-4",
-      "name": "News / Discover",
+      "name": "Related Blogs",
       "style": null,
-      "items": [
+      "decisions": [
         {
           "type": "default-content",
-          "elements": ["h2"],
-          "description": "Discover what's happening with Microsoft 365"
+          "element": "heading",
+          "selector": "h3.ms-related-blogs",
+          "description": "Section heading: Related Blogs"
         },
         {
           "type": "block",
-          "blockName": "teaser",
-          "variant": null,
-          "description": "Large featured teaser: Free for students offer",
-          "sourceSelector": "div:has(> h2:text('Free for students'))",
-          "structure": {
-            "row1": "image",
-            "row2": "badge, h2, description, cta-link"
-          }
-        },
-        {
-          "type": "block",
-          "blockName": "card",
-          "variant": null,
-          "description": "2 smaller content cards in a grid",
-          "sourceSelector": "div.card-grid-container",
-          "structure": {
-            "row1": "image | h3, description, cta-link"
-          },
-          "instances": 2,
-          "sectionStyle": "grid-2"
+          "blockName": "cards-blog",
+          "selector": "article.m-preview",
+          "description": "2 related article preview cards with date, author, and linked title",
+          "authoringNotes": "Reuses existing cards-blog block from the blog homepage migration. Each card has date, author, and title."
         }
       ]
     },
     {
       "id": "section-5",
-      "name": "What's Included",
-      "style": "light-grey",
-      "items": [
-        {
-          "type": "default-content",
-          "elements": ["p.eyebrow"],
-          "description": "WHAT'S INCLUDED eyebrow"
-        },
-        {
-          "type": "default-content",
-          "elements": ["h2"],
-          "description": "Get Microsoft 365 all in one plan"
-        },
-        {
-          "type": "default-content",
-          "elements": ["p > a"],
-          "description": "Explore all apps link"
-        },
-        {
-          "type": "block",
-          "blockName": "card",
-          "variant": "app",
-          "description": "App cards with icon, name, and description. Grid of 4 across.",
-          "sourceSelector": "div.app-card-grid",
-          "structure": {
-            "row1": "icon-image | h3 app-name, description"
-          },
-          "instances": 11,
-          "sectionStyle": "grid-4"
-        }
-      ]
-    },
-    {
-      "id": "section-6",
-      "name": "Plans / Pricing",
+      "name": "Social Footer",
       "style": null,
-      "items": [
+      "decisions": [
         {
           "type": "default-content",
-          "elements": ["p.eyebrow"],
-          "description": "PLANS eyebrow"
-        },
-        {
-          "type": "default-content",
-          "elements": ["h2"],
-          "description": "Find the plan that's right for you"
-        },
-        {
-          "type": "block",
-          "blockName": "pricing-cards",
-          "variant": null,
-          "description": "3 pricing plan comparison cards. Each has: plan name, price, billing note, CTA buttons, feature list with checkmarks, app icons row at bottom.",
-          "sourceSelector": "div.plans-comparison-container",
-          "structure": {
-            "row-per-plan": "plan-name, price, billing-description, cta-buttons, feature-list, app-icons"
-          },
-          "instances": 3,
-          "note": "NEW BLOCK - no existing block handles pricing comparison"
-        }
-      ]
-    },
-    {
-      "id": "section-7",
-      "name": "Get Started",
-      "style": null,
-      "items": [
-        {
-          "type": "default-content",
-          "elements": ["p.eyebrow"],
-          "description": "GET STARTED eyebrow"
-        },
-        {
-          "type": "default-content",
-          "elements": ["h2"],
-          "description": "Take the next step with Microsoft 365"
-        },
-        {
-          "type": "block",
-          "blockName": "card",
-          "variant": null,
-          "description": "2 teaser-style cards: Choose your plan + Frontier AI",
-          "sourceSelector": "div.get-started-cards",
-          "structure": {
-            "row1": "image | h3, description, cta-link"
-          },
-          "instances": 2,
-          "sectionStyle": "grid-2"
-        }
-      ]
-    },
-    {
-      "id": "section-8",
-      "name": "FAQ",
-      "style": null,
-      "items": [
-        {
-          "type": "default-content",
-          "elements": ["h2"],
-          "description": "Frequently asked questions"
-        },
-        {
-          "type": "block",
-          "blockName": "advanced-accordion",
-          "variant": null,
-          "description": "Numbered FAQ items with expand/collapse. Questions about Copilot, M365 apps, subscriptions.",
-          "sourceSelector": "div.faq-section",
-          "structure": {
-            "list-items": "question titles in ul > li"
-          },
-          "note": "Each FAQ answer is a section consumed by accordion"
-        }
-      ]
-    },
-    {
-      "id": "section-9",
-      "name": "Legal Disclaimers",
-      "style": null,
-      "items": [
-        {
-          "type": "default-content",
-          "elements": ["p"],
-          "description": "Footnotes and legal disclaimer paragraphs"
-        }
-      ]
-    },
-    {
-      "id": "section-10",
-      "name": "Follow Microsoft 365",
-      "style": null,
-      "items": [
-        {
-          "type": "block",
-          "blockName": "social-follow",
-          "variant": null,
-          "description": "Social media follow links for Microsoft 365",
-          "sourceSelector": "div.section-master:has(h2:text('Follow Microsoft 365'))"
+          "element": "paragraph",
+          "selector": "div.m-social",
+          "description": "Follow us: RSS link",
+          "authoringNotes": "Simple text with RSS link — default content is sufficient"
         }
       ]
     }
   ],
-  "blockSummary": {
-    "reused": [
-      { "name": "hero", "variant": "m365", "reason": "Centered layout differs from homepage left-aligned hero" },
-      { "name": "columns", "variant": null, "reason": "Standard two-column layout for features section" },
-      { "name": "teaser", "variant": null, "reason": "Same card-banner pattern as homepage" },
-      { "name": "card", "variant": null, "reason": "Standard card for news and get-started sections" },
-      { "name": "card", "variant": "app", "reason": "New variant for app icon cards in What's Included section" },
-      { "name": "advanced-accordion", "variant": null, "reason": "Existing accordion block for FAQ" },
-      { "name": "social-follow", "variant": null, "reason": "Same social links pattern as homepage" }
-    ],
-    "new": [
-      { "name": "pricing-cards", "reason": "Complex pricing comparison with feature lists, no existing block handles this" }
-    ]
+  "metadata": {
+    "title": "Open to Work: How to Get Ahead in the Age of AI",
+    "description": "Today is the day. Open to Work: How to Get Ahead in the Age of AI is officially available! At a time when technology dominates the headlines, the conversation I see most often on LinkedIn is deeply human: what does AI mean for my job and my career?",
+    "author": "Ryan Roslansky",
+    "publishDate": "2026-03-31",
+    "tags": ["AI", "LinkedIn", "Work Trend Index"],
+    "og:image": "https://blogs.microsoft.com/wp-content/uploads/2026/03/OMB-Hero-CN-3-31-26.jpg",
+    "template": "article"
+  },
+  "summary": {
+    "totalSections": 5,
+    "defaultContentSections": 4,
+    "blockSections": 1,
+    "blocks": ["cards-blog"],
+    "newBlocks": [],
+    "reusedBlocks": ["cards-blog"],
+    "notes": "This blog article is almost entirely default content — heading, image, paragraphs with links. Only the Related Blogs sidebar uses a block (cards-blog, already exists). No new blocks needed."
   }
 }
