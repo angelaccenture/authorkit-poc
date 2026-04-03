@@ -47,30 +47,6 @@ body.blogpage-template main > div:first-child .default-content h1 + p a {
   text-decoration: underline;
 }
 
-/* Social share links — horizontal row */
-body.blogpage-template main > div:first-child .default-content ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 var(--spacing-xl);
-  display: flex;
-  gap: var(--spacing-s);
-}
-
-body.blogpage-template main > div:first-child .default-content ul li a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-body.blogpage-template main > div:first-child .default-content ul li a img {
-  width: 32px;
-  height: 32px;
-}
-
 /* ── Hero Image ────────────────────────────────── */
 
 body.blogpage-template main img {
@@ -114,12 +90,6 @@ body.blogpage-template main > div:nth-child(3) .default-content p:last-of-type a
 }
 
 /* ── Related Blogs ─────────────────────────────── */
-body.blogpage-template main > div:last-child {
-  background-color: red;
-  grid-column-end: -1;
-    grid-row: 1;
-}
-
 
 body.blogpage-template main > div:last-child .default-content h3 {
   font-size: 20px;
@@ -204,20 +174,11 @@ body.blogpage-template .cards-blog li h3 a:hover {
     gap: 0 48px;
   }
 
-  /* Default content (article text) stays left */
-  body.blogpage-template main > div:nth-child(3) .default-content {
-    grid-column: 1;
-  }
 
-  /* Cards-blog block (Related Blogs) goes to right sidebar */
-  body.blogpage-template main > div:nth-child(3) .block-content {
-    grid-column: 2;
+  body.blogpage-template main > div:last-child {
+    grid-column-end: -1;
     grid-row: 1;
-    position: sticky;
-    top: var(--spacing-xl);
-    align-self: start;
-  }
-
+  } 
   /* Related cards stack vertically in sidebar */
   body.blogpage-template .cards-blog ul {
     flex-direction: column;
