@@ -15,9 +15,7 @@
 /* --- Card row (both structures) --- */
 .cards-blog > ul > li,
 .cards-blog > div {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: start;
+  background-color: white;
   border-bottom: 1px solid var(--color-border, #e3e3e3);
   padding: var(--spacing-m, 12px) 0;
 }
