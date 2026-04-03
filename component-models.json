@@ -20,8 +20,12 @@
             "value": "homepage"
           },
           {
-            "name": "Article",
+            "name": "News Article",
             "value": "article"
+          },
+          {
+            "name": "Blog Page",
+            "value": "blogpage"
           }
         ]
       },
