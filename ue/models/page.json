@@ -33,7 +33,7 @@
         },
         {
           "component": "text",
-          "name": "title",
+          "name": "Title",
           "label": "Title",
           "required": true,
           "validation": {
