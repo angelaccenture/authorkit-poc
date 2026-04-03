@@ -12,8 +12,11 @@
 /* Page background — original uses light grey */
 body.blogpage-template {
   background-color: #f5f5f5;
+  color: #2f2f2f;
 }
-
+.blogpage-template .section {
+  background-color: white;
+}
 /* Article layout */
 body.blogpage-template main {
   max-width: 780px;
