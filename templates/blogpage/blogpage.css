@@ -167,8 +167,8 @@ body.blogpage-template .cards-blog li h3 a:hover {
 
   /* Article body + Related Blogs in left column */
   body.blogpage-template main > div:last-child {
-    grid-column-end: -1;
-    grid-row: 1;
+    grid-column: 2;
+    grid-row: 1 / -4;
   } 
   /* Related cards stack vertically in sidebar */
   body.blogpage-template .cards-blog ul {
