@@ -161,20 +161,11 @@ body.blogpage-template .cards-blog li h3 a:hover {
   }
 
   /* Article sections span the left column */
-  body.blogpage-template main > div:nth-child(1),
-  body.blogpage-template main > div:nth-child(2) {
+  body.blogpage-template main > div {
     grid-column: 1;
   }
 
   /* Article body + Related Blogs in left column */
-  body.blogpage-template main > div:nth-child(3) {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 0 48px;
-  }
-
-
   body.blogpage-template main > div:last-child {
     grid-column-end: -1;
     grid-row: 1;
