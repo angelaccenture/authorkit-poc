@@ -16,6 +16,7 @@ body.blogpage-template {
 }
 .blogpage-template .section {
   background-color: white;
+  width: 100%;
 }
 /* Article layout */
 body.blogpage-template main {
@@ -108,37 +109,6 @@ body.blogpage-template .cards-blog ul {
   gap: var(--spacing-l);
 }
 
-body.blogpage-template .cards-blog li {
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: var(--spacing-l);
-}
-
-body.blogpage-template .cards-blog li:last-child {
-  border-bottom: none;
-}
-
-body.blogpage-template .cards-blog li p {
-  font-size: 15px;
-  color: #666;
-  margin-bottom: var(--spacing-xs);
-}
-
-body.blogpage-template .cards-blog li h3 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #2f2f2f;
-  margin: 0;
-}
-
-body.blogpage-template .cards-blog li h3 a {
-  color: #2f2f2f;
-  text-decoration: none;
-}
-
-body.blogpage-template .cards-blog li h3 a:hover {
-  color: var(--color-link);
-  text-decoration: underline;
-}
 
 /* ── Tablet ────────────────────────────────────── */
 
@@ -169,12 +139,9 @@ body.blogpage-template .cards-blog li h3 a:hover {
   body.blogpage-template main > div:last-child {
     grid-column: 2;
     grid-row: 1 / -4;
+    background-color: transparent;
   } 
   /* Related cards stack vertically in sidebar */
-  body.blogpage-template .cards-blog ul {
-    flex-direction: column;
-  }
-
   body.blogpage-template .cards-blog li {
     border-bottom: 1px solid var(--color-border);
     padding-bottom: var(--spacing-l);
