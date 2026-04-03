@@ -73,11 +73,7 @@ body.blogpage-template main > div:first-child .default-content ul li a img {
 
 /* ── Hero Image ────────────────────────────────── */
 
-body.blogpage-template main > div:nth-child(2) {
-  margin-bottom: var(--spacing-xl);
-}
-
-body.blogpage-template main > div:nth-child(2) img {
+body.blogpage-template main img {
   width: 100%;
   height: auto;
   display: block;
@@ -85,19 +81,19 @@ body.blogpage-template main > div:nth-child(2) img {
 
 /* ── Article Body ──────────────────────────────── */
 
-body.blogpage-template main > div:nth-child(3) .default-content p {
+body.blogpage-template main .default-content p {
   font-size: 15px;
   line-height: 20px;
   color: #2f2f2f;
   margin-bottom: 15px;
 }
 
-body.blogpage-template main > div:nth-child(3) .default-content a {
+body.blogpage-template main .default-content a {
   color: var(--color-link);
   text-decoration: underline;
 }
 
-body.blogpage-template main > div:nth-child(3) .default-content a:hover {
+body.blogpage-template main .default-content a:hover {
   color: var(--color-link-hover);
 }
 
