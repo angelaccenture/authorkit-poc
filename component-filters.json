@@ -39,6 +39,14 @@
     ]
   },
   {
+    "id": "blogpage-section",
+    "components": [
+      "text",
+      "button",
+      "cards-blog"
+    ]
+  },
+  {
     "id": "tabs-section",
     "components": [
       "text",
