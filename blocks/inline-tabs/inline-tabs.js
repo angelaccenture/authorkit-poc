@@ -48,6 +48,10 @@ export default function decorate(block) {
     bar.append(pill);
   });
 
+  // Set first pill as active by default
+  const firstPill = bar.querySelector('.inline-tabs-pill');
+  if (firstPill) firstPill.classList.add('is-active');
+
   nav.append(bar);
   block.textContent = '';
   block.append(nav);
