@@ -49,7 +49,7 @@
   --spacing-xs: 4px;
 
   /* layout */
-  --content-max-width: 1600px;
+  --content-max-width: 1328px;
   --section-padding: 0 24px;
 
   /* buttons */
@@ -269,7 +269,7 @@ svg {
 
 @media (width >= 1440px) {
   :root {
-    --content-max-width: 1600px;
+    --content-max-width: 1328px;
   }
 }
 
