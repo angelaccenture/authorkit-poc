@@ -140,10 +140,6 @@ body.developer-template .hero p {
 
 /* ── Inline Tabs Override ── */
 
-body.developer-template .inline-tabs {
-  background-color: #f4fafd;
-}
-
 body.developer-template .inline-tabs-pill {
   background-color: transparent;
   border-color: #d2d2d2;
