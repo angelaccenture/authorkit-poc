@@ -23,8 +23,8 @@ export default function decorate(block) {
 
   // Find the featured post (first row with an image)
   // Find recent articles heading (h4 "Recent articles")
-  let featuredContent = [];
-  let recentContent = [];
+  const featuredContent = [];
+  const recentContent = [];
   let isRecent = false;
 
   rows.forEach((row) => {
@@ -46,9 +46,6 @@ export default function decorate(block) {
 
   featuredContent.forEach((row) => {
     const img = row.querySelector('img');
-    const h5 = row.querySelector('h5');
-    const link = row.querySelector('a');
-    const paragraphs = row.querySelectorAll('p');
 
     if (img && !featured.querySelector('img')) {
       const imageWrap = document.createElement('div');
