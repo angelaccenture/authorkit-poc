@@ -76,6 +76,14 @@
   --header-height: 56px;
 }
 
+/* Hide carousel slide sections before JS to prevent CLS.
+   Sections immediately after a carousel section that contain hero/teaser/banner
+   blocks are slides — hide them until the carousel JS moves and manages them. */
+main > div:has(.advanced-carousel) + div:has(.hero, .teaser, .banner-carousel-slide, .hero-carousel-slide),
+main > div:has(.advanced-carousel) + div:has(.hero, .teaser, .banner-carousel-slide, .hero-carousel-slide) + div:has(.hero, .teaser, .banner-carousel-slide, .hero-carousel-slide) {
+  display: none;
+}
+
 html {
   scroll-padding-top: 1rem;
 }
