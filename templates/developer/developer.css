@@ -11,9 +11,9 @@
  * Hero CTA: bg #b3daf0, black text, 8px radius
  */
 
-/* Page background matching original */
+/* Page background — light blue matching original */
 body.developer-template {
-  background-color: #f7f7f7;
+  background-color: #f4fafd;
 }
 
 /* Full-width layout */
@@ -53,12 +53,12 @@ body.developer-template .default-content h3 {
   margin: 0 0 var(--spacing-s);
 }
 
-/* H2 section title */
+/* H2 section title — dark navy blue */
 body.developer-template .default-content h2 {
   font-size: 28px;
   font-weight: 500;
   letter-spacing: -0.5px;
-  color: #000;
+  color: #0e1726;
   margin: 0 0 var(--spacing-l);
 }
 
@@ -158,7 +158,7 @@ body.developer-template .hero p {
 /* ── Inline Tabs Override ── */
 
 body.developer-template .inline-tabs {
-  background-color: #f7f7f7;
+  background-color: #f4fafd;
 }
 
 body.developer-template .inline-tabs-pill {
@@ -222,7 +222,7 @@ body.developer-template .section.light-grey {
 /* ── Social Follow ── */
 
 body.developer-template .social-follow {
-  background-color: #f7f7f7;
+  background-color: #f4fafd;
 }
 
 /* ── Blog Section ── */
@@ -258,6 +258,7 @@ body.developer-template .quick-links-label {
 
   body.developer-template .default-content h2 {
     font-size: 32px;
+    color: #0e1726;
   }
 
   body.developer-template .hero .hero-heading {
