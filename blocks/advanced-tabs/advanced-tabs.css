@@ -12,6 +12,10 @@
   }
 }
 
+.tabSection {
+  padding: 0;
+}
+
 .tab-list {
   display: flex;
   gap: 8px;
