@@ -2,70 +2,96 @@
  * Styles for Microsoft Developer portal pages.
  * Applied when page metadata has template: developer.
  * Scoped under body.developer-template.
+ *
+ * Extracted from https://developer.microsoft.com/en-us/
+ * Body bg: #f7f7f7, text: #17253d, font: Segoe UI Variable Text
+ * Hero bg: #070e05, H1: 50px/500 #4cb5de, H2: 32px/500 #000
+ * H3 eyebrow: 12px/600 #005597 uppercase, H5: 18px/600 #0e1726
+ * Pill tabs: bg #005597, white text, border-radius 200px
+ * Hero CTA: bg #b3daf0, black text, 8px radius
  */
 
-/* Full-width layout — no content max-width on the page level */
+/* Page background matching original */
+body.developer-template {
+  background-color: #f7f7f7;
+}
+
+/* Full-width layout */
 body.developer-template main {
   max-width: 100%;
   padding: 0;
 }
 
-/* Sections get their own inner max-width + padding */
+/* Sections — inner max-width + padding */
 body.developer-template main > .section {
   max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 48px var(--spacing-l);
 }
 
-/* Hero section — full bleed, no inner constraint */
+/* Hero section — full bleed */
 body.developer-template main > .section:first-child {
   max-width: 100%;
   padding: 0;
 }
 
-/* Inline tabs section — full bleed for sticky bar */
+/* Inline tabs section — full bleed sticky bar */
 body.developer-template main > .section:has(.inline-tabs) {
   max-width: 100%;
   padding: 0;
 }
 
-/* Section headings — eyebrow + h2 pattern */
+/* ── Section Headings ── */
+
+/* H3 eyebrow — blue uppercase label */
 body.developer-template .default-content h3 {
-  font-size: var(--body-font-size-xs);
+  font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--color-text-muted);
+  letter-spacing: 0.96px;
+  color: #005597;
   margin: 0 0 var(--spacing-s);
 }
 
+/* H2 section title */
 body.developer-template .default-content h2 {
-  font-size: var(--heading-font-size-xl);
-  font-weight: 600;
-  letter-spacing: var(--heading-letter-spacing);
-  color: var(--color-text-dark);
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: #000;
   margin: 0 0 var(--spacing-l);
 }
 
-/* h5 cards pattern — image + heading + description + link */
+/* H5 card headings */
 body.developer-template .default-content h5 {
-  font-size: var(--heading-font-size-s);
+  font-size: 18px;
   font-weight: 600;
-  color: var(--color-text-dark);
+  color: #0e1726;
   margin: var(--spacing-m) 0 var(--spacing-s);
 }
 
+/* H4 sub-section headings (e.g. "Recent articles") */
+body.developer-template .default-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0e1726;
+  margin: var(--spacing-xl) 0 var(--spacing-m);
+}
+
+/* Card description text */
 body.developer-template .default-content h5 + p {
-  font-size: var(--body-font-size-s);
+  font-size: 15px;
   line-height: 1.5;
-  color: var(--color-text);
+  color: #17253d;
   margin: 0 0 var(--spacing-s);
 }
 
-/* CTA links */
+/* ── CTA Links ── */
+
 body.developer-template .default-content p:has(> a:only-child) a {
-  color: var(--color-link);
+  color: #005597;
   font-weight: 600;
+  font-size: 15px;
   text-decoration: none;
 }
 
@@ -73,36 +99,157 @@ body.developer-template .default-content p:has(> a:only-child) a:hover {
   text-decoration: underline;
 }
 
-/* Dark sections */
+/* Primary CTA buttons (strong > a pattern) */
+body.developer-template .default-content p:has(> strong > a) a {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: #b3daf0;
+  color: #000;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.15s;
+}
+
+body.developer-template .default-content p:has(> strong > a) a:hover {
+  background-color: #8ec8e6;
+  text-decoration: none;
+}
+
+/* ── Card Images ── */
+
+body.developer-template .default-content p:has(> img:only-child) {
+  margin: 0;
+}
+
+body.developer-template .default-content p > img:only-child {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+/* ── Hero Section ── */
+
+body.developer-template .hero {
+  background-color: #070e05;
+  color: #fff;
+}
+
+body.developer-template .hero .hero-foreground {
+  background: none;
+}
+
+body.developer-template .hero .hero-heading {
+  font-size: 36px;
+  font-weight: 500;
+  color: #4cb5de;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+body.developer-template .hero p {
+  color: #fff;
+  font-size: 16px;
+}
+
+/* ── Inline Tabs Override ── */
+
+body.developer-template .inline-tabs {
+  background-color: #f7f7f7;
+}
+
+body.developer-template .inline-tabs-pill {
+  background-color: transparent;
+  border-color: #d2d2d2;
+  color: #17253d;
+}
+
+body.developer-template .inline-tabs-pill:hover {
+  background-color: #e8e8e8;
+}
+
+body.developer-template .inline-tabs-pill.is-active {
+  background-color: #005597;
+  border-color: #005597;
+  color: #fff;
+}
+
+/* ── Dark Sections (Newsletter, etc.) ── */
+
 body.developer-template .section.dark {
   background-color: #1b1b1b;
   color: #fff;
   max-width: 100%;
 }
 
-body.developer-template .section.dark h2 {
+body.developer-template .section.dark .default-content h2 {
   color: #fff;
 }
 
-body.developer-template .section.dark p {
+body.developer-template .section.dark .default-content h3 {
+  color: #b3daf0;
+}
+
+body.developer-template .section.dark .default-content p {
   color: rgb(255 255 255 / 85%);
 }
 
-body.developer-template .section.dark a {
-  color: #fff;
+body.developer-template .section.dark .default-content a {
+  color: #b3daf0;
 }
 
-/* Light grey sections */
+body.developer-template .section.dark .default-content p:has(> strong > a) a,
+body.developer-template .section.dark .default-content p:has(> a:only-child) a {
+  background-color: #b3daf0;
+  color: #000;
+}
+
+body.developer-template .section.dark img {
+  max-width: 240px;
+  margin-bottom: var(--spacing-l);
+}
+
+/* ── Light Grey Sections ── */
+
 body.developer-template .section.light-grey {
-  background-color: var(--color-section-light-grey);
+  background-color: #f0f0f0;
   max-width: 100%;
 }
 
-/* Newsletter section image */
-body.developer-template .section.dark img {
-  max-width: 200px;
-  margin-bottom: var(--spacing-l);
+/* ── Social Follow ── */
+
+body.developer-template .social-follow {
+  background-color: #f7f7f7;
 }
+
+/* ── Blog Section ── */
+
+body.developer-template .default-content p:has(> a:only-child):has(+ h4) a {
+  font-size: 14px;
+  color: #005597;
+}
+
+/* Meta text (date, author lines) */
+body.developer-template .default-content p + h5 {
+  margin-top: 4px;
+}
+
+/* ── Language Icons ── */
+
+body.developer-template .quick-links-icon img {
+  width: 80px;
+  height: 80px;
+}
+
+body.developer-template .quick-links-label {
+  color: #005597;
+  font-size: 14px;
+}
+
+/* ── Responsive ── */
 
 @media (min-width: 768px) {
   body.developer-template main > .section {
@@ -110,7 +257,12 @@ body.developer-template .section.dark img {
   }
 
   body.developer-template .default-content h2 {
-    font-size: var(--heading-font-size-xxl);
+    font-size: 32px;
+  }
+
+  body.developer-template .hero .hero-heading {
+    font-size: 50px;
+    letter-spacing: -1.25px;
   }
 }
 
