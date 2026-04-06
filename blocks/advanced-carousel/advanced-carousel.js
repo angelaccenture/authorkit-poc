@@ -11,10 +11,14 @@ function updateNavButtons(prevBtn, nextBtn, activeIndex, total) {
 
 function goToSlide(index, carouselList, carouselPanels, prevBtn, nextBtn) {
   const buttons = carouselList.querySelectorAll('.carousel-slide-indicator button');
-  buttons.forEach((button) => { button.classList.remove('is-active'); });
+  buttons.forEach((button) => {
+    button.classList.remove('is-active');
+    button.setAttribute('aria-selected', 'false');
+  });
   carouselPanels.forEach((sec) => { sec.classList.remove('is-visible'); });
 
   buttons[index].classList.add('is-active');
+  buttons[index].setAttribute('aria-selected', 'true');
   carouselPanels[index].classList.add('is-visible');
   updateNavButtons(prevBtn, nextBtn, index, carouselPanels.length);
 }
@@ -28,15 +32,17 @@ function getCarouselList(carousel, carouselPanels, instanceId) {
   const carouselItems = carousel.querySelectorAll('li');
   const carouselList = document.createElement('div');
   carouselList.className = 'carousel-list carousel-slide-indicators';
-  carouselList.role = 'carousellist';
+  carouselList.role = 'tablist';
 
   for (const [idx, item] of carouselItems.entries()) {
     const indicator = document.createElement('div');
     indicator.className = 'carousel-slide-indicator';
 
     const btn = document.createElement('button');
-    btn.role = 'carousel';
+    btn.role = 'tab';
     btn.id = `carousel-${instanceId}-${idx + 1}`;
+    btn.setAttribute('aria-controls', `carouselpanel-${instanceId}-${idx + 1}`);
+    btn.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
     btn.textContent = item.textContent;
     if (idx === 0) {
       btn.classList.add('is-active');
@@ -97,7 +103,7 @@ export default function init(el) {
   while (sibling && carouselPanels.length < carouselCount) {
     sibling.classList.add('carouselSection');
     sibling.id = `carouselpanel-${instanceId}-${carouselPanels.length + 1}`;
-    sibling.role = 'carouselpanel';
+    sibling.role = 'tabpanel';
     sibling.setAttribute('aria-labelledby', `carousel-${instanceId}-${carouselPanels.length + 1}`);
     carouselPanels.push(sibling);
     sibling = sibling.nextElementSibling;
