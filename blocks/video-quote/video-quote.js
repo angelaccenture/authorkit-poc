@@ -3,7 +3,7 @@ export default function decorate(block) {
   const wrapper = document.createElement('div');
   wrapper.className = 'video-quote-wrapper';
 
-  // Row 1: Quote text + author
+  // Row 1: Quote text + author + product links
   const quoteRow = rows[0];
   if (quoteRow) {
     const quoteSection = document.createElement('div');
@@ -11,23 +11,15 @@ export default function decorate(block) {
 
     const quoteContent = quoteRow.querySelector('div');
     if (quoteContent) {
-      // Extract blockquote or paragraphs
-      const paragraphs = [...quoteContent.querySelectorAll('p')];
-      paragraphs.forEach((p) => {
-        quoteSection.append(p);
-      });
-
-      // Extract list of product links
-      const list = quoteContent.querySelector('ul');
-      if (list) {
-        list.className = 'video-quote-products';
-        quoteSection.append(list);
+      // Move all children (h2, p, ul, etc.) into the quote section
+      while (quoteContent.firstChild) {
+        quoteSection.append(quoteContent.firstChild);
       }
     }
     wrapper.append(quoteSection);
   }
 
-  // Row 2: Video embed or thumbnail
+  // Row 2: Video thumbnail
   const videoRow = rows[1];
   if (videoRow) {
     const videoSection = document.createElement('div');
@@ -35,7 +27,6 @@ export default function decorate(block) {
 
     const pic = videoRow.querySelector('picture');
     const img = videoRow.querySelector('img');
-    const link = videoRow.querySelector('a');
 
     if (pic) {
       videoSection.append(pic);
@@ -43,13 +34,11 @@ export default function decorate(block) {
       videoSection.append(img);
     }
 
-    if (link) {
-      const playBtn = document.createElement('button');
-      playBtn.className = 'video-quote-play';
-      playBtn.setAttribute('aria-label', 'Play video');
-      playBtn.dataset.href = link.href;
-      videoSection.append(playBtn);
-    }
+    // Add play button overlay
+    const playBtn = document.createElement('button');
+    playBtn.className = 'video-quote-play';
+    playBtn.setAttribute('aria-label', 'Play video');
+    videoSection.append(playBtn);
 
     wrapper.append(videoSection);
   }
