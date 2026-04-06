@@ -1,114 +1,135 @@
 {
-  "url": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/",
-  "template": "ms-blog-article",
+  "url": "https://developer.microsoft.com/en-us/",
+  "template": "msft-developer",
   "sections": [
     {
       "id": "section-1",
-      "name": "Article Header",
-      "style": null,
+      "name": "Hero Banner",
+      "style": "dark",
       "decisions": [
-        {
-          "type": "default-content",
-          "element": "heading",
-          "selector": "h1.entry-title",
-          "description": "Article title as H1",
-          "authoringNotes": "Author types the article title as a heading"
-        },
-        {
-          "type": "default-content",
-          "element": "paragraph",
-          "selector": "p.c-meta-text",
-          "description": "Date and author byline",
-          "authoringNotes": "Rendered from metadata (date, author name with link)"
-        }
+        { "type": "block", "blockName": "hero", "description": "Microsoft Build event hero with h1, location/date text, description paragraph, CTA link" }
       ]
     },
     {
       "id": "section-2",
-      "name": "Hero Image",
+      "name": "Featured Products Tabs",
       "style": null,
       "decisions": [
-        {
-          "type": "default-content",
-          "element": "image",
-          "selector": "img.wp-post-image",
-          "description": "Featured article image",
-          "authoringNotes": "Author inserts the hero image directly as default content"
-        }
+        { "type": "default-content", "description": "Eyebrow: Featured Products, H2: The tools you love" },
+        { "type": "block", "blockName": "advanced-tabs", "description": "4 tabs (M365, Azure, Visual Studio, Windows) each containing 3 card blocks" },
+        { "type": "block", "blockName": "card", "description": "3 feature cards per tab with heading, description, arrow link" }
       ]
     },
     {
       "id": "section-3",
-      "name": "Article Body",
+      "name": "Events Banner Carousel",
       "style": null,
       "decisions": [
-        {
-          "type": "default-content",
-          "element": "paragraphs",
-          "selector": "div.entry-content p",
-          "description": "Article body text — 9 paragraphs with inline links, bold, and italic formatting",
-          "authoringNotes": "Author writes article text naturally with links and formatting. This is standard default content."
-        },
-        {
-          "type": "default-content",
-          "element": "paragraph",
-          "selector": "p.tag-list",
-          "description": "Tags: AI, LinkedIn, Work Trend Index",
-          "authoringNotes": "Tags rendered as links at the end of article body"
-        }
+        { "type": "block", "blockName": "advanced-carousel", "description": "Carousel wrapper for 5 event banner cards" },
+        { "type": "block", "blockName": "card", "description": "5 event cards with optional date, heading, description, CTA link" }
       ]
     },
     {
       "id": "section-4",
-      "name": "Related Blogs",
+      "name": "News & Updates",
       "style": null,
       "decisions": [
-        {
-          "type": "default-content",
-          "element": "heading",
-          "selector": "h3.ms-related-blogs",
-          "description": "Section heading: Related Blogs"
-        },
-        {
-          "type": "block",
-          "blockName": "cards-blog",
-          "selector": "article.m-preview",
-          "description": "2 related article preview cards with date, author, and linked title",
-          "authoringNotes": "Reuses existing cards-blog block from the blog homepage migration. Each card has date, author, and title."
-        }
+        { "type": "default-content", "description": "Eyebrow: News and updates, H2: Discover what's new" },
+        { "type": "block", "blockName": "card", "description": "3 feature cards (Copilot SDK, Foundry, Claude) with heading, description, arrow link" }
       ]
     },
     {
       "id": "section-5",
-      "name": "Social Footer",
+      "name": "Languages",
       "style": null,
       "decisions": [
-        {
-          "type": "default-content",
-          "element": "paragraph",
-          "selector": "div.m-social",
-          "description": "Follow us: RSS link",
-          "authoringNotes": "Simple text with RSS link — default content is sufficient"
-        }
+        { "type": "default-content", "description": "Eyebrow: Languages, H2: Choose your language, description paragraph" },
+        { "type": "block", "blockName": "quick-links", "description": "6 language icon links (.NET, C++, Java, JS, Python, TypeScript)" }
+      ]
+    },
+    {
+      "id": "section-6",
+      "name": "Communities Carousel",
+      "style": null,
+      "decisions": [
+        { "type": "default-content", "description": "Eyebrow: Communities, H2: Join our communities" },
+        { "type": "block", "blockName": "advanced-carousel", "description": "Carousel wrapper for 8 community cards" },
+        { "type": "block", "blockName": "card", "description": "8 community cards with icon, heading, description, link" }
+      ]
+    },
+    {
+      "id": "section-7",
+      "name": "Resource Hubs",
+      "style": null,
+      "decisions": [
+        { "type": "default-content", "description": "Eyebrow: Hubs, H2: Visit the Developer resource hubs" },
+        { "type": "block", "blockName": "card", "description": "4 hub cards (AI, Build APIs, DevEx, Game Dev) with image, heading, description, arrow link" }
+      ]
+    },
+    {
+      "id": "section-8",
+      "name": "Developer Story",
+      "style": "light-grey",
+      "decisions": [
+        { "type": "block", "blockName": "video-quote", "description": "Quote text, author attribution, 3 product links with icons, video player with thumbnail" }
+      ]
+    },
+    {
+      "id": "section-9",
+      "name": "Blog",
+      "style": null,
+      "decisions": [
+        { "type": "default-content", "description": "H2: Read our blog + More blogs link" },
+        { "type": "block", "blockName": "cards-blog", "description": "Featured blog post (image, category, date, heading, description, link) + 3 recent articles (category, date, heading, link)" }
+      ]
+    },
+    {
+      "id": "section-10",
+      "name": "Events",
+      "style": null,
+      "decisions": [
+        { "type": "default-content", "description": "Eyebrow: Events, H2: Attend events or watch on demand + More events link" },
+        { "type": "block", "blockName": "advanced-carousel", "description": "Carousel for 5 event cards" },
+        { "type": "block", "blockName": "cards-blog", "description": "5 event cards with image, date heading, event title link (reuse cards-blog event variant)" }
+      ]
+    },
+    {
+      "id": "section-11",
+      "name": "Newsletter",
+      "style": "dark",
+      "decisions": [
+        { "type": "default-content", "description": "H2: Microsoft.Source newsletter, description paragraph, CTA link — no block needed" }
+      ]
+    },
+    {
+      "id": "section-12",
+      "name": "Learn With Us Tabs",
+      "style": null,
+      "decisions": [
+        { "type": "default-content", "description": "Eyebrow: Learn, H2: Learn with us" },
+        { "type": "block", "blockName": "advanced-tabs", "description": "5 tabs (AI, Azure, Copilot, DevOps, Security) each with learning resource cards" },
+        { "type": "block", "blockName": "card", "description": "Feature cards with heading, description, arrow link inside each tab" }
+      ]
+    },
+    {
+      "id": "section-13",
+      "name": "Social Follow",
+      "style": null,
+      "decisions": [
+        { "type": "block", "blockName": "social-follow", "description": "Follow us on the web — GitHub, X, LinkedIn, Instagram, YouTube, Bluesky" }
       ]
     }
   ],
   "metadata": {
-    "title": "Open to Work: How to Get Ahead in the Age of AI",
-    "description": "Today is the day. Open to Work: How to Get Ahead in the Age of AI is officially available! At a time when technology dominates the headlines, the conversation I see most often on LinkedIn is deeply human: what does AI mean for my job and my career?",
-    "author": "Ryan Roslansky",
-    "publishDate": "2026-03-31",
-    "tags": ["AI", "LinkedIn", "Work Trend Index"],
-    "og:image": "https://blogs.microsoft.com/wp-content/uploads/2026/03/OMB-Hero-CN-3-31-26.jpg",
-    "template": "article"
+    "title": "Microsoft Developer",
+    "description": "Any platform. Any language. Our tools. Develop solutions, on your terms, using Microsoft products and services.",
+    "og:image": "https://developer.microsoft.com/_devcom/images/logo-ms-social.jpg"
   },
   "summary": {
-    "totalSections": 5,
-    "defaultContentSections": 4,
-    "blockSections": 1,
-    "blocks": ["cards-blog"],
-    "newBlocks": [],
-    "reusedBlocks": ["cards-blog"],
-    "notes": "This blog article is almost entirely default content — heading, image, paragraphs with links. Only the Related Blogs sidebar uses a block (cards-blog, already exists). No new blocks needed."
+    "totalSections": 13,
+    "blocks": ["hero", "advanced-tabs", "card", "advanced-carousel", "quick-links", "video-quote", "cards-blog", "social-follow"],
+    "newBlocks": ["video-quote"],
+    "reusedBlocks": ["hero", "advanced-tabs", "card", "advanced-carousel", "quick-links", "cards-blog", "social-follow"],
+    "notes": "Complex page with 13 sections. Only 1 new block needed (video-quote). Tabbed content uses advanced-tabs with card blocks inside. Multiple carousels use advanced-carousel. Languages section reuses quick-links. Blog section reuses cards-blog."
   }
 }

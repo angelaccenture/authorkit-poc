@@ -1,185 +1,109 @@
 {
-  "url": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/",
-  "timestamp": "2026-04-02T17:38:30.383Z",
+  "url": "https://developer.microsoft.com/en-us/",
+  "timestamp": "2026-04-06T19:24:17.427Z",
   "paths": {
-    "documentPath": "/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/index",
-    "htmlFilePath": "content/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/index.plain.html",
-    "mdFilePath": "/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/index.md",
-    "dirPath": "/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai",
+    "documentPath": "/msft-developer",
+    "htmlFilePath": "content/msft-developer.plain.html",
+    "mdFilePath": "/en-us/index.md",
+    "dirPath": "/en-us",
     "filename": "index",
-    "previewPath": "/content/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/index"
+    "previewPath": "/content/msft-developer"
   },
   "screenshot": "migration-work/screenshot.png",
   "html": {
     "filePath": "migration-work/cleaned.html",
-    "size": 66591
+    "size": 949315
   },
   "metadata": {
-    "title": "Open to Work: How to Get Ahead in the Age of AI - The Official Microsoft Blog",
-    "viewport": "width=device-width, initial-scale=1",
-    "ms.sitever": "1.0",
-    "ms.env": "prod",
-    "ms.lang": "en",
-    "ms.loc": "us",
-    "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-    "og:locale": "en_US",
-    "og:type": "article",
-    "og:title": "Open to Work: How to Get Ahead in the Age of AI - The Official Microsoft Blog",
-    "og:description": "Today is the day. Open to Work: How to Get Ahead in the Age of AI is officially available! At a time when technology dominates the headlines, the conversation I see most often on LinkedIn is deeply human: what does AI mean for my job and my career? And that makes sense. Careers once felt...",
-    "og:url": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/",
-    "og:site_name": "The Official Microsoft Blog",
-    "article:publisher": "https://www.facebook.com/Microsoft/",
-    "article:published_time": "2026-03-31T15:08:49+00:00",
-    "og:image": "https://blogs.microsoft.com/wp-content/uploads/2026/03/OMB-Hero-CN-3-31-26-1024x576.jpg",
-    "og:image:width": "1024",
-    "og:image:height": "576",
-    "og:image:type": "image/jpeg",
-    "author": "Ryan Roslansky",
+    "title": "Microsoft Developer",
+    "viewport": "width=device-width, initial-scale=1.0",
+    "color-scheme": "dark light",
+    "awa-env": "Production",
+    "description": "Any platform. Any language. Our tools. Develop solutions, on your terms, using Microsoft products and services.",
+    "og:title": "Microsoft Developer",
+    "og:description": "Any platform. Any language. Our tools. Develop solutions, on your terms, using Microsoft products and services.",
+    "og:image": "https://developer.microsoft.com/_devcom/images/logo-ms-social.jpg",
+    "og:image:alt": "Microsoft Developer",
+    "og:type": "website",
+    "og:site_name": "Microsoft Developer",
+    "og:url": "https://developer.microsoft.com/en-us/",
     "twitter:card": "summary_large_image",
-    "twitter:creator": "@microsoft",
-    "twitter:site": "@microsoft",
-    "twitter:label1": "Written by",
-    "twitter:data1": "Ryan Roslansky",
-    "twitter:label2": "Est. reading time",
-    "twitter:data2": "2 minutes",
-    "msapplication-TileImage": "https://blogs.microsoft.com/wp-content/uploads/2017/08/favicon.jpg",
-    "canonical": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/",
-    "jsonLd": {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Article",
-          "@id": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/#article",
-          "isPartOf": {
-            "@id": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/"
-          },
-          "author": {
-            "name": "Ryan Roslansky",
-            "@id": "https://blogs.microsoft.com/#/schema/person/bfb586845fc8bf86637338a51be092f6"
-          },
-          "headline": "Open to Work: How to Get Ahead in the Age of AI",
-          "datePublished": "2026-03-31T15:08:49+00:00",
-          "mainEntityOfPage": {
-            "@id": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/"
-          },
-          "wordCount": 434,
-          "image": {
-            "@id": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/#primaryimage"
-          },
-          "thumbnailUrl": "https://blogs.microsoft.com/wp-content/uploads/2026/03/OMB-Hero-CN-3-31-26.jpg",
-          "keywords": [
-            "AI",
-            "LinkedIn",
-            "Work Trend Index"
-          ],
-          "articleSection": [
-            "Featured",
-            "The Official Microsoft Blog"
-          ],
-          "inLanguage": "en-US"
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/",
-          "url": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/",
-          "name": "Open to Work: How to Get Ahead in the Age of AI - The Official Microsoft Blog",
-          "isPartOf": {
-            "@id": "https://blogs.microsoft.com/#website"
-          },
-          "primaryImageOfPage": {
-            "@id": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/#primaryimage"
-          },
-          "image": {
-            "@id": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/#primaryimage"
-          },
-          "thumbnailUrl": "https://blogs.microsoft.com/wp-content/uploads/2026/03/OMB-Hero-CN-3-31-26.jpg",
-          "datePublished": "2026-03-31T15:08:49+00:00",
-          "author": {
-            "@id": "https://blogs.microsoft.com/#/schema/person/bfb586845fc8bf86637338a51be092f6"
-          },
-          "breadcrumb": {
-            "@id": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/#breadcrumb"
-          },
-          "inLanguage": "en-US",
-          "potentialAction": [
-            {
-              "@type": "ReadAction",
-              "target": [
-                "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/"
-              ]
-            }
-          ]
-        },
-        {
-          "@type": "ImageObject",
-          "inLanguage": "en-US",
-          "@id": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/#primaryimage",
-          "url": "https://blogs.microsoft.com/wp-content/uploads/2026/03/OMB-Hero-CN-3-31-26.jpg",
-          "contentUrl": "https://blogs.microsoft.com/wp-content/uploads/2026/03/OMB-Hero-CN-3-31-26.jpg",
-          "width": 1920,
-          "height": 1080,
-          "caption": "Ryan Roslansky, LinkedIn CEO and EVP of Microsoft Office, and Aneesh Raman, Chief Economic Opportunity Officer, LinkedIn, hold a copy of their book \"Open to Work: How to Get Ahead in the Age of AI.\""
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://blogs.microsoft.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Open to Work: How to Get Ahead in the Age of AI"
-            }
-          ]
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://blogs.microsoft.com/#website",
-          "url": "https://blogs.microsoft.com/",
-          "name": "The Official Microsoft Blog",
-          "description": "",
-          "potentialAction": [
-            {
-              "@type": "SearchAction",
-              "target": {
-                "@type": "EntryPoint",
-                "urlTemplate": "https://blogs.microsoft.com/?s={search_term_string}"
-              },
-              "query-input": {
-                "@type": "PropertyValueSpecification",
-                "valueRequired": true,
-                "valueName": "search_term_string"
-              }
-            }
-          ],
-          "inLanguage": "en-US"
-        },
-        {
-          "@type": "Person",
-          "@id": "https://blogs.microsoft.com/#/schema/person/bfb586845fc8bf86637338a51be092f6",
-          "name": "Ryan Roslansky",
-          "url": "https://blogs.microsoft.com/blog/author/rroslansky/"
-        }
-      ]
-    }
+    "twitter:site": "@msdev",
+    "twitter:image": "https://developer.microsoft.com/_devcom/images/logo-ms-social.jpg",
+    "awa-pageType": "Resources",
+    "awa-product": "Multiple",
+    "awa-prdct": "Multiple",
+    "canonical": "https://developer.microsoft.com/en-us/"
   },
   "images": {
-    "count": 3,
+    "count": 60,
     "mapping": {
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/build-hero-1440w.png": "./images/ede9fd101a3856dcc90da6de6ad565bb.png",
       "https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png": "./images/d04eaa7ef475a55b399e1f5a5cdabddf.png",
-      "https://msblogs.thesourcemediaassets.com/2026/03/OMB-Hero-CN-3-31-26-1536x864.jpg": "./images/b96a1931907338655077f87801930186.jpg",
-      "https://c.clarity.ms/c.gif?ctsa=mr&CtsSyncId=2C5F2078F85D46509F44963AA27C4638&MUID=28E20385898D64262D7714AA8D8D6A02": "./images/54e613891bd549f2344016bbfe4c9a43.png"
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/source-newsletter/source-newsletter-light@1x.jpg": "./images/b7eacaf9735f0cec8c0f0b908da296fa.jpg",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/tools/tools-1-3.avif": "./images/f7303acc898acfecc5a5c88b460e8a73.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/tools/tools-1-1.avif": "./images/404c207f5f2c30885e7fdf5156cf4cf1.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/tools/tools-1-2.avif": "./images/1c197f954cd7313c4d7d1457fd10ae94.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/tools/tools-3-3.avif": "./images/4657c7ffcb5a7ce56d7f4d5ea24ca8f8.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/tools/tools-2-1.avif": "./images/33d282821c234cf8983c2a5427e51f17.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/tools/tools-4-2.avif": "./images/0d4b6e86a0e4644a755ec3876560d75f.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/tools/tools-2-3.avif": "./images/641c8b03b2733862d38c2bb6622a6010.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/tools/tools-3-2.avif": "./images/eb0b22d8c82e19b665d1d61dc48ff1da.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/communities/dotnet.png": "./images/59fec4e2286fc206274633651c44ea48.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/tools/tools-3-1.avif": "./images/123e78be8c32b0b65fbd886001f0d341.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/communities/vs-code.png": "./images/54ae675e95442781feae9ba661bd3177.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/communities/devcom-community.png": "./images/f89a277c61bb6a6809a4019a5ce49b26.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/communities/github.png": "./images/673e3ba611d9c26fc65d6b62f389dfa0.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/communities/azure.png": "./images/839a5023fc9286b46e4994a43194581e.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/communities/reactor.png": "./images/7601ae34e26f1da0fd2fcda9a2542efc.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/communities/cloud-advocate.png": "./images/ccad8b5bcefd6a4fe6277f30f536a8c2.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/developer-story/video-thumbnail-replit.jpg": "./images/2974952160c6d2889627ebaa82518745.jpg",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/tools/tools-2-2.avif": "./images/36ba0f075b41c3f17dcf9134106ddaa3.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/tools/tools-4-1.avif": "./images/dc9b6848969d24a67c0e8f8cae5e30fd.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/build-hero-1440w.avif": "./images/aaf5f9b5324415b367cc12ece7d094a2.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/languages/js.avif": "./images/c8b80685b2b55bf94475f10145ab1749.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/whatsnew/whats-new-ignite-foundry.avif": "./images/4e727011690be466dcc2b5d54ee4fbda.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/developer-story/bg-light-1440w.avif": "./images/884e30c38e41ba8b92e1e23684e7d86a.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/languages/java.avif": "./images/3bcb17e93ceae3558c5eb1638546e46b.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/whatsnew/whats-new-copilot-sdk.avif": "./images/f99ce9bc3b817910eb150e4ba939ab9e.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/learn-with-us/1-ai.avif": "./images/e1b4b496bc283bd334de5ab4e584582d.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/languages/dotnet.avif": "./images/623c159fb417e36a639f35f8772dc59a.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/languages/ts.avif": "./images/de88a47e9210f0bfa3d9c947dea06057.png",
+      "https://developer.microsoft.com/_devcom/images/banners/2026/03/aspire-conf/desktop.avif": "./images/eda9292c9971de51fce120bc24bd2675.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/languages/cpp.avif": "./images/b161aa1dbf1d745beaab5e3b56b924f0.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/languages/python.avif": "./images/ab2620e68f77ab97c62066989fa7a8ae.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/hubs/hubs-1.avif": "./images/c696cc09ad1e1296061240110d9ea7ed.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/hubs/hubs-2.avif": "./images/b1c24778185c45e83889d8b48f1f091d.png",
+      "https://developer.microsoft.com/_devcom/images/banners/2026/03/azure-cosmos-conf/desktop.avif": "./images/450f83bfadcd638fcce5789264b2af75.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/whatsnew/whats-new-claude.avif": "./images/39bbc6f35e63f3545c187ccaecf8d129.png",
+      "https://c.clarity.ms/c.gif?ctsa=mr&CtsSyncId=79CA59829B8544339F9BB0C6E10AC94B&MUID=3E80BC70B2ED68301E27AB43B6ED6674": "./images/ee854fe169dd4f213f45f4135462c07c.png",
+      "https://developer.microsoft.com/_devcom/images/banners/2026/03/gh-copilot-dev-days/desktop.avif": "./images/afbc15d0d199aae2225b91525261944e.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/developer-story/microsoft-foundry.png": "./images/91ab9f0b40bb7826547b486e10074007.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/developer-story/open-ai-in-foundry-models.png": "./images/6dbe70ce702f83a5f26e06060b386e47.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/developer-story/azure.png": "./images/a71de5baeb2bcf7a992c1662281620f7.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/hubs/hubs-3.avif": "./images/192cd3a6ea66e42e40bae948fd64a7b6.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/hubs/hubs-4.avif": "./images/2c801f4e8403cb0a0adff860a57cc8d7.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/source-newsletter/source-newsletter-light@2x.avif": "./images/4c02aa5509448a30c7e6fe3f77ca37fb.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/blogs/winget-configuration.avif": "./images/87406090fe7a2a9521821785f1410818.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/blogs/github-copilot-cli-ga.avif": "./images/6a9e3a450eb892a19208b883ad72e9ad.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/blogs/github-copilot-work-context.avif": "./images/71f1ef2211482a53b23a4e1458bde0eb.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/blogs/teams.avif": "./images/44eaa9495ab8a507eac377b94f047867.png",
+      "https://secure.meetupstatic.com/photos/event/4/0/3/c/600_462736444.jpeg.avif": "./images/a51d216a60300f5af3d13c36c5fbb84b.png",
+      "https://secure.meetupstatic.com/photos/event/c/3/2/b/600_533269963.jpeg.avif": "./images/65bbde97e9886753b3e1034c9b4cc744.png",
+      "https://secure.meetupstatic.com/photos/event/d/4/0/c/600_532374284.jpeg.avif": "./images/da223953a8add429b69882d956e4017b.png",
+      "https://secure.meetupstatic.com/photos/event/b/9/5/5/600_531467445.jpeg.avif": "./images/23c39409f9925f0f8e437630bdad321e.png",
+      "https://secure.meetupstatic.com/photos/event/7/8/b/8/600_533430904.jpeg.avif": "./images/e4c6c409837f1cc5b1bfb0d23a60c86d.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/learn-with-us/badges/azure.png": "./images/3154f92b266a15b91213df672a443b35.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/learn-with-us/badges/agents.png": "./images/785ac9faa596374ebe97ed479f21b231.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/learn-with-us/badges/openai.png": "./images/5216823da81ea2ce89d187731a614551.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/learn-with-us/badges/microsoft-foundry.png": "./images/0d912b2613c2ee27d6c1499fcbbe604c.png",
+      "https://developer.microsoft.com/_devcom/images/views/index/v3/build-hero-860w.avif": "./images/8482d264a813babe70be1e9c242e6406.png"
     },
     "stats": {
-      "total": 6,
-      "converted": 1,
-      "skipped": 2,
-      "failed": 3,
+      "total": 62,
+      "converted": 42,
+      "skipped": 18,
+      "failed": 2,
       "tooLarge": 0,
       "limitReached": 0
     }

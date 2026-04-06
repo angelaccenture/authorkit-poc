@@ -1,64 +1,19 @@
 {
-  "url": "https://blogs.microsoft.com/blog/2026/03/31/open-to-work-how-to-get-ahead-in-the-age-of-ai/",
-  "template": "ms-blog-article",
+  "url": "https://developer.microsoft.com/en-us/",
+  "template": "msft-developer",
   "sections": [
-    {
-      "id": "section-1",
-      "name": "Article Header",
-      "selector": "header.entry-header.m-blog-content",
-      "style": null,
-      "description": "Article title, date, author, and social share links",
-      "contentSequences": [
-        { "type": "default-content", "description": "H1: Open to Work: How to Get Ahead in the Age of AI" },
-        { "type": "default-content", "description": "Date: Mar 31, 2026 | Author: Ryan Roslansky" },
-        { "type": "default-content", "description": "Social share buttons: Facebook, X, LinkedIn, Threads" }
-      ]
-    },
-    {
-      "id": "section-2",
-      "name": "Hero Image",
-      "selector": "img.wp-post-image",
-      "style": null,
-      "description": "Featured post image",
-      "contentSequences": [
-        { "type": "default-content", "description": "Full-width featured image: authors holding book" }
-      ]
-    },
-    {
-      "id": "section-3",
-      "name": "Article Body",
-      "selector": "div.entry-content.m-blog-content",
-      "style": null,
-      "description": "Main article text with paragraphs and inline links",
-      "contentSequences": [
-        { "type": "default-content", "description": "9 paragraphs of article body text with inline links and emphasis" },
-        { "type": "default-content", "description": "Tags line: AI, LinkedIn, Work Trend Index" }
-      ]
-    },
-    {
-      "id": "section-4",
-      "name": "Related Blogs",
-      "selector": "aside#secondary",
-      "style": null,
-      "description": "Sidebar with 2 related blog article previews",
-      "contentSequences": [
-        { "type": "default-content", "description": "H3: Related Blogs" },
-        { "type": "block", "description": "2 related article preview cards with date, author, and title link" }
-      ]
-    },
-    {
-      "id": "section-5",
-      "name": "Social Footer",
-      "selector": "div.social-footer-wrap",
-      "style": null,
-      "description": "Follow us RSS link",
-      "contentSequences": [
-        { "type": "default-content", "description": "Follow us: RSS link" }
-      ]
-    }
-  ],
-  "blockInventory": {
-    "existingLocalBlocks": ["card", "cards-blog", "hero", "teaser", "social-follow", "advanced-carousel", "advanced-accordion", "hero-m365", "card-app", "pricing-cards", "ai-chat", "quick-links"],
-    "notes": "Blog article is primarily default content. Related blogs sidebar could reuse cards-blog block. Most content is paragraphs, headings, and an image — ideal for default content authoring."
-  }
+    { "id": "section-1", "name": "Hero Banner", "selector": "[class*='hero'], [class*='banner-hero']", "style": "dark", "description": "Microsoft Build event promo with heading, location, date, description, CTA" },
+    { "id": "section-2", "name": "Featured Products Tabs", "selector": "[class*='featured-products'], [class*='tools']", "style": null, "description": "Tabbed content: M365, Azure, Visual Studio, Windows — each with 3 feature cards" },
+    { "id": "section-3", "name": "Events Banner Carousel", "selector": "[class*='banner-carousel']", "style": null, "description": "5 event cards in horizontal carousel (GitHub Copilot Dev Days, Cosmos Conf, etc.)" },
+    { "id": "section-4", "name": "News & Updates", "selector": "[class*='whats-new'], [class*='news']", "style": null, "description": "Discover what's new — 3 feature cards (Copilot SDK, Foundry, Claude)" },
+    { "id": "section-5", "name": "Languages", "selector": "[class*='languages']", "style": null, "description": "Choose your language — 6 icon links (.NET, C++, Java, JS, Python, TypeScript)" },
+    { "id": "section-6", "name": "Communities Carousel", "selector": "[class*='communities']", "style": null, "description": "Join our communities — 8 cards carousel (Developer Communities, Azure, Cloud Advocates, etc.)" },
+    { "id": "section-7", "name": "Resource Hubs", "selector": "[class*='hubs']", "style": null, "description": "Visit Developer resource hubs — 4 cards (AI, Build APIs, DevEx, Game Dev)" },
+    { "id": "section-8", "name": "Developer Story", "selector": "[class*='developer-story']", "style": "light-grey", "description": "Hear a developer's story — quote, product links, video player" },
+    { "id": "section-9", "name": "Blog", "selector": "[class*='blogs']", "style": null, "description": "Read our blog — featured post + 3 recent articles" },
+    { "id": "section-10", "name": "Events", "selector": "[class*='events']", "style": null, "description": "Attend events or watch on demand — 5 event cards carousel" },
+    { "id": "section-11", "name": "Newsletter", "selector": "[class*='newsletter'], [class*='source']", "style": "dark", "description": "Microsoft.Source newsletter signup — heading, description, CTA" },
+    { "id": "section-12", "name": "Learn With Us Tabs", "selector": "[class*='learn']", "style": null, "description": "Learn with us — tabbed content (AI, Azure, Copilot, DevOps, Security) with learning cards" },
+    { "id": "section-13", "name": "Social Follow", "selector": "[class*='social'], [class*='follow']", "style": null, "description": "Follow us on the web — GitHub, X, LinkedIn, Instagram, YouTube, Bluesky" }
+  ]
 }
