@@ -36,42 +36,36 @@ export default function init(el) {
   // Find the top most parent where all tab sections live
   const parent = el.closest('.fragment-content, main');
 
-  // Forefully hide parent because sections may not be loaded yet
+  // Forcefully hide parent because sections may not be loaded yet
   parent.style = 'display: none;';
 
-  // Find the tab items
+  // Find the tab items from THIS block instance (not global)
   const tabs = el.querySelector('.advanced-tabs ul');
   if (!tabs) {
     log('Please add an unordered list to the advanced tabs block.');
+    parent.removeAttribute('style');
     return;
   }
-  // Find the section
+
+  // Find the section that contains this tabs block
   const currSection = el.closest('.section');
+  currSection.classList.add('tab-section');
 
-  // Find the section that contains the actual block and only add class to tab sections
-  const currSectionat = el.closest('.section .advanced-tabs');
-  currSectionat.closest('.section').classList.add('tab-section');
-  const tabSections = document.querySelectorAll('.tab-section ~ .section');
-  const tabItems = document.querySelector('.advanced-tabs ul');
-  const tabCount = tabItems.childElementCount;
+  // Count tab items from THIS instance
+  const tabCount = tabs.querySelectorAll('li').length;
 
-  tabSections.forEach((element, index) => {
-    if (index < tabCount) {
-      element.classList.add('tab-section');
-    }
-  });
+  // Walk only immediately following sibling sections to collect tab panels
+  // This ensures each tabs block only claims its own adjacent sections
+  const tabPanels = [];
+  let sibling = currSection.nextElementSibling;
+  while (sibling && tabPanels.length < tabCount) {
+    // Stop if we hit another container block (carousel or tabs)
+    if (sibling.querySelector('.advanced-carousel, .advanced-tabs')) break;
 
-  // Filter and format all sections that do not hold the tabs block
-  const tabPanels = [...parent.querySelectorAll(':scope > .tab-section')]
-    .reduce((acc, section, idx) => {
-      if (section !== currSection) {
-        section.id = `tabpanel-${idx + 1}`;
-        section.role = 'tabpanel';
-        section.setAttribute('aria-labelledby', `tab-${idx + 1}`);
-        acc.push(section);
-      }
-      return acc;
-    }, []);
+    sibling.classList.add('tab-section');
+    tabPanels.push(sibling);
+    sibling = sibling.nextElementSibling;
+  }
 
   const tabList = getTabList(tabs, tabPanels);
 

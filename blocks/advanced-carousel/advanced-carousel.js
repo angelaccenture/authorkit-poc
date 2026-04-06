@@ -101,6 +101,9 @@ export default function init(el) {
   const carouselPanels = [];
   let sibling = currSection.nextElementSibling;
   while (sibling && carouselPanels.length < carouselCount) {
+    // Stop if we hit another container block (carousel or tabs)
+    if (sibling.querySelector('.advanced-carousel, .advanced-tabs')) break;
+
     sibling.classList.add('carouselSection');
     sibling.id = `carouselpanel-${instanceId}-${carouselPanels.length + 1}`;
     sibling.role = 'tabpanel';
