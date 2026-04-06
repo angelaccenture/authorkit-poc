@@ -93,17 +93,19 @@ function decoratePictures(el) {
   const pics = el.querySelectorAll('picture');
   for (const pic of pics) {
     const source = pic.querySelector('source');
-    if (!source) continue;
-    const clone = source.cloneNode();
-    const [pathname, params] = clone.getAttribute('srcset').split('?');
-    const search = new URLSearchParams(params);
-    search.set('width', 3000);
-    clone.setAttribute('srcset', `${pathname}?${search.toString()}`);
-    clone.setAttribute('media', '(min-width: 1440px)');
-    pic.prepend(clone);
+    if (source) {
+      const clone = source.cloneNode();
+      const [pathname, params] = clone.getAttribute('srcset').split('?');
+      const search = new URLSearchParams(params);
+      search.set('width', 3000);
+      clone.setAttribute('srcset', `${pathname}?${search.toString()}`);
+      clone.setAttribute('media', '(min-width: 1440px)');
+      pic.prepend(clone);
+    }
   }
 }
 
+// eslint-disable-next-line no-unused-vars
 function decorateButton(link) {
   const isEm = link.closest('em');
   const isStrong = link.closest('strong');
@@ -192,7 +194,7 @@ export function decorateLink(config, a) {
       const localized = localizeUrl({ config, url });
       if (localized) a.href = localized.href;
     }
-   // decorateButton(a);
+    // decorateButton(a);
     if (!dnb) {
       const { href } = a;
       const found = config.linkBlocks.some((pattern) => {
