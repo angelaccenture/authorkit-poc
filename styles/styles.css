@@ -73,7 +73,7 @@
   --body-letter-spacing: -0.48px;
 
   /* misc */
-  --header-height: 0px;
+  --header-height: 56px;
 }
 
 html {
@@ -82,7 +82,7 @@ html {
 
 body {
   margin: 0;
-  padding: 0;
+  padding-top: var(--header-height);
   background-color: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-family);
