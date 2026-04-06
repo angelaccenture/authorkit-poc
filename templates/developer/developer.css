@@ -1,0 +1,121 @@
+/* Developer Template
+ * Styles for Microsoft Developer portal pages.
+ * Applied when page metadata has template: developer.
+ * Scoped under body.developer-template.
+ */
+
+/* Full-width layout — no content max-width on the page level */
+body.developer-template main {
+  max-width: 100%;
+  padding: 0;
+}
+
+/* Sections get their own inner max-width + padding */
+body.developer-template main > .section {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 48px var(--spacing-l);
+}
+
+/* Hero section — full bleed, no inner constraint */
+body.developer-template main > .section:first-child {
+  max-width: 100%;
+  padding: 0;
+}
+
+/* Inline tabs section — full bleed for sticky bar */
+body.developer-template main > .section:has(.inline-tabs) {
+  max-width: 100%;
+  padding: 0;
+}
+
+/* Section headings — eyebrow + h2 pattern */
+body.developer-template .default-content h3 {
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--spacing-s);
+}
+
+body.developer-template .default-content h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 600;
+  letter-spacing: var(--heading-letter-spacing);
+  color: var(--color-text-dark);
+  margin: 0 0 var(--spacing-l);
+}
+
+/* h5 cards pattern — image + heading + description + link */
+body.developer-template .default-content h5 {
+  font-size: var(--heading-font-size-s);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin: var(--spacing-m) 0 var(--spacing-s);
+}
+
+body.developer-template .default-content h5 + p {
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-s);
+}
+
+/* CTA links */
+body.developer-template .default-content p:has(> a:only-child) a {
+  color: var(--color-link);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+body.developer-template .default-content p:has(> a:only-child) a:hover {
+  text-decoration: underline;
+}
+
+/* Dark sections */
+body.developer-template .section.dark {
+  background-color: #1b1b1b;
+  color: #fff;
+  max-width: 100%;
+}
+
+body.developer-template .section.dark h2 {
+  color: #fff;
+}
+
+body.developer-template .section.dark p {
+  color: rgb(255 255 255 / 85%);
+}
+
+body.developer-template .section.dark a {
+  color: #fff;
+}
+
+/* Light grey sections */
+body.developer-template .section.light-grey {
+  background-color: var(--color-section-light-grey);
+  max-width: 100%;
+}
+
+/* Newsletter section image */
+body.developer-template .section.dark img {
+  max-width: 200px;
+  margin-bottom: var(--spacing-l);
+}
+
+@media (min-width: 768px) {
+  body.developer-template main > .section {
+    padding: 64px var(--spacing-xl);
+  }
+
+  body.developer-template .default-content h2 {
+    font-size: var(--heading-font-size-xxl);
+  }
+}
+
+@media (min-width: 1200px) {
+  body.developer-template main > .section {
+    padding: 80px var(--spacing-xxl);
+  }
+}

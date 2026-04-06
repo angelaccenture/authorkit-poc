@@ -26,6 +26,10 @@
           {
             "name": "Blog Page",
             "value": "blogpage"
+          },
+          {
+            "name": "Developer",
+            "value": "developer"
           }
         ]
       },
