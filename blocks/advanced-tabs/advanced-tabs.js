@@ -50,20 +50,20 @@ export default function init(el) {
   
   // Find the section that contains the actual block and only add class to tab sections
   const currSectionat = el.closest('.section .advanced-tabs');
-  const tabSectionItem = currSectionat.closest('.section').classList.add("tabSection");
-  const tabSection = document.querySelectorAll('.tabSection ~ .section');
+  const tabSectionItem = currSectionat.closest('.section').classList.add("tab-section");
+  const tabSections = document.querySelectorAll('.tab-section ~ .section');
   const tabItems = document.querySelector(".advanced-tabs ul");
   const tabCount = tabItems.childElementCount;
 
-  tabSection.forEach((element, index) => {
+  tabSections.forEach((element, index) => {
     if (index < tabCount) {
-     element.classList.add("tabSection");
+     element.classList.add("tab-section");
     }
    
   });
 
   // Filter and format all sections that do not hold the tabs block
-  const tabPanels = [...parent.querySelectorAll(':scope > .tabSection')]
+  const tabPanels = [...parent.querySelectorAll(':scope > .tab-section')]
     .reduce((acc, section, idx) => {
       if (section !== currSection) {
         section.id = `tabpanel-${idx + 1}`;
