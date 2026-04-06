@@ -31,7 +31,7 @@ function getTabList(tabs, tabPanels) {
   }
   return tabList;
 }
- 
+
 export default function init(el) {
   // Find the top most parent where all tab sections live
   const parent = el.closest('.fragment-content, main');
@@ -47,19 +47,18 @@ export default function init(el) {
   }
   // Find the section
   const currSection = el.closest('.section');
-  
+
   // Find the section that contains the actual block and only add class to tab sections
   const currSectionat = el.closest('.section .advanced-tabs');
-  const tabSectionItem = currSectionat.closest('.section').classList.add("tab-section");
+  currSectionat.closest('.section').classList.add('tab-section');
   const tabSections = document.querySelectorAll('.tab-section ~ .section');
-  const tabItems = document.querySelector(".advanced-tabs ul");
+  const tabItems = document.querySelector('.advanced-tabs ul');
   const tabCount = tabItems.childElementCount;
 
   tabSections.forEach((element, index) => {
     if (index < tabCount) {
-     element.classList.add("tab-section");
+      element.classList.add('tab-section');
     }
-   
   });
 
   // Filter and format all sections that do not hold the tabs block
