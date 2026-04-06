@@ -384,3 +384,71 @@
     }
   }
 }
+
+/* Microsoft.Source newsletter variant */
+.hero.msftsource {
+  color: #fff;
+
+  .hero-background {
+    img {
+      object-position: center;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgb(0 40 80 / 85%) 0%, rgb(0 40 80 / 60%) 50%, transparent 100%);
+    }
+  }
+
+  .hero-foreground {
+    min-height: 300px;
+    background: none;
+    padding: 48px 24px;
+    align-items: center;
+
+    .hero-heading {
+      font-size: 28px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: normal;
+      text-transform: none;
+    }
+
+    p {
+      font-size: 16px;
+      color: rgb(255 255 255 / 90%);
+      max-width: 520px;
+    }
+
+    a {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      background-color: #b3daf0;
+      color: #000;
+      transition: background-color 0.15s;
+
+      &:hover {
+        background-color: #8ec8e6;
+      }
+    }
+  }
+}
+
+@media (width >= 600px) {
+  .hero.msftsource {
+    .hero-foreground {
+      padding: 64px 48px;
+      grid-template-columns: 50%;
+
+      .hero-heading {
+        font-size: 32px;
+      }
+    }
+  }
+}
