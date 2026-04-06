@@ -2,16 +2,9 @@
  * Styles for Microsoft Developer portal pages.
  * Applied when page metadata has template: developer.
  * Scoped under body.developer-template.
- *
- * Extracted from https://developer.microsoft.com/en-us/
- * Body bg: #f7f7f7, text: #17253d, font: Segoe UI Variable Text
- * Hero bg: #070e05, H1: 50px/500 #4cb5de, H2: 32px/500 #000
- * H3 eyebrow: 12px/600 #005597 uppercase, H5: 18px/600 #0e1726
- * Pill tabs: bg #005597, white text, border-radius 200px
- * Hero CTA: bg #b3daf0, black text, 8px radius
  */
 
-/* Page background — light blue matching original */
+/* Page background — light blue */
 body.developer-template {
   background-color: #f4fafd;
 }
@@ -29,13 +22,9 @@ body.developer-template main > .section {
   padding: 48px var(--spacing-l);
 }
 
-/* Hero section — full bleed */
-body.developer-template main > .section:first-child {
-  max-width: 100%;
-  padding: 0;
-}
-
-/* Inline tabs section — full bleed sticky bar */
+/* Hero sections — full bleed */
+body.developer-template main > .section:first-child,
+body.developer-template main > .section:has(.hero),
 body.developer-template main > .section:has(.inline-tabs) {
   max-width: 100%;
   padding: 0;
@@ -43,7 +32,6 @@ body.developer-template main > .section:has(.inline-tabs) {
 
 /* ── Section Headings ── */
 
-/* H3 eyebrow — blue uppercase label */
 body.developer-template .default-content h3 {
   font-size: 12px;
   font-weight: 600;
@@ -53,7 +41,6 @@ body.developer-template .default-content h3 {
   margin: 0 0 var(--spacing-s);
 }
 
-/* H2 section title — dark navy blue */
 body.developer-template .default-content h2 {
   font-size: 28px;
   font-weight: 500;
@@ -62,7 +49,6 @@ body.developer-template .default-content h2 {
   margin: 0 0 var(--spacing-l);
 }
 
-/* H5 card headings */
 body.developer-template .default-content h5 {
   font-size: 18px;
   font-weight: 600;
@@ -70,7 +56,6 @@ body.developer-template .default-content h5 {
   margin: var(--spacing-m) 0 var(--spacing-s);
 }
 
-/* H4 sub-section headings (e.g. "Recent articles") */
 body.developer-template .default-content h4 {
   font-size: 16px;
   font-weight: 600;
@@ -78,7 +63,6 @@ body.developer-template .default-content h4 {
   margin: var(--spacing-xl) 0 var(--spacing-m);
 }
 
-/* Card description text */
 body.developer-template .default-content h5 + p {
   font-size: 15px;
   line-height: 1.5;
@@ -99,7 +83,6 @@ body.developer-template .default-content p:has(> a:only-child) a:hover {
   text-decoration: underline;
 }
 
-/* Primary CTA buttons (strong > a pattern) */
 body.developer-template .default-content p:has(> strong > a) a {
   display: inline-block;
   padding: 8px 12px;
@@ -177,7 +160,81 @@ body.developer-template .inline-tabs-pill.is-active {
   color: #fff;
 }
 
-/* ── Dark Sections (Newsletter, etc.) ── */
+/* ── Video Quote Section ── */
+
+body.developer-template .section:has(.video-quote) {
+  background-color: #f0f0f0;
+  max-width: 100%;
+  padding: 64px var(--spacing-l);
+}
+
+body.developer-template .video-quote {
+  background-color: transparent;
+  padding: 0;
+}
+
+body.developer-template .video-quote-text h2 {
+  color: #0e1726;
+}
+
+body.developer-template .video-quote-text p {
+  color: #17253d;
+}
+
+body.developer-template .video-quote-products li a {
+  color: #005597;
+}
+
+/* ── Card Carousel Override ── */
+
+body.developer-template .card-carousel-content h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0e1726;
+}
+
+body.developer-template .card-carousel-content p {
+  font-size: 15px;
+  color: #17253d;
+}
+
+body.developer-template .card-carousel-link {
+  color: #005597;
+}
+
+body.developer-template .card-carousel-prev,
+body.developer-template .card-carousel-next {
+  border-color: #005597;
+}
+
+body.developer-template .card-carousel-prev::after,
+body.developer-template .card-carousel-next::after {
+  border-color: #005597;
+}
+
+/* ── Read Blog Override ── */
+
+body.developer-template .read-blog-more a {
+  color: #005597;
+}
+
+body.developer-template .read-blog-featured h5 {
+  color: #0e1726;
+}
+
+body.developer-template .read-blog-featured p:has(> a:only-child) a {
+  color: #005597;
+}
+
+body.developer-template .read-blog-article h5 {
+  color: #0e1726;
+}
+
+body.developer-template .read-blog-article p:has(> a:only-child) a {
+  color: #005597;
+}
+
+/* ── Dark Sections ── */
 
 body.developer-template .section.dark {
   background-color: #1b1b1b;
@@ -225,16 +282,13 @@ body.developer-template .social-follow {
   background-color: #f4fafd;
 }
 
-/* ── Blog Section ── */
-
-body.developer-template .default-content p:has(> a:only-child):has(+ h4) a {
-  font-size: 14px;
-  color: #005597;
+body.developer-template .social-follow-heading {
+  color: #0e1726;
+  font-size: 16px;
 }
 
-/* Meta text (date, author lines) */
-body.developer-template .default-content p + h5 {
-  margin-top: 4px;
+body.developer-template .social-follow-link {
+  color: #005597;
 }
 
 /* ── Language Icons ── */
@@ -264,6 +318,10 @@ body.developer-template .quick-links-label {
   body.developer-template .hero .hero-heading {
     font-size: 50px;
     letter-spacing: -1.25px;
+  }
+
+  body.developer-template .section:has(.video-quote) {
+    padding: 80px var(--spacing-xl);
   }
 }
 
