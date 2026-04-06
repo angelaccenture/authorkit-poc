@@ -1,0 +1,151 @@
+/* Read Blog — featured post + recent articles sidebar */
+
+.read-blog {
+  padding: 0;
+}
+
+.read-blog-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* More blogs link — top right */
+.read-blog-more {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.read-blog-more a {
+  font-size: 15px;
+  font-weight: 600;
+  color: #005597;
+  text-decoration: none;
+}
+
+.read-blog-more a:hover {
+  text-decoration: underline;
+}
+
+/* Featured post */
+.read-blog-featured {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.read-blog-featured-image img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.read-blog-featured p {
+  font-size: 14px;
+  color: #616161;
+  margin: 0;
+}
+
+.read-blog-featured h5 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #0e1726;
+  margin: 4px 0 8px;
+}
+
+.read-blog-featured p:has(> a:only-child) a {
+  font-size: 15px;
+  font-weight: 600;
+  color: #005597;
+  text-decoration: none;
+}
+
+.read-blog-featured p:has(> a:only-child) a:hover {
+  text-decoration: underline;
+}
+
+/* Recent articles */
+.read-blog-recent h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0e1726;
+  margin: 0 0 16px;
+}
+
+.read-blog-article {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+  border-top: 1px solid #e7e7e7;
+}
+
+.read-blog-article img {
+  width: 100%;
+  max-width: 120px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.read-blog-article p {
+  font-size: 13px;
+  color: #616161;
+  margin: 0;
+}
+
+.read-blog-article h5 {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #0e1726;
+  margin: 2px 0 4px;
+}
+
+.read-blog-article p:has(> a:only-child) a {
+  font-size: 14px;
+  font-weight: 600;
+  color: #005597;
+  text-decoration: none;
+}
+
+.read-blog-article p:has(> a:only-child) a:hover {
+  text-decoration: underline;
+}
+
+/* Desktop — featured left, recent right */
+@media (width >= 768px) {
+  .read-blog-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 24px 40px;
+  }
+
+  .read-blog-more {
+    grid-column: 1 / -1;
+  }
+
+  .read-blog-featured {
+    grid-column: 1;
+  }
+
+  .read-blog-recent {
+    grid-column: 2;
+  }
+
+  .read-blog-article {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .read-blog-article img {
+    flex-shrink: 0;
+  }
+}
