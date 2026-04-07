@@ -109,5 +109,9 @@
     background-color: initial;
     border-radius: 0;
     border: none;
+  
+  }
+  &.dev {
+    max-height: 330px;
   }
 }
