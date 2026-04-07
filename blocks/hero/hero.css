@@ -440,6 +440,11 @@
   }
 }
 
+/* Developer hero variant */
+.hero.devhero {
+  background-color: #070e05;
+}
+
 @media (width >= 600px) {
   .hero.msftsource {
     .hero-foreground {
