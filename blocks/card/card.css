@@ -114,4 +114,52 @@
   &.dev {
     max-height: 330px;
   }
+
+  /* Dev variation — horizontal card for developer portal carousels */
+  &.dev {
+    .card-inner {
+      flex-direction: row;
+    }
+
+    .card-picture-container {
+      flex: 0 0 50%;
+      padding: 8px;
+
+      img {
+        aspect-ratio: auto;
+        height: 100%;
+        border-radius: 12px;
+      }
+    }
+
+    .card-content-container {
+      flex: 1;
+      padding: 24px;
+      justify-content: center;
+    }
+
+    .card-cta-container {
+      padding: 0 24px 24px;
+
+      a {
+        background-color: #005597;
+      }
+
+      a:hover {
+        background-color: #003d6e;
+      }
+    }
+  }
+}
+
+@media (width < 600px) {
+  .card.dev {
+    .card-inner {
+      flex-direction: column;
+    }
+
+    .card-picture-container {
+      flex: none;
+    }
+  }
 }
