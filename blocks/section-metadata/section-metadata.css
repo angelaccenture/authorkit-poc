@@ -93,6 +93,13 @@
     }
   }
 
+  /* devhero */
+  &.devhero {
+    background-color: #070e05;
+    max-width: 100%;
+    padding: 0;
+  }
+
   /* dark */
   &.dark {
     background-color: #1b1b1b;
