@@ -69,6 +69,14 @@ body.developer-template .default-content h5 + p {
   color: #17253d;
   margin: 0 0 var(--spacing-s);
 }
+/* ── Advanced Tabs ── */
+body.developer-template .advanced-tabs {
+  margin-top: 40px;
+}
+body.developer-template .advanced-tabs .tab-list {
+ padding-bottom: 35px;
+}
+
 
 /* ── CTA Links ── */
 
