@@ -127,6 +127,8 @@ body.developer-template .default-content p > img:only-child {
 body.developer-template .hero {
   background-color: #070e05;
   color: #fff;
+  width: 1440px;
+  margin: 0 auto;
 }
 
 body.developer-template .hero .hero-foreground {
