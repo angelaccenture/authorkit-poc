@@ -123,6 +123,7 @@ body.developer-template .hero {
 
 body.developer-template .hero .hero-foreground {
   background: none;
+  max-width: 1362px;
 }
 
 body.developer-template .hero .hero-heading {
@@ -138,17 +139,6 @@ body.developer-template .hero p {
   font-size: 16px;
 }
 
-/* ── Inline Tabs Override ── */
-
-body.developer-template .inline-tabs-pill {
-  background-color: transparent;
-  color: #17253d;
-  font-weight: 600;
-}
-
-body.developer-template .inline-tabs-pill.is-active {
-  border-color: #005597;
-}
 
 /* ── Video Quote Section ── */
 
