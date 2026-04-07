@@ -122,10 +122,17 @@ body.developer-template .default-content p > img:only-child {
   display: block;
 }
 
+/* ── Devhero Section Style ── */
+
+body.developer-template .section.devhero {
+  background-color: #070e05;
+  max-width: 100%;
+  padding: 0;
+}
+
 /* ── Hero Section ── */
 
 body.developer-template .hero {
-  background-color: #070e05;
   color: #fff;
   width: 1440px;
   margin: 0 auto;
