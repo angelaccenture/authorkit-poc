@@ -111,9 +111,6 @@
     border: none;
   
   }
-  &.dev {
-    max-height: 330px;
-  }
 
   /* Dev variation — horizontal card for developer portal carousels */
   &.dev {
