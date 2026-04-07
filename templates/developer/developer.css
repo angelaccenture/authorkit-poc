@@ -173,6 +173,47 @@ body.developer-template .video-quote-products li a {
   color: #005597;
 }
 
+/* ── Card Buttons — all card types ── */
+
+/* Standard card CTA button (blue) */
+body.developer-template .card .card-cta-container a {
+  background-color: #0078d4;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.15s;
+}
+
+body.developer-template .card .card-cta-container a:hover {
+  background-color: #005a9e;
+  color: #fff;
+}
+
+/* Card (dev) variant — light blue button */
+body.developer-template .card.dev .card-cta-container a {
+  background-color: #b3daf0;
+  color: #000;
+}
+
+body.developer-template .card.dev .card-cta-container a:hover {
+  background-color: #8ec8e6;
+  color: #000;
+}
+
+/* Alternate dev cards — even slides get light blue, odd get primary blue */
+body.developer-template .card.dev:nth-child(even) .card-cta-container a {
+  background-color: #b3daf0;
+  color: #000;
+}
+
+body.developer-template .card.dev:nth-child(odd) .card-cta-container a {
+  background-color: #0078d4;
+  color: #fff;
+}
+
 /* ── Card Carousel Override ── */
 
 body.developer-template .card-carousel-content h3 {
@@ -198,6 +239,13 @@ body.developer-template .card-carousel-next {
 body.developer-template .card-carousel-prev::after,
 body.developer-template .card-carousel-next::after {
   border-color: #005597;
+}
+
+/* Community card link style — text link, not button */
+body.developer-template .card-carousel.community .card-carousel-link {
+  color: #2a446f;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* ── Read Blog Override ── */
