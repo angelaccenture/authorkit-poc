@@ -173,6 +173,23 @@ body.developer-template .video-quote-products li a {
   color: #005597;
 }
 
+/* ── Card Hover States ── */
+
+body.developer-template .card:hover {
+  transform: none;
+  box-shadow: 0 0 2px 0 rgb(0 0 0 / 14%), 0 4px 12px 0 rgb(0 0 0 / 18%);
+}
+
+body.developer-template .card.dev:hover {
+  transform: none;
+  box-shadow: 0 0 4px 0 rgb(0 0 0 / 20%), 0 8px 16px 0 rgb(0 0 0 / 22%);
+}
+
+body.developer-template .card-carousel-card:hover {
+  transform: none;
+  box-shadow: 0 0 2px 0 rgb(0 0 0 / 14%), 0 4px 12px 0 rgb(0 0 0 / 18%);
+}
+
 /* ── Card Buttons — all card types ── */
 
 /* Standard card CTA button (blue) */
