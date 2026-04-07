@@ -143,16 +143,11 @@ body.developer-template .hero p {
 body.developer-template .inline-tabs-pill {
   background-color: transparent;
   color: #17253d;
-}
-
-body.developer-template .inline-tabs-pill:hover {
-  background-color: #e8e8e8;
+  font-weight: 600;
 }
 
 body.developer-template .inline-tabs-pill.is-active {
-  background-color: #005597;
   border-color: #005597;
-  color: #fff;
 }
 
 /* ── Video Quote Section ── */

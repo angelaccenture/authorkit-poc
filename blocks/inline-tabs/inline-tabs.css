@@ -48,3 +48,14 @@
   border-bottom-color: #005597;
   background-color: transparent;
 }
+
+.inline-tabs-pill {
+  background-color: transparent;
+  color: #17253d;
+  font-weight: 600;
+}
+
+.inline-tabs-pill.is-active {
+  border-color: #005597;
+}
+
