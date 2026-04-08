@@ -108,6 +108,47 @@
   text-decoration: underline;
 }
 
+/* Section headings inside details */
+.product-gallery .product-gallery-details h2 {
+  font-size: var(--heading-font-size-m, 20px);
+  font-weight: 600;
+  color: var(--color-text-dark, #0e1726);
+  margin: var(--spacing-xl, 32px) 0 var(--spacing-s, 8px);
+  padding-top: var(--spacing-l, 24px);
+  border-top: 1px solid var(--color-border, #e3e3e3);
+}
+
+/* Tables inside details (configs, protection plans) */
+.product-gallery .product-gallery-details table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--body-font-size-s, 15px);
+  margin: var(--spacing-m, 16px) 0;
+}
+
+.product-gallery .product-gallery-details th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-text-dark, #0e1726);
+  padding: var(--spacing-s, 8px) var(--spacing-m, 16px);
+  background: #f5f5f5;
+  border-bottom: 2px solid var(--color-border, #e3e3e3);
+}
+
+.product-gallery .product-gallery-details td {
+  padding: var(--spacing-s, 8px) var(--spacing-m, 16px);
+  border-bottom: 1px solid var(--color-border, #e3e3e3);
+  color: var(--color-text, #000);
+}
+
+.product-gallery .product-gallery-details tr:last-child td {
+  border-bottom: none;
+}
+
+.product-gallery .product-gallery-details tr:hover td {
+  background: #fafafa;
+}
+
 /* CTA button */
 .product-gallery .product-gallery-details .button-container {
   margin-top: var(--spacing-m, 16px);
