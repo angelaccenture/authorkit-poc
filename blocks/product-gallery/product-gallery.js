@@ -31,7 +31,7 @@ export default function decorate(block) {
     } else {
       const link = imgCol?.querySelector('a');
       if (link && link.href) {
-        const href = link.href;
+        const { href } = link;
         const isImage = /\.(png|jpg|jpeg|gif|webp|svg)/i.test(href)
           || href.includes('/is/image/')
           || href.includes('cdn-dynmedia');
