@@ -116,35 +116,44 @@
 }
 
 .advanced-accordion.compact details summary {
-  padding: 16px 48px 16px 0;
+  padding: 16px 0 16px 40px;
   font-size: var(--body-font-size-m, 16px);
   font-weight: 600;
   color: var(--color-text-dark, #0e1726);
 }
 
-/* No numbered counter */
+/* No numbered counter — use ::before for chevron in front */
 .advanced-accordion.compact details summary::before {
-  display: none;
-}
-
-/* Chevron icon instead of plus/minus */
-.advanced-accordion.compact details summary::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   width: 32px;
   height: 32px;
+  min-width: 32px;
+  font-size: 0;
   background-color: transparent;
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%23616161' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M6 4l4 4-4 4' fill='none' stroke='%23616161' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: 16px;
   transition: transform 0.2s ease;
 }
 
-.advanced-accordion.compact details[open] summary::after {
+.advanced-accordion.compact details[open] summary::before {
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M4 10l4-4 4 4' fill='none' stroke='%23616161' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%23616161' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* Hide the ::after icon */
+.advanced-accordion.compact details summary::after {
+  display: none;
 }
 
 .advanced-accordion.compact .accordion-item-body {
-  padding: 0 48px 16px 0;
+  padding: 0 0 16px 40px;
   font-size: var(--body-font-size-s, 15px);
   line-height: 1.6;
   color: var(--color-text-muted, #616161);
@@ -156,11 +165,11 @@
 
 @media (width >= 900px) {
   .advanced-accordion.compact details summary {
-    padding: 18px 48px 18px 0;
+    padding: 18px 0 18px 40px;
     font-size: var(--body-font-size-l, 18px);
   }
 
   .advanced-accordion.compact .accordion-item-body {
-    padding: 0 48px 18px 0;
+    padding: 0 0 18px 40px;
   }
 }

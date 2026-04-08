@@ -149,23 +149,40 @@
   background: #fafafa;
 }
 
-/* CTA button */
+/* CTA buttons */
 .product-gallery .product-gallery-details .button-container {
-  margin-top: var(--spacing-m, 16px);
+  margin-top: var(--spacing-s, 8px);
 }
 
 .product-gallery .product-gallery-details .button-container a.button {
-  background-color: var(--color-accent, #0078d4);
-  color: #fff;
+  width: 100%;
+  text-align: center;
+  display: block;
   border-radius: var(--button-border-radius, 8px);
   padding: var(--button-padding-large, 12px 13px);
   font-weight: 600;
-  min-width: 160px;
-  text-align: center;
+  font-size: var(--button-font-size, 15px);
 }
 
-.product-gallery .product-gallery-details .button-container a.button:hover {
+/* Primary button (strong wrapped) */
+.product-gallery .product-gallery-details .button-container a.button.primary {
+  background-color: var(--color-accent, #0078d4);
+  color: #fff;
+}
+
+.product-gallery .product-gallery-details .button-container a.button.primary:hover {
   background-color: var(--color-accent-hover, #0067b8);
+}
+
+/* Secondary button (em wrapped) */
+.product-gallery .product-gallery-details .button-container a.button.secondary {
+  background-color: #fff;
+  color: var(--color-text, #000);
+  border: 1px solid var(--color-text, #000);
+}
+
+.product-gallery .product-gallery-details .button-container a.button.secondary:hover {
+  background-color: #f0f0f0;
 }
 
 /* -----------------------------------------------
