@@ -1,10 +1,12 @@
 /* Product Compare Template — product-compare
- * Side-by-side comparison layout for product configurations.
+ * Styles matching Microsoft Store product configurator pages.
  * Applied when page metadata has Template: product-compare.
  * Scoped under body.product-compare-template to avoid global leaks.
  *
- * Layout: Centered hero → 4-column config cards → 3-column protection cards
- * Uses section-metadata Grid for card columns.
+ * Original design values from live site:
+ *   White background, product image left, details right at desktop
+ *   Configurations and protection plans as card-style tables
+ *   Announcement bar in dark (#000) with white text
  */
 
 /* -----------------------------------------------
@@ -17,219 +19,236 @@ body.product-compare-template main {
 }
 
 /* -----------------------------------------------
-   HERO — centered product showcase
+   ANNOUNCEMENT BAR — dark with white text
    ----------------------------------------------- */
-body.product-compare-template .hero {
+body.product-compare-template .section.announcement-bar {
+  background-color: #000;
+  color: #fff;
+  padding: 10px var(--spacing-l, 24px);
   text-align: center;
-  padding: var(--spacing-xxl, 48px) 0 var(--spacing-xl, 32px);
+  font-size: var(--body-font-size-xs, 14px);
+}
+
+body.product-compare-template .section.announcement-bar p {
+  margin: 0;
+  color: #fff;
+}
+
+body.product-compare-template .section.announcement-bar a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* -----------------------------------------------
+   HERO SECTION — product image + details
+   ----------------------------------------------- */
+body.product-compare-template .hero-container {
+  padding: 0;
+}
+
+body.product-compare-template .hero {
+  padding: var(--spacing-xl, 32px) 0;
 }
 
 body.product-compare-template .hero > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-l, 24px);
-}
-
-body.product-compare-template .hero img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl, 32px);
+  align-items: start;
 }
 
 body.product-compare-template .hero h1 {
   font-size: var(--heading-font-size-xxl, 40px);
   font-weight: 600;
   line-height: 1.15;
+  margin: 0 0 var(--spacing-s, 8px);
   color: var(--color-text-dark, #0e1726);
-  margin: 0;
 }
 
 body.product-compare-template .hero p {
-  font-size: var(--body-font-size-l, 18px);
+  font-size: var(--body-font-size-m, 16px);
   color: var(--color-text-muted, #616161);
-  max-width: 600px;
-  margin: 0 auto;
+  margin: 0 0 var(--spacing-s, 8px);
   line-height: 1.5;
 }
 
-body.product-compare-template .hero .button-container {
-  margin-top: var(--spacing-s, 8px);
-}
-
-/* -----------------------------------------------
-   SECTION HEADINGS — "Compare Configurations", "Protection Plans"
-   ----------------------------------------------- */
-body.product-compare-template .section > .default-content-wrapper > h2 {
-  font-size: var(--heading-font-size-xl, 32px);
+body.product-compare-template .hero p:first-of-type {
+  font-size: var(--heading-font-size-m, 20px);
   font-weight: 600;
-  color: var(--color-text-dark, #0e1726);
-  text-align: center;
-  margin: 0 0 var(--spacing-s, 8px);
+  color: var(--color-text, #000);
 }
 
-body.product-compare-template .section > .default-content-wrapper > p {
+body.product-compare-template .hero img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Hero CTA button (Buy now) */
+body.product-compare-template .hero .button-container a.button {
+  background-color: var(--color-accent, #0078d4);
+  color: #fff;
+  border-radius: var(--button-border-radius, 8px);
+  padding: var(--button-padding-large, 12px 13px);
+  font-weight: 600;
+  min-width: 160px;
   text-align: center;
-  color: var(--color-text-muted, #616161);
-  font-size: var(--body-font-size-m, 16px);
-  max-width: 600px;
-  margin: 0 auto var(--spacing-l, 24px);
+}
+
+body.product-compare-template .hero .button-container a.button:hover {
+  background-color: var(--color-accent-hover, #0067b8);
+}
+
+@media (width >= 768px) {
+  body.product-compare-template .hero > div {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body.product-compare-template .hero img {
+    margin: 0;
+  }
 }
 
 /* -----------------------------------------------
-   CONFIGURATION CARDS — side-by-side comparison
+   ACCORDION SECTION — product info FAQ
    ----------------------------------------------- */
-body.product-compare-template .card-container {
+body.product-compare-template .section.accordion-owner {
+  border-top: 1px solid var(--color-border, #e3e3e3);
+  padding-top: var(--spacing-m, 16px);
+}
+
+/* -----------------------------------------------
+   ACCORDION CONTENT SECTIONS
+   (sections that follow the accordion - expanded content)
+   ----------------------------------------------- */
+body.product-compare-template .section.accordion-owner ~ .section:not(:has(.table)):not(:has(h2)) {
+  padding: var(--spacing-m, 16px) 0;
+  border-bottom: 1px solid var(--color-border, #e3e3e3);
+}
+
+body.product-compare-template .section.accordion-owner ~ .section:not(:has(.table)):not(:has(h2)) p {
+  font-size: var(--body-font-size-s, 15px);
+  color: var(--color-text-muted, #616161);
+  line-height: 1.6;
+}
+
+/* -----------------------------------------------
+   CONFIGURATION TABLE — product specs & pricing
+   ----------------------------------------------- */
+body.product-compare-template .table-wrapper {
   padding: 0;
 }
 
-body.product-compare-template .card {
-  background: var(--color-background-card, #fff);
+body.product-compare-template .section:has(.table) {
+  padding: var(--spacing-xl, 32px) 0;
+}
+
+body.product-compare-template .section:has(.table) h2 {
+  font-size: var(--heading-font-size-xl, 32px);
+  font-weight: 600;
+  color: var(--color-text-dark, #0e1726);
+  margin: 0 0 var(--spacing-m, 16px);
+}
+
+body.product-compare-template .section:has(.table) > .default-content-wrapper > p {
+  font-size: var(--body-font-size-m, 16px);
+  color: var(--color-text-muted, #616161);
+  line-height: 1.6;
+  margin: 0 0 var(--spacing-l, 24px);
+}
+
+body.product-compare-template .table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
   border: 1px solid var(--color-border, #e3e3e3);
   border-radius: var(--card-border-radius, 16px);
   overflow: hidden;
-  transition: box-shadow var(--transition-base, 0.2s ease), transform var(--transition-base, 0.2s ease);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
-body.product-compare-template .card:hover {
-  box-shadow: var(--card-shadow, 0 0 2px 0 rgb(0 0 0 / 12%), 0 2px 4px 0 rgb(0 0 0 / 14%));
-  transform: translateY(-2px);
-}
-
-body.product-compare-template .card > div {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-/* Card image */
-body.product-compare-template .card img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  display: block;
+/* Table header row */
+body.product-compare-template .table > div:first-child {
   background-color: #f5f5f5;
-}
-
-/* Card body */
-body.product-compare-template .card > div > div:last-child {
-  padding: var(--spacing-l, 24px);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-body.product-compare-template .card h3 {
-  font-size: var(--heading-font-size-s, 18px);
   font-weight: 600;
+  font-size: var(--body-font-size-s, 15px);
   color: var(--color-text-dark, #0e1726);
-  margin: 0 0 var(--spacing-xs, 4px);
 }
 
-/* Price — large and bold */
-body.product-compare-template .card > div > div:last-child > p:first-of-type {
-  font-size: var(--heading-font-size-m, 20px);
-  font-weight: 700;
-  color: var(--color-text, #000);
-  margin: 0 0 var(--spacing-s, 8px);
+body.product-compare-template .table > div:first-child > div {
+  padding: var(--spacing-m, 16px);
+  border-bottom: 2px solid var(--color-border, #e3e3e3);
 }
 
-/* Spec description */
-body.product-compare-template .card > div > div:last-child > p:nth-of-type(2) {
-  font-size: var(--body-font-size-xs, 14px);
-  color: var(--color-text-muted, #616161);
-  line-height: 1.5;
-  margin: 0 0 var(--spacing-m, 16px);
-  flex: 1;
-}
-
-/* Card CTA button */
-body.product-compare-template .card .button-container {
-  margin-top: auto;
-}
-
-body.product-compare-template .card .button-container a.button {
-  width: 100%;
-  text-align: center;
-  display: block;
-}
-
-/* -----------------------------------------------
-   PROTECTION PLAN CARDS — no image, text-only
-   ----------------------------------------------- */
-body.product-compare-template .section.light-grey .card > div > div:first-child:empty {
-  display: none;
-}
-
-body.product-compare-template .section.light-grey .card > div > div:last-child {
-  padding: var(--spacing-xl, 32px) var(--spacing-l, 24px);
-}
-
-body.product-compare-template .section.light-grey .card h3 {
-  font-size: var(--heading-font-size-m, 20px);
-  text-align: center;
-}
-
-body.product-compare-template .section.light-grey .card > div > div:last-child > p:first-of-type {
-  font-size: var(--heading-font-size-l, 24px);
-  text-align: center;
-  color: var(--color-accent, #0078d4);
-}
-
-body.product-compare-template .section.light-grey .card > div > div:last-child > p:nth-of-type(2) {
-  text-align: center;
+/* Table body rows */
+body.product-compare-template .table > div:not(:first-child) {
   font-size: var(--body-font-size-s, 15px);
 }
 
-body.product-compare-template .section.light-grey .card .button-container a.button {
-  background-color: transparent;
-  color: var(--color-text, #000);
-  border: 1px solid var(--color-border, #e3e3e3);
+body.product-compare-template .table > div:not(:first-child) > div {
+  padding: var(--spacing-m, 16px);
+  border-bottom: 1px solid var(--color-border, #e3e3e3);
 }
 
-body.product-compare-template .section.light-grey .card .button-container a.button:hover {
-  background-color: #f0f0f0;
+body.product-compare-template .table > div:last-child > div {
+  border-bottom: none;
+}
+
+/* Table row hover */
+body.product-compare-template .table > div:not(:first-child):hover {
+  background-color: #fafafa;
+}
+
+/* Grid layout for table rows */
+body.product-compare-template .table > div {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 600px) {
+  /* Configuration table: 3 columns */
+  body.product-compare-template .section:nth-child(5) .table > div {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  /* Protection plan table: 2 columns */
+  body.product-compare-template .section:nth-child(6) .table > div {
+    grid-template-columns: 2fr 1fr;
+  }
 }
 
 /* -----------------------------------------------
-   BOTTOM LINKS SECTION
+   TRADE-IN SECTION — bottom CTA
    ----------------------------------------------- */
-body.product-compare-template .section:nth-last-of-type(2) {
-  text-align: center;
-  padding: var(--spacing-xl, 32px) 0;
+body.product-compare-template .section:last-of-type:not(:has(.metadata)) {
+  padding: var(--spacing-l, 24px) 0;
   border-top: 1px solid var(--color-border, #e3e3e3);
 }
 
-body.product-compare-template .section:nth-last-of-type(2) p {
-  font-size: var(--body-font-size-s, 15px);
-  color: var(--color-text-muted, #616161);
-  margin: 0 0 var(--spacing-s, 8px);
-}
-
-body.product-compare-template .section:nth-last-of-type(2) a {
+body.product-compare-template .section:last-of-type:not(:has(.metadata)) a {
   color: var(--color-link, #0078d4);
   font-weight: 600;
   text-decoration: none;
 }
 
-body.product-compare-template .section:nth-last-of-type(2) a:hover {
+body.product-compare-template .section:last-of-type:not(:has(.metadata)) a:hover {
   text-decoration: underline;
 }
 
 /* -----------------------------------------------
-   MOBILE
+   MOBILE ADJUSTMENTS
    ----------------------------------------------- */
 @media (width <= 599px) {
   body.product-compare-template .hero h1 {
     font-size: var(--heading-font-size-xl, 28px);
   }
 
-  body.product-compare-template .section > .default-content-wrapper > h2 {
+  body.product-compare-template .section:has(.table) h2 {
     font-size: var(--heading-font-size-l, 24px);
+  }
+
+  body.product-compare-template .table > div > div {
+    padding: var(--spacing-s, 8px) var(--spacing-m, 16px);
   }
 }
