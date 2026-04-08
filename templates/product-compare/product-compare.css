@@ -1,0 +1,235 @@
+/* Product Compare Template — product-compare
+ * Side-by-side comparison layout for product configurations.
+ * Applied when page metadata has Template: product-compare.
+ * Scoped under body.product-compare-template to avoid global leaks.
+ *
+ * Layout: Centered hero → 4-column config cards → 3-column protection cards
+ * Uses section-metadata Grid for card columns.
+ */
+
+/* -----------------------------------------------
+   PAGE LAYOUT
+   ----------------------------------------------- */
+body.product-compare-template main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-l, 24px);
+}
+
+/* -----------------------------------------------
+   HERO — centered product showcase
+   ----------------------------------------------- */
+body.product-compare-template .hero {
+  text-align: center;
+  padding: var(--spacing-xxl, 48px) 0 var(--spacing-xl, 32px);
+}
+
+body.product-compare-template .hero > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-l, 24px);
+}
+
+body.product-compare-template .hero img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+body.product-compare-template .hero h1 {
+  font-size: var(--heading-font-size-xxl, 40px);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--color-text-dark, #0e1726);
+  margin: 0;
+}
+
+body.product-compare-template .hero p {
+  font-size: var(--body-font-size-l, 18px);
+  color: var(--color-text-muted, #616161);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+body.product-compare-template .hero .button-container {
+  margin-top: var(--spacing-s, 8px);
+}
+
+/* -----------------------------------------------
+   SECTION HEADINGS — "Compare Configurations", "Protection Plans"
+   ----------------------------------------------- */
+body.product-compare-template .section > .default-content-wrapper > h2 {
+  font-size: var(--heading-font-size-xl, 32px);
+  font-weight: 600;
+  color: var(--color-text-dark, #0e1726);
+  text-align: center;
+  margin: 0 0 var(--spacing-s, 8px);
+}
+
+body.product-compare-template .section > .default-content-wrapper > p {
+  text-align: center;
+  color: var(--color-text-muted, #616161);
+  font-size: var(--body-font-size-m, 16px);
+  max-width: 600px;
+  margin: 0 auto var(--spacing-l, 24px);
+}
+
+/* -----------------------------------------------
+   CONFIGURATION CARDS — side-by-side comparison
+   ----------------------------------------------- */
+body.product-compare-template .card-container {
+  padding: 0;
+}
+
+body.product-compare-template .card {
+  background: var(--color-background-card, #fff);
+  border: 1px solid var(--color-border, #e3e3e3);
+  border-radius: var(--card-border-radius, 16px);
+  overflow: hidden;
+  transition: box-shadow var(--transition-base, 0.2s ease), transform var(--transition-base, 0.2s ease);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body.product-compare-template .card:hover {
+  box-shadow: var(--card-shadow, 0 0 2px 0 rgb(0 0 0 / 12%), 0 2px 4px 0 rgb(0 0 0 / 14%));
+  transform: translateY(-2px);
+}
+
+body.product-compare-template .card > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Card image */
+body.product-compare-template .card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  background-color: #f5f5f5;
+}
+
+/* Card body */
+body.product-compare-template .card > div > div:last-child {
+  padding: var(--spacing-l, 24px);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+body.product-compare-template .card h3 {
+  font-size: var(--heading-font-size-s, 18px);
+  font-weight: 600;
+  color: var(--color-text-dark, #0e1726);
+  margin: 0 0 var(--spacing-xs, 4px);
+}
+
+/* Price — large and bold */
+body.product-compare-template .card > div > div:last-child > p:first-of-type {
+  font-size: var(--heading-font-size-m, 20px);
+  font-weight: 700;
+  color: var(--color-text, #000);
+  margin: 0 0 var(--spacing-s, 8px);
+}
+
+/* Spec description */
+body.product-compare-template .card > div > div:last-child > p:nth-of-type(2) {
+  font-size: var(--body-font-size-xs, 14px);
+  color: var(--color-text-muted, #616161);
+  line-height: 1.5;
+  margin: 0 0 var(--spacing-m, 16px);
+  flex: 1;
+}
+
+/* Card CTA button */
+body.product-compare-template .card .button-container {
+  margin-top: auto;
+}
+
+body.product-compare-template .card .button-container a.button {
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+/* -----------------------------------------------
+   PROTECTION PLAN CARDS — no image, text-only
+   ----------------------------------------------- */
+body.product-compare-template .section.light-grey .card > div > div:first-child:empty {
+  display: none;
+}
+
+body.product-compare-template .section.light-grey .card > div > div:last-child {
+  padding: var(--spacing-xl, 32px) var(--spacing-l, 24px);
+}
+
+body.product-compare-template .section.light-grey .card h3 {
+  font-size: var(--heading-font-size-m, 20px);
+  text-align: center;
+}
+
+body.product-compare-template .section.light-grey .card > div > div:last-child > p:first-of-type {
+  font-size: var(--heading-font-size-l, 24px);
+  text-align: center;
+  color: var(--color-accent, #0078d4);
+}
+
+body.product-compare-template .section.light-grey .card > div > div:last-child > p:nth-of-type(2) {
+  text-align: center;
+  font-size: var(--body-font-size-s, 15px);
+}
+
+body.product-compare-template .section.light-grey .card .button-container a.button {
+  background-color: transparent;
+  color: var(--color-text, #000);
+  border: 1px solid var(--color-border, #e3e3e3);
+}
+
+body.product-compare-template .section.light-grey .card .button-container a.button:hover {
+  background-color: #f0f0f0;
+}
+
+/* -----------------------------------------------
+   BOTTOM LINKS SECTION
+   ----------------------------------------------- */
+body.product-compare-template .section:nth-last-of-type(2) {
+  text-align: center;
+  padding: var(--spacing-xl, 32px) 0;
+  border-top: 1px solid var(--color-border, #e3e3e3);
+}
+
+body.product-compare-template .section:nth-last-of-type(2) p {
+  font-size: var(--body-font-size-s, 15px);
+  color: var(--color-text-muted, #616161);
+  margin: 0 0 var(--spacing-s, 8px);
+}
+
+body.product-compare-template .section:nth-last-of-type(2) a {
+  color: var(--color-link, #0078d4);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+body.product-compare-template .section:nth-last-of-type(2) a:hover {
+  text-decoration: underline;
+}
+
+/* -----------------------------------------------
+   MOBILE
+   ----------------------------------------------- */
+@media (width <= 599px) {
+  body.product-compare-template .hero h1 {
+    font-size: var(--heading-font-size-xl, 28px);
+  }
+
+  body.product-compare-template .section > .default-content-wrapper > h2 {
+    font-size: var(--heading-font-size-l, 24px);
+  }
+}
