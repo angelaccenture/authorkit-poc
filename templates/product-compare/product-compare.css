@@ -10,12 +10,62 @@
  */
 
 /* -----------------------------------------------
-   PAGE LAYOUT
+   PAGE LAYOUT — full width, content constrained by sections
    ----------------------------------------------- */
 body.product-compare-template main {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body.product-compare-template main > .section {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-l, 24px);
+}
+
+/* Announcement bar — full width edge-to-edge */
+body.product-compare-template main > .section.announcement-bar {
+  max-width: 100%;
+  padding: 0;
+}
+
+/* Tab section — full width for the tab bar, content constrained */
+body.product-compare-template main > .section.step-indicator {
+  max-width: 100%;
+  padding: 0;
+}
+
+body.product-compare-template .section.step-indicator .tab-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-l, 24px);
+}
+
+body.product-compare-template .section.step-indicator .tab-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-l, 24px);
+}
+
+/* Remove default tab pill background — use plain text tabs */
+body.product-compare-template .tab-list button {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 14px var(--spacing-xl, 32px);
+  border-bottom: 3px solid transparent;
+}
+
+body.product-compare-template .tab-list button:hover {
+  background: transparent;
+  border-bottom-color: var(--color-border, #e3e3e3);
+}
+
+body.product-compare-template .tab-list button.is-active {
+  background: transparent;
+  color: var(--color-accent, #0078d4);
+  border-bottom-color: var(--color-accent, #0078d4);
 }
 
 /* -----------------------------------------------
