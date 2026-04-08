@@ -1,19 +1,109 @@
 {
-  "url": "https://developer.microsoft.com/en-us/",
-  "template": "msft-developer",
+  "url": "https://www.microsoft.com/en-us/store/configure/surface-laptop-13-inch/8mzbmmcjzqv3",
+  "template": "surface-laptop-configure",
   "sections": [
-    { "id": "section-1", "name": "Hero Banner", "selector": "[class*='hero'], [class*='banner-hero']", "style": "dark", "description": "Microsoft Build event promo with heading, location, date, description, CTA" },
-    { "id": "section-2", "name": "Featured Products Tabs", "selector": "[class*='featured-products'], [class*='tools']", "style": null, "description": "Tabbed content: M365, Azure, Visual Studio, Windows — each with 3 feature cards" },
-    { "id": "section-3", "name": "Events Banner Carousel", "selector": "[class*='banner-carousel']", "style": null, "description": "5 event cards in horizontal carousel (GitHub Copilot Dev Days, Cosmos Conf, etc.)" },
-    { "id": "section-4", "name": "News & Updates", "selector": "[class*='whats-new'], [class*='news']", "style": null, "description": "Discover what's new — 3 feature cards (Copilot SDK, Foundry, Claude)" },
-    { "id": "section-5", "name": "Languages", "selector": "[class*='languages']", "style": null, "description": "Choose your language — 6 icon links (.NET, C++, Java, JS, Python, TypeScript)" },
-    { "id": "section-6", "name": "Communities Carousel", "selector": "[class*='communities']", "style": null, "description": "Join our communities — 8 cards carousel (Developer Communities, Azure, Cloud Advocates, etc.)" },
-    { "id": "section-7", "name": "Resource Hubs", "selector": "[class*='hubs']", "style": null, "description": "Visit Developer resource hubs — 4 cards (AI, Build APIs, DevEx, Game Dev)" },
-    { "id": "section-8", "name": "Developer Story", "selector": "[class*='developer-story']", "style": "light-grey", "description": "Hear a developer's story — quote, product links, video player" },
-    { "id": "section-9", "name": "Blog", "selector": "[class*='blogs']", "style": null, "description": "Read our blog — featured post + 3 recent articles" },
-    { "id": "section-10", "name": "Events", "selector": "[class*='events']", "style": null, "description": "Attend events or watch on demand — 5 event cards carousel" },
-    { "id": "section-11", "name": "Newsletter", "selector": "[class*='newsletter'], [class*='source']", "style": "dark", "description": "Microsoft.Source newsletter signup — heading, description, CTA" },
-    { "id": "section-12", "name": "Learn With Us Tabs", "selector": "[class*='learn']", "style": null, "description": "Learn with us — tabbed content (AI, Azure, Copilot, DevOps, Security) with learning cards" },
-    { "id": "section-13", "name": "Social Follow", "selector": "[class*='social'], [class*='follow']", "style": null, "description": "Follow us on the web — GitHub, X, LinkedIn, Instagram, YouTube, Bluesky" }
+    {
+      "id": "section-1",
+      "name": "Announcement Bar",
+      "selector": "[aria-label='Announcement banner']",
+      "style": "announcement-bar",
+      "description": "Rotating promotional banners - student discount, flexible payments",
+      "contentSequences": [
+        { "type": "text-link", "content": "Save up to 10% on Surface Copilot+ PCs" },
+        { "type": "text-link", "content": "Get it now, pay later with flexible payments at checkout" }
+      ]
+    },
+    {
+      "id": "section-2",
+      "name": "Product Hero",
+      "selector": "[aria-label='Product image'], [aria-label*='Product Information']",
+      "style": null,
+      "description": "Product image gallery + title + price + cross-sell links + trust badges",
+      "contentSequences": [
+        { "type": "heading-h1", "content": "Let's build your new Surface Laptop" },
+        { "type": "image-gallery", "content": "5 product images from different angles" },
+        { "type": "badge", "content": "Copilot+ PC logo" },
+        { "type": "heading-h2", "content": "Surface Laptop, Copilot+ PC, 13-inch" },
+        { "type": "price", "content": "From $1,149.99" },
+        { "type": "links", "content": "Cross-sell to 13.8-inch and 15-inch models" },
+        { "type": "trust-info", "content": "Why buy from Microsoft, Trade-in program" }
+      ]
+    },
+    {
+      "id": "section-3",
+      "name": "Product Info Accordion",
+      "selector": "[aria-label='Product Information']",
+      "style": null,
+      "description": "Expandable FAQ-style product information sections",
+      "contentSequences": [
+        { "type": "accordion", "items": ["About Surface Laptop", "What's in the box?", "Looking for Windows 11 Pro?", "Can't find the Surface?"] }
+      ]
+    },
+    {
+      "id": "section-4",
+      "name": "Color Selection",
+      "selector": "[aria-label='Color']",
+      "style": null,
+      "description": "Color picker - Violet, Ocean, Platinum",
+      "contentSequences": [
+        { "type": "heading-h3", "content": "Color" },
+        { "type": "color-options", "items": ["Violet", "Ocean", "Platinum"] }
+      ]
+    },
+    {
+      "id": "section-5",
+      "name": "Specifications",
+      "selector": "[aria-label='Specifications']",
+      "style": null,
+      "description": "SKU selector with processor, RAM, storage, pricing",
+      "contentSequences": [
+        { "type": "heading-h3", "content": "Specifications" },
+        { "type": "spec-options", "items": [
+          "Snapdragon X Plus (8 Core), Platinum, 16GB/256GB - $1,149.99",
+          "Snapdragon X Plus (8 Core), Violet, 16GB/512GB - $1,249.99 (Best seller)",
+          "Snapdragon X Plus (8 Core), Platinum, 16GB/512GB - $1,249.99",
+          "Snapdragon X Plus (8 Core), Ocean, 16GB/512GB - $1,249.99"
+        ]}
+      ]
+    },
+    {
+      "id": "section-6",
+      "name": "Microsoft Complete",
+      "selector": "[aria-label='Microsoft Complete']",
+      "style": null,
+      "description": "Extended warranty protection plan options",
+      "contentSequences": [
+        { "type": "heading-h3", "content": "Microsoft Complete" },
+        { "type": "description", "content": "Protection plan details" },
+        { "type": "plan-options", "items": [
+          "No thanks",
+          "2 year - $129.00",
+          "3 year - $179.00",
+          "4 year - $239.00"
+        ]}
+      ]
+    },
+    {
+      "id": "section-7",
+      "name": "Order Summary",
+      "selector": "[aria-label='Summary']",
+      "style": null,
+      "description": "Cart summary with pricing and checkout CTAs",
+      "contentSequences": [
+        { "type": "heading-h3", "content": "Summary" },
+        { "type": "price", "content": "Starting at $1,149.99" },
+        { "type": "cta", "content": "Continue to Add-ons, Review and checkout" }
+      ]
+    },
+    {
+      "id": "section-8",
+      "name": "Legal Disclaimers",
+      "selector": "[aria-label='Footnotes and disclaimers'], [aria-label*='service and warranties']",
+      "style": null,
+      "description": "Terms, conditions, footnotes for discounts, returns, trade-in",
+      "contentSequences": [
+        { "type": "footnotes", "content": "Legal disclaimers and terms" }
+      ]
+    }
   ]
 }

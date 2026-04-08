@@ -1,135 +1,119 @@
 {
-  "url": "https://developer.microsoft.com/en-us/",
-  "template": "msft-developer",
+  "url": "https://www.microsoft.com/en-us/store/configure/surface-laptop-13-inch/8mzbmmcjzqv3",
+  "template": "surface-laptop-configure",
   "sections": [
     {
       "id": "section-1",
-      "name": "Hero Banner",
-      "style": "dark",
-      "decisions": [
-        { "type": "block", "blockName": "hero", "description": "Microsoft Build event hero with h1, location/date text, description paragraph, CTA link" }
+      "name": "Announcement Bar",
+      "style": "announcement-bar",
+      "sequences": [
+        {
+          "decision": "default-content",
+          "reason": "Simple promotional text with link - standard default content pattern",
+          "content": "Save up to 10% on Surface Copilot+ PCs for eligible students, parents, teachers and military."
+        }
       ]
     },
     {
       "id": "section-2",
-      "name": "Featured Products Tabs",
+      "name": "Product Hero",
       "style": null,
-      "decisions": [
-        { "type": "default-content", "description": "Eyebrow: Featured Products, H2: The tools you love" },
-        { "type": "block", "blockName": "advanced-tabs", "description": "4 tabs (M365, Azure, Visual Studio, Windows) each containing 3 card blocks" },
-        { "type": "block", "blockName": "card", "description": "3 feature cards per tab with heading, description, arrow link" }
+      "sequences": [
+        {
+          "decision": "block",
+          "blockName": "hero",
+          "reason": "Product hero with large image, title, price, and description. Maps to existing hero block with product-focused content.",
+          "content": {
+            "image": "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/B00-Surface-Laptop-13-inch-1Ed-Rational-Violet-Front",
+            "badge": "Copilot+ PC",
+            "heading": "Surface Laptop, Copilot+ PC, 13-inch",
+            "price": "From $1,149.99",
+            "description": "Looking for other display sizes? Shop the 13.8-inch or the 15-inch Surface Laptop.",
+            "trustBadges": "Free shipping, 60-day price protection, 60-day free returns",
+            "tradeIn": "Get up to $600 cash back when you trade in an eligible device"
+          }
+        }
       ]
     },
     {
       "id": "section-3",
-      "name": "Events Banner Carousel",
+      "name": "Product Info Accordion",
       "style": null,
-      "decisions": [
-        { "type": "block", "blockName": "advanced-carousel", "description": "Carousel wrapper for 5 event banner cards" },
-        { "type": "block", "blockName": "card", "description": "5 event cards with optional date, heading, description, CTA link" }
+      "sequences": [
+        {
+          "decision": "block",
+          "blockName": "advanced-accordion",
+          "reason": "Expandable FAQ sections map directly to existing advanced-accordion block",
+          "content": {
+            "items": [
+              "About Surface Laptop, Copilot+ PC, 13-inch",
+              "What's in the box?",
+              "Looking for Windows 11 Pro or buying for your Business?",
+              "Can't find the Surface you're looking for?"
+            ]
+          }
+        }
       ]
     },
     {
       "id": "section-4",
-      "name": "News & Updates",
+      "name": "Product Configuration",
       "style": null,
-      "decisions": [
-        { "type": "default-content", "description": "Eyebrow: News and updates, H2: Discover what's new" },
-        { "type": "block", "blockName": "card", "description": "3 feature cards (Copilot SDK, Foundry, Claude) with heading, description, arrow link" }
+      "sequences": [
+        {
+          "decision": "block",
+          "blockName": "table",
+          "reason": "Color options and specifications presented as a static data table in the snapshot. Maps to existing table block with product configuration data.",
+          "content": {
+            "columns": ["Configuration", "Price"],
+            "rows": [
+              ["Snapdragon X Plus (8 Core), Platinum, 16GB RAM, 256GB SSD", "$1,149.99"],
+              ["Snapdragon X Plus (8 Core), Violet, 16GB RAM, 512GB SSD (Best seller)", "$1,249.99"],
+              ["Snapdragon X Plus (8 Core), Platinum, 16GB RAM, 512GB SSD", "$1,249.99"],
+              ["Snapdragon X Plus (8 Core), Ocean, 16GB RAM, 512GB SSD", "$1,249.99"]
+            ]
+          }
+        }
       ]
     },
     {
       "id": "section-5",
-      "name": "Languages",
+      "name": "Microsoft Complete Protection",
       "style": null,
-      "decisions": [
-        { "type": "default-content", "description": "Eyebrow: Languages, H2: Choose your language, description paragraph" },
-        { "type": "block", "blockName": "quick-links", "description": "6 language icon links (.NET, C++, Java, JS, Python, TypeScript)" }
+      "sequences": [
+        {
+          "decision": "block",
+          "blockName": "table",
+          "reason": "Protection plan options as static table - plan name, description, price",
+          "content": {
+            "heading": "Microsoft Complete",
+            "description": "When life happens, we've got you covered. Unexpected glitches? Accidental mishaps? No worries.",
+            "columns": ["Plan", "Price"],
+            "rows": [
+              ["Microsoft Complete - 2 year", "$129.00"],
+              ["Microsoft Complete - 3 year", "$179.00"],
+              ["Microsoft Complete - 4 year", "$239.00"]
+            ]
+          }
+        }
       ]
     },
     {
       "id": "section-6",
-      "name": "Communities Carousel",
+      "name": "Legal Disclaimers",
       "style": null,
-      "decisions": [
-        { "type": "default-content", "description": "Eyebrow: Communities, H2: Join our communities" },
-        { "type": "block", "blockName": "advanced-carousel", "description": "Carousel wrapper for 8 community cards" },
-        { "type": "block", "blockName": "card", "description": "8 community cards with icon, heading, description, link" }
-      ]
-    },
-    {
-      "id": "section-7",
-      "name": "Resource Hubs",
-      "style": null,
-      "decisions": [
-        { "type": "default-content", "description": "Eyebrow: Hubs, H2: Visit the Developer resource hubs" },
-        { "type": "block", "blockName": "card", "description": "4 hub cards (AI, Build APIs, DevEx, Game Dev) with image, heading, description, arrow link" }
-      ]
-    },
-    {
-      "id": "section-8",
-      "name": "Developer Story",
-      "style": "light-grey",
-      "decisions": [
-        { "type": "block", "blockName": "video-quote", "description": "Quote text, author attribution, 3 product links with icons, video player with thumbnail" }
-      ]
-    },
-    {
-      "id": "section-9",
-      "name": "Blog",
-      "style": null,
-      "decisions": [
-        { "type": "default-content", "description": "H2: Read our blog + More blogs link" },
-        { "type": "block", "blockName": "cards-blog", "description": "Featured blog post (image, category, date, heading, description, link) + 3 recent articles (category, date, heading, link)" }
-      ]
-    },
-    {
-      "id": "section-10",
-      "name": "Events",
-      "style": null,
-      "decisions": [
-        { "type": "default-content", "description": "Eyebrow: Events, H2: Attend events or watch on demand + More events link" },
-        { "type": "block", "blockName": "advanced-carousel", "description": "Carousel for 5 event cards" },
-        { "type": "block", "blockName": "cards-blog", "description": "5 event cards with image, date heading, event title link (reuse cards-blog event variant)" }
-      ]
-    },
-    {
-      "id": "section-11",
-      "name": "Newsletter",
-      "style": "dark",
-      "decisions": [
-        { "type": "default-content", "description": "H2: Microsoft.Source newsletter, description paragraph, CTA link — no block needed" }
-      ]
-    },
-    {
-      "id": "section-12",
-      "name": "Learn With Us Tabs",
-      "style": null,
-      "decisions": [
-        { "type": "default-content", "description": "Eyebrow: Learn, H2: Learn with us" },
-        { "type": "block", "blockName": "advanced-tabs", "description": "5 tabs (AI, Azure, Copilot, DevOps, Security) each with learning resource cards" },
-        { "type": "block", "blockName": "card", "description": "Feature cards with heading, description, arrow link inside each tab" }
-      ]
-    },
-    {
-      "id": "section-13",
-      "name": "Social Follow",
-      "style": null,
-      "decisions": [
-        { "type": "block", "blockName": "social-follow", "description": "Follow us on the web — GitHub, X, LinkedIn, Instagram, YouTube, Bluesky" }
+      "sequences": [
+        {
+          "decision": "default-content",
+          "reason": "Legal footnotes rendered as small-text default content paragraphs",
+          "content": "Discount terms, return policy, price protection, trade-in terms, battery disclaimer, Microsoft Complete terms"
+        }
       ]
     }
   ],
-  "metadata": {
-    "title": "Microsoft Developer",
-    "description": "Any platform. Any language. Our tools. Develop solutions, on your terms, using Microsoft products and services.",
-    "og:image": "https://developer.microsoft.com/_devcom/images/logo-ms-social.jpg"
-  },
-  "summary": {
-    "totalSections": 13,
-    "blocks": ["hero", "advanced-tabs", "card", "advanced-carousel", "quick-links", "video-quote", "cards-blog", "social-follow"],
-    "newBlocks": ["video-quote"],
-    "reusedBlocks": ["hero", "advanced-tabs", "card", "advanced-carousel", "quick-links", "cards-blog", "social-follow"],
-    "notes": "Complex page with 13 sections. Only 1 new block needed (video-quote). Tabbed content uses advanced-tabs with card blocks inside. Multiple carousels use advanced-carousel. Languages section reuses quick-links. Blog section reuses cards-blog."
+  "blockSummary": {
+    "reusedBlocks": ["hero", "advanced-accordion", "table"],
+    "newBlocks": [],
+    "newVariants": []
   }
 }

@@ -708,6 +708,98 @@
           "defaultContent": []
         }
       ]
+    },
+    {
+      "name": "surface-laptop-configure",
+      "urls": [
+        "https://www.microsoft.com/en-us/store/configure/surface-laptop-13-inch/8mzbmmcjzqv3"
+      ],
+      "description": "Surface Laptop product configuration page with device imagery, spec options, and purchase CTAs",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            "div.configuratorV35-image-hero-container.show",
+            "div.col-12.configuratorV35-page-header"
+          ]
+        },
+        {
+          "name": "advanced-accordion",
+          "instances": [
+            "div.accordion"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "div.productcards-panel-container-v35.show",
+            "div.configuratorV35-content-cards-container.show"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Announcement Bar",
+          "selector": "section.remediation-container-v35",
+          "style": "announcement-bar",
+          "blocks": [],
+          "defaultContent": [
+            "div.remediation-card"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "Product Hero",
+          "selector": [
+            "div.configuratorV35-image-hero-container.show",
+            "div.col-12.configuratorV35-page-header"
+          ],
+          "style": null,
+          "blocks": [
+            "hero"
+          ],
+          "defaultContent": [
+            "h1"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Product Info Accordion",
+          "selector": "div.accordion",
+          "style": null,
+          "blocks": [
+            "advanced-accordion"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Product Configuration",
+          "selector": [
+            "div.productcards-panel-container-v35.show",
+            "div.configuratorV35-content-cards-container.show"
+          ],
+          "style": null,
+          "blocks": [
+            "table"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-5",
+          "name": "Legal Disclaimers",
+          "selector": [
+            "div.store-footer-container",
+            "div.footnotes-container"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.store-footer-container"
+          ]
+        }
+      ]
     }
   ]
 }
