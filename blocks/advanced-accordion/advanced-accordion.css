@@ -97,3 +97,70 @@
     padding: 0 80px 28px 120px;
   }
 }
+
+/* -----------------------------------------------
+   COMPACT VARIANT — clean expandable list, no numbers
+   Used on product configurator pages.
+   ----------------------------------------------- */
+.advanced-accordion.compact {
+  counter-reset: none;
+}
+
+.advanced-accordion.compact details {
+  border-top: 1px solid var(--color-border, #e3e3e3);
+  counter-increment: none;
+}
+
+.advanced-accordion.compact details:last-child {
+  border-bottom: 1px solid var(--color-border, #e3e3e3);
+}
+
+.advanced-accordion.compact details summary {
+  padding: 16px 48px 16px 0;
+  font-size: var(--body-font-size-m, 16px);
+  font-weight: 600;
+  color: var(--color-text-dark, #0e1726);
+}
+
+/* No numbered counter */
+.advanced-accordion.compact details summary::before {
+  display: none;
+}
+
+/* Chevron icon instead of plus/minus */
+.advanced-accordion.compact details summary::after {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%23616161' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.advanced-accordion.compact details[open] summary::after {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M4 10l4-4 4 4' fill='none' stroke='%23616161' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.advanced-accordion.compact .accordion-item-body {
+  padding: 0 48px 16px 0;
+  font-size: var(--body-font-size-s, 15px);
+  line-height: 1.6;
+  color: var(--color-text-muted, #616161);
+}
+
+.advanced-accordion.compact .accordion-item-body p {
+  margin: 0 0 8px;
+}
+
+@media (width >= 900px) {
+  .advanced-accordion.compact details summary {
+    padding: 18px 48px 18px 0;
+    font-size: var(--body-font-size-l, 18px);
+  }
+
+  .advanced-accordion.compact .accordion-item-body {
+    padding: 0 48px 18px 0;
+  }
+}
