@@ -75,19 +75,6 @@ body.product-compare-template .tab-list button.is-active {
    with heading/description on the left, content on the right
    ----------------------------------------------- */
 @media (width >= 768px) {
-  /* Add-ons panel */
-  body.product-compare-template .tab-section:nth-child(3) .default-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--spacing-xl, 32px);
-  }
-
-  /* h2 and h3 span full width */
-  body.product-compare-template .tab-section:nth-child(3) .default-content h2,
-  body.product-compare-template .tab-section:nth-child(3) .default-content h3 {
-    grid-column: 1 / -1;
-  }
-
   /* Accessories panel */
   body.product-compare-template .tab-section:nth-child(4) .default-content {
     display: grid;
