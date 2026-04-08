@@ -1,9 +1,11 @@
-/* Cards Blog - Microsoft Blog article card layout */
-
-/* =============================================
-   Decorated structure (JS runs): ul > li
-   Raw block table (plain.html): div > div
-   ============================================= */
+/* Cards Blog - Microsoft Blog article card layout
+ *
+ * Decorated structure (JS runs): ul > li
+ * Raw block table (plain.html): div > div
+ *
+ * Page-specific layout (Featured vs More News columns)
+ * lives in templates/blog-index/blog-index.css.
+ */
 
 /* --- Grid container (decorated) --- */
 .cards-blog > ul {
@@ -17,7 +19,12 @@
 .cards-blog > div {
   background-color: white;
   border-bottom: 1px solid var(--color-border, #e3e3e3);
-  padding: var(--spacing-m, 12px) 0;
+  padding: var(--spacing-m, 16px) 0;
+}
+
+.cards-blog > ul > li:last-child,
+.cards-blog > div:last-child {
+  border-bottom: none;
 }
 
 /* --- Image column --- */
@@ -31,12 +38,13 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  display: block;
 }
 
 /* --- Text column --- */
 .cards-blog .cards-blog-card-body,
 .cards-blog > div > div:last-child {
-  padding: 0 0 0 var(--spacing-m, 12px);
+  padding: 0;
 }
 
 /* Handle text-only cards (empty image cell) */
@@ -44,11 +52,6 @@
   display: none;
 }
 
-.cards-blog > div > div:first-child:empty + div {
-  padding: 0;
-}
-
-/* When image cell is empty, make text span full width */
 .cards-blog > div:has(> div:first-child:empty) {
   grid-template-columns: 1fr;
 }
@@ -56,23 +59,29 @@
 /* --- Meta text (date | author) --- */
 .cards-blog .cards-blog-card-body p,
 .cards-blog > div > div:last-child p {
-  font-size: var(--body-font-size-xs, 12px);
-  color: var(--color-text-muted, #666);
+  font-size: var(--body-font-size-xs, 14px);
+  color: var(--color-text-muted, #616161);
   margin: 0 0 4px;
   line-height: 1.4;
 }
 
 .cards-blog .cards-blog-card-body p a,
 .cards-blog > div > div:last-child p a {
-  color: var(--color-link, #0067b8);
-  font-size: var(--body-font-size-xs, 12px);
+  color: var(--color-link, #0078d4);
+  font-size: var(--body-font-size-xs, 14px);
+  text-decoration: none;
+}
+
+.cards-blog .cards-blog-card-body p a:hover,
+.cards-blog > div > div:last-child p a:hover {
+  text-decoration: underline;
 }
 
 /* --- Article title --- */
 .cards-blog .cards-blog-card-body h3,
 .cards-blog > div > div:last-child h3 {
   font-size: var(--heading-font-size-s, 18px);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.33;
   margin: 4px 0 0;
   padding: 0;
@@ -80,43 +89,11 @@
 
 .cards-blog .cards-blog-card-body h3 a,
 .cards-blog > div > div:last-child h3 a {
-  color: var(--color-text, #2f2f2f);
+  color: var(--color-text, #000);
   text-decoration: none;
 }
 
 .cards-blog .cards-blog-card-body h3 a:hover,
 .cards-blog > div > div:last-child h3 a:hover {
   text-decoration: underline;
-}
-
-/* --- Featured section: larger titles --- */
-body > div:first-child .cards-blog .cards-blog-card-body h3,
-body > div:first-child .cards-blog > div > div:last-child h3 {
-  font-size: var(--heading-font-size-l, 24px);
-  line-height: 1.17;
-}
-
-/* --- More News section: smaller card images --- */
-body > div:nth-child(2) .cards-blog > ul > li img,
-body > div:nth-child(2) .cards-blog > div img {
-  aspect-ratio: 16 / 9;
-}
-
-body > div:nth-child(2) .cards-blog .cards-blog-card-body h3,
-body > div:nth-child(2) .cards-blog > div > div:last-child h3 {
-  font-size: var(--heading-font-size-s, 18px);
-  line-height: 1.33;
-}
-
-/* --- Single column on mobile --- */
-@media (width < 600px) {
-  .cards-blog > ul > li,
-  .cards-blog > div {
-    grid-template-columns: 1fr;
-  }
-
-  .cards-blog .cards-blog-card-body,
-  .cards-blog > div > div:last-child {
-    padding: var(--spacing-s, 8px) 0 0;
-  }
 }

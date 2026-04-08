@@ -1,0 +1,245 @@
+/* Blog Index Template — blog-index
+ * Styles matching blogs.microsoft.com homepage layout.
+ * Applied when page metadata has Template: blog-index.
+ * Scoped under body.blog-index-template to avoid global leaks.
+ *
+ * Original design: Featured (~63% left) | More News (~37% right)
+ */
+
+/* -----------------------------------------------
+   PAGE-LEVEL: Two-column layout (Featured | More News)
+   ----------------------------------------------- */
+@media (width >= 900px) {
+  body.blog-index-template main {
+    display: grid;
+    grid-template-columns: 1fr 0.6fr;
+    gap: 0 var(--spacing-xl, 32px);
+    align-items: start;
+    max-width: var(--content-max-width, 1600px);
+    margin: 0 auto;
+    padding: 0 var(--spacing-l, 24px);
+  }
+
+  /* Social / follow section and footer span full width below */
+  body.blog-index-template main > .section:nth-child(n+3) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- Section headings --- */
+body.blog-index-template .cards-blog-container h2 {
+  font-size: var(--heading-font-size-m, 20px);
+  font-weight: 600;
+  margin: 0 0 var(--spacing-m, 16px);
+  padding: var(--spacing-m, 16px) 0 0;
+  color: var(--color-text-dark, #0e1726);
+}
+
+/* -----------------------------------------------
+   FEATURED SECTION (first section on page)
+   Large vertical cards: image top, text below
+   ----------------------------------------------- */
+
+/* Featured: stack image + text vertically */
+body.blog-index-template .section:first-child .cards-blog > ul > li,
+body.blog-index-template .section:first-child .cards-blog > div {
+  display: block;
+}
+
+/* Featured: image column */
+body.blog-index-template .section:first-child .cards-blog .cards-blog-card-image,
+body.blog-index-template .section:first-child .cards-blog > div > div:first-child {
+  line-height: 0;
+  margin-bottom: var(--spacing-s, 8px);
+}
+
+body.blog-index-template .section:first-child .cards-blog > ul > li img,
+body.blog-index-template .section:first-child .cards-blog > div img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* Featured: text column */
+body.blog-index-template .section:first-child .cards-blog .cards-blog-card-body,
+body.blog-index-template .section:first-child .cards-blog > div > div:last-child {
+  padding: 0;
+}
+
+/* Featured: meta text (date | author) */
+body.blog-index-template .section:first-child .cards-blog .cards-blog-card-body p,
+body.blog-index-template .section:first-child .cards-blog > div > div:last-child p {
+  font-size: var(--body-font-size-xs, 14px);
+  color: var(--color-text-muted, #616161);
+  margin: var(--spacing-s, 8px) 0 4px;
+  line-height: 1.4;
+}
+
+body.blog-index-template .section:first-child .cards-blog .cards-blog-card-body p a,
+body.blog-index-template .section:first-child .cards-blog > div > div:last-child p a {
+  color: var(--color-link, #0078d4);
+  font-size: var(--body-font-size-xs, 14px);
+  text-decoration: none;
+}
+
+body.blog-index-template .section:first-child .cards-blog .cards-blog-card-body p a:hover,
+body.blog-index-template .section:first-child .cards-blog > div > div:last-child p a:hover {
+  text-decoration: underline;
+}
+
+/* Featured: article title - larger */
+body.blog-index-template .section:first-child .cards-blog .cards-blog-card-body h3,
+body.blog-index-template .section:first-child .cards-blog > div > div:last-child h3 {
+  font-size: var(--heading-font-size-l, 24px);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 4px 0 0;
+  padding: 0;
+}
+
+body.blog-index-template .section:first-child .cards-blog .cards-blog-card-body h3 a,
+body.blog-index-template .section:first-child .cards-blog > div > div:last-child h3 a {
+  color: var(--color-text, #000);
+  text-decoration: none;
+}
+
+body.blog-index-template .section:first-child .cards-blog .cards-blog-card-body h3 a:hover,
+body.blog-index-template .section:first-child .cards-blog > div > div:last-child h3 a:hover {
+  text-decoration: underline;
+}
+
+/* Featured: hide empty image cells */
+body.blog-index-template .section:first-child .cards-blog > ul > li .cards-blog-card-image:empty,
+body.blog-index-template .section:first-child .cards-blog > div > div:first-child:empty {
+  display: none;
+}
+
+/* -----------------------------------------------
+   MORE NEWS SECTION (second section on page)
+   Compact horizontal cards: small thumbnail left, text right
+   ----------------------------------------------- */
+
+/* More News: horizontal layout (thumbnail | text) */
+body.blog-index-template .section:nth-child(2) .cards-blog > ul > li,
+body.blog-index-template .section:nth-child(2) .cards-blog > div {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0 var(--spacing-m, 16px);
+  align-items: start;
+  padding: var(--spacing-m, 16px) 0;
+}
+
+/* More News: image column */
+body.blog-index-template .section:nth-child(2) .cards-blog .cards-blog-card-image,
+body.blog-index-template .section:nth-child(2) .cards-blog > div > div:first-child {
+  line-height: 0;
+}
+
+body.blog-index-template .section:nth-child(2) .cards-blog > ul > li img,
+body.blog-index-template .section:nth-child(2) .cards-blog > div img {
+  width: 160px;
+  height: 90px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* More News: text column */
+body.blog-index-template .section:nth-child(2) .cards-blog .cards-blog-card-body,
+body.blog-index-template .section:nth-child(2) .cards-blog > div > div:last-child {
+  padding: 0;
+}
+
+/* More News: meta text */
+body.blog-index-template .section:nth-child(2) .cards-blog .cards-blog-card-body p,
+body.blog-index-template .section:nth-child(2) .cards-blog > div > div:last-child p {
+  font-size: 12px;
+  color: var(--color-text-muted, #616161);
+  margin: 0 0 4px;
+  line-height: 1.4;
+}
+
+body.blog-index-template .section:nth-child(2) .cards-blog .cards-blog-card-body p a,
+body.blog-index-template .section:nth-child(2) .cards-blog > div > div:last-child p a {
+  color: var(--color-link, #0078d4);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+body.blog-index-template .section:nth-child(2) .cards-blog .cards-blog-card-body p a:hover,
+body.blog-index-template .section:nth-child(2) .cards-blog > div > div:last-child p a:hover {
+  text-decoration: underline;
+}
+
+/* More News: article title - smaller */
+body.blog-index-template .section:nth-child(2) .cards-blog .cards-blog-card-body h3,
+body.blog-index-template .section:nth-child(2) .cards-blog > div > div:last-child h3 {
+  font-size: var(--heading-font-size-s, 18px);
+  font-weight: 600;
+  line-height: 1.33;
+  margin: 2px 0 0;
+  padding: 0;
+}
+
+body.blog-index-template .section:nth-child(2) .cards-blog .cards-blog-card-body h3 a,
+body.blog-index-template .section:nth-child(2) .cards-blog > div > div:last-child h3 a {
+  color: var(--color-text, #000);
+  text-decoration: none;
+}
+
+body.blog-index-template .section:nth-child(2) .cards-blog .cards-blog-card-body h3 a:hover,
+body.blog-index-template .section:nth-child(2) .cards-blog > div > div:last-child h3 a:hover {
+  text-decoration: underline;
+}
+
+/* More News: handle empty image cells */
+body.blog-index-template .section:nth-child(2) .cards-blog > ul > li .cards-blog-card-image:empty,
+body.blog-index-template .section:nth-child(2) .cards-blog > div > div:first-child:empty {
+  display: none;
+}
+
+body.blog-index-template .section:nth-child(2) .cards-blog > ul > li:has(.cards-blog-card-image:empty),
+body.blog-index-template .section:nth-child(2) .cards-blog > div:has(> div:first-child:empty) {
+  grid-template-columns: 1fr;
+}
+
+/* --- "View More" button --- */
+body.blog-index-template .section:nth-child(2) .default-content-wrapper > p > a,
+body.blog-index-template .section:nth-child(2) > div > p > a {
+  display: inline-block;
+  background-color: var(--color-accent, #0078d4);
+  color: #fff;
+  padding: var(--button-padding, 8px 12px);
+  border-radius: var(--button-border-radius, 8px);
+  font-size: var(--button-font-size, 15px);
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: var(--spacing-m, 16px);
+}
+
+body.blog-index-template .section:nth-child(2) .default-content-wrapper > p > a:hover,
+body.blog-index-template .section:nth-child(2) > div > p > a:hover {
+  background-color: var(--color-accent-hover, #0067b8);
+}
+
+/* -----------------------------------------------
+   MOBILE: Single column, stacked layout
+   ----------------------------------------------- */
+@media (width <= 599px) {
+  body.blog-index-template .section:nth-child(2) .cards-blog > ul > li,
+  body.blog-index-template .section:nth-child(2) .cards-blog > div {
+    grid-template-columns: 120px 1fr;
+  }
+
+  body.blog-index-template .section:nth-child(2) .cards-blog > ul > li img,
+  body.blog-index-template .section:nth-child(2) .cards-blog > div img {
+    width: 120px;
+    height: 68px;
+  }
+
+  body.blog-index-template .section:first-child .cards-blog .cards-blog-card-body h3,
+  body.blog-index-template .section:first-child .cards-blog > div > div:last-child h3 {
+    font-size: var(--heading-font-size-m, 20px);
+  }
+}
