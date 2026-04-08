@@ -2,13 +2,15 @@
  * Product Gallery block — thumbnail strip + main image + product details.
  *
  * Authoring (two-column rows):
- *   Row 1: Image | Product details (heading, price, links, CTA)
- *   Row 2: Image |
- *   Row 3: Image |
+ *   Row 1: Image link or img | Product details (heading, price, links, CTA)
+ *   Row 2: Image link or img |
+ *   Row 3: Image link or img |
  *   ...
  *
- * The first row's second column holds the product info panel.
- * All rows' first columns are gallery images.
+ * Images can be authored as:
+ *   - <img> tags (standard)
+ *   - <a> links to CDN image URLs (DA can't host external images,
+ *     so links are used and the block builds <img> at runtime)
  *
  * @param {Element} block
  */
@@ -22,8 +24,22 @@ export default function decorate(block) {
     const imgCol = cols[0];
     const textCol = cols[1];
 
+    // Try <img> first, then fall back to <a> with image URL
     const img = imgCol?.querySelector('img');
-    if (img) images.push({ src: img.src, alt: img.alt || '' });
+    if (img && img.src && !img.src.includes('about:error')) {
+      images.push({ src: img.src, alt: img.alt || '' });
+    } else {
+      const link = imgCol?.querySelector('a');
+      if (link && link.href) {
+        const href = link.href;
+        const isImage = /\.(png|jpg|jpeg|gif|webp|svg)/i.test(href)
+          || href.includes('/is/image/')
+          || href.includes('cdn-dynmedia');
+        if (isImage) {
+          images.push({ src: href, alt: link.textContent.trim() || '' });
+        }
+      }
+    }
 
     // First row's second column is the product details
     if (i === 0 && textCol && textCol.textContent.trim()) {
@@ -54,11 +70,11 @@ export default function decorate(block) {
     if (i === 0) thumb.classList.add('active');
     thumb.setAttribute('aria-label', image.alt || `View image ${i + 1}`);
 
-    const img = document.createElement('img');
-    img.src = image.src;
-    img.alt = image.alt;
-    img.loading = i === 0 ? 'eager' : 'lazy';
-    thumb.append(img);
+    const tImg = document.createElement('img');
+    tImg.src = image.src;
+    tImg.alt = image.alt;
+    tImg.loading = i === 0 ? 'eager' : 'lazy';
+    thumb.append(tImg);
 
     thumb.addEventListener('click', () => {
       mainImg.src = image.src;
