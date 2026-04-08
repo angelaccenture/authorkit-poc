@@ -69,6 +69,44 @@ body.product-compare-template .tab-list button.is-active {
 }
 
 /* -----------------------------------------------
+   TAB PANELS — Add-ons and Accessories 2-column grid
+   Tab panel sections (2nd and 3rd panels) get a 2-col layout
+   with heading/description on the left, content on the right
+   ----------------------------------------------- */
+@media (width >= 768px) {
+  /* Add-ons panel */
+  body.product-compare-template .tab-section:nth-child(3) .default-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--spacing-xl, 32px);
+  }
+
+  /* h2 and h3 span full width */
+  body.product-compare-template .tab-section:nth-child(3) .default-content h2,
+  body.product-compare-template .tab-section:nth-child(3) .default-content h3 {
+    grid-column: 1 / -1;
+  }
+
+  /* Accessories panel */
+  body.product-compare-template .tab-section:nth-child(4) .default-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--spacing-xl, 32px);
+  }
+
+  body.product-compare-template .tab-section:nth-child(4) .default-content h2,
+  body.product-compare-template .tab-section:nth-child(4) .default-content h3 {
+    grid-column: 1 / -1;
+  }
+
+  /* Card carousel spans full width */
+  body.product-compare-template .tab-section:nth-child(4) .card-carousel-wrapper,
+  body.product-compare-template .tab-section:nth-child(4) .card-carousel-container {
+    grid-column: 1 / -1;
+  }
+}
+
+/* -----------------------------------------------
    ANNOUNCEMENT BAR — dark with white text
    ----------------------------------------------- */
 body.product-compare-template .section.announcement-bar {

@@ -30,11 +30,22 @@ export default function decorate(block) {
     const imageCol = cols[0];
     const textCol = cols[1];
 
-    // Image
+    // Image — supports <img>, <picture>, or <a> links to CDN image URLs
     if (imageCol) {
       const imageWrap = document.createElement('div');
       imageWrap.className = 'card-carousel-image';
-      const pic = imageCol.querySelector('picture') || imageCol.querySelector('img');
+      let pic = imageCol.querySelector('picture') || imageCol.querySelector('img');
+      if (pic && pic.src && pic.src.includes('about:error')) pic = null;
+      if (!pic) {
+        const link = imageCol.querySelector('a');
+        if (link && link.href && (link.href.includes('/is/image/') || link.href.includes('cdn-dynmedia'))) {
+          const img = document.createElement('img');
+          img.src = link.href;
+          img.alt = link.textContent.trim();
+          img.loading = 'lazy';
+          pic = img;
+        }
+      }
       if (pic) imageWrap.append(pic);
       card.append(imageWrap);
     }
