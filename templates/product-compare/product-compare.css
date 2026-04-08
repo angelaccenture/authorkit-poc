@@ -29,9 +29,25 @@ body.product-compare-template .section.announcement-bar {
   font-size: var(--body-font-size-xs, 14px);
 }
 
+body.product-compare-template .section.announcement-bar .default-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+
 body.product-compare-template .section.announcement-bar p {
   margin: 0;
   color: #fff;
+  padding: 0 var(--spacing-l, 24px);
+}
+
+/* Divider pipe between announcement items */
+body.product-compare-template .section.announcement-bar p:nth-child(2) {
+  padding: 0;
+  color: rgba(255 255 255 / 30%);
+  font-size: 20px;
+  line-height: 1;
 }
 
 body.product-compare-template .section.announcement-bar a {
