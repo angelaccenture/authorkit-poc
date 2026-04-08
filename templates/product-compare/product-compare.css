@@ -40,6 +40,7 @@ body.product-compare-template .section.step-indicator .tab-list {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-l, 24px);
+  justify-content: center;
 }
 
 body.product-compare-template .section.step-indicator .tab-section {
@@ -104,6 +105,20 @@ body.product-compare-template .tab-list button.is-active {
   body.product-compare-template .tab-section:nth-child(4) .card-carousel-container {
     grid-column: 1 / -1;
   }
+}
+
+/* -----------------------------------------------
+   TAB PANEL HEADLINES — centered with top spacing
+   ----------------------------------------------- */
+body.product-compare-template .tab-section h1,
+body.product-compare-template .tab-section h2 {
+  text-align: center;
+  margin-top: var(--spacing-xxl, 48px);
+}
+
+body.product-compare-template .tab-section h3 {
+  text-align: center;
+  margin-top: var(--spacing-xl, 32px);
 }
 
 /* -----------------------------------------------
