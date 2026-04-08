@@ -147,7 +147,6 @@ body.product-compare-template .section.announcement-bar a {
    STEP INDICATOR — Build / Add-ons / Accessories
    ----------------------------------------------- */
 body.product-compare-template .section.step-indicator {
-  background-color: #f5f5f5;
   padding: 0;
   border-bottom: 1px solid var(--color-border, #e3e3e3);
 }
