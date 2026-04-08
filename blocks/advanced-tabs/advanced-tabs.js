@@ -2,17 +2,28 @@ import { getConfig } from '../../scripts/ak.js';
 
 const { log } = getConfig();
 
+function switchTab(tabList, tabPanels, idx) {
+  tabList.querySelectorAll('button')
+    .forEach((button) => { button.classList.remove('is-active'); });
+  tabPanels.forEach((sec) => { sec.classList.remove('is-visible'); });
+  tabPanels[idx]?.classList.add('is-visible');
+  tabList.children[idx]?.classList.add('is-active');
+}
+
 function getTabList(tabs, tabPanels) {
   const tabItems = tabs.querySelectorAll('li');
   const tabList = document.createElement('div');
   tabList.className = 'tab-list';
   tabList.role = 'tablist';
 
+  const tabNames = [];
+
   for (const [idx, tab] of tabItems.entries()) {
     const btn = document.createElement('button');
     btn.role = 'tab';
     btn.id = `tab-${idx + 1}`;
     btn.textContent = tab.textContent;
+    tabNames.push(tab.textContent.trim().replace(/\s+/g, '-'));
     if (idx === 0) {
       btn.classList.add('is-active');
       tabPanels[0].classList.add('is-visible');
@@ -20,15 +31,39 @@ function getTabList(tabs, tabPanels) {
     tabList.append(btn);
 
     btn.addEventListener('click', () => {
-      // Remove all active styles
-      tabList.querySelectorAll('button')
-        .forEach((button) => { button.classList.remove('is-active'); });
-
-      tabPanels.forEach((sec) => { sec.classList.remove('is-visible'); });
-      tabPanels[idx].classList.add('is-visible');
-      btn.classList.add('is-active');
+      switchTab(tabList, tabPanels, idx);
     });
   }
+
+  // Hash navigation — switch tab when URL hash matches a tab name
+  function handleHash() {
+    const hash = window.location.hash.replace('#', '');
+    if (!hash) return;
+    const matchIdx = tabNames.findIndex(
+      (name) => name.toLowerCase() === hash.toLowerCase(),
+    );
+    if (matchIdx >= 0) switchTab(tabList, tabPanels, matchIdx);
+  }
+
+  window.addEventListener('hashchange', handleHash);
+  handleHash();
+
+  // Intercept clicks on links with tab hash (e.g. #Add-ons)
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href*="#"]');
+    if (!link) return;
+    const hash = link.getAttribute('href').split('#')[1];
+    if (!hash) return;
+    const matchIdx = tabNames.findIndex(
+      (name) => name.toLowerCase() === hash.toLowerCase(),
+    );
+    if (matchIdx >= 0) {
+      e.preventDefault();
+      switchTab(tabList, tabPanels, matchIdx);
+      window.history.replaceState(null, '', `#${hash}`);
+    }
+  });
+
   return tabList;
 }
 

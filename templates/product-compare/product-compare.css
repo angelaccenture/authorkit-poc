@@ -95,6 +95,44 @@ body.product-compare-template .tab-list button.is-active {
 }
 
 /* -----------------------------------------------
+   TAB PANEL CTA BUTTONS — full-width primary/secondary
+   ----------------------------------------------- */
+body.product-compare-template .tab-section .button-container {
+  margin-top: var(--spacing-m, 16px);
+  text-align: center;
+}
+
+body.product-compare-template .tab-section .button-container a.button {
+  display: block;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: var(--button-padding-large, 12px 13px);
+  border-radius: var(--button-border-radius, 8px);
+  font-weight: 600;
+  font-size: var(--button-font-size, 15px);
+  text-align: center;
+}
+
+body.product-compare-template .tab-section .button-container a.button.primary {
+  background-color: var(--color-accent, #0078d4);
+  color: #fff;
+}
+
+body.product-compare-template .tab-section .button-container a.button.primary:hover {
+  background-color: var(--color-accent-hover, #0067b8);
+}
+
+body.product-compare-template .tab-section .button-container a.button.secondary {
+  background-color: #fff;
+  color: var(--color-text, #000);
+  border: 1px solid var(--color-text, #000);
+}
+
+body.product-compare-template .tab-section .button-container a.button.secondary:hover {
+  background-color: #f0f0f0;
+}
+
+/* -----------------------------------------------
    TAB PANEL HEADLINES — centered with top spacing
    ----------------------------------------------- */
 body.product-compare-template .tab-section h1,
