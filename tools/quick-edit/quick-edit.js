@@ -100,6 +100,7 @@ function applyCustomizations() {
   document.head.appendChild(style);
 
   // Image editor panel — mirrors da-palettes style
+  // Appended lazily to avoid DA's quick-edit clearing it
   const altEditor = document.createElement('div');
   altEditor.className = 'da-image-palettes';
   altEditor.innerHTML = `
@@ -113,7 +114,12 @@ function applyCustomizations() {
       <button class="palette-btn-ok">OK</button>
     </div>
   `;
-  document.body.appendChild(altEditor);
+
+  function ensureAltEditorInDOM() {
+    if (!document.body.contains(altEditor)) {
+      document.body.appendChild(altEditor);
+    }
+  }
 
   let altTarget = null;
   let lastSelectedImage = null;
@@ -157,6 +163,7 @@ function applyCustomizations() {
       if (!img) return;
 
       altTarget = img;
+      ensureAltEditorInDOM();
       altEditor.querySelector('#qe-alt-input').value = img.alt || '';
 
       // Position below the toolbar

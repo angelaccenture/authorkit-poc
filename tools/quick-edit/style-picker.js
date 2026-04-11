@@ -111,7 +111,6 @@ function createPicker() {
     }
   `;
   document.head.appendChild(style);
-  document.body.appendChild(el);
 
   el.querySelector('.style-picker-close').addEventListener('click', closePicker);
 
@@ -121,6 +120,12 @@ function createPicker() {
 function closePicker() {
   if (picker) picker.classList.remove('open');
   activeEl = null;
+}
+
+function ensurePickerInDOM() {
+  if (picker && !document.body.contains(picker)) {
+    document.body.appendChild(picker);
+  }
 }
 
 function positionPicker(target) {
@@ -186,6 +191,7 @@ function showBlockPicker(block, blockName) {
     optionsEl.appendChild(btn);
   });
 
+  ensurePickerInDOM();
   picker.classList.add('open');
   positionPicker(block);
   activeEl = block;
@@ -208,6 +214,7 @@ function showSectionPicker(section) {
     optionsEl.appendChild(btn);
   });
 
+  ensurePickerInDOM();
   picker.classList.add('open');
   positionPicker(section);
   activeEl = section;
