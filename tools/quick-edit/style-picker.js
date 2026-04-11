@@ -214,6 +214,7 @@ function showSectionPicker(section) {
 }
 
 export function openStylePicker(element) {
+  console.log("Is this working?");
   if (!picker) return;
   const blockName = getBlockName(element);
   if (blockName && BLOCK_VARIANTS[blockName]) {
