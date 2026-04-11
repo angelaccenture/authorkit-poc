@@ -131,6 +131,7 @@ function applyCustomizations() {
   document.body.appendChild(altEditor);
 
   let altTarget = null;
+  let lastSelectedImage = null;
 
   altEditor.querySelector('.palette-btn-cancel').addEventListener('click', () => {
     altEditor.classList.remove('open');
@@ -158,18 +159,19 @@ function applyCustomizations() {
 
     altBtn.addEventListener('click', (ev) => {
       ev.stopPropagation();
-      const selected = document.querySelector('.qe-selected');
-      const img = selected?.tagName === 'IMG'
-        ? selected
-        : selected?.querySelector('img');
+      ev.preventDefault();
+
+      const img = lastSelectedImage;
       if (!img) return;
 
       altTarget = img;
       altEditor.querySelector('#qe-alt-input').value = img.alt || '';
 
-      const rect = img.getBoundingClientRect();
-      altEditor.style.top = `${rect.bottom + window.scrollY + 8}px`;
-      altEditor.style.left = `${Math.max(8, rect.left)}px`;
+      // Position below the toolbar
+      const toolbarRect = toolbar.getBoundingClientRect();
+      altEditor.style.position = 'absolute';
+      altEditor.style.top = `${toolbarRect.bottom + window.scrollY + 8}px`;
+      altEditor.style.left = `${Math.max(8, toolbarRect.left)}px`;
       altEditor.classList.add('open');
       setTimeout(() => altEditor.querySelector('#qe-alt-input').focus(), 50);
     });
@@ -240,6 +242,13 @@ function applyCustomizations() {
     [...toolbar.children].forEach((child) => {
       child.style.display = 'none';
     });
+
+    // Store image reference when image is selected
+    if (type === 'image') {
+      lastSelectedImage = target.tagName === 'IMG' ? target : target.querySelector('img');
+    } else {
+      lastSelectedImage = null;
+    }
 
     // Show buttons based on detected type
     if (type === 'image') {
