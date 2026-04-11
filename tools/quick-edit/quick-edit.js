@@ -157,8 +157,15 @@ function applyCustomizations() {
     altBtn.textContent = 'Edit Image';
     altBtn.classList.add('toolbar-btn-styles');
 
-    altBtn.addEventListener('click', (ev) => {
+    altBtn.addEventListener('mousedown', (ev) => {
       ev.stopPropagation();
+      ev.stopImmediatePropagation();
+      ev.preventDefault();
+    });
+
+    altBtn.addEventListener('mouseup', (ev) => {
+      ev.stopPropagation();
+      ev.stopImmediatePropagation();
       ev.preventDefault();
 
       const img = lastSelectedImage;
