@@ -208,9 +208,21 @@ function applyCustomizations() {
 
   // Detect element type from the raw click target
   function detectClick(rawTarget) {
-    // 1. Image — clicked directly on img or picture
-    const img = rawTarget.closest('img, picture');
+    // 1. Image — clicked on img, picture, svg, video, or any element containing only media
+    const img = rawTarget.closest('img, picture, svg, video, canvas, .product-card-image, .hero img, [class*="image"], [class*="img"]');
     if (img) return { target: img, type: 'image' };
+
+    // Also check if rawTarget itself is media or its parent only contains media
+    if (rawTarget.tagName === 'IMG' || rawTarget.tagName === 'PICTURE'
+      || rawTarget.tagName === 'SVG' || rawTarget.tagName === 'VIDEO') {
+      return { target: rawTarget, type: 'image' };
+    }
+
+    // Check if parent is an image wrapper (contains img but no text content)
+    const parent = rawTarget.parentElement;
+    if (parent && parent.querySelector('img') && !parent.textContent.trim()) {
+      return { target: parent, type: 'image' };
+    }
 
     // 2. Text — clicked on a text element
     const text = rawTarget.closest('p, h1, h2, h3, h4, h5, h6, li, a, span');
@@ -254,7 +266,9 @@ function applyCustomizations() {
 
     // Store image reference when image is selected
     if (type === 'image') {
-      lastSelectedImage = target.tagName === 'IMG' ? target : target.querySelector('img');
+      lastSelectedImage = target.tagName === 'IMG'
+        ? target
+        : target.querySelector('img') || target;
     } else {
       lastSelectedImage = null;
     }
