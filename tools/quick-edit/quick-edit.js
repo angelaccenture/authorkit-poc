@@ -24,10 +24,33 @@ function applyCustomizations() {
   `;
   document.head.appendChild(style);
 
-  // Show toolbar when author selects anything on the page
-  document.addEventListener('click', () => {
+  // Show toolbar and reposition above the clicked element
+  document.addEventListener('click', (e) => {
     const toolbar = document.querySelector('.prosemirror-floating-toolbar');
-    if (toolbar) toolbar.style.display = 'block';
+    if (!toolbar) return;
+    if (toolbar.contains(e.target)) return;
+
+    toolbar.style.display = 'block';
+
+    // Find the clicked element to position above
+    const target = e.target.closest('picture, img, p, h1, h2, h3, h4, h5, h6, li, a, div.block, [data-block-name]')
+      || e.target;
+    const rect = target.getBoundingClientRect();
+    const toolbarHeight = toolbar.offsetHeight || 40;
+
+    let top = rect.top + window.scrollY - toolbarHeight - 8;
+    if (top < window.scrollY) {
+      top = rect.bottom + window.scrollY + 8;
+    }
+
+    const left = Math.max(8, Math.min(
+      rect.left + (rect.width / 2) - (toolbar.offsetWidth / 2),
+      window.innerWidth - toolbar.offsetWidth - 8,
+    ));
+
+    toolbar.style.position = 'absolute';
+    toolbar.style.top = `${top}px`;
+    toolbar.style.left = `${left}px`;
   });
 }
 
