@@ -14,8 +14,22 @@ function addImportmap() {
   document.head.appendChild(importmapEl);
 }
 
+function applyCustomizations() {
+  const style = document.createElement('style');
+  style.textContent = `
+    /* Hide underline button from quick-edit toolbar */
+    da-quick-edit [command="underline"],
+    da-quick-edit [title="Underline"],
+    da-quick-edit button[data-command="underline"] {
+      display: none;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 async function loadModule(origin, payload) {
   const { default: loadQuickEdit } = await import(`${origin}/nx/public/plugins/quick-edit/quick-edit.js`);
+  applyCustomizations();
   loadQuickEdit(payload, loadPage);
 }
 
