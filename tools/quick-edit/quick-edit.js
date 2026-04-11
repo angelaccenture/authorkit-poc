@@ -155,7 +155,6 @@ function applyCustomizations() {
     altBtn.className = 'proseMirror-menuitem toolbar-btn-alt';
     altBtn.title = 'Edit Image';
     altBtn.textContent = 'Edit Image';
-    altBtn.classList.add('toolbar-btn-styles');
 
     altBtn.addEventListener('mousedown', (ev) => {
       ev.stopPropagation();
