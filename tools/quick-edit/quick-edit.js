@@ -26,8 +26,127 @@ function applyCustomizations() {
       outline-offset: 4px;
       border-radius: 4px;
     }
+    .qe-alt-editor {
+      position: absolute;
+      z-index: 100001;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+      padding: 12px;
+      width: 300px;
+      font-family: system-ui, sans-serif;
+      display: none;
+    }
+    .qe-alt-editor.open { display: block; }
+    .qe-alt-editor label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #555;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .qe-alt-editor textarea {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 60px;
+    }
+    .qe-alt-editor textarea:focus {
+      outline: none;
+      border-color: #0078d4;
+    }
+    .qe-alt-editor-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .qe-alt-editor-actions button {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      border: 1px solid #ddd;
+      background: #f5f5f5;
+      color: #333;
+    }
+    .qe-alt-editor-actions button.qe-alt-save {
+      background: #0078d4;
+      color: #fff;
+      border-color: #0078d4;
+    }
   `;
   document.head.appendChild(style);
+
+  // Alt text editor panel
+  const altEditor = document.createElement('div');
+  altEditor.className = 'qe-alt-editor';
+  altEditor.innerHTML = `
+    <label for="qe-alt-input">Alt text</label>
+    <textarea id="qe-alt-input" placeholder="Describe this image..."></textarea>
+    <div class="qe-alt-editor-actions">
+      <button class="qe-alt-cancel">Cancel</button>
+      <button class="qe-alt-save">Save</button>
+    </div>
+  `;
+  document.body.appendChild(altEditor);
+
+  let altTarget = null;
+
+  altEditor.querySelector('.qe-alt-cancel').addEventListener('click', () => {
+    altEditor.classList.remove('open');
+    altTarget = null;
+  });
+
+  altEditor.querySelector('.qe-alt-save').addEventListener('click', () => {
+    if (altTarget) {
+      altTarget.alt = altEditor.querySelector('#qe-alt-input').value;
+    }
+    altEditor.classList.remove('open');
+    altTarget = null;
+  });
+
+  // Inject alt text button into toolbar once it renders
+  function injectAltButton() {
+    const toolbar = document.querySelector('.prosemirror-floating-toolbar');
+    if (!toolbar || toolbar.querySelector('.toolbar-btn-alt')) return;
+
+    const altBtn = document.createElement('span');
+    altBtn.className = 'proseMirror-menuitem toolbar-btn-alt';
+    altBtn.title = 'Edit alt text';
+    altBtn.textContent = 'Alt';
+    altBtn.style.cssText = 'cursor:pointer;padding:4px 8px;font-size:12px;font-weight:600;';
+
+    altBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      const selected = document.querySelector('.qe-selected');
+      const img = selected?.tagName === 'IMG'
+        ? selected
+        : selected?.querySelector('img');
+      if (!img) return;
+
+      altTarget = img;
+      altEditor.querySelector('#qe-alt-input').value = img.alt || '';
+
+      const rect = img.getBoundingClientRect();
+      altEditor.style.top = `${rect.bottom + window.scrollY + 8}px`;
+      altEditor.style.left = `${Math.max(8, rect.left)}px`;
+      altEditor.classList.add('open');
+      altEditor.querySelector('#qe-alt-input').focus();
+    });
+
+    toolbar.appendChild(altBtn);
+  }
+
+  // Watch for toolbar to appear and inject button
+  const toolbarObserver = new MutationObserver(injectAltButton);
+  toolbarObserver.observe(document.body, { childList: true, subtree: true });
 
   // Show toolbar and reposition above the clicked element
   document.addEventListener('click', (e) => {
