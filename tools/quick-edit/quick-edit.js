@@ -42,85 +42,102 @@ function applyCustomizations() {
       box-sizing: border-box;
       white-space: nowrap;
     }
-    .qe-alt-editor {
+    .da-image-palettes {
+      display: none;
       position: absolute;
       z-index: 100001;
-      background: #fff;
-      border: 1px solid #e0e0e0;
+      background: white;
+      padding: 30px;
       border-radius: 8px;
-      box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
-      padding: 12px;
-      width: 300px;
+      box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
+      width: 280px;
       font-family: system-ui, sans-serif;
-      display: none;
     }
-    .qe-alt-editor.open { display: block; }
-    .qe-alt-editor label {
-      font-size: 12px;
+    .da-image-palettes.open { display: flex; flex-direction: column; }
+    .da-image-palettes .palette-title {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0 0 16px;
+      color: #000;
+    }
+    .da-image-palettes .palette-field {
+      margin-bottom: 12px;
+    }
+    .da-image-palettes .palette-label {
+      font-size: 13px;
       font-weight: 600;
-      color: #555;
+      color: #000;
       display: block;
       margin-bottom: 4px;
     }
-    .qe-alt-editor textarea {
+    .da-image-palettes .palette-input {
       width: 100%;
       box-sizing: border-box;
-      border: 1px solid #ddd;
-      border-radius: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
       padding: 8px;
       font-size: 14px;
       font-family: inherit;
-      resize: vertical;
-      min-height: 60px;
     }
-    .qe-alt-editor textarea:focus {
+    .da-image-palettes .palette-input:focus {
       outline: none;
       border-color: #0078d4;
     }
-    .qe-alt-editor-actions {
+    .da-image-palettes textarea.palette-input {
+      resize: vertical;
+      min-height: 60px;
+    }
+    .da-image-palettes .palette-actions {
       display: flex;
       justify-content: flex-end;
       gap: 8px;
       margin-top: 8px;
     }
-    .qe-alt-editor-actions button {
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 13px;
+    .da-image-palettes .palette-actions button {
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
       cursor: pointer;
-      border: 1px solid #ddd;
-      background: #f5f5f5;
-      color: #333;
     }
-    .qe-alt-editor-actions button.qe-alt-save {
+    .da-image-palettes .palette-btn-cancel {
+      border: 1px solid #ccc;
+      background: #fff;
+      color: #000;
+    }
+    .da-image-palettes .palette-btn-ok {
+      border: 1px solid #0078d4;
       background: #0078d4;
       color: #fff;
-      border-color: #0078d4;
     }
   `;
   document.head.appendChild(style);
 
-  // Alt text editor panel
+  // Image editor panel — mirrors da-palettes style
   const altEditor = document.createElement('div');
-  altEditor.className = 'qe-alt-editor';
+  altEditor.className = 'da-image-palettes';
   altEditor.innerHTML = `
-    <label for="qe-alt-input">Alt text</label>
-    <textarea id="qe-alt-input" placeholder="Describe this image..."></textarea>
-    <div class="qe-alt-editor-actions">
-      <button class="qe-alt-cancel">Cancel</button>
-      <button class="qe-alt-save">Save</button>
+    <span class="palette-title">Edit Image</span>
+    <div class="palette-field">
+      <span class="palette-label">Alt text</span>
+      <textarea id="qe-alt-input" class="palette-input" placeholder="Describe this image..."></textarea>
+    </div>
+    <div class="palette-actions">
+      <button class="palette-btn-cancel">Cancel</button>
+      <button class="palette-btn-ok">OK</button>
     </div>
   `;
   document.body.appendChild(altEditor);
 
   let altTarget = null;
 
-  altEditor.querySelector('.qe-alt-cancel').addEventListener('click', () => {
+  altEditor.querySelector('.palette-btn-cancel').addEventListener('click', () => {
     altEditor.classList.remove('open');
     altTarget = null;
   });
 
-  altEditor.querySelector('.qe-alt-save').addEventListener('click', () => {
+  altEditor.querySelector('.palette-btn-ok').addEventListener('click', () => {
     if (altTarget) {
       altTarget.alt = altEditor.querySelector('#qe-alt-input').value;
     }
@@ -154,7 +171,7 @@ function applyCustomizations() {
       altEditor.style.top = `${rect.bottom + window.scrollY + 8}px`;
       altEditor.style.left = `${Math.max(8, rect.left)}px`;
       altEditor.classList.add('open');
-      altEditor.querySelector('#qe-alt-input').focus();
+      setTimeout(() => altEditor.querySelector('#qe-alt-input').focus(), 50);
     });
 
     toolbar.appendChild(altBtn);
