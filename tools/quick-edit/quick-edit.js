@@ -16,36 +16,9 @@ function addImportmap() {
 }
 
 function applyCustomizations() {
-  // Quick-edit toolbar may render in Shadow DOM — use MutationObserver
-  // to find and hide the underline button once it appears
-  const observer = new MutationObserver(() => {
-    // Try regular DOM first
-    document.querySelectorAll('[command="underline"], [title="Underline"], [data-command="underline"]').forEach((btn) => {
-      btn.style.display = 'none';
-    });
-
-    // Try Shadow DOM in any custom elements
-    document.querySelectorAll('da-quick-edit, da-toolbar, [class*="toolbar"], [class*="quick-edit"]').forEach((el) => {
-      const shadow = el.shadowRoot;
-      if (shadow) {
-        shadow.querySelectorAll('[command="underline"], [title="Underline"], [data-command="underline"], button').forEach((btn) => {
-          if (btn.title === 'Underline' || btn.getAttribute('command') === 'underline'
-            || btn.textContent.trim().toLowerCase() === 'underline') {
-            btn.style.display = 'none';
-          }
-        });
-      }
-    });
-  });
-
-  observer.observe(document.body, { childList: true, subtree: true });
-
-  // Also inject global CSS as fallback
   const style = document.createElement('style');
   style.textContent = `
-    [command="underline"],
-    [title="Underline"],
-    [data-command="underline"] {
+    .prosemirror-floating-toolbar .toolbar-btn-underline {
       display: none !important;
     }
   `;
