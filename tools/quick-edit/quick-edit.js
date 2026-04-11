@@ -152,17 +152,20 @@ function applyCustomizations() {
     if (!toolbar || toolbar.querySelector('.toolbar-btn-alt')) return;
 
     const altBtn = document.createElement('span');
-    altBtn.className = 'proseMirror-menuitem toolbar-btn-alt';
-    altBtn.title = 'Edit Image';
-    altBtn.textContent = 'Edit Image';
+    altBtn.className = 'ProseMirror-menuitem';
+    const altBtnInner = document.createElement('div');
+    altBtnInner.title = 'Edit Image';
+    altBtnInner.className = 'edit-image toolbar-btn-alt ProseMirror-menu-disabled';
+    altBtnInner.textContent = 'Edit Image';
+    altBtn.appendChild(altBtnInner);
 
-    altBtn.addEventListener('mousedown', (ev) => {
+    altBtnInner.addEventListener('mousedown', (ev) => {
       ev.stopPropagation();
       ev.stopImmediatePropagation();
       ev.preventDefault();
     });
 
-    altBtn.addEventListener('mouseup', (ev) => {
+    altBtnInner.addEventListener('mouseup', (ev) => {
       ev.stopPropagation();
       ev.stopImmediatePropagation();
       ev.preventDefault();
