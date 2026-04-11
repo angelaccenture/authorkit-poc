@@ -166,15 +166,20 @@ function applyCustomizations() {
 
     // Context-aware toolbar: show/hide buttons based on element type
     const isImage = target.tagName === 'IMG' || target.tagName === 'PICTURE' || !!target.querySelector('img');
-    const altBtn = toolbar.querySelector('.toolbar-btn-alt');
-    const textBtns = toolbar.querySelectorAll('.proseMirror-menuitem:not(.toolbar-btn-alt)');
+    const altBtnEl = toolbar.querySelector('.toolbar-btn-alt');
 
-    if (isImage) {
-      if (altBtn) altBtn.style.display = 'inline-flex';
-      textBtns.forEach((btn) => { btn.style.display = 'none'; });
-    } else {
-      if (altBtn) altBtn.style.display = 'none';
-      textBtns.forEach((btn) => { btn.style.display = ''; });
+    // Get all toolbar children that are NOT the alt button
+    [...toolbar.children].forEach((child) => {
+      if (child === altBtnEl) return;
+      if (isImage) {
+        child.style.display = 'none';
+      } else {
+        child.style.display = '';
+      }
+    });
+
+    if (altBtnEl) {
+      altBtnEl.style.display = isImage ? 'inline-flex' : 'none';
     }
     const rect = target.getBoundingClientRect();
     const toolbarHeight = toolbar.offsetHeight || 40;
