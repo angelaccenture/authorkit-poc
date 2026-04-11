@@ -148,13 +148,14 @@ function applyCustomizations() {
     altBtn.appendChild(altBtnInner);
 
     altBtnInner.addEventListener('mousedown', (ev) => {
-        console.log("injectAltButton - addEvent");
+        console.log("injectAltButton - addEvent mousedown");
       ev.stopPropagation();
       ev.stopImmediatePropagation();
       ev.preventDefault();
     });
 
     altBtnInner.addEventListener('mouseup', (ev) => {
+      console.log("injectAltButton - addEvent mouseup");
       ev.stopPropagation();
       ev.stopImmediatePropagation();
       ev.preventDefault();
