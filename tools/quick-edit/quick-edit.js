@@ -163,6 +163,19 @@ function applyCustomizations() {
     const target = e.target.closest('picture, img, p, h1, h2, h3, h4, h5, h6, li, a, div.block, [data-block-name], .section')
       || e.target;
     target.classList.add('qe-selected');
+
+    // Context-aware toolbar: show/hide buttons based on element type
+    const isImage = target.tagName === 'IMG' || target.tagName === 'PICTURE' || !!target.querySelector('img');
+    const altBtn = toolbar.querySelector('.toolbar-btn-alt');
+    const textBtns = toolbar.querySelectorAll('.proseMirror-menuitem:not(.toolbar-btn-alt)');
+
+    if (isImage) {
+      if (altBtn) altBtn.style.display = 'inline-flex';
+      textBtns.forEach((btn) => { btn.style.display = 'none'; });
+    } else {
+      if (altBtn) altBtn.style.display = 'none';
+      textBtns.forEach((btn) => { btn.style.display = ''; });
+    }
     const rect = target.getBoundingClientRect();
     const toolbarHeight = toolbar.offsetHeight || 40;
 
