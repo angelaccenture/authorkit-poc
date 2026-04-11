@@ -189,10 +189,13 @@ function applyCustomizations() {
 
     // Styles button for blocks and sections
     const stylesBtn = document.createElement('span');
-    stylesBtn.className = 'proseMirror-menuitem toolbar-btn-styles';
-    stylesBtn.title = 'Edit Styles';
-    stylesBtn.textContent = 'Edit Styles';
-    stylesBtn.addEventListener('click', (ev) => {
+    stylesBtn.className = 'ProseMirror-menuitem';
+    const stylesBtnInner = document.createElement('div');
+    stylesBtnInner.title = 'Edit Styles';
+    stylesBtnInner.className = 'edit-styles toolbar-btn-styles ProseMirror-menu-disabled';
+    stylesBtnInner.textContent = 'Edit Styles';
+    stylesBtn.appendChild(stylesBtnInner);
+    stylesBtnInner.addEventListener('click', (ev) => {
       ev.stopPropagation();
       const selected = document.querySelector('.qe-selected');
       if (selected) {
