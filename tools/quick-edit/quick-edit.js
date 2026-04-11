@@ -125,20 +125,11 @@ function applyCustomizations() {
 
     altBtn.addEventListener('click', (ev) => {
       ev.stopPropagation();
-      const selected = document.querySelector('.qe-selected');
-      const img = selected?.tagName === 'IMG'
-        ? selected
-        : selected?.querySelector('img');
-      if (!img) return;
-
-      altTarget = img;
-      altEditor.querySelector('#qe-alt-input').value = img.alt || '';
-
-      const rect = img.getBoundingClientRect();
-      altEditor.style.top = `${rect.bottom + window.scrollY + 8}px`;
-      altEditor.style.left = `${Math.max(8, rect.left)}px`;
-      altEditor.classList.add('open');
-      altEditor.querySelector('#qe-alt-input').focus();
+      const palette = document.querySelector('.da-palettes, da-palettes');
+      if (palette) {
+        palette.classList.toggle('is-open');
+        palette.style.display = palette.classList.contains('is-open') ? 'block' : 'none';
+      }
     });
 
     toolbar.appendChild(altBtn);
