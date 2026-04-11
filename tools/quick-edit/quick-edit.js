@@ -187,7 +187,7 @@ function applyCustomizations() {
 
     // Styles button for blocks and sections
     const stylesBtn = document.createElement('span');
-    stylesBtn.className = 'proseMirror-menuitem toolbar-btn-styles';
+    stylesBtn.className = 'proseMirror-menuitem toolbar-btn-edit-styles toolbar-btn-styles';
     stylesBtn.title = 'Edit Styles';
     stylesBtn.textContent = 'Edit Styles';
     stylesBtn.addEventListener('click', (ev) => {
@@ -243,7 +243,7 @@ function applyCustomizations() {
     const { target, type } = detectClick(e.target);
     target.classList.add('qe-selected');
     const altBtnEl = toolbar.querySelector('.toolbar-btn-alt');
-    const stylesBtnEl = toolbar.querySelector('.toolbar-btn-styles');
+    const stylesBtnEl = toolbar.querySelector('.toolbar-btn-edit-styles');
 
     // Hide all toolbar children first
     [...toolbar.children].forEach((child) => {
