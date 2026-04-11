@@ -259,8 +259,10 @@ function applyCustomizations() {
     // Detect what was clicked
     const { target, type } = detectClick(e.target);
     target.classList.add('qe-selected');
-    const altBtnEl = toolbar.querySelector('.toolbar-btn-alt');
-    const stylesBtnEl = toolbar.querySelector('.toolbar-btn-styles');
+    const altBtnInnerEl = toolbar.querySelector('.toolbar-btn-alt');
+    const stylesBtnInnerEl = toolbar.querySelector('.toolbar-btn-styles');
+    const altBtnWrap = altBtnInnerEl?.closest('.ProseMirror-menuitem');
+    const stylesBtnWrap = stylesBtnInnerEl?.closest('.ProseMirror-menuitem');
 
     // Hide all toolbar children first
     [...toolbar.children].forEach((child) => {
@@ -278,13 +280,13 @@ function applyCustomizations() {
 
     // Show buttons based on detected type
     if (type === 'image') {
-      if (altBtnEl) altBtnEl.style.display = 'inline-flex';
+      if (altBtnWrap) altBtnWrap.style.display = '';
     } else if (type === 'block' || type === 'section') {
-      if (stylesBtnEl) stylesBtnEl.style.display = 'inline-flex';
+      if (stylesBtnWrap) stylesBtnWrap.style.display = '';
     } else {
       // Text — show all default buttons, hide custom ones
       [...toolbar.children].forEach((child) => {
-        if (child === altBtnEl || child === stylesBtnEl) {
+        if (child === altBtnWrap || child === stylesBtnWrap) {
           child.style.display = 'none';
         } else {
           child.style.display = '';
