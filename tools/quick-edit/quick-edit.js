@@ -21,6 +21,11 @@ function applyCustomizations() {
     .prosemirror-floating-toolbar .toolbar-btn-underline {
       display: none !important;
     }
+    .qe-selected {
+      outline: 2px solid #0078d4 !important;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
   `;
   document.head.appendChild(style);
 
@@ -32,9 +37,13 @@ function applyCustomizations() {
 
     toolbar.style.display = 'block';
 
-    // Find the clicked element to position above
-    const target = e.target.closest('picture, img, p, h1, h2, h3, h4, h5, h6, li, a, div.block, [data-block-name]')
+    // Remove previous selection outline
+    document.querySelectorAll('.qe-selected').forEach((el) => el.classList.remove('qe-selected'));
+
+    // Find the clicked element to position above and outline
+    const target = e.target.closest('picture, img, p, h1, h2, h3, h4, h5, h6, li, a, div.block, [data-block-name], .section')
       || e.target;
+    target.classList.add('qe-selected');
     const rect = target.getBoundingClientRect();
     const toolbarHeight = toolbar.offsetHeight || 40;
 
