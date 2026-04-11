@@ -121,7 +121,7 @@ function applyCustomizations() {
     altBtn.className = 'proseMirror-menuitem toolbar-btn-alt';
     altBtn.title = 'Edit alt text';
     altBtn.textContent = 'Alt';
-    altBtn.style.cssText = 'cursor:pointer;padding:4px 8px;font-size:12px;font-weight:600;border:1px solid #ddd;border-radius:4px;background:#fff;margin-left:4px;';
+    altBtn.style.cssText = 'cursor:pointer;padding:4px 8px;font-size:12px;font-weight:600;border:1px solid #ddd;border-radius:4px;background:#fff;margin-left:4px;height:32px;width:40px;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;';
 
     altBtn.addEventListener('click', (ev) => {
       ev.stopPropagation();
