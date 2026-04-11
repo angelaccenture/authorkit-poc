@@ -213,6 +213,20 @@ function showSectionPicker(section) {
   activeEl = section;
 }
 
+export function openStylePicker(element) {
+  if (!picker) return;
+  const blockName = getBlockName(element);
+  if (blockName && BLOCK_VARIANTS[blockName]) {
+    const block = element.closest(`[data-block-name="${blockName}"], .${blockName}`) || element;
+    showBlockPicker(block, blockName);
+    return;
+  }
+  const section = element.closest('.section') || element;
+  if (section) {
+    showSectionPicker(section);
+  }
+}
+
 export default function initStylePicker() {
   picker = createPicker();
 

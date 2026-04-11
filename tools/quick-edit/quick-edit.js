@@ -1,5 +1,5 @@
 import { loadPage } from '../../scripts/scripts.js';
-import initStylePicker from './style-picker.js';
+import initStylePicker, { openStylePicker } from './style-picker.js';
 
 const importMap = {
   imports: {
@@ -168,8 +168,7 @@ function applyCustomizations() {
       ev.stopPropagation();
       const selected = document.querySelector('.qe-selected');
       if (selected) {
-        // Trigger double-click on the selected element to open style picker
-        selected.dispatchEvent(new MouseEvent('dblclick', { bubbles: true }));
+        openStylePicker(selected);
       }
     });
     toolbar.appendChild(stylesBtn);
