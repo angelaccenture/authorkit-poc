@@ -26,22 +26,6 @@ function applyCustomizations() {
       outline-offset: 4px;
       border-radius: 4px;
     }
-    .toolbar-btn-styles {
-      cursor: pointer;
-      padding: 4px 12px;
-      font-size: 12px;
-      font-weight: 600;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      background: #fff;
-      margin-left: 4px;
-      height: 32px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      box-sizing: border-box;
-      white-space: nowrap;
-    }
     .da-image-palettes {
       display: none;
       position: absolute;
