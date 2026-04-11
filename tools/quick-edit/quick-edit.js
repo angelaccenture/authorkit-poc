@@ -278,11 +278,17 @@ function applyCustomizations() {
       lastSelectedImage = null;
     }
 
+    // Reset disabled state on custom buttons
+    if (altBtnInnerEl) altBtnInnerEl.classList.add('ProseMirror-menu-disabled');
+    if (stylesBtnInnerEl) stylesBtnInnerEl.classList.add('ProseMirror-menu-disabled');
+
     // Show buttons based on detected type
     if (type === 'image') {
       if (altBtnWrap) altBtnWrap.style.display = '';
+      if (altBtnInnerEl) altBtnInnerEl.classList.remove('ProseMirror-menu-disabled');
     } else if (type === 'block' || type === 'section') {
       if (stylesBtnWrap) stylesBtnWrap.style.display = '';
+      if (stylesBtnInnerEl) stylesBtnInnerEl.classList.remove('ProseMirror-menu-disabled');
     } else {
       // Text — show all default buttons, hide custom ones
       [...toolbar.children].forEach((child) => {
