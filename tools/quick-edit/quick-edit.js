@@ -23,6 +23,12 @@ function applyCustomizations() {
     }
   `;
   document.head.appendChild(style);
+
+  // Show toolbar when author selects anything on the page
+  document.addEventListener('click', () => {
+    const toolbar = document.querySelector('.prosemirror-floating-toolbar');
+    if (toolbar) toolbar.style.display = 'block';
+  });
 }
 
 async function loadModule(origin, payload) {
