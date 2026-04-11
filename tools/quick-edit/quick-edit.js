@@ -1,4 +1,5 @@
 import { loadPage } from '../../scripts/scripts.js';
+import initStylePicker from './style-picker.js';
 
 const importMap = {
   imports: {
@@ -30,6 +31,7 @@ function applyCustomizations() {
 async function loadModule(origin, payload) {
   const { default: loadQuickEdit } = await import(`${origin}/nx/public/plugins/quick-edit/quick-edit.js`);
   applyCustomizations();
+  initStylePicker();
   loadQuickEdit(payload, loadPage);
 }
 
