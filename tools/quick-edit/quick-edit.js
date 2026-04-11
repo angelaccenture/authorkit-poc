@@ -16,6 +16,7 @@ function addImportmap() {
 }
 
 function applyCustomizations() {
+  console.log("applyCustomizations");
   const style = document.createElement('style');
   style.textContent = `
     .prosemirror-floating-toolbar .toolbar-btn-underline {
@@ -118,11 +119,13 @@ function applyCustomizations() {
   let lastSelectedImage = null;
 
   altEditor.querySelector('.palette-btn-cancel').addEventListener('click', () => {
+      console.log("applyCustomizations - click event cancel");
     altEditor.classList.remove('open');
     altTarget = null;
   });
 
   altEditor.querySelector('.palette-btn-ok').addEventListener('click', () => {
+    console.log("applyCustomizations - click event ok");
     if (altTarget) {
       altTarget.alt = altEditor.querySelector('#qe-alt-input').value;
     }
@@ -132,6 +135,7 @@ function applyCustomizations() {
 
   // Inject alt text button into toolbar once it renders
   function injectAltButton() {
+     console.log("injectAltButton");
     const toolbar = document.querySelector('.prosemirror-floating-toolbar');
     if (!toolbar || toolbar.querySelector('.toolbar-btn-alt')) return;
 
@@ -144,6 +148,7 @@ function applyCustomizations() {
     altBtn.appendChild(altBtnInner);
 
     altBtnInner.addEventListener('mousedown', (ev) => {
+        console.log("injectAltButton - addEvent");
       ev.stopPropagation();
       ev.stopImmediatePropagation();
       ev.preventDefault();
