@@ -178,20 +178,25 @@ function applyCustomizations() {
   const toolbarObserver = new MutationObserver(injectAltButton);
   toolbarObserver.observe(document.body, { childList: true, subtree: true });
 
-  // Detect element type
-  function getElementType(target) {
-    // Image check first
-    if (target.tagName === 'IMG' || target.tagName === 'PICTURE') return 'image';
-    if (target.querySelector && target.querySelector('img') && !target.querySelector('p, h1, h2, h3, h4, h5, h6')) return 'image';
+  // Detect element type from the raw click target
+  function detectClick(rawTarget) {
+    // 1. Image — clicked directly on img or picture
+    const img = rawTarget.closest('img, picture');
+    if (img) return { target: img, type: 'image' };
 
-    // Block check
-    if (target.closest('[data-block-name]') && !target.closest('p, h1, h2, h3, h4, h5, h6, li, a, img, picture')) return 'block';
+    // 2. Text — clicked on a text element
+    const text = rawTarget.closest('p, h1, h2, h3, h4, h5, h6, li, a, span');
+    if (text) return { target: text, type: 'text' };
 
-    // Section check (direct .section element, not content inside it)
-    if (target.classList?.contains('section')) return 'section';
+    // 3. Block — clicked on a block container (not text/image inside it)
+    const block = rawTarget.closest('[data-block-name]');
+    if (block) return { target: block, type: 'block' };
 
-    // Text (default)
-    return 'text';
+    // 4. Section — clicked on the section background
+    const section = rawTarget.closest('.section');
+    if (section) return { target: section, type: 'section' };
+
+    return { target: rawTarget, type: 'text' };
   }
 
   // Show toolbar and reposition above the clicked element
@@ -208,12 +213,9 @@ function applyCustomizations() {
     // Remove previous selection outline
     document.querySelectorAll('.qe-selected').forEach((el) => el.classList.remove('qe-selected'));
 
-    // Find the clicked element
-    const target = e.target.closest('picture, img, p, h1, h2, h3, h4, h5, h6, li, a, [data-block-name], .section')
-      || e.target;
+    // Detect what was clicked
+    const { target, type } = detectClick(e.target);
     target.classList.add('qe-selected');
-
-    const type = getElementType(target);
     const altBtnEl = toolbar.querySelector('.toolbar-btn-alt');
     const stylesBtnEl = toolbar.querySelector('.toolbar-btn-styles');
 
@@ -222,7 +224,7 @@ function applyCustomizations() {
       child.style.display = 'none';
     });
 
-    // Show buttons based on type
+    // Show buttons based on detected type
     if (type === 'image') {
       if (altBtnEl) altBtnEl.style.display = 'inline-flex';
     } else if (type === 'block' || type === 'section') {
