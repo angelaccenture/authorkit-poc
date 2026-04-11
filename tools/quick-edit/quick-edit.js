@@ -26,6 +26,22 @@ function applyCustomizations() {
       outline-offset: 4px;
       border-radius: 4px;
     }
+    .toolbar-btn-styles {
+      cursor: pointer;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: #fff;
+      margin-left: 4px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      white-space: nowrap;
+    }
     .qe-alt-editor {
       position: absolute;
       z-index: 100001;
@@ -142,11 +158,42 @@ function applyCustomizations() {
     });
 
     toolbar.appendChild(altBtn);
+
+    // Styles button for blocks and sections
+    const stylesBtn = document.createElement('span');
+    stylesBtn.className = 'proseMirror-menuitem toolbar-btn-styles';
+    stylesBtn.title = 'Edit Styles';
+    stylesBtn.textContent = 'Edit Styles';
+    stylesBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      const selected = document.querySelector('.qe-selected');
+      if (selected) {
+        // Trigger double-click on the selected element to open style picker
+        selected.dispatchEvent(new MouseEvent('dblclick', { bubbles: true }));
+      }
+    });
+    toolbar.appendChild(stylesBtn);
   }
 
-  // Watch for toolbar to appear and inject button
+  // Watch for toolbar to appear and inject buttons
   const toolbarObserver = new MutationObserver(injectAltButton);
   toolbarObserver.observe(document.body, { childList: true, subtree: true });
+
+  // Detect element type
+  function getElementType(target) {
+    // Image check first
+    if (target.tagName === 'IMG' || target.tagName === 'PICTURE') return 'image';
+    if (target.querySelector && target.querySelector('img') && !target.querySelector('p, h1, h2, h3, h4, h5, h6')) return 'image';
+
+    // Block check
+    if (target.closest('[data-block-name]') && !target.closest('p, h1, h2, h3, h4, h5, h6, li, a, img, picture')) return 'block';
+
+    // Section check (direct .section element, not content inside it)
+    if (target.classList?.contains('section')) return 'section';
+
+    // Text (default)
+    return 'text';
+  }
 
   // Show toolbar and reposition above the clicked element
   document.addEventListener('click', (e) => {
@@ -154,33 +201,45 @@ function applyCustomizations() {
     if (!toolbar) return;
     if (toolbar.contains(e.target)) return;
 
+    // Close alt editor if open
+    altEditor.classList.remove('open');
+
     toolbar.style.display = 'block';
 
     // Remove previous selection outline
     document.querySelectorAll('.qe-selected').forEach((el) => el.classList.remove('qe-selected'));
 
-    // Find the clicked element to position above and outline
-    const target = e.target.closest('picture, img, p, h1, h2, h3, h4, h5, h6, li, a, div.block, [data-block-name], .section')
+    // Find the clicked element
+    const target = e.target.closest('picture, img, p, h1, h2, h3, h4, h5, h6, li, a, [data-block-name], .section')
       || e.target;
     target.classList.add('qe-selected');
 
-    // Context-aware toolbar: show/hide buttons based on element type
-    const isImage = target.tagName === 'IMG' || target.tagName === 'PICTURE' || !!target.querySelector('img');
+    const type = getElementType(target);
     const altBtnEl = toolbar.querySelector('.toolbar-btn-alt');
+    const stylesBtnEl = toolbar.querySelector('.toolbar-btn-styles');
 
-    // Get all toolbar children that are NOT the alt button
+    // Hide all toolbar children first
     [...toolbar.children].forEach((child) => {
-      if (child === altBtnEl) return;
-      if (isImage) {
-        child.style.display = 'none';
-      } else {
-        child.style.display = '';
-      }
+      child.style.display = 'none';
     });
 
-    if (altBtnEl) {
-      altBtnEl.style.display = isImage ? 'inline-flex' : 'none';
+    // Show buttons based on type
+    if (type === 'image') {
+      if (altBtnEl) altBtnEl.style.display = 'inline-flex';
+    } else if (type === 'block' || type === 'section') {
+      if (stylesBtnEl) stylesBtnEl.style.display = 'inline-flex';
+    } else {
+      // Text — show all default buttons, hide custom ones
+      [...toolbar.children].forEach((child) => {
+        if (child === altBtnEl || child === stylesBtnEl) {
+          child.style.display = 'none';
+        } else {
+          child.style.display = '';
+        }
+      });
     }
+
+    // Position toolbar above the element
     const rect = target.getBoundingClientRect();
     const toolbarHeight = toolbar.offsetHeight || 40;
 
