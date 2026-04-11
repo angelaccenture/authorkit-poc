@@ -147,13 +147,6 @@ function applyCustomizations() {
     altBtnInner.textContent = 'Edit Image';
     altBtn.appendChild(altBtnInner);
 
-    altBtnInner.addEventListener('mousedown', (ev) => {
-        console.log("injectAltButton - addEvent mousedown");
-      ev.stopPropagation();
-      ev.stopImmediatePropagation();
-      ev.preventDefault();
-    });
-
     altBtnInner.addEventListener('mouseup', (ev) => {
       console.log("injectAltButton - addEvent mouseup");
       ev.stopPropagation();
@@ -173,6 +166,7 @@ function applyCustomizations() {
       altEditor.style.left = `${Math.max(8, toolbarRect.left)}px`;
       altEditor.classList.add('open');
       setTimeout(() => altEditor.querySelector('#qe-alt-input').focus(), 50);
+      console.log("injectAltButton - addEvent mouseup end?");
     });
 
     toolbar.appendChild(altBtn);
