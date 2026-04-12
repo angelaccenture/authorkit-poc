@@ -128,15 +128,15 @@ function ensurePickerInDOM() {
   }
 }
 
-function positionPicker(target) {
-  const rect = target.getBoundingClientRect();
-  picker.style.top = `${rect.top + window.scrollY - picker.offsetHeight - 8}px`;
-  picker.style.left = `${Math.min(rect.left, window.innerWidth - 300)}px`;
+function positionPicker() {
+  // Position relative to the Edit Styles button in the toolbar
+  const stylesBtn = document.querySelector('.toolbar-btn-styles');
+  if (!stylesBtn) return;
 
-  // if off-screen top, put below
-  if (rect.top - picker.offsetHeight - 8 < 0) {
-    picker.style.top = `${rect.bottom + window.scrollY + 8}px`;
-  }
+  const rect = stylesBtn.getBoundingClientRect();
+  picker.style.position = 'absolute';
+  picker.style.top = `${rect.bottom + window.scrollY + 8}px`;
+  picker.style.left = `${Math.max(8, Math.min(rect.left, window.innerWidth - 300))}px`;
 }
 
 function getBlockName(el) {
@@ -193,7 +193,7 @@ function showBlockPicker(block, blockName) {
 
   ensurePickerInDOM();
   picker.classList.add('open');
-  positionPicker(block);
+  positionPicker();
   activeEl = block;
 }
 
@@ -216,7 +216,7 @@ function showSectionPicker(section) {
 
   ensurePickerInDOM();
   picker.classList.add('open');
-  positionPicker(section);
+  positionPicker();
   activeEl = section;
 }
 
