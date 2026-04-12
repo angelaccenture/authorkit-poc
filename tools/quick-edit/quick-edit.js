@@ -130,28 +130,55 @@ function applyCustomizations() {
     altTarget = null;
   });
 
-  altEditor.querySelector('.palette-btn-ok').addEventListener('click', () => {
+  // Get DA config from the page
+  function getDAConfig() {
+    let { hostname } = window.location;
+    if (hostname === 'localhost') {
+      const meta = document.querySelector('meta[property="hlx:proxyUrl"]');
+      if (meta) hostname = meta.content;
+    }
+    const parts = hostname.split('.')[0].split('--');
+    const [, repo, owner] = parts;
+    const path = window.location.pathname;
+    return { owner, repo, path };
+  }
+
+  // Save page content back to DA
+  async function saveToDA() {
+    const { owner, repo, path } = getDAConfig();
+    const pagePath = path === '/' ? '/index' : path;
+
+    // Get the current page HTML from the editable content
+    const main = document.querySelector('main');
+    if (!main) return;
+
+    // Build the DA HTML format
+    const html = `<body><header></header><main>${main.innerHTML}</main><footer></footer></body>`;
+
+    try {
+      const resp = await fetch(`https://admin.da.live/source/${owner}/${repo}${pagePath}.html`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'text/html' },
+        credentials: 'include',
+        body: html,
+      });
+      if (resp.ok) {
+        console.log('Saved to DA');
+      } else {
+        console.error('DA save failed:', resp.status);
+      }
+    } catch (err) {
+      console.error('DA save error:', err);
+    }
+  }
+
+  altEditor.querySelector('.palette-btn-ok').addEventListener('click', async () => {
     if (altTarget) {
       const newAlt = altEditor.querySelector('#qe-alt-input').value;
-
-      // Update the alt attribute
       altTarget.setAttribute('alt', newAlt);
 
-      // Find the ProseMirror editor view and dispatch a transaction
-      // to notify it about the change
-      const pmEditor = document.querySelector('.ProseMirror');
-      if (pmEditor && pmEditor.pmViewDesc) {
-        // Direct ProseMirror view access
-        const { view } = pmEditor.pmViewDesc;
-        if (view) {
-          view.dispatch(view.state.tr.setMeta('addToHistory', true));
-        }
-      } else if (pmEditor) {
-        // Fallback: dispatch input event to trigger ProseMirror's change detection
-        pmEditor.dispatchEvent(new Event('input', { bubbles: true }));
-        // Also try a generic change event
-        pmEditor.dispatchEvent(new Event('change', { bubbles: true }));
-      }
+      // Save to DA
+      await saveToDA();
     }
     altEditor.classList.remove('open');
     altTarget = null;
