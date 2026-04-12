@@ -131,9 +131,27 @@ function applyCustomizations() {
   });
 
   altEditor.querySelector('.palette-btn-ok').addEventListener('click', () => {
-    console.log("applyCustomizations - click event ok");
     if (altTarget) {
-      altTarget.alt = altEditor.querySelector('#qe-alt-input').value;
+      const newAlt = altEditor.querySelector('#qe-alt-input').value;
+
+      // Update the alt attribute
+      altTarget.setAttribute('alt', newAlt);
+
+      // Find the ProseMirror editor view and dispatch a transaction
+      // to notify it about the change
+      const pmEditor = document.querySelector('.ProseMirror');
+      if (pmEditor && pmEditor.pmViewDesc) {
+        // Direct ProseMirror view access
+        const { view } = pmEditor.pmViewDesc;
+        if (view) {
+          view.dispatch(view.state.tr.setMeta('addToHistory', true));
+        }
+      } else if (pmEditor) {
+        // Fallback: dispatch input event to trigger ProseMirror's change detection
+        pmEditor.dispatchEvent(new Event('input', { bubbles: true }));
+        // Also try a generic change event
+        pmEditor.dispatchEvent(new Event('change', { bubbles: true }));
+      }
     }
     altEditor.classList.remove('open');
     altTarget = null;
