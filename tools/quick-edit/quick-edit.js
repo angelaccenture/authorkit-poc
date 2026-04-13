@@ -159,46 +159,25 @@ function applyCustomizations() {
     altTarget = null;
   });
 
-  // Inject alt text button into toolbar once it renders
-  function injectAltButton() {
-     console.log("injectAltButton");
+  // Open alt editor panel for an image
+  function openAltEditor(img) {
+    altTarget = img;
+    ensureAltEditorInDOM();
+    altEditor.querySelector('#qe-alt-input').value = img.alt || '';
+
+    const rect = img.getBoundingClientRect();
+    altEditor.style.position = 'absolute';
+    altEditor.style.top = `${rect.bottom + window.scrollY + 8}px`;
+    altEditor.style.left = `${Math.max(8, rect.left)}px`;
+    altEditor.classList.add('open');
+    setTimeout(() => altEditor.querySelector('#qe-alt-input').focus(), 50);
+  }
+
+  // Inject Edit Styles button into toolbar once it renders
+  function injectToolbarButtons() {
     const toolbar = document.querySelector('.prosemirror-floating-toolbar');
-    if (!toolbar || toolbar.querySelector('.toolbar-btn-alt')) return;
+    if (!toolbar || toolbar.querySelector('.toolbar-btn-styles')) return;
 
-    const altBtn = document.createElement('span');
-    altBtn.className = 'ProseMirror-menuitem';
-    const altBtnInner = document.createElement('div');
-    altBtnInner.title = 'Edit Image';
-    altBtnInner.className = 'edit-image toolbar-btn-alt ProseMirror-menu-disabled';
-    altBtnInner.textContent = 'Edit Image';
-    altBtn.appendChild(altBtnInner);
-
-    altBtnInner.addEventListener('mouseup', (ev) => {
-      console.log("injectAltButton - addEvent mouseup");
-      ev.stopPropagation();
-      ev.stopImmediatePropagation();
-      ev.preventDefault();
-
-      const img = lastSelectedImage;
-      if (!img) return;
-
-      altTarget = img;
-      ensureAltEditorInDOM();
-      altEditor.querySelector('#qe-alt-input').value = img.alt || '';
-
-      // Position below the toolbar
-      const toolbarRect = toolbar.getBoundingClientRect();
-      altEditor.style.position = 'absolute';
-      altEditor.style.top = `${toolbarRect.bottom + window.scrollY + 8}px`;
-      altEditor.style.left = `${Math.max(8, toolbarRect.left)}px`;
-      altEditor.classList.add('open');
-      setTimeout(() => altEditor.querySelector('#qe-alt-input').focus(), 50);
-      console.log("injectAltButton - addEvent mouseup end?");
-    });
-
-    toolbar.appendChild(altBtn);
-
-    // Styles button for blocks and sections
     const stylesBtn = document.createElement('span');
     stylesBtn.className = 'ProseMirror-menuitem';
     const stylesBtnInner = document.createElement('div');
@@ -217,7 +196,7 @@ function applyCustomizations() {
   }
 
   // Watch for toolbar to appear and inject buttons
-  const toolbarObserver = new MutationObserver(injectAltButton);
+  const toolbarObserver = new MutationObserver(injectToolbarButtons);
   toolbarObserver.observe(document.body, { childList: true, subtree: true });
 
   // Detect element type from the raw click target
@@ -270,9 +249,8 @@ function applyCustomizations() {
     // Detect what was clicked
     const { target, type } = detectClick(e.target);
     target.classList.add('qe-selected');
-    const altBtnInnerEl = toolbar.querySelector('.toolbar-btn-alt');
+
     const stylesBtnInnerEl = toolbar.querySelector('.toolbar-btn-styles');
-    const altBtnWrap = altBtnInnerEl?.closest('.ProseMirror-menuitem');
     const stylesBtnWrap = stylesBtnInnerEl?.closest('.ProseMirror-menuitem');
 
     // Hide all toolbar children first
@@ -280,30 +258,24 @@ function applyCustomizations() {
       child.style.display = 'none';
     });
 
-    // Store image reference when image is selected
-    if (type === 'image') {
-      lastSelectedImage = target.tagName === 'IMG'
-        ? target
-        : target.querySelector('img') || target;
-    } else {
-      lastSelectedImage = null;
-    }
-
-    // Reset disabled state on custom buttons
-    if (altBtnInnerEl) altBtnInnerEl.classList.add('ProseMirror-menu-disabled');
     if (stylesBtnInnerEl) stylesBtnInnerEl.classList.add('ProseMirror-menu-disabled');
 
     // Show buttons based on detected type
     if (type === 'image') {
-      if (altBtnWrap) altBtnWrap.style.display = '';
-      if (altBtnInnerEl) altBtnInnerEl.classList.remove('ProseMirror-menu-disabled');
+      // Open alt editor directly — no toolbar button needed
+      const img = target.tagName === 'IMG' ? target : target.querySelector('img');
+      if (img) {
+        toolbar.style.display = 'none';
+        openAltEditor(img);
+        return;
+      }
     } else if (type === 'block' || type === 'section') {
       if (stylesBtnWrap) stylesBtnWrap.style.display = '';
       if (stylesBtnInnerEl) stylesBtnInnerEl.classList.remove('ProseMirror-menu-disabled');
     } else {
       // Text — show all default buttons, hide custom ones
       [...toolbar.children].forEach((child) => {
-        if (child === altBtnWrap || child === stylesBtnWrap) {
+        if (child === stylesBtnWrap) {
           child.style.display = 'none';
         } else {
           child.style.display = '';
