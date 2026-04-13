@@ -70,9 +70,10 @@
         "multi": false
       },
       {
-        "component": "text",
+        "component": "richtext",
         "name": "imageAlt",
-        "label": "Alt Text"
+        "label": "Alt Text",
+        "valueType": "string"
       }
     ]
   },
