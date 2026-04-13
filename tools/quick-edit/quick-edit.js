@@ -143,29 +143,56 @@ function applyCustomizations() {
     return { owner, repo, path };
   }
 
-  // Save page content back to DA
-  async function saveToDA() {
+  // Save alt text change to DA by fetching source, updating, and PUTting back
+  async function saveAltToDA(imgEl, newAlt) {
     const { owner, repo, path } = getDAConfig();
     const pagePath = path === '/' ? '/index' : path;
-
-    // Get the current page HTML from the editable content
-    const main = document.querySelector('main');
-    if (!main) return;
-
-    // Build the DA HTML format
-    const html = `<body><header></header><main>${main.innerHTML}</main><footer></footer></body>`;
+    const sourceUrl = `https://admin.da.live/source/${owner}/${repo}${pagePath}.html`;
 
     try {
-      const resp = await fetch(`https://admin.da.live/source/${owner}/${repo}${pagePath}.html`, {
+      // Fetch current source HTML from DA
+      const getResp = await fetch(sourceUrl, { credentials: 'include' });
+      if (!getResp.ok) {
+        console.error('Failed to fetch DA source:', getResp.status);
+        return;
+      }
+      const sourceHtml = await getResp.text();
+
+      // Parse it and find the matching image
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(sourceHtml, 'text/html');
+
+      // Match by src — find the img with the same source
+      const imgSrc = imgEl.getAttribute('src') || '';
+      const srcPart = imgSrc.split('/').pop().split('?')[0]; // get filename
+
+      let updated = false;
+      doc.querySelectorAll('img').forEach((img) => {
+        const thisSrc = img.getAttribute('src') || '';
+        if (thisSrc.includes(srcPart)) {
+          img.setAttribute('alt', newAlt);
+          updated = true;
+        }
+      });
+
+      if (!updated) {
+        console.warn('Could not find matching image in DA source');
+        return;
+      }
+
+      // PUT updated HTML back
+      const body = doc.querySelector('body');
+      const putResp = await fetch(sourceUrl, {
         method: 'PUT',
         headers: { 'Content-Type': 'text/html' },
         credentials: 'include',
-        body: html,
+        body: body.outerHTML,
       });
-      if (resp.ok) {
-        console.log('Saved to DA');
+
+      if (putResp.ok) {
+        console.log('Alt text saved to DA');
       } else {
-        console.error('DA save failed:', resp.status);
+        console.error('DA save failed:', putResp.status);
       }
     } catch (err) {
       console.error('DA save error:', err);
@@ -175,10 +202,12 @@ function applyCustomizations() {
   altEditor.querySelector('.palette-btn-ok').addEventListener('click', async () => {
     if (altTarget) {
       const newAlt = altEditor.querySelector('#qe-alt-input').value;
+
+      // Update DOM
       altTarget.setAttribute('alt', newAlt);
 
       // Save to DA
-      await saveToDA();
+      await saveAltToDA(altTarget, newAlt);
     }
     altEditor.classList.remove('open');
     altTarget = null;
