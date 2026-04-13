@@ -502,7 +502,7 @@
         }
       },
       {
-        "component": "richtext",
+        "component": "text",
         "valueType": "string",
         "name": "imageAlt",
         "label": "Image Alt",
