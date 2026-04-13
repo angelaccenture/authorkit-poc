@@ -143,58 +143,17 @@ function applyCustomizations() {
     return { owner, repo, path };
   }
 
-  // Find ProseMirror view from the editor element
-  function getPMView() {
-    const pmEl = document.querySelector('.ProseMirror');
-    if (!pmEl) return null;
-    // ProseMirror stores the view on the DOM element
-    return pmEl.pmViewDesc?.view || pmEl._view || null;
-  }
-
-  // Update image alt via ProseMirror transaction so DA saves it
-  function updateAltViaPM(imgEl, newAlt) {
-    const view = getPMView();
-    if (!view) {
-      // Fallback: direct DOM update
-      imgEl.setAttribute('alt', newAlt);
-      console.warn('No ProseMirror view found, updated DOM directly');
-      return;
-    }
-
-    const { state } = view;
-    const { tr } = state;
-    let updated = false;
-
-    // Walk through all nodes to find the matching image
-    state.doc.descendants((node, pos) => {
-      if (updated) return false;
-      if (node.type.name === 'image' || node.type.name === 'picture') {
-        const src = node.attrs.src || '';
-        const imgSrc = imgEl.getAttribute('src') || '';
-        // Match by src filename
-        if (src && imgSrc && src.split('/').pop().split('?')[0] === imgSrc.split('/').pop().split('?')[0]) {
-          tr.setNodeMarkup(pos, null, { ...node.attrs, alt: newAlt });
-          updated = true;
-          return false;
-        }
-      }
-      return true;
-    });
-
-    if (updated) {
-      view.dispatch(tr);
-      console.log('Alt text updated via ProseMirror transaction');
-    } else {
-      // Fallback: direct DOM update
-      imgEl.setAttribute('alt', newAlt);
-      console.warn('Image not found in PM doc, updated DOM directly');
-    }
-  }
-
   altEditor.querySelector('.palette-btn-ok').addEventListener('click', () => {
     if (altTarget) {
       const newAlt = altEditor.querySelector('#qe-alt-input').value;
-      updateAltViaPM(altTarget, newAlt);
+
+      // Replace the img node to trigger ProseMirror's DOM mutation observer
+      const newImg = altTarget.cloneNode(true);
+      newImg.alt = newAlt;
+      altTarget.parentNode.replaceChild(newImg, altTarget);
+
+      // Update reference in case it's needed
+      altTarget = newImg;
     }
     altEditor.classList.remove('open');
     altTarget = null;
