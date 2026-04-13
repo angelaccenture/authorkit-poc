@@ -103,6 +103,7 @@ function applyCustomizations() {
   // Appended lazily to avoid DA's quick-edit clearing it
   const altEditor = document.createElement('div');
   altEditor.className = 'da-image-palettes';
+  altEditor.setAttribute('contenteditable', 'false');
   altEditor.innerHTML = `
     <span class="palette-title">Edit Image</span>
     <div class="palette-field">
@@ -191,6 +192,8 @@ function applyCustomizations() {
     stylesBtnInner.title = 'Edit Styles';
     stylesBtnInner.className = 'edit-styles toolbar-btn-styles ProseMirror-menu-disabled';
     stylesBtnInner.textContent = 'Edit Styles';
+    stylesBtnInner.setAttribute('contenteditable', 'false');
+    stylesBtn.setAttribute('contenteditable', 'false');
     stylesBtn.appendChild(stylesBtnInner);
     stylesBtnInner.addEventListener('click', (ev) => {
       ev.stopPropagation();
