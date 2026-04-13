@@ -143,71 +143,58 @@ function applyCustomizations() {
     return { owner, repo, path };
   }
 
-  // Save alt text change to DA by fetching source, updating, and PUTting back
-  async function saveAltToDA(imgEl, newAlt) {
-    const { owner, repo, path } = getDAConfig();
-    const pagePath = path === '/' ? '/index' : path;
-    const sourceUrl = `https://admin.da.live/source/${owner}/${repo}${pagePath}.html`;
+  // Find ProseMirror view from the editor element
+  function getPMView() {
+    const pmEl = document.querySelector('.ProseMirror');
+    if (!pmEl) return null;
+    // ProseMirror stores the view on the DOM element
+    return pmEl.pmViewDesc?.view || pmEl._view || null;
+  }
 
-    try {
-      // Fetch current source HTML from DA
-      const getResp = await fetch(sourceUrl, { credentials: 'include' });
-      if (!getResp.ok) {
-        console.error('Failed to fetch DA source:', getResp.status);
-        return;
-      }
-      const sourceHtml = await getResp.text();
+  // Update image alt via ProseMirror transaction so DA saves it
+  function updateAltViaPM(imgEl, newAlt) {
+    const view = getPMView();
+    if (!view) {
+      // Fallback: direct DOM update
+      imgEl.setAttribute('alt', newAlt);
+      console.warn('No ProseMirror view found, updated DOM directly');
+      return;
+    }
 
-      // Parse it and find the matching image
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(sourceHtml, 'text/html');
+    const { state } = view;
+    const { tr } = state;
+    let updated = false;
 
-      // Match by src — find the img with the same source
-      const imgSrc = imgEl.getAttribute('src') || '';
-      const srcPart = imgSrc.split('/').pop().split('?')[0]; // get filename
-
-      let updated = false;
-      doc.querySelectorAll('img').forEach((img) => {
-        const thisSrc = img.getAttribute('src') || '';
-        if (thisSrc.includes(srcPart)) {
-          img.setAttribute('alt', newAlt);
+    // Walk through all nodes to find the matching image
+    state.doc.descendants((node, pos) => {
+      if (updated) return false;
+      if (node.type.name === 'image' || node.type.name === 'picture') {
+        const src = node.attrs.src || '';
+        const imgSrc = imgEl.getAttribute('src') || '';
+        // Match by src filename
+        if (src && imgSrc && src.split('/').pop().split('?')[0] === imgSrc.split('/').pop().split('?')[0]) {
+          tr.setNodeMarkup(pos, null, { ...node.attrs, alt: newAlt });
           updated = true;
+          return false;
         }
-      });
-
-      if (!updated) {
-        console.warn('Could not find matching image in DA source');
-        return;
       }
+      return true;
+    });
 
-      // PUT updated HTML back
-      const body = doc.querySelector('body');
-      const putResp = await fetch(sourceUrl, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'text/html' },
-        credentials: 'include',
-        body: body.outerHTML,
-      });
-
-      if (putResp.ok) {
-        console.log('Alt text saved to DA');
-      } else {
-        console.error('DA save failed:', putResp.status);
-      }
-    } catch (err) {
-      console.error('DA save error:', err);
+    if (updated) {
+      view.dispatch(tr);
+      console.log('Alt text updated via ProseMirror transaction');
+    } else {
+      // Fallback: direct DOM update
+      imgEl.setAttribute('alt', newAlt);
+      console.warn('Image not found in PM doc, updated DOM directly');
     }
   }
 
-  altEditor.querySelector('.palette-btn-ok').addEventListener('click', async () => {
+  altEditor.querySelector('.palette-btn-ok').addEventListener('click', () => {
     if (altTarget) {
       const newAlt = altEditor.querySelector('#qe-alt-input').value;
-
-      // Update DOM
-      altTarget.setAttribute('alt', newAlt);
-
-      // Save to DA
-      await saveAltToDA(altTarget, newAlt);
+      updateAltViaPM(altTarget, newAlt);
     }
     altEditor.classList.remove('open');
     altTarget = null;
