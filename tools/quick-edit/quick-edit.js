@@ -147,12 +147,19 @@ function applyCustomizations() {
     if (altTarget) {
       const newAlt = altEditor.querySelector('#qe-alt-input').value;
 
-      // Replace the img node to trigger ProseMirror's DOM mutation observer
-      const newImg = altTarget.cloneNode(true);
-      newImg.alt = newAlt;
-      altTarget.parentNode.replaceChild(newImg, altTarget);
+      // Find the outermost wrapper ProseMirror manages — picture or p containing the image
+      const picture = altTarget.closest('picture');
+      const wrapper = picture || altTarget;
+      const pmParent = wrapper.closest('p') || wrapper.parentNode;
 
-      // Update reference in case it's needed
+      // Clone the entire parent, update the alt inside the clone
+      const newParent = pmParent.cloneNode(true);
+      const newImg = newParent.querySelector('img');
+      if (newImg) newImg.alt = newAlt;
+
+      // Replace at the p/parent level to trigger ProseMirror mutation
+      pmParent.parentNode.replaceChild(newParent, pmParent);
+
       altTarget = newImg;
     }
     altEditor.classList.remove('open');
