@@ -64,12 +64,6 @@
     "id": "image",
     "fields": [
       {
-        "component": "reference",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
         "component": "richtext",
         "name": "imageAlt",
         "label": "Alt Text",
