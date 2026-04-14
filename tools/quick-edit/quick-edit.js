@@ -46,6 +46,12 @@ function applyCustomizations() {
       background: #999;
       cursor: not-allowed;
     }
+    .quick-edit-buttons { display: flex !important; }
+    .quick-edit-buttons .quick-edit-exit,
+    .quick-edit-buttons .quick-edit-preview,
+    .quick-edit-buttons .quick-edit-publish { display: flex !important; }
+    .quick-edit-buttons .quick-edit-close { display: none !important;
+    }
     .da-image-palettes {
       display: none;
       position: absolute;
