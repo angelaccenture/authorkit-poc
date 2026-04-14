@@ -27,6 +27,25 @@ function applyCustomizations() {
       outline-offset: 4px;
       border-radius: 4px;
     }
+    .quick-edit-publish {
+      display: flex;
+      background: #0078d4;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .quick-edit-publish:hover {
+      background: #0067b8;
+    }
+    .quick-edit-publish:disabled {
+      background: #999;
+      cursor: not-allowed;
+    }
     .da-image-palettes {
       display: none;
       position: absolute;
@@ -241,6 +260,60 @@ function applyCustomizations() {
 
     return { target: rawTarget, type: 'text' };
   }
+
+  // Inject Publish button into quick-edit buttons bar
+  function injectPublishButton() {
+    const buttonsBar = document.querySelector('.quick-edit-buttons');
+    if (!buttonsBar || buttonsBar.querySelector('.quick-edit-publish')) return;
+
+    const publishBtn = document.createElement('button');
+    publishBtn.className = 'quick-edit-publish';
+    publishBtn.textContent = 'Publish';
+
+    publishBtn.addEventListener('click', async () => {
+      publishBtn.disabled = true;
+      publishBtn.textContent = 'Publishing...';
+
+      try {
+        let { hostname } = window.location;
+        if (hostname === 'localhost') {
+          const meta = document.querySelector('meta[property="hlx:proxyUrl"]');
+          if (meta) hostname = meta.content;
+        }
+        const parts = hostname.split('.')[0].split('--');
+        const [, repo, owner] = parts;
+        const pagePath = window.location.pathname === '/' ? '/index' : window.location.pathname;
+
+        const resp = await fetch(`https://admin.hlx.page/live/${owner}/${repo}/main${pagePath}`, {
+          method: 'POST',
+          credentials: 'include',
+        });
+
+        if (resp.ok) {
+          publishBtn.textContent = 'Published!';
+          setTimeout(() => { publishBtn.textContent = 'Publish'; publishBtn.disabled = false; }, 2000);
+        } else {
+          publishBtn.textContent = 'Failed';
+          setTimeout(() => { publishBtn.textContent = 'Publish'; publishBtn.disabled = false; }, 2000);
+        }
+      } catch {
+        publishBtn.textContent = 'Failed';
+        setTimeout(() => { publishBtn.textContent = 'Publish'; publishBtn.disabled = false; }, 2000);
+      }
+    });
+
+    // Insert after Preview button
+    const previewBtn = buttonsBar.querySelector('.quick-edit-preview');
+    if (previewBtn) {
+      previewBtn.after(publishBtn);
+    } else {
+      buttonsBar.appendChild(publishBtn);
+    }
+  }
+
+  // Watch for quick-edit buttons to appear
+  const publishObserver = new MutationObserver(injectPublishButton);
+  publishObserver.observe(document.body, { childList: true, subtree: true });
 
   // Show toolbar and reposition above the clicked element
   document.addEventListener('click', (e) => {
